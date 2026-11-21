@@ -1,0 +1,707 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% A note on Asymmetric Power Index for Voting Games
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[12pt,jorsjE]{article}
+\renewcommand{\baselinestretch}{0.99}
+\setlength{\oddsidemargin}{0.5cm}
+\setlength{\textwidth}{15cm}
+\setlength{\topmargin}{-10pt}
+\setlength{\textheight}{23cm}
+\setlength{\headsep}{0in}
+\setlength{\headheight}{1cm}
+\setlength{\marginparwidth}{0pt}
+%\pagestyle{empty}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%% special macros %%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\ms}[1]{$#1$}
+\newcommand{\Order}{\mbox{O}}
+\newcommand{\romannum}[1]{\romannumeral#1}
+\newcommand{\Romannum}[1]{\uppercase\expandafter{\romannumeral#1}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\def\0{\mbox{\bf 0}}
+\def\a{\mbox{\boldmath $a$}}
+\def\f{\mbox{\boldmath $f$}}
+\def\g{\mbox{\boldmath $g$}}
+\def\p{\mbox{\boldmath $p$}}
+\def\q{\mbox{\boldmath $q$}}
+\def\r{\mbox{\boldmath $r$}}
+\def\w{\mbox{\boldmath $w$}}
+\def\x{\mbox{\boldmath $x$}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+ \newcommand{\calW}{{\cal W}}        %%% winning family %
+ \newcommand{\calL}{{\cal L}}        %%% losing family %%
+ \newcommand{\calF}{{\cal F}}        %%% family %%%%%%%%%
+ \newcommand{\calG}{{\cal G}}        %%% family %%%%%%%%%
+ \newcommand{\Real}{\mbox{\bf R}}    %%% Real Numbers %%%
+ \renewcommand{\mid}{ : }            %%% condition %%%%%%
+ \newcommand{\QED}{\hfill //}    %%% Real Numbers %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+   \newtheorem{theorem}{Theorem}
+   \newtheorem{lemmma}[theorem]{Lemma}
+   \newtheorem{corollary}[theorem]{Corollary}
+   \newtheorem{assumption}[theorem]{Assumption}
+   \newenvironment{proof}{\noindent {\bf Proof.}}{\hfill $\BBox$}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{document}
+
+\title{\Large 投票ゲームにおける非対称投票力指数の提案}
+\author{
+ \normalsize 松井知己 \quad 上原良賢 \\
+ \normalsize 東京大学, \\
+ \normalsize Bunkyo-ku, Tokyo 113, Japan. \\
+ {\small http://www.misojiro.t.u-tokyo.ac.jp/\~tomomi/}
+%              &  {\small tomomi@misojiro.t.u-tokyo.ac.jp} 
+}
+\maketitle
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\noindent
+For measuring an individual's voting power of a voting game,
+   some power indices are proposed.
+In this paper,
+  we propose a new power index which is useful 
+    in situations that not all coalitions are 
+    equally likely to be formed.  
+ Our power index includes the ordinary Shapley-Shubic index, 
+  the Deegan-Packel index  and the Curiel index as special cases.
+ 
+
+\medskip
+
+\noindent
+{\bf Key Words}: voting game, simple game, 
+    weighted majority game,
+    power index.
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Introdution}
+
+
+ 本稿では，新たな非対称投票力指数の提案を行う．
+ 提案する指数が他の多くの非対称投票力指数と異なる点は，
+イデオロギー空間の存在を仮定する必要が無い事である．
+ さらに，提案する指数は，その特殊ケースとして
+ Shapley-Shubic 指数と Deegan-Packel 指数を含んでいる．
+ 本稿では，提案した指数を与える公理系についても記す．
+ 最後に提案した指数を，1997年の Ono and Muto で用いられた，
+  1989から1992の間の参議院のデータに適用した結果を示す．
+
+ 投票システムにおいて，各投票者の持つ力を測るために，
+  Shapley-Shubic 指数 \cite{SHAPLEY1954}, 
+  Banzhaf 指数 \cite{BANZHAF},  
+  Deegan-Packel 指数 \cite{DEEGAN1978} 等， 
+ 様々な投票力指数が提案されている．
+  政治的な投票システムでは，各投票者は政治的な信条を持っており，
+ それぞれが提携を組む可能性は対称的ではなく，
+ 政治的な信条に依存して非対称的である．
+  このような状況での投票者の力を測る指数として，
+  Owen \cite{OWEN1971} と Shapley \cite{SHAPLEY1977}
+  はイデオロギー空間を用いた非対称投票力指数の提案を行っている．
+ Ono and Muto は， 論文 \cite{ONO1997}において，
+  非対称 Shapley-Owen 指数を日本の参議院データに適用した場合，
+   得られる結果が現実と非常に異なる事を指摘した．
+  更に，Shapley-Owen 指数における議案の発生の均等性の仮定を外し，
+   代わりに現実の議案の
+   賛成／反対のデータを用いて各会派の投票力指数の計算を行った．
+
+%%%%%%%%%%%%%%%%%% def of sets %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ 
+\section{投票力指数の定義}
+
+%%%%%%%%%%%%%%%% def of voting game %%%%%%%%%%%%%%%%%%%%%%%%%
+ 
+ 任意の集合$S$とその要素 $i$ に対し,
+ 集合 $S \cup \{i\}$ を $S+i$と書き，
+  $S \setminus \{i\}$ を $S-i$と書く. 
+ 投票者の集合を $N=\{1, 2, \ldots , n\}$とする．
+ 投票者の部分集合を提携と呼ぶ．
+ 投票ゲームは $G=(N, \calW)$ と表される，
+ ただし $\calW$は$N$を服務提携族 
+ $N \in \calW \subseteq 2^N$ であり，   
+ $\forall E \in \calW$,  
+ $\forall F \supseteq E$, $F \in \calW$
+ を満たすものとする.
+提携族 $\calW$ 中の提携は勝利提携と呼ばれ，
+ 勝利提携でない提携は敗北提携と呼ばれる．
+ある勝利提携$E$が，その真部分集合として勝利提携を持たないならば，
+ $E$は極小勝利提携であると呼ばれる．
+
+%%%%%%%%%%%%%%%%%%%%%%% characteristic function %%%%%%%%%%%%%
+
+ 投票ゲーム$G$の特性関数
+  $v_G: 2^N \rightarrow \{0, 1\}$ は以下のように定義される;
+\[ 
+ v_G(E)=\left\{ \begin{array}{ll} 1 & (E \mbox{は勝利提携} ),\\
+                                  0 & (E \mbox{は敗北提携} ).
+                \end{array} \right.
+\] 
+ 混乱のおそれが無いときは， 特性関数を単に $v$ と書く．
+
+%%%%%%%%%%%%%%%%%%%%% profile %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+ 投票ゲーム $G=(N, \calW)$ のプロフィール $p$とは，
+  $\calW$  上に定義された非負関数
+  $p:\calW \rightarrow  [0,1]$ で，その総和が1，
+  すなわち $\sum_{E \in \calW}p(E)=1$を満たすものである.
+ 与えられた投票ゲーム$G$の勝利提携$E$に対し，
+  単純プロフィール $p_E \in \{0, 1\}^{\calW}$とは，
+  $G$のプロファイルで
+  $Ｅ=Ｆ$ ならばその時に限り$p_E(F)=1$となるものを言う．
+ 
+%%%%%%%%%%%% subgames %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ 
+ 投票ゲーム $G=(N, \calW)$とその勝利提携 $E \in \calW$ に対し,  
+  $\calW [E]=\{F subseteq N  \mid  F \cap E \in \calW \}$
+ とし，  投票ゲーム$(N,  \calW [E])$を$G[E]$と表す，
+  本稿では，投票ゲーム$G[E]$の
+  Shapley-Shubic 指数 \cite{SHAPLEY1954} を
+  $\phi [E] \in [0, 1]^N$と表す. 
+
+%%%%%%%%%%%%%% def of eta index %%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+ では，本稿で提案する投票力指数 である $\eta$指数 を定義しよう．
+ 投票ゲーム $G=(N, \calW)$ とそのプロフィール $p$ が与えられたとき，
+ $\eta$指数  $\eta (G, p) \in [0, 1]^N$ 
+ は以下のように定義される；
+\[
+      \eta (G, p) = \sum_{E \in \calW} p(E) \phi [E].  
+ \]
+
+
+%%%%%%%%%%%%%%%%%% S-S index and D-P index %%%%%%%%%%%%%%%%%%%
+
+
+ The $\eta$-index includes  the Shapley-Shubic index and
+    the Deegan-Packel index as a special case.
+ When the profile is the special simple profile $p_N$,
+   then the $\eta$-index is equivalent 
+  to the ordianry Shapley-Shubic index.
+ If the given profile is defined by
+\[
+    p(E)= \left\{ \begin{array}{ll} 
+      1/W & (E \mbox{ is a minimal winning coalition }), \\
+      0   & ( \mbox{ otherwise }),
+                  \end{array} \right.
+\]
+   where $W$ denotes the number of minimal winning coalitions,
+   then the $\eta$-index is equivalent 
+   to the Deegan-Packel index.
+ It is because, 
+   for any minimal winning coalition $E$ 
+   of the given voting game $G$,
+   the Shaley-Shubic index $\phi$ 
+   of the voting game $G[E]$  satisfies
+\[
+ \phi _i = \left\{ \begin{array}{ll} 1/|E| & (i \in E) \\
+                                        0  & (i \not \in E).  
+                   \end{array} \right.
+\]
+
+ 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Axiomatic Characterization}
+
+In the following, 
+  we introduce axioms which implies the $\eta$-index.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% axioms %%%%%%%%%%%%%%%%%%%%%%%
+
+\medskip \noindent
+(Axiom 1)  Let $G=(N, \calW)$ be a voting game and 
+  $p_E$ a simple profile satisfying $E \in \calW$.
+ If a player $i \in E$ satifies that
+    $\forall F \subseteq N -i$, $v(F)=v(F+i)$,
+   then $ \eta (G, p)_i = 0$. 
+
+\medskip \noindent
+(Axiom 2) Let $G=(N, \calW)$ be a voting game and 
+  $p_E$ a simple profile satisfying $E \in \calW$.
+ If a pair of players $i, j \in E$ satisfies that
+   $v(F+i)=v(F+j)$ for all $F \subseteq N \setminus \{i, j\}$, 
+  then $\eta (G, p_E)_i= \eta (G, p_E)_j$. 
+
+\medskip \noindent 
+(Axiom 3) For any pair of voting games
+    $G_1=(N, \calW _1)$, $G_2=(N, \calW _2)$,
+  and a simple profile $p_E$ satisfying 
+  $E \in \calW _1 \cap \calW _2$,
+     $\eta (G_1, p_E) + \eta (G_2, p_E)
+   = \eta (G_{\wedge},  p_E) + \eta (G_{\vee},  p_E)$ 
+  where $G_{\wedge}=(N, \calW _1 \cup \calW _2)$ 
+   and  $G_{\vee}=(N, \calW _1 \cap \calW _2)$. 
+
+\medskip \noindent
+(Axiom 4)  Let $G=(N, \calW)$ be a voting game and 
+  $p_E$ a simple profile satisfying $E \in \calW$.
+ The sum total of $\eta$-index is equal to 1;
+  i. e., $\sum_{i \in N} \eta (G, p_E)_i =1$.
+
+\medskip \noindent
+ (Axiom 5) For any voting game $G$ and a pair of profiles 
+    $p_1$ and $p_2$ of $G$, 
+  $\eta$-index satify the property that
+  $\eta (G, \lambda p_1+ (1-\lambda)p_2)
+     = \lambda \eta (G, p_1) + (1-\lambda) \eta (G, p_2)$
+  for all $ \lambda \in [0, 1]$).
+
+\medskip \noindent
+(Axiom 6)  Let $G=(N, \calW)$ be a voting game and 
+  $p_E$ a simple profile satisfying $E \in \calW$.
+  Then $\eta (G, p_E) = \eta (G[E], p_E) $.
+ 
+Axioms 1, 2, 3 and 4 are similar to axioms
+  used in the definition of the Shapley-Shubic power index. 
+If we fix the simple profile 
+  used in Axioms 1, 2, 3 and 4 to $p_N$, 
+  these axioms are equivalent to those used in the definition 
+  of the Shapley-Shubic power index.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%% theorem %%%%%%%%%%%%%%%%%%%%%%%%
+ 
+ We denote all the pairs of voting game 
+  and its profile by $\calG$. 
+ A functin $f : \calG \rightarrow \Real$ is called 
+   a {\em power index}. 
+ 
+\begin{theorem}
+  A power index is the $\eta$-index
+  if and only if the power index satisfies Axioms 1,$\ldots$, 6.
+\end{theorem}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\noindent
+{\bf proof:} 
+ It is easy to show that the $\eta$-index satisfies
+   Axioms 1,$\ldots$, 6. 
+ Next, we show that a power index $\eta: \calG \rightarrow [0, 1]$
+  satisfying Axioms 1,$\ldots$, 6 
+  is the $\eta$-index. 
+ 
+ Let  $G=(N, \calW)$ be a voting game.
+ First, we consider the simple profile $p_E$ for each $E \in \calW$.
+ Axiom 6 implies that $\eta (G, p_E) = \eta (G[E], p_E)$ 
+  and Axiom 1 implies that $\eta (G, p_E)_i =0$
+  for each player $i \not \in E$.
+ Then we can show that the $\eta$-index is the unique index
+  which satisfies Axioms 1,$\ldots$, 6.
+ The proof is the same with that for the uniqueness of 
+  the ordinary Shaple-Shubic index
+  with respect to the corresponding Axioms.
+  
+ Next, we consider a general profile $p$.
+ The profile $p$ is a vector indexed by $\calW$ and so 
+  we can denote the profile by
+  the covex combination of unit vectors $p_E$ as follows; 
+ \[  
+     p = \sum_{E \in \calW} p(E)p_E. 
+ \]
+ Then Axiom 5 implies that 
+   the $\eta$-index satisfies the equality that;
+ \[
+    \eta (G, p)=\sum_{E \in \calW}  p(E) \eta (G, p_E).
+ \]
+ We have shown above that when the given profile is simple,
+  the $\eta$-index is unique power index
+  satisfying Axioms 1,$\ldots$, 6.
+Thus, for any (general) profile,
+    the $\eta$-index is unique power index
+    satisfying Axioms 1,$\ldots$, 6.
+ \QED
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\section{Dual Game}
+
+%%%%%%%%%%%%%%%%% dual game %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+ Given a voting game $G=(N, \calW)$ 
+  with losing coalitions $\calL$, 
+   the dual game is the pair $G^*=(N, \calW ^*)$
+   where $\calW^* 
+   = \{E \subseteq N \mid N \setminus E \in \calL\}$. 
+ It is clear that $G^*$ is also a voting game.
+ A power index for the dual game indicates the power
+  for blocking issues.
+ It is well-known that 
+  the Shapley-Shubic index satisfies that 
+  $\phi (G)= \phi (G^*)$.
+ In the following, 
+  we discuss the power to block issues
+  for the voting game with profile.
+
+%%%%%%%%%%%%%%%%%%%%% profile %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+ Given a voting game $G=(N, \calW)$ 
+   with the family of losing coalitions $\calL$,  
+   a {\em losing profile} $q$ of  $G$ is
+  a function $q:\calL \rightarrow  [0,1]$
+  satisfying that $\sum_{E \in \calL}q(E)=1$.
+%%%%%%%%%%%%%% def of eta* index %%%%%%%%%%%%%%%%%%%%%%%%%%% 
+ For any losing coaltion $N \setminus E$, 
+  we estimate the power of the coalition $E$ 
+  for blocking issuues by the Shapley-Shubic index
+  $\phi (G^* [E])$ 
+  where $G^*[E]$ is the voting game defined by 
+  the winning coalitions
+  $\calW^* [E] = \{F \subseteq E  \mid F \cap E \in \calW^* \}$.
+ Given a voting game $G=(N, \calW)$ 
+  with losing coalitions $\calL$
+  and a losing profile $q$ of $G$,
+  the $\eta^*$-index  $\eta^* (G, q) \in [0, 1]^N$ 
+  is defined as follows;
+ \[
+      \eta^* (G, q) = \sum_{N \setminus E \in \calL}
+       q(N \setminus E) \phi (G^* [E]).  
+ \]
+
+
+%%%%%%%%%%% proper game %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ A voting game is called a {\em proper} game
+  when every coalition $E \subset N$ satisfies that
+  $v(E) + v  (N \setminus E) \leq 1$. 
+ In many application settings, 
+  the voting systems are proper games. 
+ If every coalition $E \subseteq N$ satisfies 
+  $v(E) + v (N \subseteq N) = 1$, 
+  we say that the voting game is
+  a {\em constant sum game}.
+%%%%%%%%% dual profile %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ For any profile $p: \calW \rightarrow [0, 1]$,
+  the function $p^*:E \mapsto p(N \setminus E)$
+  is called the dual profile of $p$.
+  When the given voting game is proper,
+   the dual profile is a losing profile.
+ It is easy to see that 
+  there exists a proper voting game
+  such that the equation
+  $\eta (G, p) = \eta^* (G, p^*)$ does not hold.
+ If the given voting game $G$ is a constant sum game,
+  we can show that the equality 
+  $\eta (G, p)=\eta^* (G, p^*)$ holds
+  for any profile $p$ of $G$.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Power Distribution in
+ the House of Councilors in Japan}
+
+Ono and Muto discussed the power distribution 
+  in the the House of Councilors in Japan in their paper 
+ \cite{ONO1997}.
+ First,  they calculated the ordinal Shapley-Owen index defined 
+ in the ideological space obtaied by factor analysis
+ using the real profile data from 1989 to 1992.
+ However the obtained result is far from usual understanding.
+ Second, they dropped the assumption that 
+  issues appear uniformly.
+ They used the biased distribution of issues based on 
+  the real profile.
+In this section, 
+  we use the data appeared in the paper
+  \cite{ONO1997} by Ono and Muto and 
+  calculate $\eta$-index.
+
+In the paper \cite{ONO1997}, 
+  Ono and Muto considered the House of Councilors in Japan 
+  as a weighted majority game defined by the Table~\ref{WMG}
+ with 6 players.
+ They also used the profile in Table~\ref{profile},
+  which is the patterns of yea/nay combinations
+   and their frequencies
+   of the nonunanimous votes that occured during the period of
+  1989--1992. 
+
+
+\begin{table}
+\begin{center}
+\caption{The House of Councilors in Japan
+  (1989--1992) \cite{ONO1997}.} \label{WMG}
+\begin{tabular}{r|r}
+\hline
+Liberal Democratic Party (LDP)          & 109  \\
+Social Democratic Party of Japan (SDPJ) &  74  \\
+Komeito (Komei)                         &  21  \\
+Japan Communist Party (JCP)             &  14  \\
+Democratic Socialist Party (DSP)        &  10  \\
+Rengo                                   &  12  \\
+\hline
+quota / total                           &127 / 240 \\            
+\hline
+\end{tabular}
+\end{center}
+\end{table}
+
+\begin{table}
+\begin{center}
+\caption{Profile of in nonunanimous votes (1989--1992)
+  \cite{ONO1997}.}
+\label{profile}
+\begin{tabular}{rrrrrr|r}
+\hline
+LDP & SDJP & Komei & JCP & DSP & Rengo & value \\
+\hline
+  Y &    Y &    Y  &   N &   Y &     Y & 85  \\
+  Y &    N &    N  &   N &   N &     N & 18  \\
+  Y &    N &    N  &   N &   Y &     N &  9  \\
+  Y &    N &    Y  &   N &   Y &     Y &  6  \\
+  N &    Y &    Y  &   Y &   Y &     Y &  6  \\
+  Y &    N &    Y  &   N &   Y &     N &  5  \\
+  Y &    N &    Y  &   Y &   Y &     Y &  3  \\
+  Y &    Y &    Y  &   N &   Y &     N &  1  \\
+\hline
+\end{tabular}
+\end{center}
+\end{table}
+
+The following table shows power indices.
+Shapley-Owen index (dim. k) shows the
+  Shapley-Owen index defined in 
+  a $k$-dimensional ideological space.
+ Ono-Muto (dim. k) is defined in a similar way.
+
+
+\begin{table}
+\begin{center}
+\caption{Power indices \cite{ONO1997}.}
+\begin{tabular}{lrrrrrr}
+\hline
+power index        & LDP & SDJP&Komei& JCP & DSP &Rengo \\
+\hline
+Shapley-Shubic     &0.567&0.117&0.117&0.067&0.067&0.067 \\
+Absolute Banzhaf   & \\
+Normalized Banzhaf & \\
+Deegan-Packel      & \\  
+\hline
+Shapley-Owen (dim. 1)&0    &   0 &  0.5&  0  &  0.5&  0  \\
+Shapley-Owen (dim. 2)&0.155&0.032&0.211&0.144&0.458&0.000\\
+\hline
+Ono-Muto (dim. 1)    &    0&    0&0.932&    0&0.068&    0\\
+Ono-Muto (dim. 2)    &0.639&    0&0.292&    0&0.068&    0\\
+Ono-Muto (dim. 3)    &0.639&0.135&0.180&    0&0.045&    0\\
+Ono-Muto (dim. 4)    &0.707&0.007&0.105&    0&0.135&0.045\\
+Ono-Muto (dim. 5)    &0.511&0.166&0.202&    0&0.049&0.072\\
+\hline  
+\end{tabular}
+\end{center}
+\end{table}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Discussions}
+
+ In this paper, we proposed a new power index 
+  for oting game.
+ We showed that
+   a set of axioms defines our power index.
+ We also studied political party power 
+  in the House of Councilors in Japan.
+
+ In \cite{ONO1997},
+  Ono and Muto proposed that
+  a direct application of the nonsymmetric Shapley-Owen index 
+  gives a result contradicting ordinary outstanding
+ They concluded that 
+  the assumption of the random appearance of possible issues
+  is not reasonable in this case.
+ It is because, the bills were usually submitted by a cabinet
+  consisting mainly of members belonging to the largest party.
+ They also proposed a method which uses the factor analysis
+  to determine the position of parties 
+  in the ideological space and 
+  represents the biased distribution of bills by
+  the observed pattrens of yea/nay combination
+  and its frequencies. 
+ Conparing to Ono and Muto's method,
+  Owen's original method 
+  places both parties and issues in the same space, 
+ 
+ The main difference of our index from 
+   the nonsymmetric Shapley-Owen index 
+  and Ono and Muto's method is that 
+   we do not need to assume the existence of ideological space.
+ We measure the ideological difference among parties by 
+  the patterns of yea/nay combinations.  
+ A bias of the distribution of patterns 
+   defines the ideological distances among parties. 
+ It means that we do not need to identify 
+  the absolute position of each party
+  in the ideological space 
+  and so the obtained result based on 
+  the relative difference among parties.
+ From the methodological point of view,  
+  our index mesures the difference among parties  
+  directly from the biased distribution of observed issues
+  without using factor analysis.
+ 
+ 
+ As described in \cite{ONO1997}
+  the frequency of submitted issues 
+   might be influenced by the prenegotiations.
+ Similarly to the existing power indices based on 
+  submitted issues, 
+  our index also could not cover the influece to the issues
+  withdrawn without submitting.
+ 
+ 
+ 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{thebibliography}{10}
+
+
+\bibitem{BANZHAF1965}
+{\sc J.F.Banzhaf \Romannum{3}}, {\em Weighted voting doesn't work},
+ Rutgers Law Review, 19 (1965), 317--343.
+
+\bibitem{BRAMS1975}
+{\sc S.J.Brams and P.J.Affuso}, {\em Power and size; a new paradox},
+ mimeographed paper, 1975.
+
+\bibitem{DEEGAN1978}
+{\sc J.Deegan and E.W.Packel},
+{\em A new index of power for simple \mbox{$n$}-person games},
+ International Journal of Game Theory, 7 (1978), 113--123.
+
+\bibitem{DUBEY1975}
+{\sc P.Dubey},
+{\em On the uniqueness of the Shapley value},
+ International Journal of Game Theory, 4 (1975), 131--139.
+
+\bibitem{DUBEY1979}
+{\sc P.Dubey and L.S.Shapley},
+{\em Mathematical properties of the Banzhaf power index},
+ Mathematics of Operations Research, 4 (1979), 99--131.
+
+\bibitem{FRANK1981}
+{\sc A. Q. Frank and L. S. Shapley},
+{\em The distribution of power in the U. S. supreme court},
+A Rand Note N-1735-NSF,
+The Rand Corporation, Santa Monica, California, 1981. 
+
+\bibitem{GAREY1979}
+{\sc M.R.Garey and D.S.Johnson},
+ {\em Computers and Intractability:
+ a guide to the theory of NP-completeness},
+ W.H.Freeman and Company, 1979.
+
+\bibitem{LUCAS1982}
+{\sc W.F.Lucas, J.C.Maceli, M.Hilliard and D.Housman},
+ {\em Reapportionment by weighted voting},
+ Technical report No.533,
+ School of operations research and industrial engineering,
+ College of engineering, Cornel University,
+  Ithaca, New York, 1982.
+
+\bibitem{LUCAS1983}
+{\sc W.F.Lucas}, {\em Measuring power in weighted voting systems},
+in S.J.Brams, W.F.Lucas and P.D.Straffin eds.,
+ {\em Political and related models}, Springer-Verlag, 
+ 1983, 183--238.
+
+\bibitem{MATSUI1998}
+{\sc Y.Matsui and T.Matsui},
+{\em NP-completeness for calculating
+ power indices of weighted majority games},
+{\em METR98-01}, Technical Report,
+ Department of Mathematical Engineering and Information Physics,
+  Faculty of Engineering, University of Tokyo, 1998.
+
+\bibitem{MEGIDDO1974}
+{\sc N.Megiddo},
+ {\em Nucleoluses of compound simple games},
+ SIAM Journal of Applied Mathematics, 26 (1974), 607--621.
+
+\bibitem{OWEN1972}
+{\sc G.Owen},
+ {\em Multilinear extensions of games},
+ Management Science, 18 (1972), 64--79.
+
+\bibitem{OWEN1975}
+{\sc G.Owen},
+ {\em Multilinear extensions and the Banzhaf Value},
+ Naval Research Logistic Quarterly, 22 (1975), 741--750.
+
+\bibitem{OWEN1989}
+{\sc G. Owen and L. S. Shapley},
+{\em Optimal locatin of candidates in ideological space},
+ International Journal of Game Theory, 18 (1989), 339--356. 
+
+\bibitem{OWEN1995}
+{\sc G.Owen}, {\em Game Theory, 3rd ed.}, Academic Press, 1995.
+
+\bibitem{RABINOWITZ1986}
+{\sc G. Rabinowitz and S. E. Macdonald},
+{\em The power of the States in U. S. presidential elections},
+American Political Science Review, 80 (1986), 65--87.
+
+\bibitem{RAPOPORT1985}
+{\sc A. Rapoport and E. Golan},
+{\em Assessment of ppolitical power in the Israeli knesset},
+American Political Science Review, 79 (1985), 673--692.
+
+\bibitem{SHAPLEY1953}
+{\sc L.S.Shapley}, {\em A value for n-person games},
+in {\em Contributions to the Theory of Games, Vol.II},
+ in H.W.Kuhn and A.W.Tucker eds.,
+ {\sc Annals of Mathematics Studies}, 28,
+Princeton University Press, 1953, 307--317.
+
+\bibitem{SHAPLEY1954}
+{\sc L.S.Shapley and M.Shubik},
+{\em A method for evaluating the distribution
+ of power in a committee system},
+American Political Science Review, 48 (1954), 787--792.
+
+\bibitem{SHAPLEY1977}
+{\sc A comparison of power indices and 
+ a Nonsymmetric Generalization},
+P-5872, The Rand Corporation, Santa monica, California.
+
+\bibitem{NEUMANN1944}
+ {\sc J. von Neumann and O.Morgenstern},
+ {\em Theory of Games and Economic Behavior,
+  (2nd ed. 1947, 3rd ed. 1953)},
+ Princeton Univ. Press, 1944.
+
+
+%\bibitem{OKADA1996}
+%{\sc 岡田章}, 「ゲーム理論」, 有斐閣, 1996.
+
+% \bibitem{KONNO1982}
+% {\sc 今野浩,鈴木久敏 編}, 
+%「整数計画法と組合せ最適化」, 日科技連, 1982.
+
+\bibitem{MUTO1998}
+{\sc 武藤滋夫,小野理恵}, 「投票システムのゲーム分析」, 日科技連, 1998.
+
+\bibitem{SUZUKI1985}
+{\sc 鈴木光男,武藤滋夫}, 「協力ゲームの理論」, 東京大学出版, 1985.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{thebibliography}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}
+
+
+
+
+
