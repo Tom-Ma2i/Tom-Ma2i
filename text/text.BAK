@@ -1,0 +1,371 @@
+<HTML>
+<BODY BGCOLOR="bbdfff">
+
+
+パズルのお話しや、
+ゼミのためにまとめた資料等を集めました。 <BR>
+適当に楽しんでみてください。 <BR>
+記事の信憑性と正確さについては
+<font color="bbg700">保証しません</font>。
+御自身でご判断いただければ幸いです。<BR>
+
+<DL>
+<DT> <IMG SRC="/img/ball/blue.gif">    高校生〜学部１,２年生
+<DT> <IMG SRC="/img/ball/orange.gif">  学部３,４年生
+<DT> <IMG SRC="/img/ball/red2.gif">    修士学生
+<DT> <IMG SRC="/img/ball/purple.gif">  専門家  
+<DT> <IMG SRC="/img/text/updated.gif"> 改訂版がなんらかの形で雑誌や本に発表されているものです. <BR> 
+ むやみな転載は危険です。発表原稿等を確認して参考文献として挙げる事をおすすめします。<BR>
+      発表先については, 
+      <A HREF="../TRs/list.html"> list of papers </A>
+      の解説記事の項等を参照して下さい。
+</DL>
+
+<HR>
+
+
+
+<FONT size=-0>
+<DL>
+
+<DT>  <IMG SRC="/img/ball/red2.gif">   
+   ここまで解ける整数計画 
+(September 2006) 
+by  宮代 隆平，松井 知己  
+  <IMG SRC="/img/text/updated.gif"> </BR>
+<UL>
+<A HREF="./miyashiro_matsui_revised2.pdf"> pdf file </A> 
+</UL>
+
+<DT> <IMG SRC="/img/ball/orange.gif"> 
+ スポーツスケジューリング 
+--トーナメント表作成問題における組合せ論--
+(January 2006) 
+ by 松井 知己， 
+  <IMG SRC="/img/text/updated.gif"> </BR>
+<UL>
+  <A HREF="./JMS1.pdf"> pdf file </A>,
+  <A HREF="./JMS1.ps"> ps file </A>,
+  <A HREF="./JMS1.dvi"> dvi file </A>. </BR>
+</UL> </p>
+
+
+<DT> <IMG SRC="/img/ball/blue.gif"> 
+  スーパーコン第11回大会 スポーツ・スケジューリング
+(November 2005) 
+ by 松井 知己， 
+  <IMG SRC="/img/text/updated.gif"> </BR>
+<UL>
+  <A HREF="./susemi05.pdf"> pdf file </A>,
+  <A HREF="./susemi05.ps"> ps file </A>,
+  <A HREF="./susemi05.dvi"> dvi file </A>. </BR>
+</UL> </p>
+
+<DT> <IMG SRC="/img/ball/orange.gif"> 
+  CFTPを用いた Perfect Sampling
+(November 2005) 
+ by 来嶋秀治, 松井 知己， 
+  <IMG SRC="/img/text/updated.gif"> </BR>
+<UL>
+  <A HREF="../TRs/SMAPIP-final.pdf"> pdf file </A>. </BR>
+</UL> </p>
+
+
+<DT> <IMG SRC="/img/ball/orange.gif"> 
+  完璧にサンプリングしよう！ (May 2005) 
+   by 来嶋秀治、松井知己
+  <IMG SRC="/img/text/updated.gif"> </BR>
+<UL>
+  <A HREF="./CFTP/cftp_or1_100.pdf"> 第一話「遥かなる過去から」</A></BR>
+  <A HREF="./CFTP/kijima-matsui2.pdf">  第二話「天と地の狭間で」</A></BR>
+  <A HREF="./CFTP/kijima-matsui3.pdf"> 第三話「終りある未来」</A> </BR>
+</UL> </p>
+
+<DT> <IMG SRC="/img/ball/orange.gif"> 
+  スポーツスケジューリング―未解決問題を中心に― (January 2005) 
+ by 宮代 隆平，松井 知己， 
+  <IMG SRC="/img/text/updated.gif"> </BR>
+<UL>
+  <A HREF="./sports041130.pdf"> pdf file </A>,
+  <A HREF="./sports041130.ps"> ps file </A>,
+  <A HREF="./sports041130.dvi"> dvi file </A>. </BR>
+</UL> </p>
+
+
+
+<DT> <IMG SRC="/img/ball/orange.gif"> 
+  平衡状態を探す：マルコフ連鎖／CFTP (July 2004) 
+   by 来嶋秀治、松井知己
+  <IMG SRC="/img/text/updated.gif"> </BR>
+<UL>
+  <A HREF="./cftp2.pdf"> pdf file </A>,
+  <A HREF="./cftp2.ps"> ps file </A>,
+  <A HREF="./cftp2.dvi"> dvi file </A>. </BR>
+</UL> </p>
+
+<!------
+<DT> <IMG SRC="/img/ball/red2.gif"> 
+  Monty Hall 問題について </BR>
+  <A HREF="http://www.icdc.com/~samba/marlright/montynyt.htm">
+ (The New York Times, July 21, 1991.)  </A>, 
+  <A HREF="./Monty-Hall.htm"> (Cash) </A>, </BR>
+  <A HREF="http://www.marilynvossavant.com">
+ 「マリリンに聞け」ホームページ </A>, 
+  <A HREF="http://www.parade.com/current/columns/askmarilyn.html">
+ パレード誌「マリリンに聞け」コラム </A>, 
+--->
+
+<DT> <IMG SRC="/img/ball/red2.gif"> 
+  オークションの設計理論と数理計画 (Feb 2003) 
+   by 松井知己, 渡辺隆裕 
+  <IMG SRC="/img/text/updated.gif"> </BR>
+<UL>
+  <A HREF="./ORsym5.pdf"> pdf file </A>,
+  <A HREF="./ORsym5.ps"> ps file </A>,
+  <A HREF="./ORsym5.dvi"> dvi file </A>. </BR>
+  オークションの設計理論とOR (June 2003) 
+   by 松井知己, 渡辺隆裕
+  <IMG SRC="/img/text/updated.gif"> </BR>
+  <A HREF="./orrensai-all.lzh"> pdf (lzh) file </A>.
+</UL> </p>
+
+<DT> <IMG SRC="/img/ball/orange.gif"> 
+   Farkas の補題の初等的な証明および双対定理の証明(Aug 2000) 
+   by 並木誠, 松井知己 </BR>
+ （強双対定理証明のミス修正：April 2001）
+  <IMG SRC="/img/text/updated.gif"> </BR>
+<UL>
+  <A HREF="./namiki10.pdf"> pdf file </A>,
+  <A HREF="./namiki10.ps"> ps file </A>,
+  <A HREF="./namiki10.dvi"> dvi file </A>.
+</UL> </p>
+
+
+<DT> <IMG SRC="/img/ball/orange.gif"> 
+    整数計画法入門 (May 2000) 
+  <IMG SRC="/img/text/updated.gif">  </BR>
+<UL>
+  <A HREF="./IP-base3.pdf"> pdf file </A>,
+  <A HREF="./IP-base3.ps"> ps file </A>. <BR>
+</UL> </p>
+
+<DT> <IMG SRC="/img/ball/orange.gif"> 
+    最長片道きっぷの経路を求める (Jan 2000) by 葛西隆也
+ <IMG SRC="/img/text/updated.gif"> </BR>
+<UL>
+  <A HREF="http://www.swa.gr.jp/"> html page </A>. </BR>
+  実際に最長片道切符の旅に出かけた
+  <A HREF="http://www.swa.gr.jp/plop/index.html">
+  日記</A>も傑作です. <BR>
+</UL> </p>
+
+<DT> <IMG SRC="/img/ball/red2.gif"> 
+    半正定値計画を用いた最大カット問題の .878 近似解法 (Dec 1999)  
+  <IMG SRC="/img/text/updated.gif"> </BR>
+<UL>
+  <A HREF="./approx4-CUT-OR5.ps"> ps file </A>, 
+  <A HREF="./approx4-CUT-OR5.pdf"> pdf file </A>, 
+  <A HREF="./approx4-CUT-OR5.tif"> tif file </A>. <BR>
+</UL> </p>
+
+
+<DT> <IMG SRC="/img/ball/orange.gif"> 
+    Arrow の一般可能性定理の証明の解説 (Dec 1999)  
+   <IMG SRC="/img/text/updated.gif"> </BR>
+<UL>
+  <A HREF="./Arrow8A.dvi"> dvi file </A>,
+  <A HREF="./Arrow8A.pdf"> pdf file </A>,
+  <A HREF="./Arrow8A.ps"> ps file </A>. </BR>
+    決め方を决める難しさ
+   <IMG SRC="/img/text/updated.gif"> </BR>
+  <A HREF="./Sen5.dvi"> dvi file </A>,
+  <A HREF="./Sen5.pdf"> pdf file </A>,
+  <A HREF="./Sen5.ps"> ps file </A>. </BR>
+</UL> </p>
+
+
+<DT> <IMG SRC="/img/ball/orange.gif"> 
+  ２×n 型双行列ゲームのNash均衡点を求める図解法 (July 1999) 
+  <IMG SRC="/img/text/updated.gif"> </BR>
+<UL>
+  <A HREF="./bimatrix5.dvi"> dvi file </A>,
+  <A HREF="./bimatrix5.pdf"> pdf file </A>,
+  <A HREF="./bimatrix5.ps"> ps file </A>. <BR>
+</UL> </p>
+
+
+<DT> <IMG SRC="/img/ball/orange.gif"> 
+    線形計画法入門 (June 1999) 
+  <IMG SRC="/img/text/updated.gif"> </BR> 
+<UL>
+  <A HREF="./LP.pdf"> pdf file </A>,
+  <A HREF="./LP.ps"> ps file </A>. <BR>
+</UL> </p>
+
+<DT> <IMG SRC="/img/ball/orange.gif"> 
+    相補スラック定理から入ってみたら (May 1999) 
+  <IMG SRC="/img/text/updated.gif"> </BR>
+<UL>
+  <A HREF="./souho6.dvi"> dvi file </A>,
+  <A HREF="./souho6.pdf"> pdf file </A>,
+  <A HREF="./souho6.ps"> ps file </A>. <BR>
+</UL> </p>
+
+<DT> <IMG SRC="/img/ball/red.gif"> 
+    半正定値計画を用いた最大カット問題の .878 近似解法 (April 1999)  
+  <IMG SRC="/img/text/updated.gif"> (上に新しくて短い版有) </BR>
+<UL>
+  <A HREF="./approx4-CUT.dvi"> dvi file </A>,
+  <A HREF="./approx4-CUT.pdf"> pdf file </A>,
+  <A HREF="./approx4-CUT.ps"> ps file </A>. <BR>
+</UL> </p>
+
+
+<DT> <IMG SRC="/img/ball/orange.gif"> 
+    スポーツのスケジューリング (Dec 1998) 
+  <IMG SRC="/img/text/updated.gif">  </BR>
+<UL>
+  <A HREF="./sports3.dvi"> dvi file </A>,
+  <A HREF="./sports3.pdf"> pdf file </A>,
+  <A HREF="./sports3.ps"> ps file </A>. <BR>
+</UL> </p>
+
+<DT> <IMG SRC="/img/ball/red2.gif"> 
+    Goemans と Williamson の近似解法 (Oct 1998) <BR> 
+<UL>
+  <A HREF="./approx3.dvi"> dvi file </A>,
+  <A HREF="./approx3.pdf"> pdf file </A>,
+  <A HREF="./approx3.ps"> ps file </A>,
+  <A HREF="http://www.misojiro.t.u-tokyo.ac.jp/~tomomi/POWER-POINT/GW/index.htm">power point </A>. <BR>
+</UL> </p>
+
+<DT> <IMG SRC="/img/ball/orange.gif"> 
+    重み付き多数決ゲームにおける投票力指数の計算について (Aug 1998) by 
+  松井知己, <A HREF="http://www.ss.u-tokai.ac.jp/~yasuko/"> 松井泰子 </A>
+  <IMG SRC="/img/text/updated.gif"> </BR>
+<UL>
+  <A HREF="./SS-J5.dvi"> dvi file </A>,
+  <A HREF="./SS-J5.pdf"> pdf file </A>,
+  <A HREF="./SS-J5.ps"> ps file </A>. <BR>
+</UL> </p>
+
+
+<DT> <IMG SRC="/img/ball/purple.gif"> 
+    MAX SAT について僕の知っていること (May 1997) by 
+  <A HREF="http://www.misojiro.t.u-tokyo.ac.jp/~miyamoto/">  宮本裕一郎 </A> </BR>
+<UL>
+  <A HREF="./maxsat.pdf"> pdf file </A>,
+  <A HREF="http://www.misojiro.t.u-tokyo.ac.jp/~miyamoto/MyPaper/maxsat.ps"> ps file </A>.
+</UL> </p>
+
+<DT> <IMG SRC="/img/ball/red2.gif"> 
+    劣勾配法の話 (May 1997) 
+  <IMG SRC="/img/text/updated.gif"> </BR>
+<UL>
+  <A HREF="./subg.pdf"> pdf file </A>,
+  <A HREF="./subg.ps"> ps file </A>,
+  <A HREF="./subg.html"> gif file </A>. <BR>
+</UL> </p>
+
+<DT> <IMG SRC="/img/ball/red2.gif"> 
+    ラグランジュ緩和と双対問題（続） (Nov 1996)  </BR>
+<UL>
+  <A HREF="./relax2.pdf"> pdf file </A>,
+  <A HREF="./relax2.ps"> ps file </A>,
+  <A HREF="./relax2.html"> gif file </A>. <BR>
+</UL> </p>
+
+<DT> <IMG SRC="/img/ball/blue.gif"> 
+    クラス編成問題 (Mar 1996)
+  <IMG SRC="/img/text/updated.gif"> </BR>
+<UL>
+  <A HREF="./class1.pdf"> pdf file </A>,
+  <A HREF="./class1.ps"> ps file </A>,
+  <A HREF="./class1.html"> gif file </A>.  <BR>
+</UL> </p>
+
+<DT> <IMG SRC="/img/ball/orange.gif"> 
+  ラグランジュ緩和と双対問題 (Feb 1996) </BR>
+<UL>
+  <A HREF="./relax1.pdf"> pdf file </A>,
+  <A HREF="./relax1.ps"> ps file </A>,
+  <A HREF="./relax1.html"> gif file </A>. <BR>
+</UL> </p>
+
+<DT> <IMG SRC="/img/ball/blue.gif"> 
+   14-15パズルは何故解けないか？(Jan 1996) ,</BR>
+<UL>
+  <A HREF="./14-15.pdf">pdf file </A>,
+  <A HREF="./14-15.ps">ps file </A>,
+  <A HREF="./14-15.html"> gif file </A>.
+</UL> </p>
+
+
+<DT> <IMG SRC="/img/ball/blue.gif"> 
+  偽金貨を探そう(Dec 1995) 
+  <IMG SRC="/img/text/updated.gif">  </BR>
+<UL>
+  <A HREF="./kinka.pdf"> pdf file </A>,
+  <A HREF="./kinka.ps"> ps file </A>,
+  <A HREF="./kinka.html"> gif file </A>. 
+</UL> </p>
+
+
+<DT> <IMG SRC="/img/ball/orange.gif"> 
+   嘘付き島へ行こう(Dec 1995), </BR>
+<UL>
+  <A HREF="./uso1.pdf"> pdf file</A>,
+  <A HREF="./uso1.ps"> ps file</A>,
+  <A HREF="./uso1.html"> gif file</A>.
+</UL> </p>
+
+<DT> <IMG SRC="/img/ball/blue.gif"> 
+   組合せ最適化について(Dec 1995)
+  <IMG SRC="/img/text/updated.gif"> </BR>
+<UL>
+  <A HREF="./or92b.pdf"> pdf file</A>,
+  <A HREF="./or92b.ps"> ps file</A>,
+  <A HREF="./or92b.html"> gif file</A>.
+</UL> </p>
+
+<DT> <IMG SRC="/img/ball/purple.gif"> 
+   不定値２次計画の複雑性について(Dec 1995),</BR> 
+<UL>
+  <A HREF="./NPC1.pdf"> pdf file </A>,
+  <A HREF="./NPC1.ps"> ps file </A>,
+  <A HREF="./NPC1.html"> gif file </A>.
+</UL> </p>
+
+</DL>
+
+</FONT>
+
+
+
+
+<HR>
+
+<! 上記の文章で 青いマークがついているものは、未発表原稿です。>
+上記の文章を使われる際は、御一報ください。 
+
+<HR>
+
+このページの文章に関する御意見御感想をおまちしています。 <BR>
+あるいは、上記の文章中の間違いを発見した際は御一報ください。 <BR>
+また、参考文献にあげた方が良い本等がありましたら、ぜひお知らせください。<BR>
+
+
+ <HR>
+松井知己のホームページにもどるには
+  <A HREF="../Welcome.html">ここ</A> を
+クリックする．<BR>
+
+
+数理第二研究室のホームページに戻るには
+  <A HREF="http://www.misojiro.t.u-tokyo.ac.jp/Welcome.html">ここ</A>を
+クリックする．
+ <HR>
+ 
+
+</BODY>
+</HTML>
