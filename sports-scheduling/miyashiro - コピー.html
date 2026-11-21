@@ -1,0 +1,643 @@
+<html>
+<body bgcolor="ffffff">
+<h2>
+スポーツスケジューリング問題
+<spacer size=10> <font size=+0> （１９９９年２月） </font>
+</h2>
+<h4>
+宮代 隆平
+</h4>
+<h4>
+卒業論文では、スポーツスケジューリング問題に取り組みました。
+今回研究したのは、二重総当たりリーグ戦形式で対戦するスポーツ競技のスケジュールを決定する問題です。
+スケジュール作成対象として、１９９３年のＪリーグを選びました。
+理論の話はさておき、１９９３年に実際に行なわれたスケジュールを見てみましょう。
+</p>
+１９９３年Ｊリーグのスケジュール
+</p>
+<table>
+<tr>
+<td>↓日程＼チーム→</td>
+<td align=right>：</td>
+<td>Ｋ</td>
+<td>Ｖ</td>
+<td>Ｍ</td>
+<td>Ｅ</td>
+<td>Ｊ</td>
+<td>Ｓ</td>
+<td>Ｆ</td>
+<td>Ｇ</td>
+<td>Ｎ</td>
+<td>Ｒ</td>
+</tr>
+<tr>
+<td>−−−−−−−−</td>
+<td>−−</td>
+<td>−</td>
+<td>−</td>
+<td>−</td>
+<td>−</td>
+<td>−</td>
+<td>−</td>
+<td>−</td>
+<td>−</td>
+<td>−</td>
+<td>−</td>
+</tr>
+<tr>
+<td>５／１５（土）</td>
+<td><font color=red>０１</font>：</td>
+<td>Ｎ</td>
+<td>Ｍ</td>
+<td bgcolor=skyblue>Ｖ</td>
+<td bgcolor=skyblue>Ｆ</td>
+<td bgcolor=skyblue>Ｓ</td>
+<td>Ｊ</td>
+<td>Ｅ</td>
+<td>Ｒ</td>
+<td bgcolor=skyblue>Ｋ</td>
+<td bgcolor=skyblue>Ｇ</td>
+</tr>
+<tr>
+<td>５／１９（水）</td>
+<td>０２：</td>
+<td>Ｆ</td>
+<td bgcolor=skyblue>Ｊ</td>
+<td>Ｇ</td>
+<td>Ｓ</td>
+<td>Ｖ</td>
+<td bgcolor=skyblue>Ｅ</td>
+<td bgcolor=skyblue>Ｋ</td>
+<td bgcolor=skyblue>Ｍ</td>
+<td bgcolor=skyblue>Ｒ</td>
+<td>Ｎ</td>
+</tr>
+<tr>
+<td>５／２２（土）</td>
+<td><font color=red>０３</font>：</td>
+<td bgcolor=skyblue>Ｅ</td>
+<td bgcolor=skyblue>Ｓ</td>
+<td bgcolor=skyblue>Ｎ</td>
+<td>Ｋ</td>
+<td bgcolor=skyblue>Ｇ</td>
+<td>Ｖ</td>
+<td>Ｒ</td>
+<td>Ｊ</td>
+<td>Ｍ</td>
+<td bgcolor=skyblue>Ｆ</td>
+</tr>
+<tr>
+<td>５／２６（水）</td>
+<td>０４：</td>
+<td bgcolor=skyblue>Ｖ</td>
+<td>Ｋ</td>
+<td bgcolor=skyblue>Ｓ</td>
+<td bgcolor=skyblue>Ｇ</td>
+<td>Ｒ</td>
+<td>Ｍ</td>
+<td bgcolor=skyblue>Ｎ</td>
+<td>Ｅ</td>
+<td>Ｆ</td>
+<td bgcolor=skyblue>Ｊ</td>
+</tr>
+<tr>
+<td>５／２９（土）</td>
+<td><font color=red>０５</font>：</td>
+<td>Ｇ</td>
+<td bgcolor=skyblue>Ｒ</td>
+<td>Ｊ</td>
+<td>Ｎ</td>
+<td bgcolor=skyblue>Ｍ</td>
+<td bgcolor=skyblue>Ｆ</td>
+<td>Ｓ</td>
+<td bgcolor=skyblue>Ｋ</td>
+<td bgcolor=skyblue>Ｅ</td>
+<td>Ｖ</td>
+</tr>
+<tr>
+<td>６／２（水）</td>
+<td>０６：</td>
+<td>Ｊ</td>
+<td bgcolor=skyblue>Ｅ</td>
+<td bgcolor=skyblue>Ｒ</td>
+<td>Ｖ</td>
+<td bgcolor=skyblue>Ｋ</td>
+<td bgcolor=skyblue>Ｎ</td>
+<td>Ｇ</td>
+<td bgcolor=skyblue>Ｆ</td>
+<td>Ｓ</td>
+<td>Ｍ</td>
+</tr>
+<tr>
+<td>６／５（土）</td>
+<td><font color=red>０７</font>：</td>
+<td bgcolor=skyblue>Ｍ</td>
+<td>Ｆ</td>
+<td>Ｋ</td>
+<td bgcolor=skyblue>Ｊ</td>
+<td>Ｅ</td>
+<td>Ｒ</td>
+<td bgcolor=skyblue>Ｖ</td>
+<td>Ｎ</td>
+<td bgcolor=skyblue>Ｇ</td>
+<td bgcolor=skyblue>Ｓ</td>
+</tr>
+<tr>
+<td>６／９（水）</td>
+<td>０８：</td>
+<td>Ｒ</td>
+<td bgcolor=skyblue>Ｎ</td>
+<td bgcolor=skyblue>Ｅ</td>
+<td>Ｍ</td>
+<td bgcolor=skyblue>Ｆ</td>
+<td bgcolor=skyblue>Ｇ</td>
+<td>Ｊ</td>
+<td>Ｓ</td>
+<td>Ｖ</td>
+<td bgcolor=skyblue>Ｋ</td>
+</tr>
+<tr>
+<td>６／１２（土）</td>
+<td><font color=red>０９</font>：</td>
+<td bgcolor=skyblue>Ｓ</td>
+<td>Ｇ</td>
+<td>Ｆ</td>
+<td bgcolor=skyblue>Ｒ</td>
+<td>Ｎ</td>
+<td>Ｋ</td>
+<td bgcolor=skyblue>Ｍ</td>
+<td bgcolor=skyblue>Ｖ</td>
+<td bgcolor=skyblue>Ｊ</td>
+<td>Ｅ</td>
+</tr>
+<tr>
+<td>６／１６（水）</td>
+<td>１０：</td>
+<td bgcolor=skyblue>Ｆ</td>
+<td>Ｊ</td>
+<td bgcolor=skyblue>Ｇ</td>
+<td bgcolor=skyblue>Ｓ</td>
+<td bgcolor=skyblue>Ｖ</td>
+<td>Ｅ</td>
+<td>Ｋ</td>
+<td>Ｍ</td>
+<td>Ｒ</td>
+<td bgcolor=skyblue>Ｎ</td>
+</tr>
+<tr>
+<td>６／１９（土）</td>
+<td><font color=red>１１</font>：</td>
+<td bgcolor=skyblue>Ｎ</td>
+<td bgcolor=skyblue>Ｍ</td>
+<td>Ｖ</td>
+<td>Ｆ</td>
+<td>Ｓ</td>
+<td bgcolor=skyblue>Ｊ</td>
+<td bgcolor=skyblue>Ｅ</td>
+<td bgcolor=skyblue>Ｒ</td>
+<td>Ｋ</td>
+<td>Ｇ</td>
+</tr>
+<tr>
+<td>６／２３（水）</td>
+<td>１２：</td>
+<td>Ｖ</td>
+<td bgcolor=skyblue>Ｋ</td>
+<td>Ｓ</td>
+<td>Ｇ</td>
+<td bgcolor=skyblue>Ｒ</td>
+<td bgcolor=skyblue>Ｍ</td>
+<td>Ｎ</td>
+<td bgcolor=skyblue>Ｅ</td>
+<td bgcolor=skyblue>Ｆ</td>
+<td>Ｊ</td>
+</tr>
+<tr>
+<td>６／２６（土）</td>
+<td><font color=red>１３</font>：</td>
+<td bgcolor=skyblue>Ｇ</td>
+<td>Ｒ</td>
+<td bgcolor=skyblue>Ｊ</td>
+<td bgcolor=skyblue>Ｎ</td>
+<td>Ｍ</td>
+<td>Ｆ</td>
+<td bgcolor=skyblue>Ｓ</td>
+<td>Ｋ</td>
+<td>Ｅ</td>
+<td bgcolor=skyblue>Ｖ</td>
+</tr>
+<tr>
+<td>６／３０（水）</td>
+<td>１４：</td>
+<td bgcolor=skyblue>Ｊ</td>
+<td>Ｅ</td>
+<td>Ｒ</td>
+<td bgcolor=skyblue>Ｖ</td>
+<td>Ｋ</td>
+<td>Ｎ</td>
+<td bgcolor=skyblue>Ｇ</td>
+<td>Ｆ</td>
+<td bgcolor=skyblue>Ｓ</td>
+<td bgcolor=skyblue>Ｍ</td>
+</tr>
+<tr>
+<td>７／３（土）</td>
+<td><font color=red>１５</font>：</td>
+<td>Ｍ</td>
+<td bgcolor=skyblue>Ｆ</td>
+<td bgcolor=skyblue>Ｋ</td>
+<td>Ｊ</td>
+<td bgcolor=skyblue>Ｅ</td>
+<td bgcolor=skyblue>Ｒ</td>
+<td>Ｖ</td>
+<td bgcolor=skyblue>Ｎ</td>
+<td>Ｇ</td>
+<td>Ｓ</td>
+</tr>
+<tr>
+<td>７／７（水）</td>
+<td>１６：</td>
+<td bgcolor=skyblue>Ｒ</td>
+<td>Ｎ</td>
+<td>Ｅ</td>
+<td bgcolor=skyblue>Ｍ</td>
+<td>Ｆ</td>
+<td>Ｇ</td>
+<td bgcolor=skyblue>Ｊ</td>
+<td bgcolor=skyblue>Ｓ</td>
+<td bgcolor=skyblue>Ｖ</td>
+<td>Ｋ</td>
+</tr>
+<tr>
+<td>７／１０（土）</td>
+<td><font color=red>１７</font>：</td>
+<td>Ｓ</td>
+<td bgcolor=skyblue>Ｇ</td>
+<td bgcolor=skyblue>Ｆ</td>
+<td>Ｒ</td>
+<td bgcolor=skyblue>Ｎ</td>
+<td bgcolor=skyblue>Ｋ</td>
+<td>Ｍ</td>
+<td>Ｖ</td>
+<td>Ｊ</td>
+<td bgcolor=skyblue>Ｅ</td>
+</tr>
+<tr>
+<td>７／１４（水）</td>
+<td>１８：</td>
+<td>Ｅ</td>
+<td>Ｓ</td>
+<td>Ｎ</td>
+<td bgcolor=skyblue>Ｋ</td>
+<td>Ｇ</td>
+<td bgcolor=skyblue>Ｖ</td>
+<td bgcolor=skyblue>Ｒ</td>
+<td bgcolor=skyblue>Ｊ</td>
+<td bgcolor=skyblue>Ｍ</td>
+<td>Ｆ</td>
+</tr>
+</table>
+</p>
+上の表が、１９９３年Ｊリーグのスケジュールです。
+なお、１９９３年当時リーグ戦は年に２回行なわれていましたが、これは前半のリーグ戦です。
+奇数番号の試合（<font color=red>１,３,…,１７</font>試合目）は週末（土曜日）に、偶数番号の試合（２,４,…,１８試合目）は平日（水曜日）に行なわれました。
+青の網掛けは、遠征する（アウェイゲーム、後述）という意味です。
+つまり、１試合目にチームＶは自分の本拠地でチームＭと対戦し、２試合目にはチームＪの本拠地へ遠征して対戦します。
+</p>
+二重総当たりリーグ戦について簡単に説明します。
+通常の総当たりリーグ戦はあるチームが他の全てのチームと１回ずつ対戦しますが、二重総当たりリーグ戦は２回対戦します。
+２回の対戦のうち、１回は自分の本拠地（ホーム）で、１回は敵の本拠地（アウェイ）で試合を行ないます。
+ホームで行なう試合をホームゲーム、アウェイで行なう試合をアウェイゲームと呼びます。
+一般に、どのチームもアウェイゲームよりホームゲームを好みます。
+</p>
+過去のスケジュールには、いくつかの問題点があります。
+例えば、チームＫの９,１０,１１試合目は全てアウェイゲームです。
+アウェイゲームは、チームにとって消耗が激しいため、３回以上連続するのは望ましくありません。
+また、チームＭとチームＦは本拠地が同一であったため、チームＭの１６,１７,１８試合目とチームＦの８,９,１０試合目は、実質的にホームゲームの３回連続になっています。
+これもアウェイゲームの３回連続と同じく望ましくありません。
+また、週末だけ注目した時にアウェイゲームもしくはホームゲームが連続することも避けたい事の一つです。
+週末は平日よりたくさんのお客さんが試合を見に来るので、週末に本拠地にいない期間が長く続くという状態は好ましくありません。
+週末ほどではありませんが、平日だけ注目した時にも同じ事がいえます。
+過去のスケジュールでは、例えばチームＫの７,９,１１,１３試合目が週末だけ注目した時にアウェイゲームが４回連続しています。
+その他にも問題点はありますが、省略します。
+</p>
+以上のように、過去のスケジュールの問題点がわかったので、これを改善した新しいスケジュールを作成しました。
+スケジュール作成には、参考文献の方法を改良して用いました。
+下の表が新たに作成したスケジュールです。
+計算時間は約１時間でした。
+プログラムにはＣ言語を用いて、Ｗｉｎｄｏｗｓマシン上で計算しました。
+スケジュール作成には整数計画問題を解く必要があるのですが、それには<a href="http://www.misojiro.t.u-tokyo.ac.jp/~tomomi/soft/soft.html">ＬＰ−Ｓｏｌｖｅ</a>という Public Domain Software を用いました。
+</p>
+新たに作成したスケジュール
+</p>
+<table>
+<tr>
+<td>↓日程＼チーム→</td>
+<td align=right>：</td>
+<td>Ｋ</td>
+<td>Ｖ</td>
+<td>Ｍ</td>
+<td>Ｅ</td>
+<td>Ｊ</td>
+<td>Ｓ</td>
+<td>Ｆ</td>
+<td>Ｇ</td>
+<td>Ｎ</td>
+<td>Ｒ</td>
+</tr>
+<tr>
+<td>−−−−−−−−</td>
+<td>−−</td>
+<td>−</td>
+<td>−</td>
+<td>−</td>
+<td>−</td>
+<td>−</td>
+<td>−</td>
+<td>−</td>
+<td>−</td>
+<td>−</td>
+<td>−</td>
+</tr>
+<tr>
+<td>５／１５（土）</td>
+<td><font color=red>０１</font>：</td>
+<td>Ｎ</td>
+<td>Ｍ</td>
+<td bgcolor=skyblue>Ｖ</td>
+<td bgcolor=skyblue>Ｆ</td>
+<td bgcolor=skyblue>Ｓ</td>
+<td>Ｊ</td>
+<td>Ｅ</td>
+<td>Ｒ</td>
+<td bgcolor=skyblue>Ｋ</td>
+<td bgcolor=skyblue>Ｇ</td>
+</tr>
+<tr>
+<td>５／１９（水）</td>
+<td>０２：</td>
+<td bgcolor=skyblue>Ｒ</td>
+<td>Ｇ</td>
+<td>Ｓ</td>
+<td bgcolor=skyblue>Ｊ</td>
+<td>Ｅ</td>
+<td bgcolor=skyblue>Ｍ</td>
+<td bgcolor=skyblue>Ｎ</td>
+<td bgcolor=skyblue>Ｖ</td>
+<td>Ｆ</td>
+<td>Ｋ</td>
+</tr>
+<tr>
+<td>５／２２（土）</td>
+<td><font color=red>０３</font>：</td>
+<td bgcolor=skyblue>Ｅ</td>
+<td bgcolor=skyblue>Ｓ</td>
+<td bgcolor=skyblue>Ｎ</td>
+<td>Ｋ</td>
+<td bgcolor=skyblue bgcolor=skyblue>Ｇ</td>
+<td>Ｖ</td>
+<td>Ｒ</td>
+<td>Ｊ</td>
+<td>Ｍ</td>
+<td bgcolor=skyblue>Ｆ</td>
+</tr>
+<tr>
+<td>５／２６（水）</td>
+<td>０４：</td>
+<td>Ｓ</td>
+<td bgcolor=skyblue>Ｊ</td>
+<td bgcolor=skyblue>Ｅ</td>
+<td>Ｍ</td>
+<td>Ｖ</td>
+<td bgcolor=skyblue>Ｋ</td>
+<td>Ｇ</td>
+<td bgcolor=skyblue>Ｆ</td>
+<td bgcolor=skyblue>Ｒ</td>
+<td>Ｎ</td>
+</tr>
+<tr>
+<td>５／２９（土）</td>
+<td><font color=red>０５</font>：</td>
+<td bgcolor=skyblue>Ｖ</td>
+<td>Ｋ</td>
+<td>Ｇ</td>
+<td bgcolor=skyblue>Ｒ</td>
+<td>Ｆ</td>
+<td bgcolor=skyblue>Ｎ</td>
+<td bgcolor=skyblue>Ｊ</td>
+<td bgcolor=skyblue>Ｍ</td>
+<td>Ｓ</td>
+<td>Ｅ</td>
+</tr>
+<tr>
+<td>６／２（水）</td>
+<td>０６：</td>
+<td>Ｆ</td>
+<td>Ｒ</td>
+<td>Ｊ</td>
+<td bgcolor=skyblue>Ｓ</td>
+<td bgcolor=skyblue>Ｍ</td>
+<td>Ｅ</td>
+<td bgcolor=skyblue>Ｋ</td>
+<td>Ｎ</td>
+<td bgcolor=skyblue bgcolor=skyblue>Ｇ</td>
+<td bgcolor=skyblue>Ｖ</td>
+</tr>
+<tr>
+<td>６／５（土）</td>
+<td><font color=red>０７</font>：</td>
+<td>Ｍ</td>
+<td bgcolor=skyblue>Ｆ</td>
+<td bgcolor=skyblue>Ｋ</td>
+<td>Ｎ</td>
+<td bgcolor=skyblue>Ｒ</td>
+<td bgcolor=skyblue>Ｇ</td>
+<td>Ｖ</td>
+<td>Ｓ</td>
+<td bgcolor=skyblue>Ｅ</td>
+<td>Ｊ</td>
+</tr>
+<tr>
+<td>６／９（水）</td>
+<td>０８：</td>
+<td bgcolor=skyblue>Ｊ</td>
+<td bgcolor=skyblue>Ｎ</td>
+<td bgcolor=skyblue>Ｆ</td>
+<td>Ｇ</td>
+<td>Ｋ</td>
+<td bgcolor=skyblue>Ｒ</td>
+<td>Ｍ</td>
+<td bgcolor=skyblue>Ｅ</td>
+<td>Ｖ</td>
+<td>Ｓ</td>
+</tr>
+<tr>
+<td>６／１２（土）</td>
+<td><font color=red>０９</font>：</td>
+<td>Ｇ</td>
+<td>Ｅ</td>
+<td>Ｒ</td>
+<td bgcolor=skyblue>Ｖ</td>
+<td>Ｎ</td>
+<td>Ｆ</td>
+<td bgcolor=skyblue>Ｓ</td>
+<td bgcolor=skyblue>Ｋ</td>
+<td bgcolor=skyblue>Ｊ</td>
+<td bgcolor=skyblue>Ｍ</td>
+</tr>
+<tr>
+<td>６／１６（水）</td>
+<td>１０：</td>
+<td>Ｒ</td>
+<td bgcolor=skyblue>Ｇ</td>
+<td bgcolor=skyblue>Ｓ</td>
+<td>Ｊ</td>
+<td bgcolor=skyblue>Ｅ</td>
+<td>Ｍ</td>
+<td>Ｎ</td>
+<td>Ｖ</td>
+<td bgcolor=skyblue>Ｆ</td>
+<td bgcolor=skyblue>Ｋ</td>
+</tr>
+<tr>
+<td>６／１９（土）</td>
+<td><font color=red>１１</font>：</td>
+<td bgcolor=skyblue>Ｎ</td>
+<td bgcolor=skyblue>Ｍ</td>
+<td>Ｖ</td>
+<td>Ｆ</td>
+<td>Ｓ</td>
+<td bgcolor=skyblue>Ｊ</td>
+<td bgcolor=skyblue>Ｅ</td>
+<td bgcolor=skyblue>Ｒ</td>
+<td>Ｋ</td>
+<td>Ｇ</td>
+</tr>
+<tr>
+<td>６／２３（水）</td>
+<td>１２：</td>
+<td bgcolor=skyblue>Ｓ</td>
+<td>Ｊ</td>
+<td>Ｅ</td>
+<td bgcolor=skyblue>Ｍ</td>
+<td bgcolor=skyblue>Ｖ</td>
+<td>Ｋ</td>
+<td bgcolor=skyblue>Ｇ</td>
+<td>Ｆ</td>
+<td>Ｒ</td>
+<td bgcolor=skyblue>Ｎ</td>
+</tr>
+<tr>
+<td>６／２６（土）</td>
+<td><font color=red>１３</font>：</td>
+<td>Ｖ</td>
+<td bgcolor=skyblue>Ｋ</td>
+<td bgcolor=skyblue>Ｇ</td>
+<td>Ｒ</td>
+<td bgcolor=skyblue>Ｆ</td>
+<td>Ｎ</td>
+<td>Ｊ</td>
+<td>Ｍ</td>
+<td bgcolor=skyblue>Ｓ</td>
+<td bgcolor=skyblue>Ｅ</td>
+</tr>
+<tr>
+<td>６／３０（水）</td>
+<td>１４：</td>
+<td bgcolor=skyblue>Ｆ</td>
+<td bgcolor=skyblue>Ｒ</td>
+<td bgcolor=skyblue>Ｊ</td>
+<td>Ｓ</td>
+<td>Ｍ</td>
+<td bgcolor=skyblue>Ｅ</td>
+<td>Ｋ</td>
+<td bgcolor=skyblue>Ｎ</td>
+<td>Ｇ</td>
+<td>Ｖ</td>
+</tr>
+<tr>
+<td>７／３（土）</td>
+<td><font color=red>１５</font>：</td>
+<td bgcolor=skyblue>Ｍ</td>
+<td>Ｆ</td>
+<td>Ｋ</td>
+<td bgcolor=skyblue>Ｎ</td>
+<td>Ｒ</td>
+<td>Ｇ</td>
+<td bgcolor=skyblue>Ｖ</td>
+<td bgcolor=skyblue>Ｓ</td>
+<td>Ｅ</td>
+<td bgcolor=skyblue>Ｊ</td>
+</tr>
+<tr>
+<td>７／７（水）</td>
+<td>１６：</td>
+<td>Ｊ</td>
+<td>Ｎ</td>
+<td>Ｆ</td>
+<td bgcolor=skyblue>Ｇ</td>
+<td bgcolor=skyblue>Ｋ</td>
+<td>Ｒ</td>
+<td bgcolor=skyblue>Ｍ</td>
+<td>Ｅ</td>
+<td bgcolor=skyblue>Ｖ</td>
+<td bgcolor=skyblue>Ｓ</td>
+</tr>
+<tr>
+<td>７／１０（土）</td>
+<td><font color=red>１７</font>：</td>
+<td bgcolor=skyblue>Ｇ</td>
+<td bgcolor=skyblue>Ｅ</td>
+<td bgcolor=skyblue>Ｒ</td>
+<td>Ｖ</td>
+<td bgcolor=skyblue>Ｎ</td>
+<td bgcolor=skyblue>Ｆ</td>
+<td>Ｓ</td>
+<td>Ｋ</td>
+<td>Ｊ</td>
+<td>Ｍ</td>
+</tr>
+<tr>
+<td>７／１４（水）</td>
+<td>１８：</td>
+<td>Ｅ</td>
+<td>Ｓ</td>
+<td>Ｎ</td>
+<td bgcolor=skyblue>Ｋ</td>
+<td>Ｇ</td>
+<td bgcolor=skyblue>Ｖ</td>
+<td bgcolor=skyblue>Ｒ</td>
+<td bgcolor=skyblue>Ｊ</td>
+<td bgcolor=skyblue>Ｍ</td>
+<td>Ｆ</td>
+</tr>
+</table>
+</p>
+新たに作成したスケジュールでは、前述した問題点は全て消失しています。
+（確かめてみて下さい。）
+その他の問題点も改善されています。
+</p>
+今回の研究では、参考文献のスケジュール作成方法を改良することにより、非常に短時間でスケジュールの作成が可能になりました。
+作成したスケジュールの質も優れていることが確認できています。
+</p>
+参考文献
+<br>
+<spacer size=20>G. L. Nemhauser and M. A. Trick,  
+``Scheduling a Major College Basketball conference,''<spacer size=10><i> Operations Research</i>, 46(1998), 1-8.
+(<a href="http://tli.isye.gatech.edu/">LEC-97-03</a>,
+The Logistics Institute, School of Industrial and Systems Engeneering, Gerogia Institute of Technology.)
+</p>
+<spacer size=20>松井知己, <a href="http://www.misojiro.t.u-tokyo.ac.jp/~tomomi/
+text/text.html">「スポーツのスケジューリング」</a>,
+オペレーションズ・リサーチ, 44(1999), 141-146.
+</p>
+
+</p>
+</h4>
+</html>
+</body>
+
+
+
+
+
