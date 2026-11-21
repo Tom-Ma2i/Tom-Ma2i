@@ -1,0 +1,1436 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  1998年３月１８日 情報処理学会第５６回全国大会、
+%                      シンポジウム「アルゴリズム新世界」
+%  1998年４月  ９日 ２講座５講座合同輪講資料
+%  1998年４月２５日  RAMP月例部会、上智大学
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% 重み付き多数決ゲームにおける投票力指数の計算について
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentstyle[12pt]{article}
+\renewcommand{\baselinestretch}{0.996}
+\setlength{\oddsidemargin}{0.5cm}
+\setlength{\textwidth}{15cm}
+\setlength{\topmargin}{-10pt}
+\setlength{\textheight}{23cm}
+\setlength{\headsep}{0in}
+\setlength{\headheight}{1cm}
+\setlength{\marginparwidth}{0pt}
+\pagestyle{empty}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%% special macros %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\ms}[1]{$#1$}
+\newcommand{\Order}{\mbox{O}}
+\newcommand{\romannum}[1]{\romannumeral#1}
+\newcommand{\Romannum}[1]{\uppercase\expandafter{\romannumeral#1}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\def\0{\mbox{\bf 0}}
+\def\a{\mbox{\boldmath $a$}}
+\def\f{\mbox{\boldmath $f$}}
+\def\g{\mbox{\boldmath $g$}}
+\def\p{\mbox{\boldmath $p$}}
+\def\q{\mbox{\boldmath $q$}}
+\def\r{\mbox{\boldmath $r$}}
+\def\w{\mbox{\boldmath $w$}}
+\def\x{\mbox{\boldmath $x$}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ \newcommand{\BZ}{{\bf BZ}}
+ \newcommand{\SS}{{\bf SS}}
+ \newcommand{\KP}{{\bf KP}}          %%% Knapsack Prob. %
+ \newcommand{\NP}{{\bf ${\cal NP}$}} %%% class NP %%%%%%%
+ \newcommand{\calW}{{\cal W}}        %%% winning family %
+% \newcommand{\calL}{{\cal L}}        %%% losing family %%
+ \newcommand{\calF}{{\cal F}}        %%% family %%%%%%%%%
+ \newcommand{\calG}{{\cal G}}        %%% family %%%%%%%%%
+ \newcommand{\SSi}{\varphi}          %%%% S-S index %%%%%
+ \newcommand{\BZi}{\beta}            %%%% Bz index %%%%%%
+ \newcommand{\DPi}{\gamma}           %%%% D-P index %%%%%
+ \newcommand{\Prob}{\mbox{Pr}}       %%% Probability %%%%
+ \newcommand{\Real}{\mbox{\bf R}}    %%% Real Numbers %%%
+ \newcommand{\vtrue}{\mbox{true}}
+ \newcommand{\vfalse}{\mbox{false}}
+ \newcommand{\wN}{\overline{w}}      %%% special weight %
+ \renewcommand{\mid}{ : }            %%% condition %%%%%%
+ \newcommand{\cumv}[1]{#1^{\mbox{c}}}  %%% cum. vector %%%%%%
+ \newcommand{\isrg}[1]{\widehat{#1}}   %%% isotonic regression
+ \newcommand{\bino}{\theta}   %%% binomial coeff.
+ \newcommand{\CCC}{\!\mbox{C}} 
+
+%%%%%%%%%% algorithm %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ \newcommand{\paif}{\mbox{\bf if }}
+ \newcommand{\pado}{\mbox{\bf do }}
+ \newcommand{\pafor}{\mbox{\bf for }}
+ \newcommand{\pathen}{\mbox{\bf then }}
+ \newcommand{\paelse}{\mbox{\bf else }}
+ \newcommand{\paoutput}{\mbox{\bf output }}
+ \newcommand{\paSTOP}{\mbox{\bf STOP }}
+ \newcommand{\paprocedure}{\mbox{\bf procedure }}
+ \newcommand{\pareturn}{\mbox{\bf return }}
+ \newcommand{\pafunction}{\mbox{\bf function }}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+   \newtheorem{theorem}{定理}
+   \newtheorem{corollary}{系}
+   \newenvironment{proof}{\noindent {\bf Proof.}}{\hfill $\Box$}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{document}
+
+\begin{center}
+\mbox{\Large 重み付き多数決ゲームにおける投票力指数の計算について}\\[2ex]
+  \begin{tabular}{ll}
+        松井知己 &  東京大学大学院工学系研究科計数工学専攻 \\
+        松井泰子 & 東海大学理学部情報数理学科
+  \end{tabular} \\[2ex]
+\mbox{\Large Calculating Power Indices of Weighted Majority Games} \\[2ex]
+  \begin{tabular}{ll}
+Tomomi Matsui & University of Tokyo, Bunkyo-ku, Tokyo 113, Japan. \\
+              &  {\small tomomi@misojiro.t.u-tokyo.ac.jp} \\
+Yasuko Matsui & Tokai University, Hiratsuka-shi, Kanagawa, 259-1292, Japan.  \\
+              &  {\small yasuko@ss.u-tokai.ac.jp} \\
+  \end{tabular} \\[2ex]
+\end{center}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\noindent
+For measuring an individual's voting power of a voting game,
+   some power indices are proposed. 
+In this paper, 
+  we discuss the problems for calculating 
+  Shapley-Shubik index, Banzhaf index and Deegan-Packel index
+  of weighted majority games.
+
+% 投票力指数は、議会などで投票による決定を行なう際、
+% 各投票主体が決定にどれだけの影響力を持つかを評価
+% する尺度の一つである。投票力指数としてしばしば用
+% いられるものには、Shapley-Shubik 指数、
+% Banzhaf 指数、Deegan-Packel 指数等がある。
+% 本稿では、重みつき多数決ゲームの投票力指数を計算する問題の複雑さ、
+% 効率よく計算するための方法について議論する。
+
+\medskip
+
+\noindent
+{\bf Key Words}: weighted majority game, 
+    power index, NP-complete, 
+    dynamic programming, enumeration problem,
+    isotonic regression, Monte Carlo method.
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{重みつき多数決ゲーム}
+
+重みつき多数決ゲームは、投票者がそれぞれ何票かの票を持ち、
+その多数決によって決定が行なわれるゲームである。
+投票者の集合を\ms{N=\{1,2,\ldots,n\}}と表し、
+投票者\ms{i}の持つ票数を正整数\ms{w_i}としたとき、
+正整数の列\ms{G=[q;w_1,w_2,\ldots,w_n]}で
+重みつき多数決ゲームを表す。
+ただし\ms{q}は勝つために必要な票数であり、
+\ms{(1/2)\sum_{i=1}^n w_i < q \leq \sum_{i=1}^nw_i}
+を満たしているとする。
+本稿では、投票者は票数の多い順に整列されているとする、
+  すなわち\ms{w_1 \geq w_2 \geq \cdots \geq w_n}
+  が成り立っていると仮定する。
+
+
+投票者集合\ms{N}の任意の部分集合を提携と呼ぶ。
+ある提携\ms{S}が、\ms{\sum_{i \in S}w_i \geq q}を満たす時、
+\ms{S}は勝利提携であると呼び、
+勝利提携すべてを集めた族を\ms{\calW (G)}、
+あるいは単に\ms{\calW}、と書く。
+勝利提携でない提携を敗北提携と呼ぶ。
+勝利提携族の中で極小のものを、極小勝利提携と呼ぶ。
+任意の提携族\ms{\calF \subseteq 2^N}に対し、
+\ms{\calF}中の極小集合すべてを集めた族を\ms{\min \calF}と書く。
+これにより、極小勝利提携族は\ms{\min \calW}と書くことができる。
+任意の投票者\ms{i}に対し、
+\ms{i}を含む勝利提携すべての族を\ms{\calW^i_+}、
+\ms{i}を含まない勝利提携すべての族を\ms{\calW^i_-}と記す。
+明らかに
+\ms{\forall S \in \calW^i_-, \; S \cup \{ i\} \in \calW^i_+}が成り立ち、
+  これより
+\ms{|\calW^i_-| \leq |\calW^i_+|}が成り立つ。
+投票者集合\ms{N}上に定義された重みつき多数決ゲーム\ms{G}に対し、
+特性関数\ms{v_G :2^N \rightarrow \{0,1\}}は
+\[ v_G(S)= \left\{ \begin{array}{ll}
+              1 & (S \in \calW), \\
+              0 & (S \not \in \calW), 
+                 \end{array} \right.
+\]
+と定義される。
+特性関数についても、混乱のおそれの無い時は、単に\ms{v}と記す。
+本稿では、任意の集合\ms{S}と要素\ms{e}に対し、
+\ms{S \cup \{e\}} を単に\ms{S+e}と書く。
+また、\ms{S \setminus \{e\}} を単に\ms{S-e}と書く。
+
+投票者集合\ms{N}上に定義された、
+相異なる２つの重みつき多数決ゲーム\ms{G_1,G_2}において、
+\ms{\calW(G_1)=\calW(G_2)}が成り立つならば、
+どのような提携が投票に勝利しうるのかという観点からは、
+２つのゲームは同等である。
+ゆえに、投票者の持つ票数が、その投票者の影響力を表しているとは限らない。
+極端な例としては、
+整数\ms{k \geq 2}に対して\ms{q=\lfloor ((n-1)k+1)/2 \rfloor +1}
+を用いて定義される\ms{n}人の投票者からなるゲーム
+\ms{[q;k,k,\ldots,k,1]}がある。
+このゲームは、投票者数が奇数ならば、
+票数1を持つ投票者\ms{n}の持つ影響力は他の投票者とまったく変わらない。
+しかしながら、投票者数が偶数ならば、
+投票者\ms{n}は影響力を全く持たない、
+すなわち投票者\ms{n}を含まない任意の提携\ms{S}に対し
+\ms{v(S)=v(S+n)}が成り立つ。
+
+投票ゲームのより詳しい解説については、
+\cite{OWEN1995,OKADA1996,SUZUKI1985,MUTO1998}
+等を参照されたい。
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{投票力指数}
+
+ 勝利提携族の観点から定義される投票者の影響力を捉える
+投票力指数がいくつか提案されている。
+本節では、
+Shapley-Shubik 指数\cite{SHAPLEY1953,SHAPLEY1954}、
+Banzhaf 指数\cite{BANZHAF1965}、
+Deegan-Packel 指数\cite{DEEGAN1978}を定義する。
+これらの定義の詳細な意味付けについては
+\cite{DEEGAN1978,DUBEY1979,OWEN1995,MUTO1998}等を参照されたい。
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\medskip 
+\noindent
+\underline{\large Shapley-Shubik 指数}: 
+%
+Shapley-Shubik 指数（S-S指数）は、
+Shapley によって定義された協力ゲームの解である Shapley 値を、
+Shapley と Shubik 
+が投票ゲームに適用したものである\cite{SHAPLEY1953,SHAPLEY1954}。
+%
+投票者の集合\ms{\{1,2,\ldots,n\}}の順列は\ms{n!}個存在する。
+投票者のある順列\ms{\sigma=(\sigma_1,\sigma_2,\ldots,\sigma_n)}に対し、
+提携\ms{\{\sigma_1,\sigma_2,\ldots,\sigma_{i-1}\}}が敗北提携であり、
+提携\ms{\{\sigma_1,\sigma_2,\ldots,\sigma_{i-1},\sigma_i\}}が
+  勝利提携のとき、
+投票者\ms{\sigma_i}は順列\ms{\sigma}におけるピヴォットと呼ぶ。
+すべての順列が等確率で起こると仮定したときの、
+各投票者のピヴォットとなる期待値を、
+各投票者の Shapley-Shubik 指数（S-S指数）と呼ぶ。
+投票者\ms{i}のS-S指数を\ms{\SSi_i}と表す。
+投票者\ms{i}のS-S指数は、
+\[
+   \SSi_i = (1/n!)\sum \{ (|S|-1)!(n-|S|)!  
+    \mid S \in \calW, S-i \not \in \calW\}, 
+\]
+と表すことも出来る。
+票数が\ms{w_1 \geq w_2 \geq \cdots \geq w_n}を満たすならば、
+\ms{\SSi_1 \geq \SSi_2 \geq \cdots \geq \SSi_n}
+が成り立つことは容易に示される。
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+投票者数が多い重みつき多数決ゲームについては、
+中心極限定理に基づいたS-S指数の
+近似的な計算法が提案されているが、
+これについては\cite{OWEN1995,MUTO1998}等を参照されたい。
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\medskip
+\noindent
+\underline{\large Banzhaf 指数}: 
+%
+Banzhaf 指数（Bz指数）は、
+法律家 Banzhaf によって1965年に定義された指数である
+   \cite{BANZHAF1965}。
+その後 Dubey と Shapley \cite{DUBEY1979}によって、
+ 公理的特徴付けがなされている。
+%
+投票者の提携は全部で\ms{2^n}存在する。
+ある提携\ms{S}に対して、
+投票者$i$がみずからの投票態度を賛成から反対に、
+あるいは反対から賛成に変えることにより、
+投票の結果を変えることができるとき、
+投票者$i$は提携\ms{S}のスウィングと呼ぶ。
+すべての提携が等確率で起こると仮定したときの、
+各投票者のスウィングとなる期待値を、
+各投票者のBz指数と呼ぶ。
+投票者\ms{i}のBz指数を\ms{\BZi_i}と書く。
+特性関数を用いるならば、
+投票者\ms{i}のBz指数\ms{\BZi_i}は、
+\[ 
+    \BZi_i=(1/2^{n-1})\sum \{v(S+i)-v(S) 
+      \mid S \subseteq N-i \}
+\] 
+と書くことができる。
+投票者\ms{i}のBz指数は、
+Dahlingham 指数と一致しており
+\ms{
+\BZi_i = (1/2^{n-1})(|\calW^i_+|-|\calW^i_-|), 
+}
+と表わすこともできる\cite{DUBEY1979}。
+Bz指数の総和は1になるとは限らない点に注意されたい。
+票数が\ms{w_1 \geq w_2 \geq \cdots \geq w_n}を満たすならば、
+\ms{\BZi_1 \geq \BZi_2 \geq \cdots \geq \BZi_n}が成り立つ。
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+投票者数が多い重みつき多数決ゲームについては、
+中心極限定理に基づいたBz指数の
+近似的な計算法が提案されている
+\cite{OWEN1995,MUTO1998}。
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\medskip
+\noindent
+\underline{\large Deegan-Packel 指数}:
+%
+投票者\ms{i}の Deegan-Packel 指数（D-P指数）\ms{\DPi_i}は、
+\[
+\DPi_i =
+  \left\{ \begin{array}{ll}
+  (1/|\min \calW|)\sum \{1/|S| \mid  i \in S \in \min \calW  \} &
+    (\mbox{ if } \; \{S \mid i \in S \in \min \calW\}\neq \emptyset ), \\
+ 0 &(\mbox{ if } \; \{S \mid i \in S \in \min \calW\}= \emptyset ), 
+         \end{array} \right.
+\]
+と定義される。
+D-P指数はその総和が1となる。
+D-P指数は、
+% S-S指数やBz指数とは非常に異なった値を持つ場合がある。
+% 例えば、
+票数が\ms{w_1 \geq w_2 \geq \cdots \geq w_n}を満たしても、
+\ms{\DPi_1 \geq \DPi_2 \geq \cdots \geq \DPi_n}
+が成り立つとは限らない。
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{投票力指数の計算の複雑さ}
+
+投票者集合\ms{N}上の重みつき多数決ゲーム\ms{G}が与えられたとして、
+いくつかの概念を定義する。
+ある投票者\ms{i}が、
+\ms{\forall S \subseteq N-i,} \ms{v(S)=v(S+i)}
+を満たすとき、投票者\ms{i}はダミーであると呼ぶ。
+投票者\ms{i,j}が、
+\ms{\forall S \subseteq N\setminus \{i,j\}}, \ms{v(S+i)=v(S+j)}
+を満たすとき、投票者\ms{i}と\ms{j}は対称であるという。
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{theorem}\mbox{\normalsize \cite{GAREY1979,MATSUI1998}} 
+重みつき多数決ゲーム\ms{[q;w_1,\ldots,w_n]}において、
+ \ms{ w_1 \geq w_2 \geq \cdots \geq w_n}
+が成り立っているものとする。
+次の２つの問題はNP-完全である。
+
+
+（１）投票者\ms{n}がダミーでないことを判定せよ。 
+
+（２）投票者\ms{1}と\ms{2}が対称でないことを判定せよ。
+
+{\rm 
+\noindent {\bf 証明：}
+概略のみを記す。
+投票者\ms{n}がダミーでない必要十分条件は、
+投票者\ms{n}を含む極小勝利提携が存在することである。
+投票者\ms{1}と\ms{2}が対称でなければ、
+\ms{w_1 \geq w_2}より、
+極小勝利提携で投票者\ms{1}を含み
+投票者\ms{2}を含まないものが存在する。
+ゆえに問題(1)(2)の両方とも、
+答がYESの際に多項式サイズの保証があり、クラスNPに属する。
+
+NP-完全性の証明には、分割問題を多項式時間帰着する。
+分割問題とは、
+正整数の集合\ms{S=\{a_1,a_2,\ldots,a_k\}}が与えられたとき、
+\ms{\sum_{i \in S'}a_i = (1/2)M}
+を満たす\ms{S' \subseteq S}の存在を問う問題である、
+ただし\ms{ M=\sum_{i \in S}a_i}である
+\cite{GAREY1979,KARP1972}。
+(1)(2)を証明するためには、
+\ms{G_1=[q_1;a_1,a_2,\ldots,a_n,1]}
+と
+\ms{G_2=[q_2;M+1,M,a_1,\ldots,a_n]}
+というゲームを構築する。
+必要票数\ms{q_1,q_2}は、過半数をとれば勝利提携となるように設定する。
+すると、
+(a) 分割問題の解がYESである、
+(b) \ms{G_1}において投票者\ms{n}がダミーでない、
+(c) \ms{G_2}において投票者\ms{1}と\ms{2}が対称でない、
+の３つの条件は同値である。
+\hfill $\Box$}
+\end{theorem}
+
+
+上記の定理より、入力サイズが非常に大きな重みつき多数決ゲームに対し、
+投票者の持つ影響力の分析は困難であることが予想される。
+また問題（２）のNP-完全性より、
+投票者を票数の多い者に限っても、影響力の分析は困難と予想される。
+上記の定理中(1)の問題のNP-完全性については、
+Garey and Johnson \cite{GAREY1979}においても言及されているが
+（p.280, 問題[MS8]参照）
+証明は省略されている。 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+S-S指数、Bz指数、D-P指数はどれも、
+投票者がダミーである事と、
+対応する指数が0となる事が必要十分条件である。
+これより以下が導かれる\cite{GAREY1979,MATSUI1998}。
+
+\begin{corollary}
+重みつき多数決ゲーム\ms{[q;w_1,\ldots,w_n]}は、
+ \ms{ w_1 \geq w_2 \geq \cdots \geq w_n}
+を満たしているとする。
+このとき投票者\ms{n}に対する
+S-S指数\ms{\SSi_n}、Bz指数\ms{\BZi_n}、D-P指数\ms{\DPi_n}
+を計算する問題は、どれもNP-困難である。
+\end{corollary}
+
+\noindent
+Garey and Johnson \cite{GAREY1979}
+（p.280, 問題[MS8]）では、
+  上記の結果の内S-S指数についてのみ記述されている。
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+S-S指数とBz指数は、
+２人の投票者が対称である事と対応する指数が等しいことは必要十分条件なので、
+以下の性質が成り立つ\cite{MATSUI1998}。
+
+\begin{corollary}
+重みつき多数決ゲーム\ms{[q;w_1,\ldots,w_n]}は、
+ \ms{ w_1 \geq w_2 \geq \cdots \geq w_n}
+を満たしているとする。
+このとき投票者\ms{1}と\ms{2}に対する
+S-S指数\ms{(\SSi_1,\SSi_2)}、Bz指数\ms{(\BZi_1,\BZi_2)}、
+を計算する問題は、どちらもNP-困難である。
+\end{corollary}
+
+\noindent
+上記の性質より、票数の大きな投票者に限ってS-S指数やBz指数を求める問題も、
+効率的に解くことは困難であると予想される。
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+S-S指数を求める問題については、
+以下の結果も知られている\cite{XIAOTIE1994}。
+\begin{theorem}
+重みつき多数決ゲーム\ms{[q;w_1,\ldots,w_n]}において、
+ \ms{ w_1 \geq w_2 \geq \cdots \geq w_n}
+が成り立っているものとする。
+このとき、投票者\ms{n}に対する
+S-S指数\ms{\SSi_n}、Bz指数\ms{\BZi_n}
+を計算する問題は、どちらも\#P-完全である。
+\end{theorem}
+この定理は\cite{XIAOTIE1994}において、
+S-S指数の際について証明されているが、
+Bz指数についても全く同様に証明できる。
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+最も票数の大きな投票者と最も票数の小さな投票者の影響力の比較については、
+次の定理が成り立つ。
+
+\begin{theorem}
+重みつき多数決ゲーム\ms{[q;w_1,\ldots,w_n]}において、
+ \ms{ w_1 \geq w_2 \geq \cdots \geq w_n}
+が成り立っているものとする。
+このとき、以下の条件は互いに必要十分である。
+
+\noindent
+(1) 投票者\ms{1}と投票者\ms{n}は対称である。
+
+\noindent
+(2) 任意の２人の投票者は対称である。
+
+\noindent
+(3) ある自然数\ms{k}が存在して
+   \ms{\calW=\{S \subseteq N \mid |S|\geq k\}}が成り立つ。
+
+\noindent
+(4) ある自然数\ms{k}が存在して
+\begin{equation}\label{all-symmetric}
+     w_{n-(k-1)}+\cdots +w_{n-1}+w_{n} \geq q > w_1+w_2+\cdots +w_{k-1}
+\end{equation}
+を満たす。
+（上式の最左辺は\ms{k}項の和であり、
+  最右辺は\ms{k-1}項の和であることに注意されたい。）
+
+
+{\rm 
+\noindent {\bf 証明：}
+(1)と(2)が必要十分であるのは明らか。
+また(3)から(2)も明らか。
+次に(2)から(3)を導く。
+整数\ms{k}を\ms{k=\min \{|S| \mid S \in \calW\}}と定義し、
+  最小値を達成する提携を\ms{S^*}とする。
+任意の敗北提携\ms{S'}と投票者の対\ms{(i,j)}において、
+ 全ての投票者対が対称であることから
+ \ms{i \in S' \not \ni j}ならば \ms{S'-i+j \not \in \calW}である。
+ある敗北提携\ms{S'}が\ms{|S'|\geq  k }を満たすならば、
+ 敗北提携で\ms{S^*}を含むものを作ることができるため、
+ 矛盾が導かれる。ゆえに(3)が成り立つ。
+(3)から(4)は明らか。
+最後に条件(4)が成り立つと仮定して(3)を導く。
+要素数が\ms{k}以上の任意の提携\ms{S}に対し、
+\ms{\sum_{i \in S}w_i \geq w_{n-(k-1)}+\cdots+w_n \geq q}が成り立ち、
+明らかに\ms{S \in \calW}である。
+次に要素数が\ms{k}未満の任意の提携\ms{S'}に対し、
+\ms{\sum_{i \in S'} w_i  \leq  w_1+\cdots +w_{k-1} < q}
+ となり\ms{S'}は敗北提携となる。
+\hfill $\Box$ }
+\end{theorem}
+
+\noindent
+上記の定理より、
+最も票数の多い投票者と最も票数の少ない投票者が対称であるかは、
+\ms{\Order (n)}時間の計算で判定することができる。
+
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{動的計画法}
+
+
+本節では、任意の投票者 $i$ について\ms{w_i < q} を仮定する。
+また投票者を、その票数に応じて分類したものを
+  \ms{N_1,N_2,\ldots,N_z}とする、すなわち
+\begin{eqnarray*}
+&&  N_1 \cup N_2 \cup \cdots \cup N_z = N, \\
+&&  1 \leq \forall x < \forall y \leq z, \;
+        \forall i \in N_x, \; \forall j \in N_y, \; 
+        w_i > w_j,  \\
+&&  1 \leq \forall x \leq z, \; 
+     \forall i, \forall j \in N_x, \; w_i=w_j , 
+\end{eqnarray*}
+が成り立っている。
+さらに\ms{|N_x|}を\ms{n_x}と書き、
+\ms{N_x}中の各投票者の票数を\ms{\wN_x}と書く。
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{前処理}
+
+本節では、動的計画法による前処理について述べる。
+前処理の目的は次の２つである;
+(1) ダミーの投票者すべての集合を求める、
+(2) 極小勝利提携の総数を求める。
+ダミー投票者の集合が求められた際は、
+それらの投票者を抜いてしまっても、
+他の投票者のS-S指数、Bz指数、D-P指数はどれも変わらない。
+ゆえに、本節以降の動的計画法を実行する際は、
+本節の算法を予め実行し、
+ダミー投票者を（あれば）取り除く事によって計算を軽減するのが望ましい。
+また(2)の結果は、次節の算法においてD-P指数を計算する際に用いる。
+
+ダミーの投票者集合を求めるには、
+以下の定理を用いる。
+
+\begin{theorem}
+重みつき多数決ゲーム\ms{[q;w_1,\ldots,w_n]}において、
+ \ms{ w_1 \geq w_2 \geq \cdots \geq w_n}
+が成り立っているとする。
+投票者\ms{j}がダミーである必要十分条件は
+\ms{\alpha_j+w_j+w_{j+1}+\cdots+w_n < q }である。
+ただし
+\[
+  \alpha_j=
+  \max \left\{\sum_{i \in S}w_i \
+  \mid S \subseteq \{1,2,\ldots , j-1\}, \;
+       S \not \in \calW  \right\}
+\]
+と定義する。
+
+{\rm 
+\noindent {\bf 証明：}
+不等式\ms{\alpha_j+w_j+w_{j+1}+\cdots+w_n \geq q}が成り立つと仮定して、
+投票者\ms{j}がダミーでないことを示す。
+% 値\ms{z_j}を達成する提携を
+% \ms{S^* \subseteq \{1,2,\ldots,j-1\}}とする。
+仮定より、不等式
+\[
+       \alpha_j + w_j + w_{j+1}+\cdots +w_{k-1} < q 
+ \leq  \alpha_j + w_j + w_{j+1}+\cdots +w_k
+\]
+を満たす投票者\ms{k \in \{j,j+1,\ldots,n\}}が存在する。
+すると、
+\[
+         \alpha_j + w_{j+1}+\cdots +w_k 
+    \leq \alpha_j + w_j + w_{j+1}+\cdots +w_{k-1} < q 
+ \leq  \alpha_j + w_j + w_{j+1}+\cdots +w_k
+\]
+が成り立ち、投票者\ms{j}はダミーではない。
+
+次に投票者\ms{j}がダミーでないと仮定する。
+すると、ある提携\ms{S \subseteq N-j}が存在して
+\ms{S \not \in \calW} かつ\ms{S+j \in \calW}が成り立つ。
+提携\ms{S'=S \cap \{1,2,\ldots,j-1\}}と定義すると、
+不等式
+\[
+   \sum_{i \in S'}w_i \leq \sum_{i \in S}w_i 
+   < q \leq \sum_{i \in S}w_i + w_j 
+   \leq \sum_{i \in S'}w_i +w_j+w_{j+1}+\cdots +w_n
+\] 
+が成り立つ。
+値\ms{\alpha_j}の定義より
+\ms{\sum_{i \in S'}w_i \leq \alpha_j}が成り立つことから、
+\[
+   q \leq  \sum_{i \in S'}w_i +w_j+w_{j+1}+\cdots +w_n 
+      \leq  \alpha_j+w_j+w_{j+1}+\cdots+w_n
+\]
+が満たされる。
+\hfill $\Box$}
+\end{theorem}
+
+\noindent
+上記の定理より、
+\ms{(\alpha_2,\alpha_3,\ldots, \alpha_n)}が求まれば
+ダミー投票者を特定することができる。
+各値\ms{\alpha_j  \; (j=2,3,\ldots ,n)}
+を求める問題はナップサック問題と呼ばれ、
+擬似多項式時間算法の存在が知られている
+（例えば\cite{BELLMAN1956,KONNO1982}参照）。
+
+任意の非負整数の対\ms{w}と\ms{x}に対し、提携族 
+\[
+   \{S \subseteq N 
+     \mid   \sum_{i \in S}w_i =w, \; 
+            S \cap N_x \neq \emptyset ,\;
+            S \cap N_{x+1} = \cdots = S \cap N_z = \emptyset,\}
+\]
+  の要素数を\ms{c(w,x)}と表すと、
+  極小勝利提携の数は
+\ms{\displaystyle 
+  |\min \calW| 
+   = \sum_{x=1}^{z} \sum_{w=q}^{q+\wN_x -1}  c(w,x),  
+}
+として計算される。
+また投票者$i$がダミーである必要十分条件は、
+   \ms{i \in N_x}ならば
+\[
+   \alpha'_x + \wN_x n_x + \wN_{x+1} n_{x+1}+\cdots + \wN_z n_z < q 
+\]
+  となる。ただし
+\[
+    \alpha'_x= \max \{w \mid 
+     0 \leq w\leq q-1 \; \mbox{かつ}\; 
+    1\leq \exists y \leq x-1,  c(w,y)>0 \}
+\]
+である。
+
+
+動的計画法を用いて
+ \ms{\{ c(w,x) \mid 0 \leq w \leq q -1, \; 1 \leq x \leq z \}}
+ を求める以下の解法が構築できる。
+解法の第$x$反復終了時において、
+\ms{c^*}の値が
+  \ms{c(w,1)+c(w,2)+\cdots +c(w,x)}となっており、
+  \ms{\alpha^*}の値が\ms{\alpha'_x}となっている。
+
+\begin{tabbing}
+xx \= xx \= xx \= xx \= xx \= xx \= \kill
+{\bf begin} \\
+  \>  \ms{\pafor w=1,2,\ldots, q-1 \; \pado \;  c(w):=0 ; } \\
+   \> \ms{c(0):=1 ; \; c^*:=0; \; \alpha^*:=0; \; w':= w_1+\cdots +w_n ;} \\ 
+   \> \ms{\pafor x=1,2,\ldots,z \; \pado \; \{} \\
+   \> \> \ms{w':=w'- \wN_x * n_x ; }\\
+   \> \> \ms{\pafor \; w=\alpha^*,\alpha^* -1,\ldots,0 \; \pado \;  \{} \\
+   \> \>  \> \ms{\paif \;  c(w)>0 \; \pathen \; \{} \\
+   \> \>  \> \>  \ms{c':=1 ;} 
+                （以下の反復では $c'= _{n_x}\!\!\mbox{C}_y$が成り立っている）\\
+   \> \>  \> \>  \ms{\pafor \; y=1,2,\ldots, n_x \; \pado \; \{} \\
+   \> \>  \> \> \> \ms{c':=c'*(n_x-y+1)/y ;} \\ 
+   \> \>  \> \> \> \ms{\paif \; w+\wN_x *y \leq q-1 \; \pathen \;  \{} \\
+   \> \>  \> \> \> \> \ms{c(w+\wN_x *y):= c(w+\wN_x *y)+c(w)*c' ;} \\
+   \> \>  \> \> \> \> \ms{\alpha^*:=\max \{\alpha^*, w+\wN_x *y\} }\\
+   \> \>  \> \> \> \ms{ \};} \\
+   \> \>  \> \> \> \ms{\paelse \paif \; q \leq w+\wN_x *y \leq q-1+\wN_x \; 
+                       \pathen \;  c^*:=c^*+c(w)*c'} \\
+   \> \>  $\}\; \}\;  \};  $ \\
+   \> \> \ms{\paif \alpha^*+ w' \leq q-1 \; \pathen \;
+          \{ \paoutput \; (c^*, x+1);\; \paSTOP \} } \\
+   \> $\}; $ \\
+   \> \ms{\paoutput \; (c^*, \mbox{``no dummy player''})} \\
+{\bf end}
+\end{tabbing}
+
+\noindent
+上記の算法が数値の対\ms{(c^*, x+1)}を出力して終了したときは、
+  \ms{c^*}は極小勝利提携の総数を表し、
+  \ms{N_{x+1}\cup N_{x+2} \cup \cdots \cup N_z}が
+  ダミー投票者の集合である。
+この算法の時間計算量は\ms{\Order (nq)}、
+記憶容量は\ms{\Order (n+q)}である。
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\subsection{投票力指数を求める動的計画法}
+
+S-S指数とBz指数については、
+これを計算する動的計画法が提案されている
+  \cite{BRAMS1975,LUCAS1983}。
+
+以下では、
+  \cite{BRAMS1975,LUCAS1983}の動的計画法を改訂することで、
+S-S指数、Bz指数、D-P指数の３つの指数を同時に、
+擬似多項式時間で求める動的計画法を提案する。
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%% index of player i %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+投票者\ms{i}に対し、提携族
+\[
+  \{S \subseteq N-i 
+     \mid   \sum_{i \in S}w_i =w, \;
+            |S|=t, \;  
+            S \cap N_x \neq \emptyset ,\;
+            S \cap N_{x+1} = \cdots = S \cap N_z = \emptyset,\}
+\]
+の要素数を\ms{c(w,t,x)}と表す。
+すると、集合\ms{N_y}に含まれている投票者\ms{i}の指数は、
+\begin{eqnarray*}
+   \SSi_i&=& \sum_{t=1}^{n-1} \sum_{w=q-w_i}^{q-1} \sum_{x=1}^z 
+     \frac{t!(n-t-1)!}{n!}c(w,t,x),\\
+   \BZi_i&=& (1/2^{n-1})\sum_{t=1}^{n-1}\sum_{w=q-w_i}^{q-1}\sum_{x=1}^z
+                          c(w,t,x), \\
+   \DPi_i&=&
+     \left( \sum_{x=1}^{y} \sum_{w=q-w_i}^{q-1}
+             \sum_{t=1}^{n-1} \frac{c(w,t,x)}{t+1} 
+         + \sum_{x=y+1}^{z} \sum_{w=q-w_i}^{q-1-w_i+w_x}
+             \sum_{t=1}^{n-1} \frac{c(w,t,x)}{t+1} \right)  
+       \frac{1}{|\min \calW|} \; ,  \\ 
+\end{eqnarray*}
+
+\noindent
+として計算される
+（\ms{i \in N_y}の性質は\ms{\DPi_i}計算の際用いられている）。
+すると以下の算法を構築できる。
+
+
+\begin{tabbing}
+xx \= xx \= xx \= xx \= xx \= xx \= xx \= \kill
+{\bf begin} \\
+  \> \ms{\pafor \; (w,t) \in \{1,2,\ldots ,q-1 \} \times \{1,2,\ldots ,t\} \;  
+           \pado \; c (w,t)=0 ;} \\
+   \> \ms{c(0,0):=1 ; \; t^*:=0; \; 
+       \varphi^*:=0; \; \beta^*:=0; \; \gamma^*:=0 ;}\\ 
+   \> \ms{\pafor \; t=0,1,\ldots,n-1 \; \pado \; \alpha (t):=0 ;} \\
+   \> \ms{\pafor x=1,2,\ldots,z  \;\pado \;  \{} \\
+   \> \> \ms{y':= |N_x-i|;} \\
+   \> \> \ms{\pafor \; t=t^*,t^*-1,\ldots,0 \; \pado \;  \{} \\  
+   \> \> \> \ms{\pafor \; w=\alpha (t),\alpha (t)-1,\ldots,0 \; \pado \; \{} \\
+   \> \> \>  \>  \ms{\paif \; c(w,t)>0 \; \pathen \; \{} \\
+   \> \> \> \>  \>  \ms{c':=1; }
+                   （以下の反復では$c'=_{y'}\mbox{C}_y$が成り立っている） \\
+   \> \> \> \>  \> \ms{\pafor y=1,2,\ldots,y' \; \pado \;  \{} \\
+   \> \> \> \>  \> \> \ms{c':= c'*(y'-y+1)/y; }\\
+   \> \> \> \>  \> \> \ms{\paif \; w+\wN_x *y \leq q-1 \; \pathen \; \{} \\
+   \> \> \> \>  \> \> \>\ms{c(w+\wN_x *y,t+y):= c(w+\wN_x *y,t+y)+c(w,t)*c';}\\
+   \> \> \> \>  \> \> \>\ms{\alpha (t+y):=\max\{\alpha (t+y),w+\wN_x*y\} } \\
+   \> \> \> \>  \> \> \ms{\};} \\
+   \> \> \> \>  \> \> \ms{\paif \; q-w_i \leq w+\wN_x *y 
+                      \leq q-1 \; \pathen \;\{} \\ 
+   \> \> \> \>  \> \> \> \ms{\varphi^* :=\varphi^*+(t+y)!(n-t-y-1)!\; c(w,t)*c';\;}\\
+   \> \> \> \>  \> \> \> \ms{\beta^* :=\beta^*+ c(w,t) *c' }\ms{\};}\\
+   \> \> \> \>  \> \> \ms{\paif \; q-w_i \leq w+\wN_x *y 
+                      \leq \min \{q-1, q-1-w_i+\wN_x\} \; \pathen \; \{}\\
+   \> \> \> \>  \> \> \>  \ms{\gamma^* :=\gamma^*+(1/(t+y+1))*c(w,t) *c'\} }\\
+   \> \> \ms{ \}} \ms{ \}} \ms{ \}} \ms{ \};}\\
+   \> \> \ms{t^*:=t^*+y'} \\
+   \> \ms{\};}\\
+   \> \ms{\paoutput (\varphi^*/n!,\; \beta^*/2^{n-1},\; \gamma^*/|\min \calW|)}\\
+{\bf end}
+\end{tabbing}
+
+
+この算法の時間計算量は\ms{\Order (n^2q)}、
+記憶容量は\ms{\Order (nq)}である。
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{列挙算法}
+
+本節では各指数を計算する列挙算法について議論する。
+
+以下では、本節で用いる記号を定義する。
+正の実数ベクトル\ms{\a=(a_1,a_2,\ldots,a_k)}と
+実数\ms{b}に対し、
+\ms{
+   \calF(\a,b) \equiv \{F \subseteq \{1,2,\ldots,k\}
+    \mid \sum_{i \in F}a_i \geq b\}
+}
+と定義する。
+ベクトル\ms{\f (\a,b)\equiv (f_1,f_2,\ldots,f_k)}は
+\ms{f_i=| \{S \in \calF(\a,b) \mid |S|=i\} |}を満たすものとする。
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{D-P指数を求める列挙算法}
+
+極小勝利提携を実際に全列挙すれば、
+D-P指数は容易に計算できる。
+本節では極小勝利提携の高速な列挙算法について議論する。
+
+本節では、
+正整数ベクトル\ms{\a=(a_1,a_2,\ldots,a_n)^T}と整数\ms{b}
+が与えられたとして、
+集合族\ms{\calF (\a,b)}の極小集合を全て列挙する問題の
+解法を記述する。
+下記の解法の基本的なアイデアは、
+以下の定理を用いた分割統治法である。
+
+\begin{theorem}
+正の実数ベクトル\ms{\a=(a_1,a_2,\ldots,a_n)^T}と実数\ms{b}は、
+\ms{ a_1 \geq a_2 \geq \cdots \geq a_n > 0}と
+\ms{a_1 + a_2 + \cdots + a_n \geq b}
+を満たしているとする。
+このとき
+\[
+    \calF^1_+ \equiv \{S \mid 1 \in S \in \calF (\a,b)\}, \;\;
+    \calF^1_- \equiv \{S \mid 1 \not \in S \in \calF (\a,b)\}, \;\;
+\]
+と定義する。
+すると
+\ms{\emptyset \not \in \calF (\a,b) }ならば、
+  \ms{\min \calF (\a,b)}は
+  \ms{\min \calF^1_+}と\ms{ \min \calF^1_- }
+  の直和となっている。
+
+
+{\rm 
+\noindent {\bf 証明：}
+% 概略のみを記す。
+定義より明らかに、
+  \ms{\min \calF (\a,b) \subseteq 
+       \min \calF^1_+ \; \cup \; \min \calF^1_- }
+と
+  \ms{\min \calF (\a,b) \supseteq \min \calF^1_- }
+が成り立つ。
+もし\ms{\exists S \in \min \calF^1_+ - \min \calF (\a,b) }
+ を仮定すると、
+ \ms{S -1 \in \calF (\a,b)}であり、
+ \ms{\sum_{i \in S-1} a_i \geq b}が成り立っている。
+ \ms{a_1 \geq \cdots \geq a_n}より\ms{\exists j \in S-1 }
+ ならば
+ \ms{\sum_{i \in S-j}a_i \geq \sum_{i \in S-1} a_i \geq b}
+ より\ms{S \in \min \calF^1_+}に矛盾する。
+ ゆえに\ms{S=\{1\}}であるが、
+ \ms{S-1 = \emptyset \in \calF (\a, b)}
+ が導かれ、矛盾。
+\hfill $\Box$}
+\end{theorem}
+
+\noindent
+上記定理中の集合族
+ \ms{\calF^1_+}と\ms{\calF^1_-}は、
+\ms{\a'=(a_2,a_3,\ldots,a_n)}とすると、
+\[
+  \calF^1_+ =
+   \{S +1 \mid S \in \min \calF (\a',b-a_1)\}, \;\;
+  \calF^1_- =\calF (\a',b)
+\]
+と書くことが出来る。
+これを用いて以下の算法を構築することが出来る。
+
+\begin{tabbing}
+xx \= xx \= xx \= xx \= xx \= xx \= \kill
+{\bf Input:} 正整数ベクトル\ms{\a=(a_1,a_2, \ldots,a_n)^T}と正整数\ms{b} 、\\
+ \> \>   ただし\ms{ a_1 \geq a_2 \geq \cdots \geq a_n} 
+         かつ \ms{a_1 + a_2 + \cdots + a_n \geq b}を満たす。\\
+{\bf Output:} 集合族\ms{\calF (\a,b)}の全ての極小集合。 \\
+{\bf begin}(main routine) \\
+  \> ENUMERATE \ms{(\emptyset,1,b)} \\
+{\bf end} \\
+\paprocedure  ENUMERATE \ms{(S',n',b')} \\
+ \> {\bf begin} \\
+% \> \> \paif \ms{b'\leq 0} \pathen 
+%     \ms{\{}\paoutput \ms{S'}; \pareturn \ms{\};} \\
+ \> \> \paif \ms{n'=n} \pathen 
+     \ms{\{}\paoutput \ms{S' \cup \{n\}}; \pareturn \ms{\};} \\
+ \> \> \paelse \ms{\{} \\ 
+ \> \> \> \paif \ms{(a_{n'+1}+ \cdots + a_n) \geq b'} \pathen
+                ENUMERATE \ms{(S',n'+1,b')};\\ 
+ \> \> \> \paif \ms{a_{n'} \geq b'} \pathen 
+                \ms{\{}\paoutput \ms{S' \cup \{n'\}\}}; \\
+ \> \> \> \paelse  ENUMERATE \ms{(S'\cup\{n'\},n'+1,b'-a_{n'})} ; \\
+ \> \> \> \pareturn \ms{\}}\\
+ \> {\bf end} \\
+\end{tabbing}
+
+上記の再帰呼び出し算法は、
+極小集合を１つ出力するか 
+ $\paprocedure$  ENUMERATE 
+  を少なくとも１回再帰呼び出しする。
+ $\paprocedure$  ENUMERATE 
+  を連続して$n+1$回以上再帰呼び出しする事は無いので、
+ $\paprocedure$ ENUMERATEが実行される回数は、
+出力する極小集合の数の$n$倍以下となる。
+$\paprocedure$ ENUMERATE の各行の実行時間は、
+上記算法中の \ms{(a_{n'+1}+\cdots +a_n)}
+の値を常に更新しながら注意深く保持することにより、
+  \ms{\Order (1)}時間で実装することができる。
+ゆえに上記の算法の総実行時間は\ms{\Order (n | \min \calF (\a,b)|)}、
+必要記憶容量は\ms{\Order (n)}である。
+
+上記の算法を用いて極小勝利提携が出力されるたびに、
+各投票者のD-P指数を更新することにより、
+投票者全員分のD-P指数を
+時間計算量\ms{\Order (n | \min \calW|)}、
+記憶容量\ms{\Order (n)}で計算することができる。
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{S-S指数とBz指数を求める列挙算法}
+
+本節では
+投票者\ms{i}のS-S指数とBz指数を計算する列挙算法を提案する。
+投票者\ms{i}に対応する要素のみを取り除いた票数ベクトル
+     \ms{(w_1,w_2,\ldots,w_{i-1},w_{i+1},\ldots,w_n)^T}
+を改めて
+ \mbox{\ms{ \w'=(w'_1,w'_2,\ldots,w'_{n-1})^T }}
+と表し、
+\ms{\f^+=\f(\w',q)}と
+\ms{\f^-=\f(\w',q-w_i)}と書く。
+すると定義より明らかに
+\[
+   \SSi_i=\sum_{t=1}^{n-1}\frac{t!(n-t-1)!}{n!} (f^+_t- f^-_t) , \;\;\;\;
+   \BZi_i=(1/2^{n-1})\sum_{t=1}^{n-1}(f^+_t - f^-_t)
+\]
+が成り立つ。
+
+以下では
+正整数ベクトル\ms{\a=(a_1,a_2,\ldots,a_k)}と整数\ms{b}が与えられたとして、
+ベクトル\ms{\f(\a,b)}を求める算法を記述する。
+下記算法中では、\ms{n}に対する２項係数ベクトルを\ms{\bino_k}と表す、
+すなわち\ms{\bino_k=(_k\CCC_0,\, _k\CCC_1,\ldots,\, _k\CCC_k)^T}である。
+また\ms{k}次元のゼロベクトルを\ms{\0_k}と書く。
+
+\begin{tabbing}
+x \= x \= x \= x \= xx \= xx \= \kill
+{\bf Input:} 正整数ベクトル\ms{\a=(a_1,a_2, \ldots,a_n)^T}と正整数\ms{b}、\\
+  \> \> ただし\ms{ a_1 \geq a_2 \geq \cdots \geq a_n >0 }かつ
+             \ms{a_1+a_2+\cdots +a_n \geq b} を満たす。\\
+{\bf Output:} ベクトル\ms{\f (\a,b)}。 \\
+{\bf begin}(main routine) \\
+  \> SHELLING \ms{(1,b)}; \\
+{\bf end} \\
+\pafunction  SHELLING \ms{(n',b')} \\
+ \> {\bf begin} \\
+% \> \> \paif \ms{b'\leq 0} \pathen 
+%       \pareturn \ms{(\0_{n-n'+1});} \\
+ \> \> \paif \ms{n'=n} \pathen 
+       \pareturn \ms{((0,1));} \\
+ \> \> \paelse \{ \\
+ \> \> \> \paif  \ms{(a_{n'+1}+\cdots +a_n ) \geq b' } \pathen
+           \ms{\f^1:=} SHELLING \ms{(n'+1,b')}; 
+           \paelse \ms{\f^1:= \0_{n-n'}}; \\ 
+ \> \> \> \paif  \ms{a_{n'}\geq b'} \pathen
+           \ms{\f^2:=\bino_{n-n'}}; 
+           \paelse
+           \ms{\f^2:=} SHELLING \ms{(n'+1,b'-a_{n'})}; \\
+ \> \> \> \ms{\f':=(f^1_1,f^1_2+f^2_1,f^1_3+f^2_2,\ldots,
+                    f^1_{n'}+f^2_{n'-1},f^2_{n'});} \\
+ \> \> \> \pareturn \ms{(\f')} \} \\
+ \> {\bf end} \\
+\end{tabbing}
+
+
+
+上記の再帰呼び出し算法も、
+ $\paprocedure$ SHELLING が実行される回数は、
+ 極小集合の数の$n$倍以下となる。
+２項係数表があれば \pafunction 中の各行の
+計算時間は\ms{\Order (n)}で抑えられる。
+ゆえに総計算量は\ms{\Order (n^2 |\min \calF (\a,b)|)}で抑えられる。
+必要記憶容量は、再帰呼び出しの深さが最大\ms{n}であることから
+長さ\ms{n}以下のベクトルを最大\ms{n}本保持出来れば良い。
+
+上記の算法を用いて\ms{\f^+}と\ms{\f^-}を求める計算量は
+\ms{\Order (n^2 |\min \calW^i_+|+ n^2 |\min \calW^i_-|)
+   =\Order (n^2 |\min \calW |)}
+となる。
+ただし２項係数表を作る前処理として
+\ms{\Order (n^2)}の時間が必要である。
+以上より、投票者\ms{i}のS-S指数とBz指数を、
+時間計算量\ms{\Order (n^2 |\min \calW |)}、
+記憶容量\ms{\Order (n^2)}で計算することができる。
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{モンテカルロ法}
+
+本節では、ランダムサンプリングに基づいた
+S-S指数の最尤推定法について議論する。
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{S-S指数を求めるモンテカルロ法}
+
+S-S指数の定義より、
+投票者の順列すべてが等確率で起こると仮定したときの、
+各投票者のピヴォットとなる期待値が、
+S-S指数である。
+
+投票者の順列をランダムに\ms{p^*}個発生させたとき、
+各々の投票者がピヴォットになる回数を表す確率変数を
+\ms{P_1,P_2,\ldots,P_n}と表す。
+確率変数\ms{P_1,\ldots,P_n}の同時分布は多項分布となり、
+\ms{\displaystyle 
+   \Prob [P_1=p_1,P_2=p_2,\ldots,P_n=p_n]
+   = \frac{p!}{p_1! p_2! \cdots p_n!}
+      \SSi_1^{p_1}\SSi_2^{p_2}\cdots\SSi_n^{p_n}
+}
+で与えられる、
+ただし\ms{\p=(p_1,\ldots,p_n)^T}は
+総和が\ms{p^*}となる非負整数の組とする。
+
+上記の多項分布の定義式を尤度関数としたとき、
+標本\ms{\p=(p_1,p_2,\ldots,p_n)^T}から得られる、
+投票者\ms{i}のS-S指数の最尤推定値は
+\ms{p_i/p^*}である。
+
+投票者は票数にしたがって整列されているとする、
+すなわち
+\ms{  w_1 \geq w_2 \geq \cdots \geq w_n }
+という仮定より、
+各投票者のS-S指数は
+\ms{  \SSi_1 \geq \SSi_2 \geq \cdots \geq \SSi_n }
+を満たしているが、
+各投票者の推定値\ms{p_i/p^*}は上記のような単調性を満たすとは限らない。
+そのため上記の単調性を保った最尤推定を行なう必要がある。
+S-S指数の単調性を満たす最尤推定値は以下の最適化問題の最適解として求められる、
+\begin{eqnarray}
+    \nonumber
+\mbox{MLE}(\p):
+ \mbox{maximize}&&  p_1\log x_1+p_2\log x_2+\cdots +p_n\log x_n  \\
+\mbox{subject to}&& x_1 \geq x_2 \geq \cdots \geq x_n \geq 0,
+                           \label{order-prsv}\\
+                 && x_1+x_2+\cdots x_n =1,
+\end{eqnarray}
+ただし上記の目的関数は対数尤度の定数項を取り除いたものである。
+以下ではこの最適化問題の解法について議論する。
+
+
+% \centerline{\Large ゼロはダミーにするぞー}
+
+任意の非負ベクトル\ms{\p=(p_1,\ldots,p_n)^T}に対して、
+ベクトル
+\ms{\cumv{\p}=(\cumv{p}_0,\cumv{p}_1,\ldots,\cumv{p}_n)^T}は
+\ms{\cumv{p}_0=0}と\ms{\cumv{p}_i=p_1+\cdots+p_i}を満たすベクトルとし、
+ベクトル\ms{\p}の累積ベクトルと呼ぶ。
+また任意の非負ベクトル\ms{\p=(p_1,p_2,\ldots,p_n)^T}に対して、
+関数\ms{f:[0,n]\rightarrow \Real}は、
+\ms{f(0)=0}かつ
+\ms{\forall i \in \{1,\ldots,n\}, \;
+   f(i)\geq p_1+p_2+\cdots +p_i}
+を満たすすべての連続凹関数の下限を達成する関数とし、
+このときベクトル
+\[
+   (f(1)-f(0),f(2)-f(1), \ldots,f(n)-f(n-1))^T
+\]
+を \ms{\isrg{\p}=(\isrg{p}_1,\isrg{p}_2,\ldots ,\isrg{p}_n)^T}と書き、
+\ms{\isrg{\p}}を\ms{\p}の単調回帰(isotonic regression)と呼ぶ。
+
+問題MLEにおいて、以下の定理が成り立つ。
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{theorem}\label{MonteSS}
+正ベクトル\ms{\p=(p_1,\ldots,p_n)^T}に対して、
+\ms{(1/p^*)\isrg{\p}}は最適化問題MLE$(\p)$の最適解となる。
+ただし\ms{p^*=p_1+p_2+\cdots +p_n}である。
+
+{\rm 
+\noindent {\bf 証明：}
+%
+%
+単調回帰の定義より、
+\ms{(\cumv{\isrg{p}}_i-\cumv{p}_i)}が正ならば
+  \ms{ \isrg{p}_i = \isrg{p}_{i+1}}である。
+ゆえに\ms{i = 1,2,\ldots,n-1}に対し、 
+   \ms{(\cumv{\isrg{p}}_i-\cumv{p}_i)
+          (\log \isrg{p}_i -\log \isrg{p}_{i+1})=0}
+が成り立つ。
+これより、
+\begin{eqnarray*}
+0&=&\sum_{i=1}^{n-1} 
+   (\cumv{\isrg{p}}_i-\cumv{p}_i)
+          (\log \isrg{p}_i -\log \isrg{p}_{i+1})
+  +(\cumv{\isrg{p}}_n    -\cumv{p}_n    )
+                                 \log \isrg{p}_n \\ 
+&=&(\cumv{\isrg{p}}_1-\cumv{p}_1)\log \isrg{p}_1
+   +\sum_{i=2}^n (-(\cumv{\isrg{p}}_{i-1}-\cumv{p}_{i-1})
+                     +(\cumv{\isrg{p}}_i    -\cumv{p}_i    ))
+                                 \log \isrg{p}_i \\ 
+&=&(\isrg{p}_1-p_1)\log \isrg{p}_1
+   +\sum_{i=2}^n(\isrg{p}_i-p_i) \log \isrg{p}_i 
+   =\sum_{i=1}^n(\isrg{p}_i-p_i) \log \isrg{p}_i 
+\end{eqnarray*}
+が成り立つ。すなわち、
+  \ms{\sum_{i=1}^n p_i \log \isrg{p}_i 
+   =  \sum_{i=1}^n \isrg{p}_i \log \isrg{p}_i} 
+となる。
+
+
+問題MLE$(\isrg{\p})$の最適解について議論する。
+制約式(\ref{order-prsv})を問題MLE$(\isrg{\p})$より
+取り除いた緩和問題のKKT条件は 
+\[ 
+    \isrg{p}_i/x_i - \lambda =0\;\; (i=1,\ldots,n), \;\;\;
+   x_1+x_2+\cdots+x_n=1
+\]
+となる。
+ゆえに\ms{\x=(1/p^*)\isrg{\p}
+      =(\isrg{p}_1/p^*,\ldots,\isrg{p}_n/p^*)^T}と
+\ms{\lambda=p^*}はKKT条件を満たし、
+この緩和問題の最適解である。
+解\ms{(1/p^*)\isrg{\p}}が制約式(\ref{order-prsv})を満たすことから
+  \ms{(1/p^*)\isrg{\p}}はMLE$(\isrg{\p})$の最適解でもある。
+これよりMLE$(\p)$の任意の許容解\ms{\x}において、
+   \ms{\x}はMLE$(\isrg{\p})$の許容解でもあるため、
+\ms{
+         \sum_{i=1}^n \isrg{p}_i \log (\isrg{p}_i/ p^*) 
+  \geq   \sum_{i=1}^n \isrg{p}_i \log x_i 
+}
+が成り立つ。  
+
+値\ms{(\cumv{\isrg{p}}_{i-1}-\cumv{p}_{i-1})}は定義より非負である。
+また、MLE$(\p)$の任意の許容解\ms{\x}において、
+制約式(\ref{order-prsv})より
+      \ms{\log  x_i - \log  x_{i+1} \geq 0}
+  が成り立つ。
+これより、
+\[
+0  \leq 
+   \sum_{i=1}^{n-1} 
+   (\cumv{\isrg{p}}_i-\cumv{p}_i)
+          (\log x_i -\log x_{i+1})
+  +(\cumv{\isrg{p}}_n    -\cumv{p}_n    )
+                                 \log x_n 
+   =\sum_{i=1}^n(\isrg{p}_i-p_i) \log x_i 
+\]
+が成り立つ。すなわち、
+   \ms{\sum_{i=1}^n \isrg{p}_i \log x_i 
+  \geq \sum_{i=1}^n p_i \log x_i}が示された。
+
+以上より、MLE$(\p)$の任意の許容解\ms{\x}において、
+  次の不等式
+\begin{eqnarray*}
+    \sum_{i=1}^n p_i \log (\isrg{p}_i/p^*) 
+   &=&\sum_{i=1}^n p_i \log \isrg{p}_i 
+    - \sum_{i=1}^n p_i \log p^* 
+   =  \sum_{i=1}^n \isrg{p}_i \log \isrg{p}_i 
+    - \sum_{i=1}^n \isrg{p}_i \log p^*  \\
+   &=&   \sum_{i=1}^n \isrg{p}_i \log (\isrg{p}_i/ p^*)
+  \geq \sum_{i=1}^n \isrg{p}_i \log x_i 
+  \geq \sum_{i=1}^n p_i \log x_i
+\end{eqnarray*}
+が成立し、\ms{(1/p^*)\isrg{\p}}はMLE$(\p)$の最適解となる。 
+\hfill $\Box$}
+\end{theorem}
+\noindent
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
+単調回帰については文献\cite{BARLOW1972}に詳しい議論がされており、
+上記の定理についてもより一般的な設定で証明されている。
+
+単調回帰ベクトルは、２次元座標平面上の点集合
+\ms{Q=\{(i,q_i)\mid i=0,1,\ldots,n\}}の凸包を求めることにより、
+容易に計算される。
+集合\ms{Q}中の点は、
+バケット整列法により\ms{\Order (n)}時間で、
+  第一座標の値によって整列することができる。
+第一座標の値で整列した後は、
+  Grahamの走査法\cite{GRAHAM1972}により
+  \ms{\Order (n)}時間で凸包を求めることができる
+  （例えば\cite{PREPARATA1985} 3.3.2節参照）。
+単調回帰ベクトルは、\cite{BARLOW1972}に述べられている
+Pool-Adjacent-Violators algorithm でも求めることができる。
+この算法も、注意深く実装することにより
+計算時間は\ms{\Order (n)}となる。
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Bz指数を求めるモンテカルロ法}
+
+Bz指数の定義より、
+投票者の提携すべてが等確率で発生すると仮定したときの、
+各投票者のスウィングとなる確率がBz指数である。
+
+提携をランダムに\ms{p^*}個発生させたとき、
+各々の投票者がスウィングになる回数を表す確率変数を
+\ms{P_1,P_2,\ldots,P_n}と表す。
+Bz指数の単調性を満たす最尤推定値は以下の最適化問題の最適解として求められる、
+\begin{eqnarray}
+    \nonumber
+\mbox{MLE'}(\p):
+ \mbox{maximize}&& \sum_{i=1}^n
+                    (p_i\log x_i + (p^*-p_i)\log (1-x_i)) \\
+\mbox{subject to}&& 1 \geq x_1 \geq x_2 \geq \cdots \geq x_n \geq 0,
+\end{eqnarray}
+ただし上記の目的関数は対数尤度の定数項を取り除いたものである。
+このとき、以下の定理が成り立つ。
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{theorem}
+正ベクトル\ms{\p=(p_1,\ldots,p_n)^T}に対して、
+ベクトル\ms{(1/p^*)\isrg{\p}}は最適化問題MLE'$(\p)$の最適解となる、
+ただし\ms{p^*=p_1+p_2+\cdots +p_n}である。
+
+{\rm 
+\noindent {\bf 証明：}
+%
+%
+証明の概略は、定理\ref{MonteSS}とほぼ同じである。
+以下では\ms{h(\p,\x)= 
+      \sum_{i=1}^n (p_i\log x_i + (p^*-p_i)\log (1-x_i))}
+と置く。
+
+単調回帰の定義より、
+\ms{(\cumv{\isrg{p}}_i-\cumv{p}_i)}が正ならば
+  \ms{ \isrg{p}_i = \isrg{p}_{i+1}}である。
+さらに、問題MLE'の目的関数は\ms{\p}に関して線形であることから、
+\ms{h (\isrg{\p},\isrg{\p})=h (\isrg{\p},\p)}
+% \{
+%    \sum_{i=1}^n (p_i\log \isrg{p}_i/p^* + (p^*-p_i)\log (1-\isrg{p}_i/p^*))
+%  = \sum_{i=1}^n (\isrg{p}_i\log \isrg{p}_i/p^* + 
+%             (p^*-\isrg{p}_i)\log (1-\isrg{p}_i/p^*))
+% \]
+が成り立つ。
+%
+ベクトル\ms{(1/p^*)\isrg{\p}}は、
+問題MLE'$(\isrg{\p})$の最適解となるのは明らかであろう。
+問題MLE'$(\p)$の任意の許容解\ms{\x}は
+MLE'$(\isrg{\p})$の許容解でもあるため、
+\ms{h (\isrg{\p},\isrg{\p}) \geq h (\isrg{\p},\x)}
+が成り立つ。  
+%  \begin{eqnarray*}
+%     \sum_{i=1}^n (\isrg{p}_i\log \isrg{p}_i/p^* + 
+%            (p^*-\isrg{p}_i)\log (1-\isrg{p}_i/p^*))
+% &\geq& \sum_{i=1}^n (\isrg{p}_i\log x_i + 
+%            (p^*-\isrg{p}_i)\log (1-x_i)) \\
+% &=&    \sum_{i=1}^n \isrg{p}_i 
+%                (\log x_i -\log (1-x_i))
+%       +\sum_{i=1}^n  p^*\log (1-x_i) \\
+% \end{eqnarray*}
+値\ms{(\cumv{\isrg{p}}_{i-1}-\cumv{p}_{i-1})}は定義より非負である。
+MLE'$(\p)$の任意の許容解\ms{\x}において、
+\ms{x_i \geq x_{i+1}}より
+      \ms{\log  x_i - \log (1- x_i) \geq 
+          \log  x_{i+1} - \log(1-  x_{i+1})}
+である。
+これより、
+\begin{eqnarray*}
+0  &\leq& 
+   \sum_{i=1}^{n-1} 
+   (\cumv{\isrg{p}}_i-\cumv{p}_i)
+      ((\log  x_i - \log (1- x_i))-( \log  x_{i+1} - \log(1-  x_{i+1}))) \\
+ &+&(\cumv{\isrg{p}}_n -\cumv{p}_n)(\log  x_n - \log (1- x_n))
+   =\sum_{i=1}^n(\isrg{p}_i-p_i) 
+      (\log  x_i - \log (1- x_i))
+\end{eqnarray*}
+が成り立つ。すなわち、
+\ms{h (\isrg{\p},\x) \geq h (\p,\x)}
+% \[
+%  \sum_{i=1}^n \isrg{p}_i (\log x_i -\log (1-x_i))
+%       +\sum_{i=1}^n  p^*\log (1-x_i) 
+%  \geq 
+%  \sum_{i=1}^n p_i  (\log x_i -\log (1-x_i))
+%       +\sum_{i=1}^n  p^*\log (1-x_i)
+% \]
+が示された。
+
+以上より、
+\ms{(1/p^*)\isrg{\p}}はMLE'$(\p)$の最適解となる。 
+\hfill $\Box$}
+\end{theorem}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
+
+\section{おわりに}
+
+本稿では、重みつき投票ゲームの投票力指数の
+計算についての話題をまとめた。
+投票力指数の計算は県議会、国会、株主総会等
+様々な状況において必要とされているが、
+効率の良い算法が無いために
+大きな議決機関についてはその計算は困難である。
+このため、より効率の良い解法、
+または近似算法の開発が望まれている。
+また現実問題の要請としては、
+票数の大きな投票者数人と、
+票数の非常に小さな投票者多数からなる
+重みつき多数決ゲームについて、
+指数を高速に計算する算法の開発が求められている。
+衆参両議院のような代議員制度に見られる、
+２段階投票システムに対する投票力指数の計算についても、
+まだ研究の余地は十分に残されていると感じられる
+\cite{OWEN1995,MUTO1998,SUZUKI1985}。
+投票力指数は、未来の様々なシナリオについて計算することも多く、
+良く似通った票数からなるゲームを繰り返し解く状況での、
+効率的な算法の開発も今後の課題として残されている。
+投票力指数の計算は、
+最適化問題ではなく数え挙げ問題の構造を持っており、
+最適化問題に対する従来の発見的解法や近似解法のアイデアを
+利用することが困難であり、
+効率的な算法の開発には新たな知見が必要であろう。
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{thebibliography}{10}
+
+
+\bibitem{BANZHAF1965}
+{\sc J.F.Banzhaf \Romannum{3}}, {\em Weighted voting doesn't work},
+ Rutgers Law Review, 19 (1965), 317-343.
+
+\bibitem{BARLOW1972}
+{\sc R.E.Barlow, D.J.Bartholomew, J.M.Bremner and H.D.Brunk},
+ {\em Statistical Inference under Order Restrictions}, 
+  John Wiley and Sons, 1972.
+
+\bibitem{BELLMAN1956}
+{\sc R.E.Bellman}, 
+{\em Notes on the theory of dynamic programming \mbox{\Romannum{4}} 
+   -- maximization over discrete sets},
+ Naval Research Logistics Quarterly, 3 (1956), 67-70.
+
+\bibitem{BRAMS1975}
+{\sc S.J.Brams and P.J.Affuso}, {\em Power and size; a new paradox},
+ mimeographed paper, 1975.
+
+\bibitem{DEEGAN1978}
+{\sc J.Deegan and E.W.Packel}, 
+{\em A new index of power for simple \mbox{$n$}-person games},
+ International Journal of Game Theory, 7 (1978), 113-123.
+
+\bibitem{DUBEY1979}
+{\sc P.Dubey and L.S.Shapley}, 
+{\em Mathematical properties of the Banzhaf power index},
+ Mathematics of Operations Research, 4 (1979), 99-131.
+
+\bibitem{GAREY1979}
+{\sc M.R.Garey and D.S.Johnson},
+ {\em Computers and Intractability:
+ a guide to the theory of NP-completeness},
+ W.H.Freeman and Company, 1979.
+
+\bibitem{GRAHAM1972}
+{\sc R.L.Graham},
+ {\em An efficient algorithm for determining the convex hull
+   of a finite planar set},
+  Information Processing Letters, 1 (1972),132-133.
+
+\bibitem{KARP1972}
+{\sc R.M.Karp}, {\em Reducibility among combinatorial problems},
+ in R.E.Miller and J.W.Thatcher eds.,
+ {\sc Complexity of Computer Computations}, 
+Plenum Press, New York, 1972, 85-103.
+
+\bibitem{LUCAS1983}
+{\sc W.F.Lucas}, {\em Measuring power in weighted voting systems},
+in S.J.Brams, W.F.Lucas and P.D.Straffin eds.,
+ {\em Political and related models}, Springer-Verlag, 1983, 183-238.
+
+\bibitem{MATSUI1998}
+{\sc Y.Matsui and T.Matsui}, 
+{\em NP-completeness for calculating
+ power indices of weighted majority games},
+{\em METR98-01}, Technical Report, 
+ Department of Mathematical Engineering and Information Physics,
+  Faculty of Engineering, University of Tokyo, 1998.
+
+\bibitem{OWEN1995}
+{\sc G.Owen}, {\em Game Theory, 3rd ed.}, Academic Press, 1995.
+
+\bibitem{XIAOTIE1994}
+{\sc X.Deng and C.H.Papadimitriou},
+ {\em On the complexity of cooperative solution concepts},
+Mathematics of Operations Research, 19 (1994), 257-266.
+
+\bibitem{PREPARATA1985}
+{\sc F.P.Preparata and M.I.Shamos},
+ {\em Computational Geometry},
+ Springer-Verlag, 1985;
+ 浅野孝夫,浅野哲夫 訳,
+ 「計算幾何学入門」,
+  総研出版, 1992.
+
+\bibitem{SHAPLEY1953}
+{\sc L.S.Shapley}, {\em A value for n-person games},
+in {\em Contributions to the Theory of Games, Vol.II},
+ in H.W.Kuhn and A.W.Tucker eds.,
+ {\sc Annals of Mathematics Studies}, 28, 
+Princeton University Press, 1953, 307-317.
+
+\bibitem{SHAPLEY1954}
+{\sc L.S.Shapley and M.Shubik}, 
+{\em A method for evaluating the distribution
+ of power in a committee system},
+American Political Science Review, 48 (1954), 787-792.
+
+\bibitem{OKADA1996}
+{\sc 岡田章}, 「ゲーム理論」, 有斐閣, 1996.
+
+\bibitem{KONNO1982}
+{\sc 今野浩,鈴木久敏 編}, 「整数計画法と組合せ最適化」, 日科技連, 1982.
+
+\bibitem{SUZUKI1985}
+{\sc 鈴木光男,武藤滋夫}, 「協力ゲームの理論」, 東京大学出版, 1985.
+
+\bibitem{MUTO1998}
+{\sc 武藤滋夫,小野理恵}, 「投票制度のゲーム分析」, 日科技連, 1998.
+
+\end{thebibliography}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}
+
+

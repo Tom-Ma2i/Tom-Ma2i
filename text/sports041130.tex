@@ -1,0 +1,717 @@
+%%%%%%%%% sports5t1.tex %%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[9pt,a4paper,titlepage,twocolumn]{jsarticle}
+%\documentclass[10pt,a4paper,titlepage,twocolumn]{jsarticle}
+%%%% コンパイルには cite.sty が必要です
+
+%%%% パッケージ
+\usepackage{cite} %%%% 参考文献まとめ用
+
+%%%% 図表パラメータ
+\setcounter{topnumber}{100}
+\setcounter{bottomnumber}{100}
+\setcounter{totalnumber}{100}
+\renewcommand{\topfraction}{1.0}
+\renewcommand{\bottomfraction}{1.0}
+\renewcommand{\textfraction}{0.0}
+\renewcommand{\floatpagefraction}{0.0}
+
+%%%% [　] 全角スペース
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% 本文
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% １．はじめに
+%%%%%%%%%%%%%%%%%
+%%%% \newpage
+\pagenumbering{arabic} %%%% ここからページを数字
+
+\twocolumn[
+\begin{center}
+\begin{LARGE}
+{\bf スポーツスケジューリング --- 未解決問題を中心に ---}\\
+\end{LARGE}
+~\\
+\begin{Large}
+宮代 隆平,  松井 知己\\~\\
+\end{Large}
+\end{center}
+]
+
+\section{はじめに} \label{Section1}
+
+
+「アメリカ大リーグの2005年スケジュールは，カーネギーメロン大学の
+トリック教授のグループが作成したものを採用することになった．」
+
+最近の読売新聞\cite{YOMIURI}で，
+このニュースをご覧になった方も多いと思う．
+ここでトリック教授というのは，2002年にINFORMSの会長だった
+Michael Trickのことを指している．
+このように欧米では，ORの研究者が
+スポーツ競技のスケジュール作成を行うことが増えてきている．
+アメリカ大リーグ以外にも，
+ここ数年ではブラジルのプロサッカーリーグ (Ribeiro, Urrutia~\cite{Ribeiro-2004}),
+アメリカ西海岸大学対抗バスケットボール (Nemhauser, Trick~\cite{Nemhauser-1998}),
+ドイツのプロサッカーリーグ (Bartsch, Drexl, Kr\"{o}ger~\cite{Bartsch-2005})など，
+大規模なスポーツ競技団体を含むさまざまな実例がある．
+ORの手法を用いたプロスポーツ競技のスケジュール作成の波は，
+やがて日本にも上陸することだろう．
+
+
+スポーツ競技における対戦順序，競技施設の割当などをうまく決定し，
+質の良いスケジュールを作成する分野は，スポーツスケジューリングと呼ばれている．
+スポーツスケジューリングの研究は，1970年代ころから散発的に行われていたが，
+ここ数年で特に研究が活発化してきた．
+本稿では，スポーツスケジューリングの最近の研究に関して，
+いくつかの未解決問題を中心に紹介する．
+（スポーツスケジューリングに関しては，
+%%%文献\cite{HANDBOOK-SCHEDULING,HANDBOOK-GRAPH,Matsui-1999}などを参照のこと．）
+文献\cite{HANDBOOK-SCHEDULING,HANDBOOK-GRAPH,Matsui-1999,Miyashiro-2000-OR}などを参照のこと．）
+まず\ref{Subsection2.1}節において，基本的な用語を定義し，
+以下\ref{Subsection2.2}--\ref{Subsection2.5}節でそれぞれ
+移動距離最小化問題，ブレーク数最小化問題，
+Home-Away Table許容性判定問題，carry-over effect値最小化問題を紹介する．
+最後に\ref{Subsection2.6}節で，スポーツスケジューリングの研究に
+用いられている手法ごとに概観を述べる．
+なお，本稿で述べるスケジュールの形式は，全てリーグ戦形式である．
+トーナメント形式の実用スケジューリング手法に関しては，
+Rokoszによる文献\cite{Rokosz-2000}を参照されたい．
+
+
+\section{スポーツスケジューリングの近年の展開} \label{Section2}
+\subsection{用語の定義} \label{Subsection2.1}
+
+本稿では，次のような総当りリーグ戦のスケジューリングについて考える：
+\begin{itemize}
+\item チーム数は偶数（以下$n$とする）；
+\item 各チームは他の$n-1$チームと1回ずつ対戦を行う；
+\item 全てのチームが1日（あるいは1週間など）に1回試合を行い，$n-1$日でリーグ戦
+が終了する．
+\end{itemize}
+
+プロスポーツ競技における総当りリーグ戦では，
+各チームが本拠地を持っており，
+各試合はどこかのチームの本拠地で開催されることが多い．
+以下，\ref{Subsection2.2}--\ref{Subsection2.4}節では，
+次の条件の下で総当りリーグ戦が行われるとする：
+
+\begin{itemize}
+\item 各チームはそれぞれ相異なる本拠地を持つ；
+\item 各試合は，対戦する2チームのどちらかの本拠地で行われる．
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[t]
+\begin{center}
+\begin{tabular}{c|rrrrr}
+チーム  &{\small 1日目}&{\small 2日目}&{\small 3日目}&{\small 4日目}&{\small 5日目}\\ \hline
+ 1      &  3 & @4 &  5 & @6 &  2  \\
+ 2      & @5 &  6 &  \underline{4} &  \underline{3} & @1  \\
+ 3      & @1 &  5 & @6 & @\underline{2} &  4  \\
+ 4      & @6 &  1 & @2 &  5 & @3  \\
+ 5      &  2 & @3 & @\underline{1} & @\underline{4} &  6  \\
+ 6      &  4 & @2 &  3 &  \underline{1} & @5  \\
+\end{tabular}
+\caption{チーム数6のスケジュール \label{FIG1}}
+\end{center}
+\end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+図\ref{FIG1}は，上記の条件を満たすスケジュールの一例である．
+スケジュールのそれぞれの行は各チームに対応し，
+行内の数字は日ごとの対戦相手を表している．
+図\ref{FIG1}のスケジュールでは，チーム1は1日目にチーム3と対戦し，
+以下チーム4, 5, 6, 2の順序で試合を行っていく．
+各試合の前にある@の記号は，
+その試合が対戦相手の本拠地で行われることを示している．
+つまり，チーム1はチーム4と2日目に試合を行うが，
+この試合はチーム4の本拠地で行われる．
+逆に@がついていない試合は，自チームの本拠地で行われる．
+それぞれのチームにとっての本拠地を{\bf ホーム}，
+それに対して他チームの本拠地を{\bf アウェイ}と呼ぶ．
+また各チームにとって，ホームでの試合を{\bf ホームゲーム}，
+アウェイでの試合を{\bf アウェイゲーム}と呼ぶ．
+
+
+\subsection{移動距離最小化問題} \label{Subsection2.2}
+
+前節で述べた，
+「各チームがそれぞれ異なる本拠地を持ち，
+各試合は対戦するチームのどちらかの本拠地で行う」
+というリーグ戦の形式は，
+野球，サッカーなどをはじめとするプロのスポーツ競技で広く用いられている．
+このとき，リーグ戦のスケジュールをうまく作成することにより
+各チームの移動距離の総和を
+最小化する問題が移動距離最小化問題である．
+国土が広大な国では，移動距離を減少させることによる
+移動コストの削減効果は非常に大きくなる．
+最近では，Ribeiro, Urrutia~\cite{Ribeiro-2004}が，
+メタ・ヒューリスティクスを用いてブラジルのプロサッカーリーグ（2003年，24チーム）の
+移動距離最小化をはかり，費用にして約270万ドルの削減に成功した．
+彼らの作成したスケジュールの総移動距離は55万kmだったが，
+同時にスケジュール委員会が手作業で作成したスケジュールの移動距離は
+約150万kmだったと報告されている．
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{table}[t]
+\begin{center}
+\caption{TTPの下界／上界値 (NL instances~\cite{Trick-TTP})} \label{TTPrecords}
+\begin{tabular}{crrr}
+チーム数 &   下界 &   上界 & ギャップ\\ \hline
+4        &   8276 &   8276 & 0 \\ 
+6        &  23916 &  23916 & 0 \\ 
+8        &  39479 &  39479 & 0 \\ 
+10       &  57500 &  59583 & 2083 \\ 
+12       & 107483 & 111248 & 3765 \\ 
+14       & 182797 & 189766 & 6969 \\ 
+16       & 248852 & 267194 & 18342 
+\end{tabular}
+\end{center}
+\end{table}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+移動距離最小化問題は，対象とするそれぞれのスポーツ競技によって
+条件が異なるが，現在ではベンチマークとして
+``Traveling Tournament Problem''（以下TTP）がよく知られている．
+TTPのベンチマークデータは，TrickによるWebページ\cite{Trick-TTP}に
+公開されている．（与えられる制約条件により，問題にいくつかの種類がある．）
+TTPの問題例は適度に抽象化されており
+他のスポーツスケジューリングにも容易に適用できること，
+また，問題の数値データ，現在までの最良の上界と下界の記録（表\ref{TTPrecords}）
+が公開されていることから，この問題に対する研究が一気に広まった．
+
+
+
+これまでTTPの上界の記録は，
+ほとんどメタ・ヒューリスティクスを用いた研究により更新されてきた．
+特に，
+Anagnostopoulos, Michel, Van Hentenryck, Vergados~\cite{Anagnostopoulos-2003}に
+よるシミュレーテッド・アニーリングを用いた手法は，
+従来得られていた上界値の記録を大幅に更新した．
+現在もTTPの最良暫定解の大部分が彼らによって発見されたものである．
+
+
+一方，TTPの下界値の更新は進んでいない．
+TTPは巡回セールスマン問題とよく似た構造を持つが，
+同程度の規模の巡回セールスマン問題と比較して最適解を求めるのが極めて困難である．
+例えば，現時点において最適解が求められているのは，
+チーム数（たった！）8以下の問題例に限られている．
+この結果は，Easton, Nemhauser, Trick~\cite{Easton-2003}の強力なグループによって，
+TTPを整数計画問題として定式化し，20台の計算機上で並列分枝限定法を
+5日間走らせることにより得られたものであるから，生半可な結果ではない．
+%（Nemhauser は Lanchester Prize を2回受賞しているような人である）．
+これだけからも，TTPがいかに難しいか感じていただけると思う．
+チーム数10以上のインスタンスに関して，これまでの手法を用いたのでは
+現実的な時間内に最適性を証明するのは難しく，
+研究に何らかのブレークスルーが必要だと考えられる．
+
+
+\subsection{ブレーク数最小化問題} \label{Subsection2.3}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[t]
+\begin{center}
+\begin{tabular}{c|ccccc}
+チーム  &{\small 1日目}&{\small 2日目}&{\small 3日目}&{\small 4日目}&{\small 5日目}\\ \hline
+ 1      & 3 & 4 &  5 & 6 & 2  \\
+ 2      & 5 & 6 &  4 & 3 & 1  \\
+ 3      & 1 & 5 &  6 & 2 & 4  \\
+ 4      & 6 & 1 &  2 & 5 & 3  \\
+ 5      & 2 & 3 &  1 & 4 & 6  \\
+ 6      & 4 & 2 &  3 & 1 & 5  \\
+\end{tabular}
+\caption{チーム数6のスケジュール（開催場所の割当無し） \label{BMP}}
+\end{center}
+\end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+図\ref{FIG1}のスケジュールは，
+各チームがそれぞれの日において「どのチームと」「どちらの本拠地で」対戦するか，
+という情報から成り立っている．
+本節では，あらかじめ「どのチームと対戦するか」が決められている場合について考える．
+図\ref{BMP}のような，
+試合開催場所の割当が決定されていないスケジュールが与えられた場合，
+スケジュールを完成させるためには
+各試合の開催場所（ホーム／アウェイ）を割り当てる必要がある．
+
+さて，ホーム／アウェイを決定する際に，何を基準にしたらよいだろうか．
+スポーツスケジューリングの分野では，
+チーム$t$が$d-1$日目と$d$日目に
+連続してホームゲームを行う，
+あるいは連続してアウェイゲームを行うとき，
+チーム$t$は$d$日目に{\bf ブレーク}を持つ，と呼ばれる．
+例えば図\ref{FIG1}のスケジュールでは，ブレークが6つある．
+（図\ref{FIG1}中の下線部がブレークに対応．）
+ブレークの多いスケジュールは，チーム間の公平性が保たれない，
+各本拠地での試合開催間隔がばらばらになる，などの問題点があり，
+多くのスポーツ競技において望ましくないスケジュールとされている．
+
+
+ブレーク数最小化問題とは，試合開催場所の指定が無いスケジュールが
+与えられたとき，ブレークができるだけ少なくなるように
+各試合にホーム／アウェイを割り当てる問題である．
+例えば，図\ref{BMP}のスケジュール（試合開催場所の割当て無し）が与えられたとき，
+図\ref{FIG1}のようにホーム／アウェイを割り当てればブレーク数は6となるが，
+ブレーク数が4となる割当も存在し，それが最適解となる．
+
+ブレーク数最小化問題は，スポーツスケジューリングの中でも比較的新しい問題である．
+この問題に対しては，1998年にR\'{e}gin~\cite{Regin-1998}が
+制約論理法を用いてチーム数20までのインスタンスを，
+2000年にはTrick~\cite{Trick-2000}が整数計画法を用いた定式化を行い
+チーム数22までのインスタンスを解いている．
+2003年にはElf, J\"{u}nger, Rinaldi~\cite{Elf-2003}がグラフ上のMAX CUTを
+求める問題として定式化を行い，
+専用の分枝限定法を実装してチーム数26までのインスタンスを
+現実的な時間で解いた．
+宮代・松井\cite{Miyashiro-2005-COR}は，
+ブレーク数最小化問題をMAX RES CUTおよびMAX 2SATとして定式化し，
+Goemans, Williamson~\cite{Goemans-1995}のSDP緩和を用いた%MAX RES CUTに対する
+近似解法を適用して，
+大規模なインスタンス（～40チーム）に対しても高速に質の良いスケジュールが生成できることを実証した．
+
+
+ブレーク数最小化問題の計算複雑度はNP-困難と予想されているが，
+まだ解決はされていない．
+一方，Elfら\cite{Elf-2003}は，
+「ブレーク数最小化問題において，ブレーク数がリーグ戦のチーム数未満となるような
+解が存在するか否かは多項式時間で判定可能」という予想を提出していたが，
+これは宮代・松井\cite{Miyashiro-2005-ORL}によって肯定的に解決された．
+
+
+\subsection{Home-Away Table許容性判定問題} \label{Subsection2.4}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[t]
+\begin{center}
+\begin{tabular}{c|ccccc}
+チーム  &{\small 1日目}&{\small 2日目}&{\small 3日目}&{\small 4日目}&{\small 5
+日目}\\ \hline
+ 1      &  H & A &  H & A &  H  \\
+ 2      &  A & H &  \underline{H} &  \underline{H} & A  \\
+ 3      &  A & H & A & \underline{A} &  H  \\
+ 4      &  A & H & A &  H & A  \\
+ 5      &  H & A & \underline{A} & \underline{A} &  H  \\
+ 6      &  H & A &  H &  \underline{H} & A  \\
+\end{tabular}
+\caption{チーム数6のHome-Away Table \label{HAT6}}
+\end{center}
+\end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+本節では，ブレーク数最小化問題とは逆に，
+条件として各試合のホーム／アウェイのみが先に固定された状況を考える．
+実際のスケジューリング現場では，
+試合開催場所の確保の観点などから，
+各試合がホーム／アウェイのどちらで行われるかが
+前もって決められている場合も多い．
+%制約条件として与えられている場合も多い．
+図\ref{HAT6}は{\bf Home-Away Table}（以下HAT）と呼ばれる表で，
+各試合がホームもしくはアウェイのどちらで行われるかを指定している．
+（Hがホーム，Aがアウェイに対応．）
+
+HATが制約条件として与えられた場合，
+スケジュール作成者はそれに従いスケジュールを作成していく．
+（図\ref{HAT6}から作成できるスケジュールのうちのひとつが，
+図\ref{FIG1}である．）
+しかし，任意のHATからスケジュールが作成できるわけではなく，
+HATによってはそれが不可能なことがある．
+スケジュールを作成できるHATの必要条件として，
+\begin{itemize}
+\item それぞれの日について，HとAの数が同数
+\item HとAのパターンが全く同じチームが存在しない
+\end{itemize}
+というものがあるが，%%図\ref{INF6}からもわかるように，
+この条件を満たすHATが全てスケジュールを生成可能というわけではない．
+%%許容HATであるというわけではない．
+図\ref{INF6}は，上記の条件を満たしているが
+スケジュールの生成ができないHATの一例である．
+
+与えられたHATがスケジュールを生成できるか否か（HATの許容性）を
+判定する問題が，Home-Away Table許容性判定問題である．
+この問題は，
+%Home-Away Table許容性判定問題は，
+既に1980年のde Werraの論文\cite{deWerra-1980}において，
+未解決問題として提起されている．
+また，Nemhauser, Trick~\cite{Nemhauser-1998}の論文においても
+注目するべき問題として触れられており，
+スポーツスケジューリングの大きな未解決問題の一つである．
+しかし，これまでこの問題に対する
+多項式時間アルゴリズム，NP-完全性の証明，
+許容HAT（スケジュールを生成できるHAT）の特徴付け
+のいずれも得られていない．
+ただし，各チームがブレークを高々1個しか持たないようなHATに関しては，
+強力な必要条件が得られている\cite{Miyashiro-2003-LNCS,Kashiwabara-2003}．
+現状ではHAT許容性判定問題は整数計画法\cite{Nemhauser-1998}や
+制約論理法\cite{Henz-2003}を用いて
+解かれることが多いが，
+これらの方法ではチーム数が多くなると計算時間が増大する．
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[t]
+\begin{center}
+\begin{tabular}{c|ccccc}
+チーム  &{\small 1日目}&{\small 2日目}&{\small 3日目}&{\small 4日目}&{\small 5日目}\\ \hline
+ 1      &  H & A & \underline{A} & H & A \\
+ 2      &  H & A & H & \underline{H} & A \\
+ 3      &  H & A & H & A & \underline{A} \\
+ 4      &  A & H & \underline{H} & A & H \\
+ 5      &  A & H & A & \underline{A} & H \\
+ 6      &  A & H & A & H & \underline{H}  \\
+\end{tabular}
+\caption{スケジュール生成不可能なHAT \label{INF6}}
+\end{center}
+\end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\subsection{Carry-Over Effect値最小化問題} \label{Subsection2.5}
+
+
+\ref{Subsection2.2}--\ref{Subsection2.5}節では，
+リーグ戦の各試合は対戦する2チームのどちらかの本拠地で行われるとしてきたが，
+本節では試合開催場所の概念が無いスケジュールの作成を扱う．
+
+ラグビーやアメリカンフットボールなどのハードなスポーツの
+スケジュール作成を考えよう．
+いま，リーグ戦に参加している$n$チームのうちチーム2は非常に強く，
+チーム2と対戦したチームには疲労が残り，その次の試合に影響が残ると想定する．
+そのような場合，
+図\ref{coe140}と図\ref{BALANCED}ではどちらが良いスケジュールだろうか？
+図\ref{coe140}のスケジュールでは，
+チーム1が行う7試合のうち実に5試合で，
+「対戦相手の，直前の対戦相手がチーム2」になっている．
+したがって，チーム1は相対的に有利になると考えられる．
+%%図\ref{coe140}は公平なスケジュールとはいえない．
+以下では，このような観点のもとでチーム間の公平性を評価する尺度を紹介する．
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[tb]
+\begin{center}
+\begin{small}
+\begin{tabular}{c|ccccccc}
+{\footnotesize チーム}&{\tiny {\footnotesize 1}日目}&{\tiny
+{\footnotesize 2}日目}&{\tiny {\footnotesize 3}日目}&{\tiny
+{\footnotesize 4}日目}&{\tiny {\footnotesize 5}日目}&{\tiny
+{\footnotesize 6}日目}&{\tiny {\footnotesize 7}日目}\\ \hline
+ 1      &  8 & 3 & 4 & 5 & 6 & 7 & 2 \\
+ 2      &  3 & 4 & 5 & 6 & 7 & 8 & 1 \\
+ 3      &  2 & 1 & 6 & 8 & 5 & 4 & 7 \\
+ 4      &  5 & 2 & 1 & 7 & 8 & 3 & 6 \\
+ 5      &  4 & 7 & 2 & 1 & 3 & 6 & 8 \\
+ 6      &  7 & 8 & 3 & 2 & 1 & 5 & 4 \\
+ 7      &  6 & 5 & 8 & 4 & 2 & 1 & 3 \\
+ 8      &  1 & 6 & 7 & 3 & 4 & 2 & 5 \\
+\end{tabular}
+\end{small}
+\caption{coe値140のスケジュール \label{coe140}}
+\end{center}
+\end{figure}
+\begin{figure}[tb]
+\begin{center}
+\begin{small}
+\begin{tabular}{c|ccccccc}
+{\footnotesize チーム}&{\tiny {\footnotesize 1}日目}&{\tiny
+{\footnotesize 2}日目}&{\tiny {\footnotesize 3}日目}&{\tiny
+{\footnotesize 4}日目}&{\tiny {\footnotesize 5}日目}&{\tiny
+{\footnotesize 6}日目}&{\tiny {\footnotesize 7}日目}\\ \hline
+ 1      &  4 & 5 & 6 & 7 & 8 & 2 & 3 \\
+ 2      &  5 & 4 & 8 & 3 & 6 & 1 & 7 \\
+ 3      &  8 & 6 & 5 & 2 & 4 & 7 & 1 \\
+ 4      &  1 & 2 & 7 & 6 & 3 & 5 & 8 \\
+ 5      &  2 & 1 & 3 & 8 & 7 & 4 & 6 \\
+ 6      &  7 & 3 & 1 & 4 & 2 & 8 & 5 \\
+ 7      &  6 & 8 & 4 & 1 & 5 & 3 & 2 \\
+ 8      &  3 & 7 & 2 & 5 & 1 & 6 & 4 \\
+\end{tabular}
+\end{small}
+\caption{balancedスケジュール (coe値56) \label{BALANCED}}
+\end{center}
+\end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+リーグ戦のスケジュールにおいて，
+$d$日目にチーム$i$対チーム$k$の試合があり，
+$d+1$日目（$n$日目は1日目とする）にチーム$j$対チーム$k$の試合が行われるとき，
+「チーム$i$がチーム$j$に{\bf carry-over effect}（以下coe）を与える」と定義する．
+与えられたスケジュールに対して，
+$c_{ij}$をチーム$i$がチーム$j$へcoeを与えた回数とし，
+これによって定まる行列$C=(c_{ij})$を
+そのスケジュールに対応する{\bf coe行列}と呼ぶ．
+定義より，coe行列はチーム数$n$のスケジュールに対して
+各行，各列の和が$n-1$, 対角要素が0の非負整数行列となる．
+スケジュールに対応するcoe行列$C=(c_{ij})$に対して，
+$\sum_{i,j} ({c_{ij}}^2)$をそのスケジュールの{\bf coe値}と呼ぶ．
+明らかに，coe値はcoe行列の非対角要素が
+全て1になるとき最小値$n(n-1)$をとる．
+
+あるスケジュールから定まるcoe行列の非対角要素が全て1になるとき，
+そのスケジュールを{\bf balancedスケジュール}という．
+balancedスケジュールは，各チームが受け取るcoeの発生源が偏っていない，
+という意味で最適なスケジュールである．
+図\ref{BALANCED}のスケジュールはbalancedスケジュールであり，
+coe値は$n(n-1)=56$となる．
+それに対して図\ref{coe140}のスケジュールのcoe値は140となり，
+図\ref{BALANCED}のスケジュールと比較して不公平なことがわかる．
+
+coe値最小化問題は，coe値を最小にするスケジュールを求める問題である．
+Russell~\cite{Russell-1980}は，チーム数$n$が$n=2^m \ (m \geq 2)$の場合，
+balancedスケジュールの作成方法を与えた．
+また同じ論文の中で，チーム数$n=p^m+1$ ($p$は奇素数) の場合に対する
+発見的解法を提案していた．
+
+しかし近年の研究で，この発見的解法はチーム数6の場合最適解を与えるが，
+チーム数10, 12の場合にはそうでないことが示された．
+Russellの発見的解法では，チーム数10, 12の場合に得られるスケジュールの
+coe値はそれぞれ138, 196だったが，
+チーム数10の場合122（論文\cite{Trick-2000}）,
+チーム数12の場合には188（論文\cite{Henz-2003}）のスケジュールが
+最近発見されている（表\ref{coerecords}）．
+これらの結果は制約論理法をベースにした実験で得られたものであり，
+これ以上のチーム数に対しては計算が難しい．
+また，いまのところcoe値の最小化を行う効率的なアルゴリズムは知られておらず，
+チーム数10, 12の場合の新しい結果が最適解かどうかわかっていない．
+また，チーム数が2のベキ乗でない場合にはbalancedスケジュールが存在しないだろうと
+予想されているが，この問題も未解決である．
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{table}[t]
+\begin{center}
+\caption{coe値最小化問題の記録} \label{coerecords}
+\begin{tabular}{crrr}
+{\small チーム数$n$}&{\small $n(n-1)$}&{\small 暫定最良解}&{\small 参考}\\ \hline
+4        &     12 &     12 & balanced \\
+6        &     30 &     60 & 最適 \\
+8        &     56 &     56 & balanced \\
+10       &     90 &    122 & \\
+12       &    132 &    188 & \\
+14       &    182 &    260 & \\
+16       &    240 &    240 & balanced\\
+18       &    306 &    428 & \\
+20       &    380 &    520 & 
+\end{tabular}
+\end{center}
+\end{table}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\subsection{研究手法の概観} \label{Subsection2.6}
+
+スポーツスケジューリングの研究を大まかに分類すると，
+制約論理法を用いた研究，メタ・ヒューリスティクスを用いたもの，
+整数計画などの数理計画法に基づくもの，
+彩色問題に代表されるグラフ理論，実験計画法などのデザイン理論・組合せ理論を用いたものに分けられる．
+以下，スポーツスケジューリングにおけるそれぞれの手法の特徴を簡単に述べる．
+
+制約論理法は一般に，
+制約条件が厳しい問題に対して許容解を見つけるという目的に適している．
+また，非常に多様な形の制約条件を扱えるのが特徴である．
+%例えば整数計画法では基本的に線形制約しか扱うことができないが，
+%制約論理法では2次制約はもちろん，非線形制約，論理制約なども簡単に扱える．
+ただし，目的関数を最小化あるいは最大化する問題は，
+規模が大きくなると計算時間が急激に増加する傾向がある．
+
+スポーツスケジューリングの実用現場では，
+問題に与えられた制約条件に急に変更があった場合など，
+何度も問題を解きなおすことが多い．
+これらのことから，高速にスケジュールを生成できる
+メタ・ヒューリスティクスは実用的に好まれているようである．
+
+整数計画法に代表される，
+各種の数理計画法によるアプローチは，
+最小化（最大化）問題に対する最適性の保証を行うことができる．
+また，問題を適切にモデル化できれば非常に強力なツールとなる．
+ただし，問題の規模によっては現実的な時間で最適解を得るのが難しいこともある．
+
+グラフ理論やデザイン理論，組合せ理論を用いた研究は，
+1980年代に複数行われたが，
+現在ではあまり新しい成果は出ていない．
+また，現実のスケジューリング問題では複雑な制約条件が存在し，
+これらの理論的に美しい結果をそのまま適用することができないケースが
+多くなってしまっている．
+
+
+\section{おわりに} \label{Section3}
+
+本稿では，
+スポーツスケジューリングにおける最近の研究を，
+4つの問題を中心にして紹介した．
+紙面の都合上，グラフ理論，組合せ理論を用いた研究はほとんど
+紹介できなかったのが残念である．
+また，現実問題のモデル化と解法の詳細もお伝えできなかったが，
+本文中で引用した以外にも，スポーツスケジューリングの適用先は
+アメフト，野球，バスケットボール，チェス，クリケット，アイスホッケー，
+サッカー，テニス，卓球など，非常に多岐にわたっている．
+
+現時点でのスポーツスケジューリングは，
+計算機の普及と高速化，および各種解法の発達により
+現実問題への適用が進んでいる．
+その一方で，スポーツ興行の巨大化にも対応できる
+さらに高速なアルゴリズムの開発など，
+取り組むべき課題は多数残っている．
+将来，日本のスポーツ産業界において
+ORの手法によるスケジューリングが当たり前になるだろうか？
+今後のスポーツスケジューリングの発展が楽しみである．
+
+%今後の発展が楽しみな分野である．
+%今後，日本におけるスポーツ産業界から
+%ORの研究者にスケジューリングの要請がきた時には，
+%期待に応えられるように知識と技術を蓄積しておきたいものである．
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{thebibliography}{99}
+\begin{small}
+%
+\bibitem{Anagnostopoulos-2003}
+A. Anagnostopoulos, L. Michel, P. Van Hentenryck, and Y. Vergados,
+``A simulated annealing approach to the traveling tournament problem,''
+in:
+Proceedings of the 5th International Workshop on
+Integration of AI and OR Techniques in Constraint Programming for Combinatorial Optimization Problems,
+2003 ({\em available at\/} http://www.\linebreak[0]{cs.}\linebreak[0]{brown.}edu/people/pvh/).
+%
+\bibitem{Bartsch-2005}
+T. Bartsch, A. Drexl, and S. Kr\"{o}ger,
+``Scheduling the professional soccer leagues of Austria and Germany,''
+Computers \& Operations Research, to appear.
+%
+\bibitem{deWerra-1980}
+D. de Werra,
+``Geography, games and graphs,''
+Discrete Applied Mathematics,
+2 (1980), pp.~327--337.
+%
+\bibitem{Easton-2003}
+K. Easton, G. L. Nemhauser, and M. A. Trick,
+``Solving the traveling tournament problem:
+    a combined integer programming and constraint programming approach,''
+Practice and Theory of Automated Timetabling~IV, 
+Lecture Notes in Computer Science, 2740 (2003),
+Springer, Berlin, pp.~100--109.
+%%%% Springer-Verlag, Berlin, pp.~100--109.
+%
+\bibitem{Elf-2003}
+M. Elf, M. J\"{u}nger, and G. Rinaldi,
+``Minimizing breaks by maximizing cuts,''
+Operations Research Letters,
+31(2003), pp.~343--349.
+%
+\bibitem{Goemans-1995} 
+M. X. Goemans and D. P. Williamson,
+``Improved approximation algorithms for maximum cut and satisfiability problems
+   using semidefinite programming,''
+Journal of the ACM,
+42 (1995), pp.~1115--1145.
+%
+\bibitem{HANDBOOK-GRAPH}
+J. L. Gross and J. Yellen (eds.),
+``Handbook of graph theory,''
+2004, CRC Press, Boca Raton,
+pp.~462--470.
+%
+\bibitem{Henz-2003}
+M. Henz, T. M\"{u}ller, and S. Thiel,
+``Global constraints for round robin tournament scheduling,''
+European Journal of Operational Research,
+153 (2004), pp.~92--101.
+%
+\bibitem{Kashiwabara-2003}
+柏原賢二，
+「総当りゲームと1-factorization」，
+2003年応用数学合同研究集会報告集，pp.~21--24. 
+%
+\bibitem{HANDBOOK-SCHEDULING}
+J. Y-T. Leung (ed.),
+``Handbook of scheduling: algorithms, models, and performance analysis,''
+2004, CHAPMAN \& HALL/CRC, Boca Raton, pp.~52-1--52-19.
+%
+\bibitem{Matsui-1999}
+松井知己，「スポーツのスケジューリング」，
+オペレーションズ・リサーチ，
+44 (1999), pp.~141--146.
+%
+\bibitem{Miyashiro-2000-OR}
+宮代隆平，松井知己，「1993年Jリーグの再スケジューリング」，
+オペレーションズ・リサーチ，45 (2000), pp.~81--83.
+%
+\bibitem{Miyashiro-2003-LNCS}
+R. Miyashiro, H. Iwasaki, and T. Matsui, 
+``Characterizing feasible pattern sets with a minimum number of breaks,''
+Practice and Theory of Automated Timetabling~IV,
+Lecture Notes in Computer Science,
+2740 (2003), Springer, Berlin, pp.~78--99.
+%%%% 2740 (2003), Springer-Verlag, Berlin, pp.~78--99.
+%
+\bibitem{Miyashiro-2005-ORL}
+R. Miyashiro and T. Matsui,
+``A polynomial-time algorithm to find an equitable home-away assignment,''
+Operations Research Letters,
+33 (2005), pp.~235--241.
+%
+\bibitem{Miyashiro-2005-COR}
+R. Miyashiro and T. Matsui,
+``Semidefinite programming based approaches to the break minimization problem,''
+Computers \& Operations Research, to appear.
+%
+\bibitem{Nemhauser-1998}
+G. L. Nemhauser and M. A. Trick,
+``Scheduling a major college basketball conference,''
+Operations Research,
+46 (1998), pp.~1--8.
+%
+\bibitem{Regin-1998}
+J. -C. R\'{e}gin,
+``Minimization of the number of breaks 
+    in sports scheduling problems using constraint programming,'' 
+Constraint Programming and Large Scale Discrete Optimization, 
+DIMACS Series in Discrete Mathematics and Theoretical Computer Science,
+57 (2001),
+American Mathematical Society, Providence, pp.~115--130.
+%
+\bibitem{Ribeiro-2004}
+C. C. Ribeiro and S. Urrutia,
+``OR on the ball: applications in sports scheduling and management,''
+OR/MS Today, 31 (2004), pp.~50--54.
+%
+\bibitem{Rokosz-2000}
+F. M. Rokosz,
+Procedures for Structuring and Scheduling Sports Tournaments (3rd Edition),
+Charles C Thomas Publisher, Illinois, 2000.
+%
+\bibitem{Russell-1980}
+K. G. Russell,
+``Balancing carry-over effects in round robin tournaments,''
+Biometrika,
+67 (1980), pp.~127--131.
+%
+\bibitem{Trick-2000}
+M. A. Trick, 
+``A schedule-then-break approach to sports timetabling,''
+in:
+Practice and Theory of Automated Timetabling~III, 
+Lecture Notes in Computer Science,
+2079 (2001), Springer, Berlin, pp.~242--253.
+%%%% 2079 (2001), Springer-Verlag, Berlin, pp.~242--253.
+%
+\bibitem{Trick-TTP}
+M. A. Trick,
+``Challenge traveling tournament instances,''
+Web Page, since 1999 (http://mat.\linebreak[0]{tepper.}\linebreak[0]{cmu.}edu/TOURN/).
+%
+\bibitem{YOMIURI}
+読売新聞，朝刊スポーツ面，2004年11月9日．
+\end{small}
+\end{thebibliography}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}
+
+

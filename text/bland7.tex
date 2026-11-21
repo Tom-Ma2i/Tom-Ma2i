@@ -1,0 +1,1665 @@
+\documentclass[12pt]{jarticle}
+% \setlength{\topmargin}{-1.5cm}
+ \setlength{\oddsidemargin}{0.0cm}
+% \setlength{\marginparsep}{-0.6cm}
+% \setlength{\marginparwidth}{-0.6cm}
+% \setlength{\evensidemargin}{0.0cm}
+% \setlength{\textheight}{24.5cm}
+ \setlength{\textwidth}{16.5cm}
+%\pagestyle{empty}
+
+\usepackage{amsthm}
+\usepackage{amsmath,amssymb,bm}
+\usepackage{enumerate} % enumerate
+\usepackage[dvips]{graphicx}
+\usepackage{arydshln}
+\usepackage{hhline}
+
+\theoremstyle{definition}
+\newtheorem{theorem}{定理}
+\newtheorem{lemma}[theorem]{補題}
+\newtheorem{corollary}[theorem]{系}
+\newtheorem{property}[theorem]{性質}
+\newtheorem{assumption}[theorem]{仮定}
+%\renewcommand{\baselinestretch}{1.1} % original length =1.1
+%\renewcommand{\qed}{\hfill \mbox{$\square$} \smallskip}
+
+\begin{document}
+
+
+
+
+%\hfill \today
+%
+%\vspace{-6ex}
+
+\begin{center}
+{\bf  Bland の最小添字規則の有限性\\
+ --- 単体法の非巡回ピヴォット規則 ---} \\
+ \bigskip
+      東京工業大学 松井知己 \\
+\end{center}
+
+本稿では，線形計画法を解く主単体法のピヴォット規則である
+ Bland の最小添字(そえじ)規則\cite{bland1977p}の有限性の証明を記す．
+ 証明自体は新しいものではなく, 
+ コンパクトに書かれることの多い証明を, 
+ 少し丁寧に記述したものである.  
+ 主単体法について一通り学んでいる読者を想定している.  
+% 本稿の最後に, 簡単な解説を追記している. 
+ 
+ 本稿で扱う線形計画問題は
+ \begin{eqnarray*}
+ \mbox{P: \;\; max.} && z=\bm{c}^{\top}\bm{x}\\
+ \mbox{s.t.} && A\bm{x}=\bm{b},  \bm{x}\geq \bm{0},
+ \end{eqnarray*}
+ という形式である. 
+ただし, $z$は目的関数値を表す変数である. 
+ 変数ベクトル$\bm{x}$ 
+ の添字集合を$E=\{1, 2, 3, \ldots , n\}$とする. 
+ 添字集合$E$は, 
+ベクトル$\bm{c}$と行列$A$の列の添字集合でもある. 
+ 任意の添字部分集合$S\subseteq E$に対し, 
+ $\bm{x}_S$は$\bm{x}$の部分ベクトルで, 
+$S$中の添字に対応する変数からなるものとし, 
+% インデックスの小さい順に並べたものとし, 
+$A_S$は$A$の部分行列で,  
+$S$中の添字に対応する
+$A$の列ベクトルからなる行列とする. 
+% インデックスの小さい順に並べたものとする．
+ ベクトル$\bm{c}$に対しても, $\bm{c}_S$を同様に定める. 
+
+ 添字部分集合$B\subseteq E$ に対し, 
+$N=E\setminus B$ とすると, 
+等式$A\bm{x}=\bm{b}$を$A_B \bm{x}_B+A_N \bm{x}_N =\bm{b}$
+と書くことができる. 
+%
+% 本稿では，以下を仮定する．
+% \begin{assumption}
+% 行列$A$の行ベクトルは一次独立である．
+% \end{assumption}
+%
+添字部分集合$B\subseteq E$ に対し, 
+行列	$A_B$が逆行列を持つとき, $B$は{\em 基底}であると言う. 
+以下では, $B$を基底とし, $N=E\setminus B$ として話を進める.  
+等式$A_B \bm{x}_B+A_N \bm{x}_N =\bm{b}$
+の両辺に左から行列$A_B^{-1}$をかけて変形すると, 
+\begin{equation}\label{Dic1}
+     \bm{x}_B=A_B^{-	1}\bm{b}-A_B^{-1}A_N\bm{x}_N
+\end{equation}
+が得られる.
+式(\ref{Dic1})を満たす
+%$ (\bm{x}_B, \bm{x}_N)$
+%を部分ベクトルに持つ$\bm{x}$ に対し, 
+ベクトル
+$ \bm{x}=
+\left( \begin{array}{c}
+\bm{x}_B \\ \bm{x}_N 
+\end{array}
+\right)
+$
+の目的関数値$z$は
+\begin{equation}\label{Dicz}
+   z=\bm{c}^{\top}\bm{x}=\bm{c}_B^{\top}\bm{x}_B+\bm{c}_N^{\top}\bm{x}_N
+   =\bm{c}_B^{\top}A_B^{-1}\bm{b}+(\bm{c}_N^{\top}-\bm{c}_B^{\top}A_B^{-1}A_N)\bm{x}_N
+\end{equation}
+と表すことができる. 
+以下では, 与えられた基底$B$と$N=E\setminus B$ に対し,
+\begin{eqnarray*}
+\widetilde{d}&=&\bm{c}_B^{\top}A_B^{-1}\bm{b},  \\
+\widetilde{\bm{b}}&=& A_B^{-1}\bm{b}, \\
+\widetilde{\bm{c}}^{\top}&=&\bm{c}_N^{\top}-\bm{c}_B^{\top}A_B^{-1}A_N, \\ 
+\widetilde{A}&=&A_B^{-1}A_N,
+\end{eqnarray*}
+と書く. 
+このとき式(\ref{Dicz})と式(\ref{Dic1})を
+\begin{eqnarray*}
+z&=& \widetilde{d}+\widetilde{\bm{c}}^{\top}\bm{x}_N,\\
+\bm{x}_B&=& \widetilde{\bm{b}}-\widetilde{A}\bm{x}_N, 
+\end{eqnarray*}
+と書き直すことができる.
+上記の等式系を基底$B$に対する{\em 辞書}と呼ぶ.  
+また, 上記の等式系の右辺の定数項と係数からなる行列
+\[
+\left(
+\begin{array}{c|c}
+\widetilde{d} & \;\;\;\; \widetilde{\bm{c}}^{\top} \;\;\;\; \\
+\hline
+\\
+\widetilde{\bm{b}} & - \widetilde{A} \\
+\\
+\end{array}
+\right)
+\]
+も, 
+基底$B$に対する{\em 辞書}と呼ぶ.
+辞書の定義より次の補題が成り立つ. 
+\begin{lemma}\label{lemmaDic}
+任意の基底$B$と$N=E\setminus B$ に対し, 以下が成り立つ. 
+\begin{description}
+\item[(a)] 
+ベクトル$\bm{x}$が, 
+  『$A\bm{x}=\bm{b}$を満たすこと』と
+  『$\bm{x}_B= \widetilde{\bm{b}}-\widetilde{A}\bm{x}_N$ 
+を満たすこと』 は必要十分条件である. 
+\item[(b)] 
+ベクトル$\bm{x}$が $A\bm{x}=\bm{b}$
+を満たすならば, 
+$\bm{c}^{\top}\bm{x}
+  =\widetilde{d}+\widetilde{\bm{c}}^{\top}\bm{x}_N$. 
+  
+ベクトル$\bm{y}$が $A\bm{y}=\bm{0}$
+を満たすならば, 
+$\bm{c}^{\top}\bm{y}
+  =\widetilde{\bm{c}}^{\top}\bm{y}_N$.  
+\end{description}
+\end{lemma}
+
+\noindent
+基底と辞書の定義より, 上記は自明であり, 
+証明の記述は省略する. 
+(b)の後半は, $\bm{b}=\bm{0}$とすることで容易に得られる.   
+
+\smallskip 
+
+与えられた基底$B$に対し, 
+%$(\bm{x}_B, \bm{x}_N)
+% =(\widetilde{\bm{b}}, \bm{0})=(A_B^{-1}\bm{b}, \bm{0})$
+% を満たすベクトル$\bm{x}$を,  
+ ベクトル
+ $ \bm{x}=
+\left( \begin{array}{c}
+\bm{x}_B \\ \bm{x}_N 
+\end{array}
+\right)
+=
+\left( \begin{array}{c}
+\widetilde{\bm{b}}\\ \bm{0} 
+\end{array}
+\right)
+$
+ を
+ $B$の{\em 基底解}と呼ぶ.  
+補題\ref{lemmaDic} 
+より基底解は等式$A\bm{x}=\bm{b}$を満たし, 
+その目的関数値は
+$\widetilde{d}$
+となる. 
+基底解が非負ベクトルのとき{\em 実行可能基底解}と呼び, 
+対応する基底を{\em 実行可能基底}と呼ぶ.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+以下の2つの定理は, 
+Bland の最小添字規則(を含む一般の主単体法)
+の正当性に関するものである.
+最小添字規則の有限性の証明においては, 
+直接には不要である.  
+下記2つの定理の証明は, 本稿末尾の補足に記す. 
+
+\begin{theorem}\label{optdic}
+与えられた基底$B$に対し,
+%$A_B^{-1}\bm{b} \geq \bm{0}$ かつ
+%$\bm{c}_N-\bm{c}_B^{\top}A_B^{-1}A_N \leq \bm{0}$ 
+$\widetilde{\bm{b}} \geq \bm{0}$ かつ
+$\widetilde{\bm{c}} \leq \bm{0}$
+が成り立つならば, 
+$B$の基底解は問題Pの最適解である.
+\end{theorem}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\begin{theorem}\label{ubdic}
+問題Pは実行可能解を持つとする. 
+与えられた基底$B$に対し,
+ある添字$s \in N=E\setminus B $が存在して，
+ $\widetilde{\bm{c}}$ の添字$s$
+ の要素が正であり$(\widetilde{c}_s >0)$, 
+ かつ, 
+行列$- \widetilde{A}$の列ベクトルで, 
+添字$s$の列ベクトル
+が非負ベクトル
+$(-\widetilde{A}_{\{s\}}\geq \bm{0})$ ならば,
+問題Pは非有界である.
+\end{theorem}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+以下は, 掃き出し法(ピヴォット)に関する性質である. 
+
+\begin{property} \label{pivot-after}
+与えられた基底$B$に対し, 
+添字対$(s, t)$ が存在して 
+$s \not \in B  \ni t$ と
+$\widetilde{a}_{ts}\neq 0$ を満たすならば，
+$B'=B\cup \{s\} \setminus \{t\} $ は基底となる. 
+基底$B'$に対する基底解$\bm{x}'$は, 
+\begin{eqnarray} \label{pivotx}
+%\bm{x}_B &=& \widetilde{\bm{b}}
+ %  -\frac{\widetilde{b}_t}{\widetilde{a}_{ts}}\widetilde{A}_{\{s\}} \\
+x'_i&=& \left\{
+     \begin{array}{ll}
+       \displaystyle  \frac{\widetilde{b}_t}{\widetilde{a}_{ts}}   &(j=s), \\
+       0 & (i \in E\setminus （B \cup \{s\})), \\
+       \displaystyle  \widetilde{b}_i
+			-\widetilde{a}_{is} \frac{\widetilde{b}_t}{\widetilde{a}_{ts}}
+    		&(i \in B), \\        
+     \end{array} \right. 
+\end{eqnarray}
+となり, その目的関数値$\widetilde{d}'$は
+\begin{equation}\label{pivotz}
+  \widetilde{d}'=\widetilde{d}
+      +\frac{\widetilde{b}_t}{\widetilde{a}_{ts}}\widetilde{c}_s
+\end{equation}
+となる. 
+\end{property}
+
+\noindent
+本稿では性質~\ref{pivot-after} の証明を省略するが, 
+自明ではなく, 証明は少し長い. 
+主単体法について学んだ読者であれば,  
+既知の性質であろう. 
+
+\smallskip
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+与えられた基底$B$に対し, 
+添字対$(s, t)$ が存在して 
+$s \not \in B  \ni t$ と
+$\widetilde{a}_{ts}\neq 0$ を満たすとき，
+基底を$B$ から $B\cup \{s\} \setminus \{t\} $に更新する操作を
+{\em ピヴォット}と呼ぶ.
+基底$B$を $B\cup \{s\} \setminus \{t\} $に更新するピヴォットにおいて,
+$\widetilde{b}_t=0$が成り立っているとき, 
+この操作を特に{\em 退化}ピヴォットと呼ぶ. 
+
+ 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{lemma}\label{degenerate}
+基底$B$を基底
+$B'=B\cup \{s\} \setminus \{t\} $ に更新する操作が
+退化ピヴォットならば,  
+$B$に対応する基底解と$B'$に対応する基底解は,  
+同一である. 
+\end{lemma}
+
+\noindent
+証明の概略: 
+性質\ref{pivot-after}の式~(\ref{pivotx})において, 
+$\widetilde{b}_t=0$とすれば明らかに成り立つ. 
+
+\smallskip
+後に分るように, 
+主単体法が有限回の反復で終了しない場合は, 
+退化ピヴォットのみが連続する. 
+退化ピヴォットの性質は有限性証明の鍵となる. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\smallskip 
+
+以下では, 
+Bland の最小添字規則を記述する．
+以降では, 与えられた問題Ｐは実行可能基底を持つと仮定する. 
+
+\begin{description}
+\setlength{\parskip}{0cm} % 段落間
+\setlength{\itemsep}{0cm} % 項目間
+\item[Input: ]
+実行可能基底$B$と, 対応する辞書
+(実行可能より $\widetilde{\bm{b}}\geq \bm{0}$).
+\item[Step 1: ]
+        現在の基底に対応する辞書において, 
+        $\widetilde{\bm{c}}\leq \bm{0}$ならば, 基底解を出力して終了．
+        (出力した基底解は最適解である.) 
+\item[Step 2: ]
+         ベクトル$\widetilde{\bm{c}}$ の要素で値が正となるものの内,  
+          添字が最小の要素の添字を$s$とする. ($s \not \in B$ である.)
+\item[Step 3: ]
+        行列$- \widetilde{A}$の, 
+        添字$s$の列ベクトルが非負ベクトル
+        $(-\widetilde{A}_{\{s\}}\geq \bm{0})$
+        ならば, 
+        「{\bf 非有界}」と出力して終了. 
+\item[Step 4: ]  
+        $\displaystyle 
+         \min_{i \in B} \left. 
+          \left\{ \frac{\widetilde{b_i}}{\widetilde{a}_{is}}
+               \right|  \widetilde{a}_{is}>0
+               \right\}$
+         の最小値を達成する添字を$t$とする．
+         最小値を達成する添字が複数ある場合は, 
+         その内の最小の添字を$t$とする.
+\item[Step 5: ] 基底を $B:=B\cup \{s\}  \setminus\{t\} $ と更新し, 
+    対応する辞書を求めて, Step~1 に戻る. 
+\end{description}
+
+下記は主単体法に共通する性質である. 
+
+\begin{lemma}\label{lemma123}
+Bland の最小添字規則によって生成される基底は,  以下を満たす.  
+\begin{description}
+\setlength{\parskip}{0cm} % 段落間
+\setlength{\itemsep}{0cm} % 項目間
+\item[(a)] 生成される基底は全て実行可能基底である. 
+\item[(b)] 生成される基底の列に対応する基底解の列は,  
+    目的関数値が単調非減少である. 
+\item[(c)]    Step~5 における基底の更新前と更新後で, 
+    対応する基底解の目的関数値が同一ならば, 
+    Step~5 でのピヴォットは退化している. 
+\end{description}
+\end{lemma}
+
+\noindent
+証明の概略:
+
+\noindent 
+(a) Step~4 より  $\widetilde{a}_{ts}> 0$ が成り立つ事から,  
+   性質\ref{pivot-after}より,  Step~5 での更新後の添字集合 
+   $B'=B\cup \{s\}  \setminus\{t\}$は基底である． 
+   基底$B'$に対応する基底解$\bm{x}'$
+      は式(\ref{pivotx})で表される. 
+   Step~4 より
+   $\displaystyle 
+    \frac{\widetilde{b}_t}{\widetilde{a}_{ts}} =   
+	\min_{i \in B} 
+	\left.  
+		\left\{ 
+			\frac{\widetilde{b_i}}{\widetilde{a}_{is}}
+		\right|  \widetilde{a}_{is}>0
+	\right\}$
+ が成り立つことから，
+ $B$が実行可能基底ならば, 
+ $B'$の基底解は非負ベクトルとなる. 
+   ゆえに $B'$は実行可能基底である. 
+ 
+\smallskip
+\noindent
+(b)  Step~5 での更新後の基底  
+	$B'=B\cup \{s\}  \setminus\{t\}$
+	の基底解の目的関数値は式(\ref{pivotz})
+   で表される. 
+  Step~2 より $\widetilde{c}_s>0$,   
+  Step~4 より$\widetilde{a}_{ts}> 0$, 
+  基底$B$が実行可能基底であることから
+  $\widetilde{b}_t \geq 0$
+  が成り立つ.
+  ゆえに   $\widetilde{d}'\geq \widetilde{d}$が得られる.	
+
+\smallskip
+\noindent
+(c)  Step~5 での更新後の基底  	
+	$B'=B\cup \{s\}  \setminus\{t\}$
+	の基底解の目的関数値は式(\ref{pivotz})
+   で表されることから， 
+    更新によって目的関数値が変わらないならば 
+\[ 
+    0=  \widetilde{d}'-\widetilde{d}
+    = \frac{\widetilde{b}_t}{\widetilde{a}_{ts}}\widetilde{c}_s
+\]
+が成り立つ.  
+  Step~2 より $\widetilde{c}_s>0$であり,  $\widetilde{b}_t=0$が得られる.
+  ゆえに,  このピヴォットは退化している. 
+  \qed
+ 
+上記(c)の性質は, 
+任意のピヴォット操作で成立する訳ではなく,  
+Step~2 で $\widetilde{c}_s>0$
+を満たす添字$s$を選択しているから成立することに注意されたい. 
+ 
+%基底$B$から基底
+%$B\cup \{s\} \setminus \{t\} $ にピヴォットした際, 
+% 対応する基底解の目的関数値が同一(不変)であっても, 
+% この操作が退化ピヴォットであるとは限らない.  
+    
+\begin{theorem} \label{finite}
+実行可能基底を持つ任意の線計画問題Pに対し以下が成り立つ. 
+Pの任意の実行可能基底$B$に対し, 
+$B$を初期基底として Bland の最小添字規則を実行すると,  
+有限回の反復で終了する．
+\end{theorem}
+
+\noindent
+証明: 背理法で証明する.  
+問題例Pは,  
+Bland の最小添字規則が有限回の反復で終了しない
+初期実行可能基底を持つとする.
+基底の数は有限であることから, 
+有限回の反復で終了しないならば,  
+Bland の最小添字規則実行中に複数回出現する実行可能基底が存在する．
+そのような実行可能基底(の一つ)を$B_0$と書く. 
+問題例Pに対し,  
+$B_0$を初期実行可能基底として
+ Bland の最小添字規則を実行すると, 
+有限回の反復で基底$B_0$が再び得られる.  
+この間に生成される実行可能基底の列を
+$(B_0, B_1, \ldots , B_r)$とする， ただし$B_r=B_0$である.
+
+基底列$(B_0, B_1, \ldots , B_r)$において,
+基底に留まり続ける添字集合を$B^{\bullet}$とする,
+すなわち$B^{\bullet}=B_1\cap B_2 \cap \cdots \cap B_r$
+である. 
+更に, 一度も基底に属さない添字の集合を
+$N^{\bullet}$とする, すなわち
+$N^{\bullet}=E\setminus (B_1 \cup B_2 \cup \cdots \cup B_r)$ 
+である. 
+添字部分集合
+$E^{\circ}=E\setminus (B^{\bullet} \cup N^{\bullet})$
+と定義する. 
+集合$E^{\circ}$中の任意の添字は, 
+%Bland の最小添字規則を実行中に最低でも1回以上基底に属し, 
+%かつ, 最低でも1回以上基底から外れる. 
+基底列$(B_0, B_1, \ldots , B_r)$中の1つ以上の基底に属しており,  
+かつ, その添字が属さない基底が(基底列中に)１つ以上存在する. 
+添字集合$E^{\circ}$中で最も番号の大き
+な添字を
+$j$とする.
+(以下ではこの添字$j$が重要な役割を果たす.)
+
+
+基底列$(B_0, B_1, \ldots , B_r)$が生成される際,
+添字$j$が基底から外れる直前の基底(の一つ)を$B'$とし,
+それに対応する辞書を
+\begin{eqnarray}
+z&=& \widetilde{d}'+\widetilde{\bm{c}'}^{\top}\bm{x}_{N'},\nonumber \\ 
+\bm{x}_{B'}&=& \widetilde{\bm{b}}'-\widetilde{A}'\bm{x}_{N'}, 
+												\label{DicB'}
+\end{eqnarray}
+とする, ただし$N'=E \setminus B'$ である. 
+
+基底$B'$から次の基底を作るピヴォットにおいて,
+ $j \in B' $の代わりに基底に入る添字を$s \in N' $とする. 
+ 添字集合$E$を持つベクトル$\bm{y}$ を, 
+ 式(\ref{DicB'})の係数行列
+ $-\widetilde{A}'$の第$s$列を用いて
+\[
+     y_i=\left\{
+     \begin{array}{ll}
+       1 & (i=s), \\ 
+       0 & (i\in N'\setminus \{s\}),\\ 
+      -\widetilde{a}'_{is} & (i \in B'), \\
+	\end{array}
+	\right.
+\]
+と定める.
+%
+%明らかに $\bm{y}_{B'}=-\widetilde{A}'_{\{s\}}$であり, 
+%$\bm{y}_{N'}$は単位ベクトルである.
+%問題Pは実行可能基底を持つことから明らかに実行可能解を持つ.
+%問題Pの実行可能解の一つを$\widehat{\bm{x}}$とする. 
+%性質\ref{lemmaDic}(a)と$A\widehat{\bm{x}}=\bm{b}$より
+%\[
+%\widetilde{\bm{b}}'- \widetilde{A}'\widehat{\bm{x}}_{N'}
+%  = \widehat{\bm{x}}_{B'}
+%\]
+%を満たす. 
+%同様に, ベクトル$\widehat{\bm{x}}+ \bm{y}$は
+%\begin{eqnarray*}
+%\widetilde{\bm{b}}' 
+% - \widetilde{A}'( \widehat{\bm{x}}+ \bm{y})_{N'}
+%&=&
+%\widetilde{\bm{b}}' 
+% - \widetilde{A}'( \widehat{\bm{x}}_{N'}+ \bm{y}_{N'})
+%=( \widetilde{\bm{b}}' 
+%   - \widetilde{A}' \widehat{\bm{x}}_{N'}) 
+%    - \widetilde{A}'\bm{y}_{N'}\\
+%&=&\widehat{\bm{x}}_{B'}- \widetilde{A}'_{\{s\}}
+%=\widehat{\bm{x}'}_{B'}+ \bm{y}_{B'}
+%=( \widehat{\bm{x}}+ \bm{y})_{B'}
+%\end{eqnarray*}
+%を満たすことから, 
+%性質\ref{lemmaDic}(a)より
+%$A(\widehat{\bm{x}}+\bm{y})=\bm{b}$
+%が成り立つ.
+%2つのベクトル$\widehat{\bm{x}}$と
+%$\widehat{\bm{x}}+\bm{y}$
+%の目的関数値の差は,
+%性質\ref{lemmaDic}(b)より
+%\begin{eqnarray} \label{ineqplus} \nonumber
+%\bm{c}^{\top}(\widehat{\bm{x}}+\bm{y})
+%-\bm{c}^{\top}\widehat{\bm{x}}
+%&=&(\widetilde{d'}+\widetilde{\bm{c}}'^{\top}
+%    (\widehat{\bm{x}}+\bm{y})_{N'})
+%- (\widetilde{d'}+\widetilde{\bm{c}}'^{\top}
+%    \widehat{\bm{x}}_{N'}) \\
+%&=&\widetilde{\bm{c}}'^{\top}\bm{y}_{N'}
+%=\widetilde{c}'_s >0  
+%\end{eqnarray}
+%である.  
+%
+%
+明らかに $\bm{y}_{B'}=-\widetilde{A}'_{\{s\}}$であり, 
+$\bm{y}_{N'}$は単位ベクトルである.
+これより
+\begin{eqnarray*}
+A\bm{y}&=&A_{B'}\bm{y}_{B'}+A_{N'}\bm{y}_{N'}
+=A_{B'}(\bm{y}_{B'}+A_{B'}^{-1}A_{N'}\bm{y}_{N'}) \\
+&=&A_{B'}(\bm{y}_{B'}+\widetilde{A}'\bm{y}_{N'})
+=A_{B'}(-\widetilde{A}'_{\{s\}}+\widetilde{A}'_{\{s\}})
+=A_{B'}\bm{0}=\bm{0}
+\end{eqnarray*}
+が成り立つ.
+性質\ref{lemmaDic}(b)より
+\begin{eqnarray} \label{ineqplus} 
+\bm{c}^{\top}\bm{y}
+&=&\widetilde{\bm{c}}'^{\top}\bm{y}_{N'}
+=\widetilde{c}'_s >0  
+\end{eqnarray}
+である.  
+最後の不等式は, 
+Step~2 で添字$s$が選ばれたことから成り立つ. 
+
+\bigskip 
+以下では, 不等式(\ref{ineqplus})
+と矛盾する不等式を導く.
+ 
+ \noindent
+(i) まず最初に, 基底$B'$に対応する辞書(行列)が
+ \[
+ \left(
+\begin{array}{c|c}
+\widetilde{d}' & \;\;\;\; \widetilde{\bm{c}'}^{\top} \;\;\;\; \\
+\hline
+\\
+\widetilde{\bm{b}}' & - \widetilde{A}' \\
+\end{array}
+\right)
+ =
+% \left(
+%\begin{array}{c|c|c|c}
+%\widetilde{d} & \cdots& \widetilde{c'}_s & \cdots   \\
+%\hline
+% &&  &\\
+%\widetilde{\bm{b}} && \bm{y}_{B'} & \\
+% & &  &  \\
+%\end{array}
+%\right)
+%=
+\begin{array}{c|c|ccc|c|}
+\multicolumn{3}{c}{}&s&\multicolumn{1}{c}{} &
+    \multicolumn{1}{c}{N^{\bullet}}  \\
+\cline{2-6}
+&* & * \cdots * & + & * \cdots *  & * \cdots * \\
+\cline{2-6}
+& 0&& \oplus & &\\[-1ex]
+& \vdots && \vdots & &\\[-1ex]
+& 0 && \oplus &&  \\
+\cline{2-6}
+j & 0 && - & &\\
+\cline{2-6}
+&\oplus && * & &\\[-1ex]
+B^{\bullet} & \vdots && \vdots & &\\[-1ex]
+& \oplus && * &&  \\
+\cline{2-6}
+\end{array}
+\]
+となっていることを示す.
+ただし%$\ominus$は非正の数値を, 
+$\oplus$は非負の数を表している．
+ 
+\noindent
+(i-a) 実行可能基底の列$(B_0, B_1, \ldots , B_r)$
+    を生成する際に実行されるピヴォットは,  
+    すべて退化ピヴォットであることを示す. 
+
+補題\ref{lemma123} (b)より,  
+  生成される基底列$(B_0, B_1, \ldots , B_r)$
+  に対応する基底解の列は,  
+  対応する目的関数が単調非減少である.  
+  基底 $B_0=B_r$より,  
+  生成される全ての基底解の目的関数値は, 
+  全て同一である. 
+  補題\ref{lemma123} (c)より,  
+  実行されるピヴォットは,  
+  すべて退化ピヴォットとなる.
+
+上記と補題\ref{degenerate}より, 
+生成される実行可能基底列$(B_0, B_1, \ldots , B_r)$
+中の基底に対応する実行可能基底解はすべて同一の解となる.
+以下ではこの実行可能基底解を$\bm{x}^*$と書く. 
+
+
+ \smallskip 
+\noindent
+(i-b) 等式 $\widetilde{b}'_i =0 
+   \; (\forall i \in E^{\circ} \cap B')$ を示す. 
+ %  (上記の基底$B'$に対応する辞書（行列）の最左列ベクトル.) 
+
+添字集合$E^{\circ}$中の任意の添字$i \in E^{\circ}$に対し, 
+ある基底$\widehat{B}^{(i)} \in \{B_1, \ldots , B_r\}$ が存在して,   
+$i \not \in \widehat{B}^{(i)}$ を満たす.  
+解$\bm{x}^*$は, 
+基底$\widehat{B}^{(i)}$ の基底解でもあり,  
+$i \not \in \widehat{B}^{(i)}$ より$x^*_i=0$が成り立つ.  
+以上より $x^*_i=0\; (\forall i \in E^{\circ})$ が得られる. 
+解$\bm{x}^*$は, 
+基底$B'$の基底解でもあることから
+$\bm{x}^*_{B'}=\widetilde{\bm{b}}'$が成り立ち, 
+$\widetilde{b}'_i=x^*_i=0 \; (\forall i \in E^{\circ} \cap B') $
+が得られる. 
+
+ \smallskip 
+\noindent
+(i-c) %不等式 
+  $\widetilde{c}'_{s}> 0$ , 
+  $-\widetilde{a}'_{js}<0$ ,  と 
+  $-\widetilde{a}'_{is} \geq 0 
+%    \; (\forall i \in B' \setminus (B^{\bullet} \cup \{j\}))$ 
+     \; (\forall i \in (E^{\circ}\cap B')\setminus \{j\})$
+を示す. 
+
+添字$s$が Step~2 で選ばれたことから, 
+  $\widetilde{c}'_{s}> 0$ は明らか. 
+  
+添字$j$ が Step~4 で選ばれたことから, 
+添字$j$ は最小値
+        $\displaystyle 
+         \min_{i \in B'} \left. 
+          \left\{ \frac{\widetilde{b}'_i}{\widetilde{a}'_{is}}
+               \right|  \widetilde{a}'_{is}>0
+               \right\}$
+を達成する. 
+ゆえに  $\widetilde{a}'_{js}> 0$,
+すなわち $-\widetilde{a}'_{js}<0$
+が成り立つ. 
+
+%上記(1-b)と$j \in E^{\circ} \cap B'$より$\widetilde{b}'_j=0$であり,   
+%添字$j$ 
+% が Step~4 で選ばれたことから, 
+% Step~4 での最小値は
+%\begin{equation}\label{ratiotest}
+%\min_{i \in B'} \left. 
+%         \left\{ \frac{\widetilde{b}'_i}{\widetilde{a}'_{is}}
+%               \right|  \widetilde{a}'_{is}>0
+%               \right\}
+%    = \frac{\widetilde{b}'_j}{\widetilde{a}'_{js}}
+%    = \frac{0}{\widetilde{a}'_{js}}=0
+% \end{equation}
+%である. 
+ある添字$i^* \in %B' \setminus (B^{\bullet} \cup \{j\}) \subseteq
+   (E^{\circ}\cap B')\setminus \{j\}$
+において$ -\widetilde{a}'_{i^*s} < 0$が成り立っていると
+仮定して，矛盾を導く.  
+(i-b)から$\widetilde{b}'_{i^*}=0$が成り立ち, 仮定 $ \widetilde{a}'_{i^* s} > 0$より
+\[
+  0= \frac{0}{\widetilde{a}'_{i^* s}}
+    =   \frac{\widetilde{b}'_{i^*}}{\widetilde{a}'_{i^* s}}
+    \geq \min_{i \in B'} \left. 
+          \left\{ \frac{\widetilde{b}'_i}{\widetilde{a}'_{is}}
+               \right|  \widetilde{a}'_{is}>0
+               \right\}
+    \geq 0
+\]
+となる. 
+上式と仮定 $ \widetilde{a}'_{i^* s} > 0$より, 
+添字$i^*$は  Step~4 での最小値を達成する添字の一つとなる. 
+性質$i^* \in E^{\circ}\setminus \{j\}$より$i^*<j$が成り立ち,   
+添字$i^*$より大きな添字$j$がStep~4 で選ばれたことになり, 矛盾. 
+
+\smallskip
+
+上記(i-c)と 
+$\bm{y}_{B'}=-\widetilde{A}'_{\{s\}}$, 
+$\bm{y}_{N'}\geq \bm{0}$ ($\bm{y}_{N'}$は単位ベクトルより)
+ から, 
+\begin{equation}\label{tate}
+y_j = 
+-\widetilde{a}'_{js}<0
+\mbox{ と }
+y_i  \geq 0 
+    \; \; \; (\forall i \in E^{\circ} \setminus \{j\})
+\end{equation}
+%    $ (\forall i \in B' \setminus (B^{\bullet} \cup \{j\}) $ 
+ が得られる. 
+(性質(\ref{tate})の後半は (i-c)
+% $y_i = -\widetilde{a}'_{is} \geq 0 $
+% $(\forall i \in (E^{\circ}\cap B') \setminus \{j\})$
+より$i$の取る範囲が広いことに注意. 
+下記(iii)で$\bm{y}$の要素を並び替えた図を参照されたい.)
+性質(\ref{tate})は下記証明の(iii)で用いる.
+
+\bigskip
+
+
+\noindent
+(ii) 基底列$(B_0, B_1, \ldots , B_r)$が生成される際,
+添字$j$が基底に入る直前の基底(の一つ)を$B''$とする. 
+以下では基底$B''$に対応する辞書
+\begin{eqnarray*}
+z&=& \widetilde{d}''+\widetilde{\bm{c}''}^{\top}\bm{x}_{N''},\\
+\bm{x}_{B''}&=& \widetilde{\bm{b}}''-\widetilde{A}''\bm{x}_{N''}, 
+\end{eqnarray*}
+(ただし $N''=E \setminus B''$)において
+\[
+\begin{array}[c]{c|c|c|c|}
+\multicolumn{1}{c}{}&
+\multicolumn{1}{c}{ N'' \setminus (N^{\bullet} \cup \{j\})}& \multicolumn{1}{c}{j}  &
+   \multicolumn{1}{c}{N^{\bullet}}  \\
+\cline{2-4}
+\widetilde{\bm{c}''}^{\top} = &
+ \ominus \cdots  \cdots  \cdots \ominus & +  & * \cdots * \\
+\cline{2-4}
+\end{array}
+\]
+% \[
+% \left(
+%\begin{array}{c|c}
+%\widetilde{d}'' & \;\;\;\; \widetilde{\bm{c}''}^{\top} \;\;\;\; \\
+%\hline
+%\\
+%\widetilde{\bm{b}}'' & - \widetilde{A}'' \\
+%\end{array}
+%\right)
+%=
+% \begin{array}{c|c|c|c|c|}
+%\multicolumn{3}{c}{}& \multicolumn{1}{c}{j}  &
+%   \multicolumn{1}{c}{N^{\bullet}}  \\
+%\cline{2-5}
+%&* & \ominus \cdots \ominus & +  & * \cdots * \\
+%\cline{2-5}
+%& \begin{array}{@{}c@{}}
+%   0 \\[-4ex] \\ \vdots \\[-1ex]  0 \\
+%   \end{array} 
+%& \multicolumn{3}{@{}c|}{} \\
+%\cline{2-5}
+%B^{\bullet}  & \begin{array}{@{}c@{}}
+%   \oplus \\[-1ex] \vdots \\[-1ex] \oplus \\
+%   \end{array} 
+%& \multicolumn{3}{@{}c|}{} \\
+%\cline{2-5}
+%\end{array}
+% \]
+となっていることを示す.  
+ただし$\ominus$は非正の数を表している．
+%正確には, 下記で議論するのはベクトル $\widetilde{\bm{c}''}^{\top}$
+%の符号のみである.  
+
+\noindent
+(ii-a) Step~2 で添字$j$が選択されたことから, 
+   $\widetilde{c}''_j>0$は明らかである.  
+   
+\noindent
+(ii-b) 任意の添字
+$ i \in N'' \setminus (N^{\bullet} \cup \{j\}) $
+%$ i \in (E^{\circ} \cap N'') \setminus \{j\}  ,$
+において, 
+$\widetilde{c}''_i \leq 0$ を示す. 
+
+ここで
+$\exists i^* \in N'' \setminus (N^{\bullet} \cup \{j\})  ,$
+%$\exists i^* \in (E^{\circ} \cap N'') \setminus \{j\}  ,$
+$\widetilde{c}''_{i^* }>0$ と仮定する. 
+性質 $i^* \in N'' \setminus (N^{\bullet} \cup \{j\}) 
+  =  (E^{\circ} \cap N'') \setminus \{j\}
+  \subseteq  E^{\circ}  \setminus \{j\} $ より $i^*<j$ が成り立ち,   
+ 添字$i^*$より大きな添字$j$が Step~2 で選択されたこととなり, 矛盾. 
+
+\smallskip
+\noindent
+(iii) 
+最後に, 
+性質\ref{lemmaDic}(b)と
+ $\widetilde{\bm{c}}''$を利用して, 
+$\bm{c}^{\top}\bm{y}<0$を導く. 
+
+
+(i)と(ii)で得られた性質より, 
+$\bm{y}$の要素を並び替えて $\widetilde{\bm{c}}''$と並べると,
+\[
+\begin{array}{c|c|c|c|c|c|c|c|c|}
+% \multicolumn{1}{c}{}
+\cline{2-9}
+&\multicolumn{3}{c|}{B'}&\multicolumn{5}{c|}{N'} \\
+\cline{2-9}
+&B^{\bullet}   &  &j&&s&\multicolumn{2}{c|}{} &N^{\bullet}\\  
+\cline{2-9}
+\bm{y}^{\top}=& *\cdots * & \oplus \cdots \oplus & - 
+& 0 \cdots 0 &1
+&  \multicolumn{1}{c@{}}{0\cdots } 
+&  \multicolumn{1}{@{}c|}{0} 
+&  0 \cdots 0 \\
+ \cline{2-9} 
+ \multicolumn{1}{c}{} \\
+ %%%%%%%%%%%%%%%%%%%%%%%%
+ \cline{2-9} 
+ &\multicolumn{3}{c|}{B''}&\multicolumn{5}{c|}{N''} \\
+ \cline{2-9}
+&B^{\bullet}   
+&\multicolumn{2}{c|}{} 
+&\multicolumn{3}{c|}{N'' \setminus (N^{\bullet} \cup \{j\})}  
+&\multicolumn{1}{@{}c@{}|}{j}
+&N^{\bullet}\\  
+\cline{2-9}
+\bm{y}^{\top}=& *\cdots * 
+&  \multicolumn{2}{c|}{ \oplus \cdots \cdots \oplus}
+&  \multicolumn{3}{c|}{ \oplus \cdots \cdots  \cdots \oplus  } 
+&- &  0 \cdots 0 \\
+ \cline{2-9}
+ \multicolumn{1}{c}{} \\ 
+%%%%%%%%%%%%%%%%%%%%%%%%
+\cline{5-9} 
+ \multicolumn{4}{c|}{}
+&\multicolumn{5}{c|}{N''} \\
+ \cline{5-9}
+ \multicolumn{4}{c|}{}
+&\multicolumn{3}{c|}{N'' \setminus (N^{\bullet} \cup \{j\})}  
+&\multicolumn{1}{@{}c@{}|}{j}
+&N^{\bullet}\\  
+\cline{5-9}
+ \multicolumn{1}{c}{\widetilde{\bm{c}''}^{\top}=} 
+&  \multicolumn{3}{c|}{ }
+&  \multicolumn{3}{c|}{ \ominus \cdots \cdots \cdots \ominus  } 
+& +&  * \cdots * \\
+ \cline{5-9} 
+\end{array}
+\]
+となっている. 
+
+\smallskip
+
+性質\ref{lemmaDic}(b)と$A\bm{y}=\bm{0}$, 
+及び
+$ N'' \setminus (N^{\bullet} \cup \{j\})
+ = (E^{\circ} \cap N'') \setminus \{j\}
+% \subseteq  E^{\circ}  \setminus \{j\} 
+ $ 
+が成り立つことより, 
+\begin{eqnarray*}
+%\lefteqn{
+\bm{c}^{\top}\bm{y}&=&
+%\bm{c}^{\top}(\widehat{\bm{x}}+\bm{y})
+%-\bm{c}^{\top}\widehat{\bm{x}}
+%&=& (\widetilde{d''}+\widetilde{\bm{c}}''^{\top}
+%   (\widehat{\bm{x}}+\bm{y})_{N''})
+%- (\widetilde{d''}+\widetilde{\bm{c}}''^{\top}
+%    \widehat{\bm{x}}_{N''}) 
+\widetilde{\bm{c}}''^{\top}\bm{y}_{N''} 
+=\sum_{i\in N'' \setminus (N^{\bullet} \cup \{j\})}
+      \widetilde{c}''_i y_i
+   +  \widetilde{c}''_j y_j
+   + \sum_{i\in N^{\bullet}} \widetilde{c}''_i y_i \\
+&=&\sum_{i \in (E^{\circ} \cap N'') \setminus \{j\} }
+      \widetilde{c}''_i y_i
+   +  \widetilde{c}''_j y_j 
+\leq  
+  \widetilde{c}''_j y_j 
+=  \widetilde{c}''_j (- \widetilde{a}'_{js})
+< 0
+%
+%
+%&=&\sum_{i \in (E^{\circ} \cap N'') \setminus \{j\} }
+%      \widetilde{c}''_i y_i
+%   +  \widetilde{c}''_j y_j
+%   + \sum_{i\in N^{\bullet}} \widetilde{c}''_i y_i \\
+% &=& \sum_{i\in N'' \setminus (N^{\bullet} \cup \{j\})} 
+%      \widetilde{c}''_i y_i
+%   +  \widetilde{c}''_j y_j 
+%  \leq    \widetilde{c}''_j y_j < 0
+%&\leq & 
+%     \widetilde{c}''_j y_j
+%   + \sum_{i\in N^{\bullet}} \widetilde{c}''_i y_i 
+%=  \widetilde{c}''_j y_j 
+%=  \widetilde{c}''_j (- \widetilde{a}'_{js})
+%< 0
+ \end{eqnarray*}
+ が得られる. 
+ただし上記二か所の不等号は,
+$(E^{\circ} \cap N'') \setminus \{j\}
+ \subseteq  E^{\circ}  \setminus \{j\} $ と, 
+性質(\ref{tate}),  (ii-a),  (ii-b)  より導かれる. 
+上記不等式は, 式(\ref{ineqplus}) と矛盾. 
+ \qed
+ 
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ \newpage
+ 
+ \section*{補足 (定理\ref{optdic}と定理\ref{ubdic}の証明) } 
+ 
+ \noindent
+補題\ref{lemmaDic}より, 任意の基底$B$に対し問題Pを
+ \begin{eqnarray*}
+ \mbox{P}(B):  \mbox{ \;\; max.} &&
+ z=\widetilde{d}+  \widetilde{\bm{c}}^{\top}  \bm{x}_N \\
+ \mbox{s.t.} && 
+     \bm{x}_B= \widetilde{\bm{b}}- \widetilde{A}\bm{x}_N,
+     \bm{x}_B \geq \bm{0}, \bm{x}_N \geq \bm{0},
+ \end{eqnarray*}
+と書き換えることができる. 
+正確には, 問題Pと問題$\mbox{P}(B)$は許容領域が同一であり, 
+任意の許容解に対し目的関数値が一致する.
+
+\bigskip
+
+基底$B$に対応する辞書が
+\[
+\begin{array}[b]{|c|c|}
+\multicolumn{2}{c}{}\\ 
+\hline
+* & \ominus  \cdots  \cdots \ominus  \\
+\hline
+\oplus & \\
+\vdots & \\[-1ex]
+\vdots & \\
+\oplus & \\
+\hline
+\multicolumn{2}{c}{\mbox{最適辞書}}\\
+\end{array}
+%
+\;\;\; \;
+\begin{array}[b]{c|c|c|}
+\cline{2-3}
+&*& * \cdots \cdots *   \\
+\cline{2-3}
+&
+\begin{array}{c}
+   * \\ \vdots \\ * 
+\end{array} 
+ & \\
+\cline{2-3}
+t & - & \ominus \cdots \cdots \ominus \\
+\cline{2-3}
+%&
+%\begin{array}{c}
+% * \\ \vdots \\ * 
+%\end{array} 
+% &  \\
+%\cline{2-3}
+ \multicolumn{3}{c}{\mbox{主不能辞書}} \\ 
+\end{array}
+%
+\;\;\; \; \;\;\;
+\begin{array}[b]{|c|c|c|}
+\multicolumn{2}{c}{} & \multicolumn{1}{c}{s}   \\ 
+\hline
+* & * \cdots * & +   \\
+\hline
+* && \oplus \\
+ \vdots &&\vdots  \\[-1ex]
+  \vdots &&\vdots  \\
+* && \oplus  \\
+ \hline
+\multicolumn{3}{c}{\mbox{双対不能辞書}}\\ 
+\end{array}
+%
+%\begin{array}[b]{|c|ccc|}
+%\multicolumn{2}{c}{} & s & \multicolumn{1}{c}{} \\ 
+%\hline
+%* & * \cdots * & + & * \cdots *  \\
+%\hline
+%* && \oplus &\\
+% \vdots &&\vdots & \\
+%* && \oplus & \\
+% \hline
+%\multicolumn{4}{c}{\mbox{双対不能辞書}}\\ 
+%\end{array}
+\]
+となっているとき, 
+以下の性質が成り立つ. 
+ただし$\ominus$は非正の数値を, 
+$\oplus$は非負数値を表している．
+以下の定理は, 
+定理\ref{optdic}と定理\ref{ubdic}を含んでいる. 
+
+\begin{theorem}\label{terminaldic}
+\quad
+
+\begin{description}
+\setlength{\parskip}{0cm} % 段落間
+\setlength{\itemsep}{0cm} % 項目間
+\item[最適辞書]
+与えられた基底$B$の辞書が
+「$\widetilde{\bm{b}} \geq \bm{0}$ かつ
+$\widetilde{\bm{c}} \leq \bm{0}$」
+を満たすとき,  
+最適辞書と呼ぶ. 
+最適辞書の基底解は問題Pの最適解である. 
+\item[主不能辞書]
+与えられた基底$B$に対し, 
+ある添字
+$t \in B $が存在して, 
+$B$の辞書が
+「$\widetilde{b}_t<0 $, かつ, 
+行列$- \widetilde{A}$の
+$t$行の要素が全て非正」を満たすとき, 
+主不能辞書と呼ぶ. 
+問題Pが主不能辞書を持つならば, 
+問題Pは実行可能解を持たない. 
+\item[双対不能辞書]
+与えられた基底$B$に対し, 
+ある添字
+$s \in N=E\setminus B $が存在して, 
+$B$の辞書が 
+「$\widetilde{c}_s>0 $, かつ, 
+$- \widetilde{A}_{\{s\}}\geq \bm{0}$」
+を満たすとき, 
+双対不能辞書と呼ぶ. 
+問題Pが実行可能で双対不能辞書を持つならば, 
+問題Pは非有界である 
+\end{description}
+\end{theorem}
+
+\noindent
+\underline{最適辞書(定理\ref{optdic})の証明: } 
+以下では, 
+$\widetilde{\bm{b}} \geq \bm{0}$ かつ
+$\widetilde{\bm{c}} \leq \bm{0}$
+が成り立つならば, 
+$B$の基底解は問題$\mbox{P}(B)$の最適解であることを示す.
+基底解
+ $ \bm{x}=
+\left( \begin{array}{c}
+\bm{x}_B \\ \bm{x}_N 
+\end{array}
+\right)
+=
+\left( \begin{array}{c}
+\widetilde{\bm{b}}\\ \bm{0} 
+\end{array}
+\right)
+$
+% $(\bm{x}_B, \bm{x}_N)=(\widetilde{\bm{b}}, \bm{0})$ 
+が問題$\mbox{P}(B)$の等式制約を満たす事は明らか.
+性質$\widetilde{\bm{b}} \geq \bm{0}$ より, 
+$B$の基底解は非負ベクトルである. 
+ゆえに,  $B$の基底解は問題$\mbox{P}(B)$の許容解となっている．
+この基底解の目的関数値は
+$\widetilde{d}$ である. 
+%$\bm{c}_B^{\top}A_B^{-1}\bm{b}$ である.
+
+
+性質 $\widetilde{\bm{c}} \leq \bm{0}$ より, 
+%$\bm{c}_N-\bm{c}_B^{\top}A_B^{-1}A_N \leq \bm{0}$より,
+問題$\mbox{P}(B)$の目的関数値係数は非正であり, 
+制約式 $\bm{x}_N \geq \bm{0}$ より, 
+問題$\mbox{P}(B)$の最適値は定数項 
+$\widetilde{d}$
+%$\bm{c}_B^{\top}A_B^{-1}\bm{b}$ 
+以下である.
+
+以上より,  $B$の基底解は
+問題$\mbox{P}(B)$の最適解となり, 問題Pの最適解でもある.  
+
+ \medskip
+ 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  
+ 
+\noindent
+\underline{主不能辞書の証明: } 
+行列$- \widetilde{A}$の
+$t$行の行ベクトルを
+$-\widetilde{\bm{a}}^{\top} \leq \bm{0}$とする. 
+問題$\mbox{P}(B)$の等式制約は, 
+$x_t=\widetilde{b}_t - \widetilde{\bm{a}}^{\top} \bm{x}_{N}$
+を含んでいる. 
+問題Pが実行可能解$\widehat{\bm{x}} \geq \bm{0}$
+を持つと仮定すると, 
+$0\leq \widehat{x}_t 
+  = \widetilde{b}_t 
+  - \widetilde{\bm{a}}^{\top} \widehat{\bm{x}}_{N}
+  < - \widetilde{\bm{a}}^{\top} \widehat{\bm{x}}_{N} \leq 0$
+  が成り立ち, 矛盾. 
+
+ \medskip
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+\noindent
+\underline{双対不能辞書(定理\ref{ubdic})の証明: }
+ 以下では, 問題$\mbox{P}(B)$は実行可能解を持つとき, 
+ $\widetilde{c}_s >0$ かつ 
+ $-\widetilde{A}_{\{s\}}\geq \bm{0}$
+ ならば, 
+ 問題$\mbox{P}(B)$が非有界であることを示す. 
+ 問題$\mbox{P}(B)$の実行可能解の一つを $\widehat{\bm{x}}$
+ とする.  
+添字集合$E$を持つベクトル$\bm{y}$ を
+\[
+     y_i=\left\{
+     \begin{array}{ll}
+       1 & (i=s), \\ 
+       0 & (i\in N\setminus \{s\}),\\ 
+      -\widetilde{a}_{is} & (i \in B), \\
+	\end{array}
+	\right.
+\]
+と定める. 
+明らかに $\bm{y}_{B}=-\widetilde{A}_{\{s\}}\geq \bm{0}$であり, 
+$\bm{y}_{N}$は単位ベクトルである.
+
+任意の非負の値$\lambda \geq 0$に対し 
+$\widehat{\bm{x}}+\lambda \bm{y}$
+が許容解であることを示す．
+性質~\ref{lemmaDic}(a)と$A\widehat{\bm{x}}=\bm{b}$より
+\[
+\widetilde{\bm{b}}- \widetilde{A} \widehat{\bm{x}}_{N}
+  = \widehat{\bm{x}}_{B}
+\]
+が成り立つ.  
+同様に, 
+\begin{eqnarray*}
+\widetilde{\bm{b}}
+ - \widetilde{A}( \widehat{\bm{x}}+\lambda \bm{y})_{N}
+&=&
+\widetilde{\bm{b}} 
+ - \widetilde{A}( \widehat{\bm{x}}_{N}+\lambda  \bm{y}_{N})
+=( \widetilde{\bm{b}} 
+    - \widetilde{A} \widehat{\bm{x}}_{N}) 
+    - \lambda \widetilde{A} \bm{y}_{N}\\
+&=&\widehat{\bm{x}}_{B}-\lambda  \widetilde{A}_{\{s\}}
+=\widehat{\bm{x}}_{B}+\lambda  \bm{y}_{B}
+=( \widehat{\bm{x}}+\lambda  \bm{y})_{B}
+\end{eqnarray*}
+を満たすことから, 
+性質\ref{lemmaDic}(a)より
+$A(\widehat{\bm{x}}+\lambda \bm{y})=\bm{b}$
+が成り立つ.
+
+仮定より,  
+$\widehat{\bm{x}}$ と $\bm{y}$ はどちらも非負ベクトルであり, 
+$\lambda \geq 0$より, 
+$\widehat{\bm{x}}+\lambda \bm{y}$
+は非負ベクトルである.  
+ゆえに $\widehat{\bm{x}}+\lambda \bm{y}$ は許容解である. 
+
+対応する目的関数値は
+\[
+   z=\widetilde{d}
+     +\widetilde{\bm{c}}^{\top}(\widehat{\bm{x}}_{N}+\lambda \bm{y}_N)
+   = \widetilde{d}+\widetilde{\bm{c}}^{\top}\widehat{\bm{x}}_{N}
+   +\lambda \widetilde{\bm{c}}^{\top} \bm{y}_N 
+   = \widetilde{d}+\widetilde{\bm{c}}^{\top}\widehat{\bm{x}}_{N}
+   +\lambda \widetilde{c}_s
+ \] 
+ と書ける．
+ 仮定より $\widetilde{c}_s >0$である. 
+ ゆえに,  任意の数$M$ に対し,  
+     $\lambda$を十分大きな正の数とすれば,
+     目的関数値が$M$より大きな実行可能解が存在する. 
+     ゆえに問題$\mbox{P}(B)$は非有界であり,
+      問題Pも非有界である. 
+\qed
+
+\medskip 
+
+上記定理の「双対不能辞書」は, 
+双対問題が実行不能となる辞書である.   
+本稿では, 
+読者に双対問題の知識が無くとも良いように配慮した結果, 
+上記のように(少し長い)非有界性の証明を記載している.
+
+上記定理中の三つの辞書を{\em 終了辞書}と呼ぶ. 
+線形計画問題については,      
+以下が成り立つことが知られている.
+
+\begin{theorem}
+問題Ｐが基底を持つならば,  
+三つの終了辞書の内, 
+どれか一つ(以上)の辞書に対応する基底を持つ.
+\end{theorem}
+
+本稿では, 上記の証明は扱わない. 
+
+
+
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+ \section*{余談} 
+ 
+% \noindent
+% {\bf 巡回と退化ピヴォット：} 
+(主)単体法の反復において, 
+同一の基底が複数回出現することを巡回と言う.  
+定理\ref{finite}の証明(i-a)で示したように, 
+主単体法において巡回が起きているときは, 
+退化ピヴォットが連続しており, 
+対応する基底解は変化しない. 
+「巡回」と言う単語から, 
+許容解多面体の端点を
+「巡る(移動する)」
+というイメージを持つ読者も居るかもしれないが, 
+それは間違っている. 
+主単体法において巡回が起きているときは, 
+対応する基底解は, 
+許容解多面体のある端点に留まったまま動かない. 
+また, このことから, 
+巡回の様子を許容解多面体の幾何学的形状から伺うことは,  
+困難であると筆者は感じる. 
+
+\bigskip
+
+\begin{thebibliography}{99}
+ 
+\bibitem{bland1977p}
+Robert G. Bland, 
+``New finite pivoting rules for the simplex method,''
+Mathematics of Operations Research, 2 (1977), 103-107.
+ 
+%\bibitem{bland1977}
+%Robert G. Bland, 
+%``A combinatorial abstraction of linear programming,'' 
+%Journal of Combinatorial Theory, series B, 23.1 (1977),  33-57.
+
+
+ \end{thebibliography}
+ 
+ \end{document}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\noindent
+ {\bf 辞書の部分行列：}
+
+基底$B$と, ある添字$j$について, 
+$E^{\circ}_{j}=\{1, \ldots , j\}$, 
+$B^{\bullet}_{j}=\{i \in B \mid i>j\}$, 
+$N^{\bullet}_{j}=\{i \in E \setminus B \mid i>j\}$ 
+とする. 
+基底$B$に対する辞書(行列)において, 
+$B^{\bullet}_{j}$に対応する行と, 
+$N^{\bullet}_{j}$に対応する列を取り除いて得られる部分行列を$D(B, j)$と書く. 
+
+
+ \[
+ \left(
+\begin{array}{c|c}
+\widetilde{d}& \;\;\;\; \widetilde{\bm{c}}^{\top} \;\;\;\; \\
+\hline
+\\
+\widetilde{\bm{b}} & - \widetilde{A} \\ \\
+\end{array}
+\right)
+=
+ \begin{array}{c|cc|c|}
+   \multicolumn{2}{c}{}
+& \multicolumn{1}{c}{}  
+& \multicolumn{1}{c}{N^{\bullet}_j}  \\
+\cline{2-4} 
+&& \hspace{10ex}  & * \cdots * \\
+\cline{4-4}
+& \begin{array}{@{}c@{}}
+    \\[-4ex] \\  \\[-1ex]   \\
+   \end{array} 
+& D(B, j)  &  \\
+\cline{2-4}
+B^{\bullet}_j  
+& \multicolumn{1}{c|}{ 
+  \begin{array}{@{}c@{}}
+   * \\[-1ex] \vdots \\[-1ex] * \\
+   \end{array} 
+   }
+&  \multicolumn{1}{c|}{ }& \\
+\cline{2-4}
+\end{array}
+ \]
+ 
+ \noindent
+
+\begin{property}\label{subproblem}
+基底$B$と, ある添字$j$から定義される
+部分辞書$D(B, j)$が主不能辞書あるいは双対不能辞書となっていた場合,  
+以下の問題
+ \begin{eqnarray*}
+% \mbox{P}/N^{\bullet}_j \setminus B^{\bullet}_j 
+ \mbox{P}(B, j):  \; \; \; \mbox{max.} && z=\bm{c}^{\top}\bm{x}\\
+ \mbox{s.t.} && A\bm{x}=\bm{b}, \\
+ && x_i\geq 0 \; (\forall i \in E^{\circ}_j), 
+      x_i =0 \; (\forall i \in N^{\bullet}_j),  
+ \end{eqnarray*}
+ 
+\noindent
+は, 実行不能あるいは非有界となっている. 
+部分辞書$D(B, j)$が最適辞書ならば, 
+(もとの辞書の)基底解は問題$\mbox{P}(B, j)$の最適解である. 
+\end{property}
+
+\noindent
+証明は省略するが, さほど難しくはない. 
+双対問題を導入していないため,  
+双対不能辞書となっている場合の主張が若干不自然になっている. 
+
+
+問題$\mbox{P}(B, j)$は, 
+問題$\mbox{P}(B)$において変数$\{x_{j+1}, \ldots , x_n\}$
+を消去することでも得られる. 
+より詳細に述べるならば, 
+$ x_i =0 \; (\forall i \in N^{\bullet}_j)$ は, 
+  対応する非負制約$ x_i \geq 0 $を消去し，
+  等式制約中の$ x_i $の項を削除して達成される.  
+  添字$\forall i \in B^{\bullet}_j$ 
+  について変数$ x_i $を自由変数にする(非負制約を除く)には, 
+   対応する非負制約$ x_i \geq 0 $を消去し，
+   等式制約で左辺が$ x_i $
+   となっている等式制約そのものを削除することで達成される. 
+   上記の変形で問題$\mbox{P}(B, j)$が得られることを認めるならば, 
+性質\ref{subproblem}はほぼ明らかであろう. 
+
+以下本稿で$\mbox{P}(B, j)$は, 
+  上記の手続きで得られる, 
+   $j$個の変数($x_1, x_2, \ldots , x_j$)を持つ問題を指すとする. 
+\bigskip
+
+\noindent
+ {\bf 概終了辞書：}
+最小添字規則の有限性を保証しているのは, 
+概終了辞書と呼ばれる以下の辞書の性質である. 
+変数添字$j$に対し, ある基底$B$に対応している辞書が
+
+\[
+\begin{array}[d]{|c|c|c|}
+\multicolumn{2}{c}{}&\multicolumn{1}{c}{j}  \\ 
+\hline
+* & \ominus  \cdots \ominus & + \\
+\hline
+\oplus & &\\
+\vdots & &\\
+\vdots & &\\
+\oplus & &\\
+\hline
+\multicolumn{3}{c}{D_1}\\
+\end{array}
+\mbox{ または }
+\begin{array}[c]{c|c|c|c|}
+\multicolumn{4}{@{}c@{}}{} \\ 
+\cline{2-4}
+&* & *  \cdots * & + \\
+\cline{2-4}
+&* & & \oplus \\
+&\vdots & & \vdots \\
+&* & & \oplus \\
+\cline{2-4}
+j&* & &  - \\
+\cline{2-4}
+\multicolumn{4}{c}{D_2}\\
+\end{array}
+\]
+となっているとき, これを変数添字$j$に対する{\em 概終了辞書}と呼ぶ. 
+概終了辞書については, 
+以下が成り立つ.
+
+\begin{lemma} \label{almost} (\cite{fukuda1991})
+問題Pと任意の変数添字$j$に対し以下が成り立つ. 
+問題Pが,  変数添字$j$に対する概終了辞書$D_1$に対応する基底$B_1$と, 
+変数添字$j$に対する概終了辞書$D_2$に対応する基底$B_2$
+の両方を持つことは無い.
+\end{lemma} 
+
+\noindent
+% 証明は省略する.  
+定理\ref{finite}の証明の(1-c)から後と, 
+ほぼ同様に示すことができる. 
+
+\bigskip
+
+\noindent
+ {\bf 最小添字規則：}
+ 上記の補題\ref{almost}を使って,  
+ 最小添字規則の動きを直観的に説明してみよう. 
+ 最小添字規則を実行中に, 
+ ある基底$B$にピヴォット操作を行って
+ 基底$B'=B \cap\{s\}\setminus  \{t\}$
+ が得られたとしよう. 
+ これが退化ピヴォットでなければ, 目的関数値は厳密に増加し, 
+ これ以降に基底$B$が再び出現することは無い. 
+ これが退化ピヴォットだったときが問題である. 
+ 
+ まず$t>s$だった際について考えよう. 
+ 添字$j=t\in E\setminus B$とすると, 
+ 基底$B$の辞書は部分辞書$D(B, j)$
+ が変数添字$j$に対する概終了辞書$D_2$のようになっている. 
+ これより問題$\mbox{P}(B, j-1)$は, 
+ 解けている. 
+ ちなみに$D(B, 1),  \ldots , D(B, j-1)$は,  
+ 全て終了辞書であり,  
+ 対応する問題$P(B, 1),  \ldots , P(B, j-1)$
+ は全て解けている
+ (ここで「解けている」とは, 
+  最適基底が得られてる, あるいは, 
+  双対不能辞書を部分辞書として持ち非有界であることが分っている,  
+  のどちらかが成り立っている事を意味する). 
+
+  このあと最小添字規則は, 
+   (既に解けている$\mbox{P}(B, j-1)$より変数の一つ多い) 
+  問題$\mbox{P}(B, j)$
+  を解き始める, と解釈することができる.  
+  ちなみに問題$\mbox{P}(B, j)$と$\mbox{P}(B', j)$は
+  同じ問題である. 
+  実は問題$\mbox{P}(B, j)$
+  (すなわち問題$\mbox{P}(B', j)$) を解くには,  
+  変数の一つ少ない $\mbox{P}(B', j-1)$を解けば良い． 
+  以下では, (最小添字規則での)解き方と, 
+  これを解けば良い理由について順に記す. 
+  
+  まず$\mbox{P}(B', j-1)$の解き方について述べる.  
+  最小添字規則では,  ピヴォットを行い($B$を$B'$に更新して), 
+  添字$j=t$を基底から追い出す. 
+  最小添字規則はこの後しばらく添字$j=t$を基底に入れない, 
+ これは問題$\mbox{P}(B, j)$に$x_j=0$という制約を加えた
+ 問題$\mbox{P}(B', j-1)$を解いている, と解釈できる
+ (ただし$\{x_1, \ldots , x_{j-1}\}$
+ 内の変数対でピヴォットを行っている限りである). 
+ 問題$\mbox{P}(B', j-1)$は, 
+ 再び最小添字規則を用いて再帰的に解かれる. 
+ 
+  次に, 何故$\mbox{P}(B', j-1)$を解けば, 
+  $\mbox{P}(B, j)$が解けたことになるのか議論しよう.  
+  (集合 $\{x_1, \ldots , x_{j-1}\}$内の変数対だけでピヴォットを行って) 
+  問題$\mbox{P}(B', j-1)$の最適基底$B^*$が得られたならば, 
+\[
+  \begin{array}{c|c|c|c|c|}
+   \multicolumn{3}{c}{}
+&  \multicolumn{1}{c}{j}
+& \multicolumn{1}{c}{N^{\bullet}_j}  \\
+\cline{2-5} 
+&&\ominus \cdots \ominus & \mbox{？} & * \cdots * \\
+\cline{2-5}
+& \begin{array}{@{}c@{}}
+   \oplus \\  \vdots \\ \oplus     \\
+   \end{array} 
+&  &  &\\
+\cline{2-5}
+B^{\bullet}_j  
+& 
+  \begin{array}{@{}c@{}}
+   * \\ \vdots \\ * \\
+   \end{array} 
+&  && \\
+\cline{2-5}
+\end{array}
+ \]
+ 
+ \noindent
+ という辞書が得られる. 
+ 補題\ref{almost}から,  
+ 部分辞書$D(B^*, j)$
+ は変数添字$j$に対する概終了辞書$D_1$になれないため, 
+ 図中の？の場所は自動的に非正となり,  
+ 問題$\mbox{P}(B', j)$ 
+  (すなわち問題$\mbox{P}(B, j)$)
+ の最適解も得られている.  
+  図中の？の場所は非正より, 
+  次のピヴォットでは$j$より大きな添字を$N^{\bullet}_j$
+  から選ぶことができる. 
+  
+  問題$\mbox{P}(B', j-1)$が非有界と確認できて解けたときは, 
+   問題$\mbox{P}(B', j)$ 
+  (すなわち問題$\mbox{P}(B, j)$) 
+  も非有界であり,  解けたことになる.  
+   このときも, 次のピヴォットでは$j$より大きな添字を$B^{\bullet}_j$
+  から選ぶことができる. 
+
+基底$B$からのピヴォットで用いる添字が$t<s$だった場合も, 
+同様の解釈を与えることができるので, 
+読者は試みられたい. 
+
+\bigskip
+
+\noindent
+ {\bf 最小添字規則の単調性：}
+ 
+ 最小添字規則の有限性の証明は,  
+ 本稿のように背理法を用いて示されることが多いが,  
+ 概終了辞書の性質を用いることで， 
+ ある種の単調性を示すことができる. 
+ 
+ 最小添字規則の実行中に$n+1$次元ベクトル
+  $L=(\ell_{n+1}, \ell_n, \ell_{n-1}, \ldots , \ell_1)$ 
+  を保持する(要素が添字の逆順に並んでいることに注意).  
+ベクトル$L$の先頭要素は, 
+常に現在の基底に対応する基底解の目的関数値とする． 
+先頭要素以外は, 0または1の値をとる. 
+最小添字規則の実行開始時に,  
+ $L %=(\ell_{n+1}, \ell_n, \ell_{n-1}, \ldots , \ell_1)
+    =(\widetilde{d}, 0, 0, \ldots , 0)$とする, 
+    ただし$\widetilde{d}$
+    は初期基底に対応する基底解の目的関数値である. 
+  Step~5 において, 次のように更新を行う.  
+  Step~5 でのピヴォットが退化していなければ,  
+ $L%=(\ell_{n+1}, \ell_n, \ell_{n-1}, \ldots , \ell_1)
+    =(\widetilde{d'}, 0, 0, \ldots , 0)$と更新する, 
+      ただし$\widetilde{d'}$
+    は更新された新しい基底に対応する
+    基底解の目的関数値である. 
+Step~5 でのピヴォットが退化していた場合は, 
+ピヴォットに用いた変数添字対$(s, t)$に対し, 
+$j=\max \{s, t\}$として, 
+更新後のベクトル
+$(\ell'_{n+1}, \ell'_n, \ell'_{n-1}, \ldots , \ell'_1)$を
+\[
+\ell'_i=
+\left\{
+\begin{array}{ll}
+    \ell_i & (i>j), \\
+    1    & (i=j), \\
+    0    & (j<i), \\
+\end{array}
+\right.
+\]
+とする(簡単な説明としては$\ell_j$を1にして, 
+そこから後ろ(右？)の要素を全て0にする).  
+
+最小添字規則を実行すると,  
+ベクトル$L$が辞書式順序において単調増加することを示す. 
+ Step~5 でのピヴォットが退化していなければ,  
+辞書式順序において単調増加することは明らかであろう.  
+ Step~5 でのピヴォットが退化していた場合,  
+ $j=\max \{s, t\}$として, 
+ 更新前に$\ell_j=0$となっていることを示せば良い. 
+ 上で述べたように
+
+ もし更新前に$\ell_j=1$となっていたならば, 
+ この要素が最後に$1$となった反復が存在し，
+ それ以降の反復は全て退化ピヴォットであり,  
+ 退化ピヴォットに用いた変数は
+ $\{x_1, \ldots , x_{j-1}\}$内の変数対である.
+ ゆえに,  
+ が最後に$\ell_j=1$となった反復での更新前の基底を
+ $B'$とするならば,   
+ 
+
+\bigskip
+
+\
+
+
+\noindent
+ {\bf 最小添字規則の変種：}
+ 本稿では双対問題を導入していないため, 
+ 双対不能辞書に関する記述が若干不自然になっている. 
+ 双対問題を導入したならば, 
+ 双対問題に対する概終了辞書をあと二つ,  
+ 自然な形で定義することができる.  
+ 定理\ref{almost}は,  このように定義される四つの概終了辞書の内,  
+ 高々一つしか持つことができない, 
+ という定理に拡張することができることが知られている~\cite{fukuda1991}.  
+ 拡張された定理を積極的に用いるならば, 
+ 主問題と双対問題を全く同様に扱う,  
+ 新たなピヴォット規則を作ることができるが, 
+ その中でも良く知られているものに Zionts~\cite{zionts1969}
+ によって提案された十文字法 (criss-cross method) 
+ がある.  
+ 十文字法は,  
+ ピヴォットする(変数)添字の決定に辞書の要素の
+ (数値の大きさを用いず)符号のみを用いる, 
+ という特徴を持つ.  
+ ただし,  許容基底解を保持するという性質を失うため,  
+ 主単体法の枠組みからは外れてしまう.  
+ 
+ \begin{thebibliography}{99}
+ 
+\bibitem{bland1977}
+Robert G. Bland, 
+``A combinatorial abstraction of linear programming,'' 
+Journal of Combinatorial Theory, series B, 23.1 (1977),  33-57.
+
+\bibitem{zionts1969}
+Stanley Zionts, 
+``The criss-cross method for solving linear programming problems," 
+Management Science,  15.7 (1969), 426-445.
+
+\bibitem{fukuda1991}
+Komei Fukuda  and Tomomi Matsui. 
+``On the finiteness of the criss-cross method,''
+European Journal of Operational Research,  52.1 (1991), 119-124.
+
+
+ \end{thebibliography}
+ 
+ \end{document}
+ 
+ 
+ 
+ 
+ \noindent
+ {\bf 退化ピヴォットと最小添字ルール：}
+  ある基底$B$に対応する基底解$\bm{x}$の部分ベクトル
+   $\bm{x}_B=\widetilde{\bm{b}}$
+  が値0の要素を持つとき, 
+  基底$B$は退化している, と言う. 
+  %と基底解$\bm{x}$は
+  定理\ref{finite}の証明(1-b)から, 
+  Bland の最小添字規則は基底が退化している時に力を発揮する
+  (「主単体法の退化ピヴォットの性質」
+    を使っている）
+  ように見えるかもしれないが， 多分この直観は間違っている. 
+  Bland の最小添字規則の有限性と, 
+  退化には, 
+  直接の(数学的な)関わりは(多分)ない.   
+  
+  
+  
+ \end{document}
+
+
+
+
+ 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ゆえに, 問題Pの許容解集合と
+\[
+   \Omega=
+   \{ (\bm{x}_B, \bm{x}_N) \mid \bm{x}_B=A_B^{-	1}\bm{b}-A_B^{-1}A_N\bm{x}_N,
+         \bm{x}_B \geq \bm{0}, \bm{x}_N \geq \bm{0} \}
+\]
+は一致する. 
+
+
+
+以上より, 任意の基底$B$に対し問題Pを
+ \begin{eqnarray*}
+ \mbox{P$(B)$: \;\; max.} &&
+ \bm{c}_B^{\top}A_B^{-1}\bm{b}+(\bm{c}_N-\bm{c}_B^{\top}A_B^{-1}A_N)\bm{x}_N \\
+ \mbox{s.t.} && 
+     \bm{x}_B=A_B^{-	1}\bm{b}-A_B^{-1}A_N\bm{x}_N,\\
+     &&     \bm{x}_B \geq \bm{0}, \bm{x}_N \geq \bm{0},
+ \end{eqnarray*}
+と書き換えることができる. 
+
+すなわち問題P$(B)$を
+
+
