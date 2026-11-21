@@ -1,0 +1,45 @@
+
+\begin{center}
+\mbox{\Large 重み付き多数決ゲームにおける投票力指数の計算について}\\[2ex]
+  \begin{tabular}{ll}
+        松井知己 &  東京大学大学院工学系研究科計数工学専攻 \\
+        松井泰子 & 東海大学理学部情報数理学科
+  \end{tabular} \\[2ex]
+\mbox{\Large Calculating Power Indices of Weighted Majority Games} \\[2ex]
+  \begin{tabular}{ll}
+Tomomi Matsui & University of Tokyo, Bunkyo-ku, Tokyo 113, Japan. \\
+              &  {\small tomomi@misojiro.t.u-tokyo.ac.jp} \\
+Yasuko Matsui & Tokai University, Hiratsuka-shi, Kanagawa, 259-1292, Japan.  \\
+              &  {\small yasuko@ss.u-tokai.ac.jp} \\
+  \end{tabular} \\[2ex]
+\end{center}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\noindent
+For measuring an individual's voting power of a voting game,
+   some power indices are proposed. 
+In this paper, 
+  we discuss the problems for calculating 
+  Shapley-Shubik index, Banzhaf index and Deegan-Packel index
+  of weighted majority games.
+
+投票力指数は、議会などで投票による決定を行なう際、
+各投票主体が決定にどれだけの影響力を持つかを評価
+する尺度の一つである。投票力指数としてしばしば用
+いられるものには、Shapley-Shubik 指数、
+Banzhaf 指数、Deegan-Packel 指数等がある。
+本稿では、重みつき多数決ゲームの投票力指数を計算する問題の複雑さ、
+効率よく計算するための方法について議論する。
+
+\medskip
+
+\noindent
+{\bf Key Words}: weighted majority game, 
+    power index, NP-complete, 
+    dynamic programming, enumeration problem,
+    isotonic regression, Monte Carlo method.
+
+
+
