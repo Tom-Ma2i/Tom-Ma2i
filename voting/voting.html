@@ -1,0 +1,596 @@
+
+<HTML> 
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=shift_jis"> 
+<meta http-equiv="Content-Language" content="ja">
+<TITLE>  Power Indices of Voting Games (投票ゲーム(選挙)の投票力指数) </TITLE>
+</HEAD>
+
+<!--- BODY bgColor=steelblue link=yellow text=moccasin vLink=yellow BODY-->
+<BODY bgColor="bbdfff">
+
+<center><H1> 投票力指数を計算する (Calculating Power Indices) </H1></center>
+
+<!--- A TARGET="INDEX-E" HREF="http://www.misojiro.t.u-tokyo.ac.jp/~tomomi/cgi-bin/vpower/index-e.cgi"--->
+
+<A TARGET="INDEX-E" HREF="http://hpcgi2.nifty.com/TOMOMI/index-e.cgi">
+<H1> English Version </H1> </A> 
+
+
+このページは,  科学研究費補助金「特定領域(B)」
+  の特定領域研究の一環として作られています. <BR> 
+詳しくは
+  <A HREF="http://www-or.amp.i.kyoto-u.ac.jp/algo-eng/">
+  「新しいパラダイムとしてのアルゴリズム工学」 </A> 
+  のホームページを御覧下さい.  </p>
+
+ <SPACER SIZE=30> 
+  Yahoo で宣伝してくれてます。
+  <A HREF="http://www.yahoo.co.jp/Social_Science/Political_Science/">
+   (社会科学>政治学)</A> と  
+  <A HREF="http://www.yahoo.co.jp/Government/Politics/Elections/">
+   (政治>政治>選挙)</A> <BR>
+ <SPACER SIZE=30> 
+  Infoseek で宣伝してくれてます。
+  <A HREF="http://www.infoseek.co.jp/Topic/20/3394/4005?tid=4005&col=JT&st=10&svx=271">
+   (政治・法律・社会>日本の政治>選挙・住民投票)</A> 
+ </p>
+
+ <font color="bbg700">投票力指数はどうやって使うの？</font>
+<A HREF="./togikai.html">
+ 「東京都議会の投票力を測る」</A>
+のページを御覧下さい. 
+ </p>
+
+
+
+
+<TABLE width=100%>
+    <TBODY>
+    <TR>
+        <!---TD bgColor=#229977 colorspan = 2><FONT color=white size=5--->
+        <TD bgColor=steelblue colorspan = 2><FONT color=white size=5>
+        <CENTER><B>指数計算のページ</B></CENTER></FONT></TD></TR></TBODY></TABLE>
+</P>
+
+
+<!--- <A TARGET="INDEX-J" HREF="http://www.misojiro.t.u-tokyo.ac.jp/~tomomi/cgi-bin/vpower/index.cgi"><IMG SRC="/img/button/framed/teaching.gif"></A>
+← <font color="bbg700">このボタン</font>をクリックすると, 
+投票力指数を計算するページが現れます---> 
+
+以下をクリックして下さい
+ (<A TARGET="INDEX-E" HREF="http://hpcgi2.nifty.com/TOMOMI/index-e.cgi">
+ 英語版はこちら </A>)
+<A TARGET="INDEX-J" HREF="http://hpcgi2.nifty.com/TOMOMI/index.cgi">
+<H1> 投票力指数を計算するページへジャンプ </H1> </A> 
+
+<H2> 使い方 </H2> 
+
+既に(1999年10月20日現在の)
+ <font color="bbg700">参議院の例</font>
+(下記参照)が書き込まれていますので, 
+  好きなように数値を書き換えて使う事ができます.  </p>
+
+
+
+<Table border>
+<CENTER>表：参議院会派別所属議員(1998年10月20日現在)</CENTER>
+<TR ALIGN="center" VALIGN="middle" STYLE="vnd.ms-excel.numberformat:@">
+<TD>会派                 </TD>
+<TD>自由民主党           </TD>
+<TD>民主党・新緑風会     </TD>
+<TD>公明党               </TD>
+<TD>日本共産党           </TD>
+<TD>社会民主党 ・護憲連合</TD>
+<TD>自由党               </TD>
+<TD>参議院の会           </TD>
+<TD>二院クラブ・自由連合 </TD>
+<TD>各派に属しない議員
+    <FONT COLOR="bbg700">(下記注1参照) </FONT></TD>
+</TR>
+<TR VALIGN="bottom">
+<TD>議員数</TD>
+<TD ALIGN="right">105</TD>
+<TD ALIGN="right">56</TD>
+<TD ALIGN="right">24</TD>
+<TD ALIGN="right">23</TD>
+<TD ALIGN="right">13</TD>
+<TD ALIGN="right">12</TD>
+<TD ALIGN="right">10</TD>
+<TD ALIGN="right"> 4</TD>
+<TD ALIGN="right"> 5</TD>
+</TR>
+</Table> </p>
+
+会派がプレイヤーに対応し, 議員数を「票数」として入力します. <BR>
+(投票における政党や投票者を,  ゲーム理論ではプレイヤーと呼びます.) </p>
+
+ <font color="bbg700"> 注1 </font>：
+「各派に属しない議員」は, 票数1のプレイヤーとし, 
+   それが5名いるので, 
+ <font color="bbg700">
+「票数」に1を, 「プレイヤー数」に5を
+ </font>
+ 入力します. 
+他は, プレイヤー数は1です.  </p>
+
+<p> 最初は, 過半数のボタンが押してありますので, 
+   「過半数の票を集めると, 議案を通すことができる状況」
+  を分析することになります.  
+     </P>
+
+<p>  では「票数」や「勝利に必要な票数」を変えて, 
+ 「指数を計算する」を押して見ましょう.  </p>
+
+また,  衆議院や参議院，東京都議会，のHPを見て,  いろんな例で計算してみましょう. <BR>
+例えばアメリカの大統領戦でも,  プレイヤー(州)が51と多くなるけど, 
+  計算時間はそんなにかかりませんよ！ <BR>
+あとは, 会社の持ち株で計算しても面白いかも. <BR>
+
+<!-- 
+<TABLE width=100%>
+    <TBODY>
+    <TR>
+        <TD bgColor=steelblue colorspan = 2><FONT color=white size=5>
+        <CENTER><B>データのあるホームページ</B></CENTER></FONT></TD></TR></TBODY></TABLE>
+</P>
+
+
+<A HREF="http://www.sangiin.go.jp/japanese/sangiin/12.htm"> 
+参議院会派別所属議員 </A>
+(<A HREF="http://www.sangiin.go.jp/japanese/vote_ind.htm"> 
+参議院本会議投票結果 </A>) <BR>
+
+東京都議会
+<A HREF="http://www.metro.tokyo.jp/INET/GIKAI/ARAMASHI/B199H100.HTM"> 
+会派構成 </A>, 
+<A HREF="http://www.metro.tokyo.jp/INET/GIKAI/MEIBO/MEIBO.HTM"> 
+選挙区別議員名簿 </A> <BR>
+
+大阪府議会
+<A HREF="http://www.pref.osaka.jp/osaka-pref/gikai/kaiha/index.html"> 
+会派別名簿 </A>,  
+<A HREF="http://www2.kpn.nishi.osaka.jp/gikai/member/fr_mem.html"> 
+地域別名簿 </A> <BR>
+
+京都府議会
+<A HREF="http://www.pref.kyoto.jp/gikai/html/aramasi/aramasi2.html"> 
+会派別, 地域別名簿 </A><BR>
+
+アメリカ大統領選挙,  
+<A HREF="http://www.fec.gov/pages/elecvote.htm">
+Distribution of Electoral Votes </A>
+(<A HREF="http://www.fec.gov/pubrec/map1.htm"> map </A>).
+<A HREF="http://www.nara.gov/fedreg/ec-hmpge.html"> 
+ U. S. Electoral College  </A>, 
+<A HREF="http://www.nara.gov/fedreg/1996.html"> 
+1996  </A> and 
+<A HREF="http://www.nara.gov/fedreg/elctvot.html">
+1992  </A> Electoral Votes and Electors, by State.  <BR>
+
+<A HREF="http://www.bundestag.de/btengver/orga/eldercal.htm">
+ドイツ連邦議会 </A>,
+ドイツ関連
+<A HREF="http://www.okayama-u.ac.jp/user/la/staff/hattori/">
+  リンク</A>. 
+14th electral term: 298(SPD), 245(CDU/CSU), 47(Alliance 90/The Greens), 43(FDP), 36(PDS), 669(total). <BR>
+
+<A HREF="http://www.shugiin.go.jp/syu/kaihag.htm"> 
+衆議院会派別所属議員 </A> は自由民主党だけで過半数越えているので, 
+  計算しがいがありません.  <BR>
+
+-->
+
+
+<A HREF="http://www.esi2.us.es/~mbilbao/niza.htm"> M. Bilbao による EU の投票力指数のページ. </A>
+  <BR>
+
+<A NAME="def-of-indices">
+<TABLE width=100%>
+    <TBODY>
+    <TR>
+        <TD bgColor=steelblue colorspan = 2><FONT color=white size=5>
+        <CENTER><B>投票力指数</B></CENTER></FONT></TD></TR></TBODY></TABLE>
+</P>
+
+
+ 投票力指数は、議会などで投票による決定を行う際, 
+ 各投票主体が決定にどれだけの影響力を持つかを評価する尺度の一つです.  </p>
+
+ 影響力は, 持っている票数に対応すると一般に思われがちですが, 
+  実はそんな簡単ではありません. </p>
+
+ 例えば, A, B, C の3人で投票を行うとし, 
+ <font color="bbg700">(A, B, C)</font>
+ それぞれが
+ <font color="bbg700">(5票, 5票, 1票)</font>持っているとしましょう.
+ 過半数(6票)を取ると議案が通るとすると, 
+ 3人のうち2人が賛成しないと議案は通りません. 
+ この場合A,B,Cの3人は, 
+ 議案を通す事に関しては同じ力を持っていると考えた方が自然です.  </p>
+
+ 政治の場面で「小数政党がキャスティングボートを握る」事があるのは, 
+  このような状況が起こっている可能性があります. <BR>
+<H5> （ちなみに キャスティングボード（casting board?） ではなく、
+         キャスティングボート （casting vote） が正しい単語です.
+   本来の意味は、「賛否同数のとき議長が投ずる一票」です. 
+   検索エンジンで引くと、 そりゃもう沢山....） 
+</H5>
+</p>
+
+ 投票力指数は, 票数からだけでは見えない, 
+ 影響力を測るために提案されたものです. 
+ 現在までに, いくつかの投票力指数が提案されています. 
+ してしばしば用いられるものには,  
+ Shapley-Shubik指数，Banzhaf指数，Deegan-Packel指数等があります.  </p>
+
+以下では,  
+ Shapley-Shubik指数，Banzhaf指数，Deegan-Packel指数 について, 
+  簡単に解説しておきます. </p>
+
+<!------------------------
+<FONT color=gold><EM>指数紹介</EM></FONT>
+   --------------------------> 
+<TABLE width=100%>
+    <TBODY>
+    <TR>
+        <TD bgColor=steelblue colorspan = 2><FONT color=white size=5>
+        <CENTER><B>投票ゲーム</B></CENTER></FONT></TD></TR></TBODY></TABLE>
+
+投票の仕組みは, 
+  ゲーム理論において「投票ゲーム」という枠組みで研究されています. </p>
+
+下記の解説は,  本当に簡単なものです. 
+  本来は, 投票力指数は, 
+  「ゲーム理論」における「公理的なアプローチ」によって, 
+  定義されるものです. 
+詳しくは, 
+  <font color="bbg700"> 
+武藤滋夫, 小野理恵, 「投票システムのゲーム分析」, 日科技連, 1998,</font> 
+ 等の専門書を御覧下さい.     
+
+
+<TABLE width=100%>
+    <TBODY>
+    <TR>
+        <TD bgColor=chocolate colorspan = 2><FONT color=white 
+            size=4><B>Shapley-Shubik 指数 (S-S指数)</B></FONT> 
+</TD></TR></TBODY></TABLE>
+
+ ゲーム理論の研究者 Shapley によって提案された, 
+  協力ゲームの解であるShapley値を, 
+  ShapleyとShubikが投票ゲームに適用したものがS-S指数です. </P>
+
+ 例えば, A, B, C の3人で投票を行うとし, 
+ <font color="bbg700">(A, B, C)</font>
+ それぞれが
+ <font color="bbg700">(20票, 30票, 40票)</font>持っているとし,  
+ <font color="bbg700">  65票</font>
+ を取ると議案が通るとして,  
+  S-S 指数を計算してみましょう.  </P>
+
+ 以下のように,  A, B, C の3人を並べる6通りの方法を考えます. 
+ 各並べ方について,  
+ 初めて65票以上になった時に加わった人をピヴォット(pivot)と呼びます.  </p>
+
+<IMG SRC="./shapley0.gif"> </p>
+
+<!--------------
+<TABLE BORDER>
+<TR>
+ <TH> 順列 </TH>
+ <TH> 10 </TH>
+ <TH> 20 </TH>
+ <TH> 30 </TH>
+ <TH> 40 </TH>
+ <TH> 50 </TH>
+ <TH> 60 </TH>
+ <TH> 70 </TH>
+ <TH> 80 </TH>
+ <TH> 90 </TH>
+ <TH><font color="bbg700"> ピヴォット </font></TH>
+</TR>
+<TR>
+ <TH>ABC</TH>
+ <TD COLSPAN=2><center> A </center></TD>
+ <TD COLSPAN=3><center> B </center></TD>
+ <TD COLSPAN=4><center> C </center></TD>
+ <TD COLSPAN=4><center><font color="bbg700"> C </font></center></TD>
+</TR>
+<TR>
+ <TH>ACB</TH>
+ <TD COLSPAN=2><center> A </center></TD>
+ <TD COLSPAN=4><center> C </center></TD>
+ <TD COLSPAN=3><center> B </center></TD>
+ <TD COLSPAN=4><center><font color="bbg700"> C </font></center></TD>
+</TR>
+<TR>
+ <TH>BAC</TH>
+ <TD COLSPAN=3><center> B </center></TD>
+ <TD COLSPAN=2><center> A </center></TD>
+ <TD COLSPAN=4><center> C </center></TD>
+ <TD COLSPAN=4><center><font color="bbg700"> C </font></center></TD>
+</TR>
+<TR>
+ <TH>BCA</TH>
+ <TD COLSPAN=3><center> B </center></TD>
+ <TD COLSPAN=4><center> C </center></TD>
+ <TD COLSPAN=2><center> A </center></TD>
+ <TD COLSPAN=4><center><font color="bbg700"> C </font></center></TD>
+</TR>
+<TR>
+ <TH>CAB</TH>
+ <TD COLSPAN=4><center> C </center></TD>
+ <TD COLSPAN=2><center> A </center></TD>
+ <TD COLSPAN=3><center> B </center></TD>
+ <TD COLSPAN=4><center><font color="bbg700"> A </font></center></TD>
+</TR>
+<TR>
+ <TH>CBA</TH>
+ <TD COLSPAN=4><center> C </center></TD>
+ <TD COLSPAN=3><center> B </center></TD>
+ <TD COLSPAN=2><center> A </center></TD>
+ <TD COLSPAN=4><center><font color="bbg700"> B </font></center></TD>
+</TR>
+</TABLE>
+--------------->
+
+
+あとは, 各人がピヴォットになった割合を計算します.  <BR>
+
+<BLOCKQUOTE>
+Aは,  6通りの内0回ですから, S-S 指数の値は 0/6=0 です. <BR>
+
+Bは,  6通りの内3回ですから, S-S 指数の値は 3/6=0.5 です. <BR>
+
+Cは,  6通りの内3回ですから, S-S 指数の値は 3/6=0.5 です. <BR>
+</BLOCKQUOTE>
+
+Aは20票持っていても, 実は影響力が全く無い事が分かります. <BR>
+Bは30票,  Cは40票持っていても,  
+  S-S指数はどちらも0.5で,  実は影響力は同じである事が分かります. </P>
+
+<!------------------------------------------------------>
+<TABLE width=100%>
+    <TBODY>
+    <TR>
+        <TD bgColor=chocolate colorspan = 2><FONT color=white 
+            size=4><B>Banzhaf 指数 (Bz指数)</B></FONT> 
+            </TD></TR></TBODY></TABLE>
+ Banzhaf 指数（Bz指数）は, 
+  法律家 Banzhaf によって1965年に定義された指数です. 
+ その後  Dubey と Shapley によって, 公理的特徴付けがなされています.  </P>
+
+
+ 例えば, A, B, C, D の4人で投票を行うとし, 
+ <font color="bbg700">(A, B, C, D)</font>
+ それぞれが
+ <font color="bbg700">(30票, 40票, 80票, 50票)</font>持っているとし,  
+ <font color="bbg700">  115票</font>
+ を取ると議案が通るとして,  
+ D の Bz 指数を計算してみましょう.  </P>
+
+ 以下のように,  A, B, C の3人のうち何人かが集まる8通りの方法を考えます. 
+ 各集まり方について,  
+ D を加えて115票以上になった時 D はスウィングになっていると言います. </P>
+
+<IMG SRC="banzhaf0.gif"> </p>
+
+<!-----
+<TABLE BORDER>
+<TR>
+ <TH> 順列 </TH>
+ <TH> 010 </TH>
+ <TH> 020 </TH>
+ <TH> 030 </TH>
+ <TH> 040 </TH>
+ <TH> 050 </TH>
+ <TH> 060 </TH>
+ <TH> 070 </TH>
+ <TH> 080 </TH>
+ <TH> 090 </TH>
+ <TH> 100 </TH>
+ <TH> 110 </TH>
+ <TH> 120 </TH>
+ <TH> 130 </TH>
+ <TH> 140 </TH>
+ <TH> 150 </TH>
+ <TH> 160 </TH>
+ <TH> 170 </TH>
+ <TH> 180 </TH>
+ <TH> 190 </TH>
+ <TH> 200 </TH>
+ <TH><font color="bbg700"> スウィング </font></TH>
+</TR>
+<TR>
+ <TH> 無人 </TH>
+ <TD COLSPAN=4><center><font color="bbg700"> D </font></center></TD>
+ <TD COLSPAN=16> </TD>
+ <TD><center><font color="bbg700"> × </font></center></TD>
+</TR>
+<TR>
+ <TH>A</TH>
+ <TD COLSPAN=3><center> A </center></TD>
+ <TD COLSPAN=5><center><font color="bbg700"> D </font></center></TD>
+ <TD COLSPAN=12> </TD>
+ <TD><center><font color="bbg700"> × </font></center></TD>
+</TR>
+<TR>
+ <TH>B</TH>
+ <TD COLSPAN=4><center> B </center></TD>
+ <TD COLSPAN=5><center><font color="bbg700"> D </font></center></TD>
+ <TD COLSPAN=11></TD>
+ <TD><center><font color="bbg700"> × </font></center></TD>
+</TR>
+<TR>
+ <TH>C</TH>
+ <TD COLSPAN=8><center> C </center></TD>
+ <TD COLSPAN=5><center><font color="bbg700"> D </font></center></TD>
+ <TD COLSPAN=7></TD>
+ <TD><center><font color="bbg700"> ○ </font></center></TD>
+</TR>
+<TR>
+ <TH>AB</TH>
+ <TD COLSPAN=3><center> A </center></TD>
+ <TD COLSPAN=4><center> B </center></TD>
+ <TD COLSPAN=5><center><font color="bbg700"> D </font></center></TD>
+ <TD COLSPAN=8></TD>
+ <TD><center><font color="bbg700"> ○ </font></center></TD>
+</TR>
+<TR>
+ <TH>AC</TH>
+ <TD COLSPAN=3><center> A </center></TD>
+ <TD COLSPAN=8><center> C </center></TD>
+ <TD COLSPAN=5><center><font color="bbg700"> D </font></center></TD>
+ <TD COLSPAN=4></TD>
+ <TD><center><font color="bbg700"> ○ </font></center></TD>
+</TR>
+<TR>
+ <TH>BC</TH>
+ <TD COLSPAN=4><center> B </center></TD>
+ <TD COLSPAN=8><center> C </center></TD>
+ <TD COLSPAN=5><center><font color="bbg700"> D </font></center></TD>
+ <TD COLSPAN=3></TD>
+ <TD><center><font color="bbg700"> × </font></center></TD>
+</TR>
+<TR>
+ <TH>ABC</TH>
+ <TD COLSPAN=3><center> A </center></TD>
+ <TD COLSPAN=4><center> B </center></TD>
+ <TD COLSPAN=8><center> C </center></TD>
+ <TD COLSPAN=5><center><font color="bbg700"> D </font></center></TD>
+ <TD><center><font color="bbg700"> × </font></center></TD>
+</TR>
+</TABLE>
+------------->
+ 
+あとは, Dがピヴォットになった割合を計算すると, 
+  8回のうち3回ですから,  D の絶対 Bz 指数の値は,  3/8 です.  <BR>
+
+同様にして他のプレイヤーの絶対 Bz 指数も求めると,
+<font color="bbg700">(A, B, C, D)</font>の絶対Bz指数は
+<font color="bbg700"> (1/8, 3/8, 5/8, 3/8) </font> となります.    </P>
+
+Cは総数の200票のうち,  80票しか持っていないにも関わらず,  
+  5/8 と大きな力を持っている事が分かります.  </P>
+
+Bz指数の総和は1になるとは限らない点に注意してください. </P>
+
+総和が1になるように,  絶対Bz指数を定数倍したものを,  
+  正規Bz指数と呼びます. 
+上記の例では,  絶対Bz指数を2/3 倍すると
+<font color="bbg700">(A, B, C, D)</font>の正規Bz指数が求まり, 
+<font color="bbg700"> (2/24, 6/24, 10/24, 6/24) </font> となります.    </P>
+
+<!-------------------------------------------------------->
+<TABLE width=100%>
+    <TBODY>
+    <TR>
+        <TD bgColor=chocolate colorspan = 2><FONT color=white 
+            size=4><B>Deegan-Packel 指数 (D-P指数)</B></FONT> 
+          </TD></TR></TBODY></TABLE>
+
+ Deegan-Packel 指数（D-P指数）は, 
+  ゲーム理論の研究者 Deegan と Packel によって提案された指数です. 
+
+ 例えば, A, B, C, D, E の5人で投票を行うとし, 
+ <font color="bbg700">(A, B, C, D, E)</font>
+ それぞれが
+ <font color="bbg700">(20票, 4票, 3票, 1票, 1票)</font>持っているとし,  
+ <font color="bbg700">  24票</font>
+ を取ると議案が通るとしましょう.  </P>
+
+ある集まりが,  24票以上持っていて,  
+  一人でも抜けると24票未満になってしまうとき, 
+  極小勝利提携と呼びます.  </P>
+
+上の例で,  極小勝利提携は {A,B}, {A,C,D}, {A,C,E}の3つがあります. 
+各極小勝利提携について,  1を等分した値を得るとし, 
+  それを加えて,  極小勝利提携の数(この例では3)で割ったものが
+  D-P指数です. 
+
+<TABLE BORDER>
+<TR>
+<TD></TD><TD>A</TD> <TD>B</TD> <TD>C</TD> <TD>D</TD> <TD>E</TD> 
+</TR>
+
+<TR>
+<TD>票数</TD><TD>20</TD> <TD>4</TD> <TD>3</TD> <TD>1</TD> <TD>1</TD> 
+</TR>
+
+<TR>
+<TD>極小勝利提携</TD> 
+<TD COLSPAN=5></TD><TD>計 </TD>
+</TR>
+
+<TR> 
+<TD> {A, B} </TD>
+<TD>1/2</TD> <TD>1/2</TD> <TD>0</TD> <TD>0</TD> <TD>0</TD> <TD>1</TD>
+</TR>
+
+<TR> 
+<TD> {A, C, D} </TD>
+<TD>1/3</TD><TD>0</TD> <TD>1/3</TD><TD> 1/3 </TD>  <TD>0</TD><TD>1</TD>
+</TR>
+
+<TR> 
+<TD> {A, C, E} </TD>
+<TD>1/3</TD> <TD>0</TD> <TD>1/3</TD>  <TD>0 </TD>  <TD>1/3</TD><TD>1</TD>
+</TR>
+
+<TR>
+<TD> 総和 </TD> 
+<TD>7/6</TD> <TD>1/2</TD> <TD>2/3</TD> <TD>1/3</TD>  <TD>1/3</TD><TD>3</TD>
+</TR>
+<TR>
+<TD> 総和/3 </TD> 
+<TD>7/18</TD> <TD>3/18</TD> <TD>4/18</TD> <TD>2/18</TD>  <TD>2/18</TD><TD>1</TD>
+</TR>
+</TABLE>
+
+
+ 以上より,  
+ <font color="bbg700">(A, B, C, D, E)</font>
+ それぞれのD-P指数は, 
+ <font color="bbg700">(7/18, 3/18, 4/18, 2/18, 2/18)</font>となります.  </P>
+
+ CはBより票数が少ないにもかかわらず, 
+  D-P指数はCの方がBより大きくなっています. 
+ これより, CがBより影響が強くなる場面が存在しうることが, 予想されます. 
+
+
+
+<TABLE width=100%>
+    <TBODY>
+    <TR>
+        <TD bgColor=steelblue colorspan = 2><FONT color=white 
+            size=4><B><CENTER>日本語で読める参考文献</CENTER></B></FONT> 
+</TD></TR></TBODY></TABLE>
+
+
+<DL>
+<LI>
+ 武藤滋夫, 小野理恵, 「投票システムのゲーム分析」, 日科技連, 1998.
+<LI> 鈴木光男,武藤滋夫, 「協力ゲームの理論」, 東京大学出版, 1985.
+<LI>  岡田章, 「ゲーム理論」, 有斐閣, 1996.
+<LI> 松井知己,  松井泰子,  
+     <A HREF="../text/text.html">
+    「重み付き多数決ゲームにおける投票力指数の計算について」</A>,
+    第10回ＲＡＭＰシンポジウム論文集, 京大会館, 1998年9月24日.   
+<LI>
+Tomomi MATSUI and Yasuko MATSUI, "A Survey of Algorithms for Calculating Power Indices of Weighted Majority Games", Journal of the Operations Research Society of Japan, vol. 43(1) (2000), pp. 71--86. (March) 
+(related tech. report in 
+<A HREF="../TRs/SS-Elast3.pdf"> pdf file</A>) 
+</DL>
+
+
+<TABLE width=100%>
+    <TBODY>
+    <TR>
+        <TD bgColor=steelblue colorspan = 1>  <FONT color=steelblue> \ </FONT>
+</TD></TR></TBODY></TABLE>
+
+<HR>
+
+</BODY>
+</HTML>
