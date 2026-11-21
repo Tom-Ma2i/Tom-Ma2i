@@ -1,0 +1,3380 @@
+%!PS-Adobe-2.0
+%%Creator: dvi2ps
+%%Title: main-graph.dvi
+%%Pages: (atend)
+%%BoundingBox: 0 0 595 842
+%%DocumentPaperSizes: A4
+%%Orientation: Portrait
+%%EndComments
+%%BeginFile: /usr/local/lib/dvi2ps/tex.ps
+%
+systemdict /setpacking known {
+/savepacking currentpacking def
+true setpacking
+} if
+/TeXDict 200 dict def
+TeXDict begin
+/inch {
+72 mul
+} bind def
+/largepaperarray [
+/letter /legal /11x17
+/b4 /b5 /a5 /a4 /a3
+] def
+/smallpaperarray [
+/note dup where {
+pop
+}{
+pop /lettersmall dup where {
+pop
+}{
+pop /letter
+} ifelse
+} ifelse
+/legal /11x17
+/b4 /b5 /a5
+/a4small dup where {
+pop
+}{
+pop /note dup where {
+pop
+}{
+pop /a4
+} ifelse
+} ifelse
+/a3
+] def
+/setpaper {
+dup where papertray and {
+exch get exec
+} if
+} bind def
+/trayarray [
+/lettertray /legaltray /11x17tray
+/b4tray /b5tray /a5tray /a4tray /a3tray
+] def
+/settray {
+dup statusdict exch known {
+{
+statusdict begin load exec end
+} stopped {
+$error /newerror get {
+$error /errorname get /rangecheck eq {
+(Tray not found, using default tray.) print flush
+/papertray false def
+}{
+handleerror
+} ifelse
+$error /newerror false put
+} if
+} if
+}{
+pop
+} ifelse
+} bind def
+/papertray true def
+/widtharray  [
+8.5 inch 8.5 inch 11 inch
+9.84 inch 6.93 inch
+5.83 inch 8.27 inch 11.69 inch
+] def
+/heightarray [
+11 inch 14 inch 17 inch
+13.9 inch 9.84 inch
+8.27 inch 11.69 inch 16.54 inch
+] def
+/xoffset 0 def
+/yoffset 0 def
+/landscape false def
+/pagesetup {
+dup widtharray exch get /paperwidth exch def
+dup heightarray exch get /paperheight exch def
+dup trayarray exch get settray
+large {largepaperarray}{smallpaperarray} ifelse
+exch get setpaper
+} bind def
+/@letter {0 pagesetup} def
+/@legal {1 pagesetup} def
+/@tabloid {2 pagesetup} def
+/@b4 {3 pagesetup} def
+/@b5 {4 pagesetup} def
+/@a5 {5 pagesetup} def
+/@a4 {6 pagesetup} def
+/@a3 {7 pagesetup} def
+/@landscape {/landscape true def} bind def
+/@manualfeed {
+statusdict /manualfeed known {
+statusdict /manualfeed true put
+statusdict /manualfeedtimeout 120 put
+} if
+} bind def
+/@large {
+/large true def
+} bind def
+/@small {
+/large false def
+} bind def
+/@envelope {
+/xoffset 4.28 inch def
+/yoffset 1.5 inch def
+@letter
+} bind def
+/COPIES	{
+/#copies exch def
+} bind def
+/NF {
+/newname exch def
+/fsize exch def
+/corr exch def
+newname 7 dict def
+newname load begin
+/FontType 3 def
+/FontMatrix [corr 0 0 corr neg 0 0] def
+/FontBBox [0 0 1 1] def
+/BitMaps fsize array def
+/BuildChar /CharBuilder load def
+/Encoding 256 array def
+0 1 255 {Encoding exch /.notdef put} for
+end
+newname newname load definefont pop
+} bind def
+/ch-image {ch-data 0 get} bind def
+/ch-width {ch-data 1 get} bind def
+/ch-height {ch-data 2 get} bind def
+/ch-xoff {ch-data 3 get} bind def
+/ch-yoff {ch-data 4 get} bind def
+/ch-tfmw {ch-data 5 get} bind def
+/CharBuilder {
+/ch-code exch def
+/font-dict exch def
+/ch-data font-dict /BitMaps get ch-code get def
+ch-data null eq not {
+ch-tfmw 0
+ch-xoff neg  ch-yoff neg ch-width ch-xoff sub ch-height ch-yoff sub
+setcachedevice
+ch-width ch-height true [1 0  0 1  ch-xoff ch-yoff]
+{ch-image} imagemask
+} if
+} bind def
+/LWF {
+/lw-v exch def
+/lw-h exch def
+findfont [lw-h 0 0 lw-v 0 0] makefont def
+} bind def
+/LWFX {
+/lw-v exch def
+/lw-h exch def
+/savecurfont currentfont def
+findfont dup setfont
+[
+( ) stringwidth pop dup lw-h exch div
+exch lw-v exch div 0 0 3 -1 roll
+0 0
+] makefont def
+savecurfont setfont
+} bind def
+/LWJF /LWF load def
+/SF /setfont load def
+/s3 3 string def
+/D {
+/ch-code exch def
+dup 0 get
+length 2 lt {
+pop [ <00> 1 1 0 0 8.00 ]
+} if
+/ch-data exch def
+currentfont /BitMaps get ch-code ch-data put
+currentfont /Encoding get ch-code
+dup s3 cvs cvn
+put
+} bind def
+/BP {
+/SaveImage save def
+xoffset yoffset translate
+72 72
+landscape {
+exch translate
+90 rotate
+}{
+paperheight exch sub translate
+} ifelse
+72 Resolution div dup neg scale
+0 0 moveto
+} bind def
+/EP {
+showpage 
+SaveImage restore
+} bind def
+/START {
+/Resolution exch def
+} bind def
+/END /end load def
+/l /lineto load def
+/p /moveto load def
+/r {
+0 rmoveto
+} def
+/s /show load def
+/ru {
+/dy exch neg def
+/dx exch def
+/x currentpoint /y exch def def
+newpath x y moveto
+dx 0 rlineto
+0 dy rlineto
+dx neg 0 rlineto
+closepath fill
+x y moveto
+} bind def
+/@SpecialDefaults {
+/hsi paperwidth inch def
+/vsi paperheight inch def
+/hof 0 def
+/vof 0 def
+/hsc 1 def
+/vsc 1 def
+/rotat 0 def
+/CLIP false def
+/BBOX false def
+/EPSF false def
+} bind def
+/@hsize {/hsi exch def /CLIP true def} bind def
+/@vsize {/vsi exch def /CLIP true def} bind def
+/@hoffset {/hof exch def} bind def
+/@voffset {/vof exch def} bind def
+/@hscale {/hsc exch def} bind def
+/@vscale {/vsc exch def} bind def
+/@rotation {/rotat exch def} bind def
+/@bbox {
+/ury exch def
+/urx exch def
+/lly exch def
+/llx exch def
+/BBOX true def
+} bind def
+/@epsf {
+/hsi 0 def
+/vsi 0 def
+/EPSF true def
+} bind def
+/@setclipper {
+CLIP {
+newpath 0 0 moveto hsi 0 rlineto 0 vsi rlineto hsi neg 0 rlineto
+closepath clip
+} if
+} bind def
+/@beginspecial {
+/SpecialSave save def
+currentpoint transform initgraphics itransform translate
+@SpecialDefaults
+@MacSetUp
+} bind def
+/@setspecial {
+hof vof translate
+EPSF BBOX and {
+hsi 0 eq {
+vsi 0 eq {
+hsc vsc
+}{
+vsi ury lly sub div dup
+}ifelse
+}{
+vsi 0 eq {
+hsi urx llx sub div dup
+}{
+hsi urx llx sub div vsi ury lly sub div
+} ifelse
+} ifelse
+scale
+llx neg ury neg translate
+newpath
+llx lly moveto
+urx llx sub 0 rlineto
+0 ury lly sub rlineto
+llx urx sub 0 rlineto
+closepath clip
+newpath
+}{
+@setclipper hsc vsc scale rotat rotate
+} ifelse
+end
+/letter {} def /note {} def /legal {} def /11x17
+/b4 {} def /b5 {} def /a5 {} def /a4 {} def /a3 {} def
+/showpage {} def /copypage {} def /erasepage {} def
+} bind def
+/@MacSetUp {
+userdict /md known {
+userdict /md get type /dicttype eq {
+/MacDrwgs true def
+md begin
+/txpose{
+1 -1 scale
+} def
+/cp {pop pop pm restore} def
+end
+} if
+} if
+} bind def
+/@push {
+/SpecialSave save def
+currentpoint translate
+dup scale
+newpath
+} bind def
+/@pop {
+SpecialSave restore
+} bind def
+/@pn
+/setlinewidth load
+def
+/@pt {
+moveto currentpoint currentlinewidth 2 div 0 360 arc fill
+} bind def
+/@ln {
+moveto lineto stroke
+} bind def
+/@ar {
+matrix currentmatrix
+7 -2 roll moveto
+currentpoint translate
+newpath
+5 -2 roll scale
+0 0 1 6 -2 roll arc
+setmatrix
+} bind def
+/@wh {1 setgray} bind def
+/@sh {0.75 setgray} bind def
+/@bk {0 setgray} bind def
+/@RGB {setrgbcolor} bind def
+/@HSB {sethsbcolor} bind def
+/@CMYK {setcmykcolor} bind def
+end
+/@endspecial {
+clear
+TeXDict begin
+SpecialSave restore
+} bind def
+systemdict /setpacking known {
+savepacking setpacking
+} if
+%%EndFile
+%%EndProlog
+%%BeginSetup
+%%PaperSize: A4
+%%Feature: *ManualFeed False
+%%Feature: *Resolution 300
+TeXDict begin
+@large
+@a4
+%%BeginFile: /usr/local/lib/dvi2ps/ASCII-LW-fix.ps
+% This file is included in this dvi2ps (j-version) kit by the courtesy of
+% Matsushita Electric Industrial Co., Ltd. You are free to distribute this
+% file as a part of this dvi2ps kit, but if you use this file as a part of
+% your own program and want to re-distribute the program, you should contact
+%	miyabe@sy6.isl.mei.co.jp, kakiuchi@sy6.isl.mei.co.jp
+%	
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Following procedures are used to define new japanese font which has 
+%%% correct metrics.
+%%%		Added by T.Kakiuchi (kakiuchi@sy6.isl.mei.co.JP) 89/5/19
+%%%		Copyright (c) Matsushita Electric Industrial Co.,Ltd. 1990
+%%%
+% If the packed-array facility is available, this program sets the
+% array-packing mode.
+systemdict /setpacking known {
+    /savepacking currentpacking def
+    true setpacking
+} if
+% Procedure to make a new font which has new metrics.
+
+/Set-New-Metrics 		% [New-FNam][FNam][Metrics-array]
+{/Set-Metrics exch def		% [New-FNam][FNam]  Set-Metrix=[Metrix-Array]
+ findfont 			% [New-FNam][FDic]
+ /OrigCompFont exch def		% [New-FNam]  OrigCompFont=[FDic]
+ /NewCompFontName exch def	% NewCompFontName=[New-FNam]
+
+ % Create new composite font.
+ OrigCompFont dup		% [FDic][FDic]
+ length dict			% [FDic][dict]
+ /NewCompFont exch def		% [FDic]   NewCompFont=[dict]
+ {1 index			% [FDic][key][value][key]
+   /FID ne			% [FDic][key][value][T/F]
+   2 index /UniqueID ne and     % [FDic][key][value][T/F]
+  {NewCompFont 3 1 roll put}	% if TRUE   NewCompFont <- {key,value}
+  {pop pop}
+  ifelse
+ } forall			% 
+
+ OrigCompFont /FDepVector get	% [FDepVector]
+ dup length array 		% [FDepVector][array]
+ copy				% [array] (=[FDepVector])
+ /NewFDepVector exch def	% NewFDepVector=[arrray]
+ NewCompFont /FDepVector 
+ NewFDepVector put		% [NewCompFont] <- {/FDepVector, NewFDepVector}
+ NewCompFontName NewCompFont 
+ definefont pop			% Define [NewCompFont] as [NewCompFontName]
+
+ Set-Metrics	% [code,NewBaseFontName,Metrics-Array]
+ {dup 0 get /Code exch def	% set Code
+  dup 1 get 
+  /NewBaseFontName exch def     % set NewBaseFontName
+  2 get /Metric-Array exch def	% set Metrics-Array
+
+  % Extract base font and its index to FDepVector.
+  /Index
+     OrigCompFont 
+     /Encoding get 
+     Code get def
+
+  /OrigBaseFont NewFDepVector Index get def
+
+  % Set Metric-Dictionary
+  Metric-Array length dict
+  /Metric-Dict exch def
+  Metric-Dict begin Metric-Array {exec def} forall end
+
+  % Create new base font.
+  OrigBaseFont dup			% [OrgFont][OrgFont] 
+  length 2 add	 			% [OrgFont][1+current size]
+  dict					% [OrgFont][dict]
+  /NewBaseFont exch def			% [OrgFont]    /NewBaseFont=[dict]
+  {1 index                       	% [OrgFont][key][value][key]
+     /FID ne				% [OrgFont][key][value][T/F]
+     2 index /UniqueID ne and           % [OrgFont][key][value][T/F]
+     {NewBaseFont			% [OrgFont][key][value][NewBaseFont]
+      3 1 roll				% [OrgFont][NewBaseFont][key][value]
+      put}					% [OrgFont]
+     {pop pop}
+     ifelse
+  } forall
+  
+  NewBaseFont /Kusumi-Metrics Metric-Dict put
+
+  NewBaseFont				% [OrgFont][NewBaseFont]
+  /CDevProc
+  {currentfont /Kusumi-Metrics get
+   exch 2 copy known
+    {get	% w0x w0y llx lly urx ury w1x w1y vx vy new-llx
+     dup	% w0x w0y llx lly urx ury w1x w1y vx vy new-llx new-llx
+     8 -1 roll	% w0x w0y llx lly ury w1x w1y vx vy new-llx new-llx urx
+     10 -1 roll	% w0x w0y lly ury w1x w1y vx vy new-llx new-llx urx llx
+     sub add	% w0x w0y lly ury w1x w1y vx vy new-llx new-urx
+     7 1 roll	% w0x w0y lly new-urx ury w1x w1y vx vy new-llx
+     8 1 roll	% w0x w0y new-llx lly new-urx ury w1x w1y vx vy
+    }
+    {pop pop}
+   ifelse
+  } put
+
+  %  Regist to FDepVector
+  NewFDepVector Index NewBaseFontName NewBaseFont definefont put
+
+ } forall
+}
+bind def
+
+
+% Definition of new metrics for /Ryumin-Light-H 
+/Ryumin-Metrics
+[
+[33/Ryumin-Light-H-33[
+{/c2B 56.3327 }
+{/c78 36.5515 }
+{/c22 127.507 }
+{/c54 52.5065 }
+{/c4B 137.007 }
+{/c39 35.7169 }
+{/c27 105.323 }
+{/c42 79.8026 }
+{/c30 106.905 }
+{/c6B 129.961 }
+{/c50 192.016 }
+{/c47 101.333 }
+{/c59 104.456 }
+{/c35 124.507 }
+{/c3E 51.8327 }
+{/c2C 81.7527 }
+{/c23 102.007 }
+{/c4E 132.007 }
+{/c2A 111.833 }
+{/c43 153.333 }
+{/c55 52.5065 }
+{/c4A 137.007 }
+{/c26 106.333 }
+{/c51 192.017 }
+{/c2D 73.195 }
+{/c46 101.833 }
+{/c58 104.457 }
+{/c6A 53.6868 }
+{/c71 162.717 }
+{/c68 12.747 }
+{/c56 87.0065 }
+{/c4D 120.007 }
+{/c29 50.4616 }
+{/c52 99.5065 }
+{/c5B 122.007 }
+{/c37 145.717 }
+{/c6D 73.5612 }
+{/c49 95.824 }
+{/c2E 73.1949 }
+{/c72 45.6719 }
+{/c25 106.833 }
+{/c69 33.1968 }
+{/c70 147.722 }
+{/c57 87.0065 }
+{/c33 123.507 }
+{/c53 99.5065 }
+{/c28 101.333 }
+{/c4C 120.007 }
+{/c2F 86.4865 }
+{/c48 95.6039 }
+{/c5A 122.007 }
+{/c6C 154.132 }
+{/c36 154.717 }
+{/c24 103.833 }
+{/c4F 131.507 }
+]]
+[36/Ryumin-Light-H-36[
+{/c30 154.133 }
+{/c27 97.2168 }
+{/c39 76.6303 }
+{/c23 76.1769 }
+{/c67 149.762 }
+{/c43 67.7751 }
+{/c6E 77.4092 }
+{/c31 105.385 }
+{/c63 75.9087 }
+{/c26 241.525 }
+{/c6A 273.126 }
+{/c29 82.2642 }
+{/c32 65.1122 }
+{/c25 184.155 }
+{/c21 83.9483 }
+{/c65 90.2671 }
+{/c3A 51.3751 }
+{/c2F 295.128 }
+]]
+[37/Ryumin-Light-H-37[
+{/c22 140.608 }
+{/c6F 163.078 }
+{/c30 99.7332 }
+{/c27 57.7171 }
+{/c42 59.748 }
+{/c47 67.1082 }
+{/c35 83.0882 }
+{/c3E 72.1387 }
+{/c23 138.672 }
+{/c67 152.293 }
+{/c4E 197.608 }
+{/c2A 134.608 }
+{/c43 117.717 }
+{/c6E 126.697 }
+{/c31 115.108 }
+{/c55 168.068 }
+{/c63 80.217 }
+{/c4A 116.233 }
+{/c26 162.618 }
+{/c75 124.712 }
+{/c3F 192.108 }
+{/c46 123.608 }
+{/c6A 239.098 }
+{/c5F 258.608 }
+{/c44 162.608 }
+{/c56 84.1834 }
+{/c29 108.717 }
+{/c76 83.6869 }
+{/c32 61.9606 }
+{/c64 109.108 }
+{/c49 202.688 }
+{/c25 122.757 }
+{/c72 193.323 }
+{/c40 110.209 }
+{/c69 178.108 }
+{/c45 91.8148 }
+{/c57 89.1683 }
+{/c21 107.237 }
+{/c65 49.507 }
+{/c2F 187.108 }
+{/c41 97.8211 }
+{/c48 277.108 }
+{/c36 51.291 }
+{/c61 191.608 }
+{/c24 186.108 }
+{/c3D 164.236 }
+]]
+] def
+
+% Definition of new metrics for /GothicBBB-Medium-H 
+/Gothic-Metrics
+[
+[33/GothicBBB-Medium-H-33[
+{/c2B 62.8327 }
+{/c78 11.5265 }
+{/c22 129.507 }
+{/c54 58.5065 }
+{/c4B 136.007 }
+{/c39 14.7171 }
+{/c27 104.333 }
+{/c42 76.8826 }
+{/c30 110.507 }
+{/c6B 138.987 }
+{/c50 178.072 }
+{/c47 104.833 }
+{/c59 107.036 }
+{/c35 67.0065 }
+{/c3E -13.1673 }
+{/c2C 78.8429 }
+{/c23 98.9866 }
+{/c4E 132.507 }
+{/c2A 132.288 }
+{/c43 149.333 }
+{/c55 58.5065 }
+{/c4A 136.007 }
+{/c26 102.833 }
+{/c51 177.982 }
+{/c2D 55.8326 }
+{/c46 104.333 }
+{/c58 107.037 }
+{/c6A 43.6568 }
+{/c71 130.717 }
+{/c68 5.70184 }
+{/c56 93.5065 }
+{/c4D 120.007 }
+{/c29 81.9568 }
+{/c52 97.5065 }
+{/c5B 121.007 }
+{/c37 148.717 }
+{/c6D 75.5065 }
+{/c49 56.9765 }
+{/c2E 55.8327 }
+{/c72 101.717 }
+{/c25 102.833 }
+{/c69 20.1768 }
+{/c70 109.182 }
+{/c57 94.0065 }
+{/c33 76.5065 }
+{/c53 97.5065 }
+{/c28 104.333 }
+{/c4C 120.007 }
+{/c2F 102.506 }
+{/c48 56.0265 }
+{/c5A 121.007 }
+{/c6C 157.007 }
+{/c36 133.717 }
+{/c24 105.833 }
+{/c4F 132.507 }
+]]
+[36/GothicBBB-Medium-H-36[
+{/c30 154.608 }
+{/c27 97.2418 }
+{/c39 93.5732 }
+{/c23 58.2168 }
+{/c67 106.287 }
+{/c43 51.2172 }
+{/c6E 71.752 }
+{/c31 128.098 }
+{/c63 52.2169 }
+{/c26 207.583 }
+{/c6A 211.098 }
+{/c29 51.7468 }
+{/c32 69.0981 }
+{/c25 155.272 }
+{/c21 86.707 }
+{/c65 84.167 }
+{/c3A 70.6131 }
+{/c2F 256.108 }
+]]
+[37/GothicBBB-Medium-H-37[
+{/c22 82.6082 }
+{/c6F 135.608 }
+{/c30 91.1081 }
+{/c27 74.2168 }
+{/c42 55.1081 }
+{/c47 49.6081 }
+{/c35 87.1181 }
+{/c3E 83.6081 }
+{/c23 102.766 }
+{/c67 113.717 }
+{/c4E 163.334 }
+{/c2A 111.608 }
+{/c43 84.5454 }
+{/c6E 96.2168 }
+{/c31 77.6081 }
+{/c55 140.608 }
+{/c63 67.7169 }
+{/c4A 75.6082 }
+{/c26 149.118 }
+{/c75 110.257 }
+{/c3F 144.608 }
+{/c46 96.6082 }
+{/c6A 225.578 }
+{/c5F 215.108 }
+{/c44 117.481 }
+{/c56 91.1081 }
+{/c29 72.2168 }
+{/c76 63.2168 }
+{/c32 48.6081 }
+{/c64 96.6081 }
+{/c49 209.108 }
+{/c25 104.207 }
+{/c72 165.608 }
+{/c40 76.6081 }
+{/c69 129.108 }
+{/c45 72.1081 }
+{/c57 64.6481 }
+{/c21 47.2171 }
+{/c65 41.7168 }
+{/c2F 135.608 }
+{/c41 97.6082 }
+{/c48 262.608 }
+{/c36 52.1181 }
+{/c61 188.976 }
+{/c24 148.446 }
+{/c3D 123.059 }
+]]
+] def
+systemdict /setpacking known {
+    savepacking setpacking
+} if
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%EndFile
+300 START
+1.000 116 /f25 NF
+f25 SF
+[<004000800100020006000C000C0018001800300030007000600060006000E000E000E000E000E000E000E000E000E000E000
+  E000E000600060006000700030003000180018000C000C0006000200010000800040> 16 42 -3 11 16.143] 40 D
+[<800040002000100018000C000C000600060003000300038001800180018001C001C001C001C001C001C001C001C001C001C0
+  01C001C0018001800180038003000300060006000C000C0018001000200040008000> 16 42 -2 11 16.143] 41 D
+[<07E00C301818300C700E700E6006E007E007E007E007E007E007E007E007E007E007E007E007E00760066006700E300C1818
+  0C3007E0> 16 27 -2 0 20.755] 48 D
+[<FFF80F80070007000700070007000700070007000700070007000700070007000700070007000700070007000700C7003F00
+  07000300> 16 27 -4 0 20.755] 49 D
+[<FFFE7FFE3FFE100218010C0106010300018000C0006000700038001C001C000E000E000F7007F807F807F80FF00E400E201C
+  183807E0> 16 27 -2 0 20.755] 50 D
+[<01FFC0001C00001C00001C00001C00001C00001C00001C00FFFFC0C01C00401C00201C00301C00101C00081C00041C00061C
+  00021C00011C00019C00009C00005C00003C00003C00001C00000C00000C00> 24 27 -1 0 20.755] 52 D
+[<03E00C301818300C3006700760076007E007E007E007E007F006F00CE80CE438E3E0E00060007000300C301E181E080E0404
+  030C00F0> 16 27 -2 0 20.755] 54 D
+[<03000007800007800007800007800007800007800003800003800003800003800001800001800000C00000C0000040000040
+  000020000010000010008008008004008004004002007FFF007FFF007FFF80400000> 24 28 -2 0 20.755] 55 D
+[<07E0181830046006C002C003C003C003C007600F601E307E18FC07F807F01FE03F903E08780C7006600660066006200C100C
+  083807E0> 16 27 -2 0 20.755] 56 D
+[<07C00C301808300470046000E000E000E000E000E000E00060007030307818780C3007E0> 16 18 -2 0 18.449] 99 D
+[<03F0000E1C00180600300300700380600180E001C0E001C0E001C0E001C0E001C0E001C06001807003803003001806000E1C
+  0003F000> 24 18 -1 0 20.755] 111 D
+[<8FC0D060E010C018C0188018803800F80FF03FE07F80F800E010C010C010403030701F90> 16 18 -1 0 16.373] 115 D
+1.000 62 /f26 NF
+f26 SF
+[<3C0062006180C180C0C0C060C060C070C038E038E018E01CE01CE01C7FFE700E700E300E3806380618071C070C060E060606
+  0306018600CC0078> 16 29 -2 0 19.487] 18 D
+[<180C001C0E001C0E000C1C000E1C00061C00061C00020C00030C00030C00010C00010C00808C004084006084003FFFF01FFF
+  F80FFFF8> 24 18 -2 0 23.662] 25 D
+[<60F0F060> 8 4 -4 0 11.531] 58 D
+[<C000C000E00060006000700030003800180018001C000C000C000E00060006000700030003000380018001C000C000C000E0
+  00600060007000300030003800180018001C000C000E00060006000700030003> 16 41 -2 10 20.755] 61 D
+1.000 4 /f27 NF
+f27 SF
+[<FFFFFF80FFFFFF80> 32 2 -3 -9 32.286] 0 D
+[<01800180018001804182F18F399C0FF003C003C00FF0399CF18F41820180018001800180> 16 18 -2 -1 20.755] 3 D
+1.000 19 /f53 NF
+f53 SF
+[<07C000086000183800301C00700E00700700700780F00380F003C0F001E0F001E0F001F0F000F0F800F8F80078F8007CF800
+  7C78007C7C003E7C003E7FFFFE7FFFFE3E001F3E001F3E001F1E001F1F000F1F000F0F000F0F800F07800F07800F03C00F01
+  C00F01E00F00E00F00700E00380E00180E000C0C0006180001F0> 24 42 -2 0 28.061] 18 D
+%%EndSetup
+
+%%Page: 1 1
+BP
+544 841 p 1080 2 ru
+2 778 ru
+20 2 ru
+f25 SF
+484 854 p (0)s
+1604 841 p 20 2 ru
+544 685 p 20 2 ru
+451 698 p (0)s
+f26 SF
+(:)s
+f25 SF
+(2)s
+1604 685 p 20 2 ru
+544 530 p 20 2 ru
+451 543 p (0)s
+f26 SF
+(:)s
+f25 SF
+(4)s
+1604 530 p 20 2 ru
+544 374 p 20 2 ru
+451 387 p (0)s
+f26 SF
+(:)s
+f25 SF
+(6)s
+1604 374 p 20 2 ru
+544 219 p 20 2 ru
+451 232 p (0)s
+f26 SF
+(:)s
+f25 SF
+(8)s
+1604 219 p 20 2 ru
+544 63 p 20 2 ru
+451 76 p (1)s
+f26 SF
+(:)s
+f25 SF
+(0)s
+1604 63 p 20 2 ru
+1084 841 p 2 20 ru
+f26 SF
+1051 891 p (\031)s
+2 r (=)s
+f25 SF
+(2)s
+1084 83 p 2 20 ru
+1624 841 p 2 20 ru
+f26 SF
+1612 889 p (\031)s
+1624 83 p 2 20 ru
+544 841 p 1080 2 ru
+1080 r 2 778 ru
+544 63 p 1080 2 ru
+f53 SF
+1670 861 p (\022)s
+544 841 p 2 778 ru
+f26 SF
+1337 695 p (\022)s
+1 r (=\031)s
+1443 685 p 120 2 ru
+544 841 p 2 2 ru
+544 840 p 3 0 ru
+545 839 p 3 0 ru
+546 839 p 3 0 ru
+546 838 p 3 0 ru
+547 838 p 3 0 ru
+548 837 p 3 0 ru
+549 837 p 3 0 ru
+549 837 p 3 0 ru
+550 836 p 3 0 ru
+551 836 p 3 0 ru
+551 835 p 3 0 ru
+552 835 p 3 0 ru
+553 834 p 3 0 ru
+544 841 p 1 2 ru
+554 833 p 1 2 ru
+555 832 p 3 0 ru
+556 831 p 3 0 ru
+557 831 p 3 0 ru
+557 830 p 3 0 ru
+558 830 p 3 0 ru
+559 829 p 3 0 ru
+560 829 p 3 0 ru
+560 829 p 3 0 ru
+561 828 p 3 0 ru
+562 828 p 3 0 ru
+562 827 p 3 0 ru
+563 827 p 3 0 ru
+564 826 p 3 0 ru
+555 833 p 1 2 ru
+565 825 p 1 2 ru
+566 824 p 3 0 ru
+567 823 p 3 0 ru
+568 823 p 3 0 ru
+568 822 p 3 0 ru
+569 822 p 3 0 ru
+570 821 p 3 0 ru
+571 821 p 3 0 ru
+571 821 p 3 0 ru
+572 820 p 3 0 ru
+573 820 p 3 0 ru
+573 819 p 3 0 ru
+574 819 p 3 0 ru
+575 818 p 3 0 ru
+566 825 p 1 2 ru
+576 817 p 1 2 ru
+577 816 p 3 0 ru
+578 815 p 3 0 ru
+579 815 p 3 0 ru
+580 814 p 3 0 ru
+581 814 p 3 0 ru
+581 813 p 3 0 ru
+582 813 p 3 0 ru
+583 813 p 3 0 ru
+584 812 p 3 0 ru
+585 812 p 3 0 ru
+585 811 p 3 0 ru
+577 817 p 2 2 ru
+587 810 p 2 2 ru
+588 809 p 3 0 ru
+589 808 p 3 0 ru
+590 808 p 3 0 ru
+590 807 p 3 0 ru
+591 807 p 3 0 ru
+592 806 p 3 0 ru
+593 806 p 3 0 ru
+593 806 p 3 0 ru
+594 805 p 3 0 ru
+595 805 p 3 0 ru
+595 804 p 3 0 ru
+596 804 p 3 0 ru
+597 803 p 3 0 ru
+588 810 p 1 2 ru
+598 802 p 1 2 ru
+599 801 p 2 0 ru
+600 800 p 2 0 ru
+601 800 p 2 0 ru
+601 799 p 2 0 ru
+602 799 p 2 0 ru
+603 798 p 2 0 ru
+603 798 p 2 0 ru
+604 798 p 2 0 ru
+604 797 p 2 0 ru
+605 797 p 2 0 ru
+606 796 p 2 0 ru
+606 796 p 2 0 ru
+607 795 p 2 0 ru
+599 802 p 1 2 ru
+608 794 p 1 2 ru
+609 793 p 3 0 ru
+610 792 p 3 0 ru
+611 792 p 3 0 ru
+611 791 p 3 0 ru
+612 791 p 3 0 ru
+613 790 p 3 0 ru
+614 790 p 3 0 ru
+614 790 p 3 0 ru
+615 789 p 3 0 ru
+616 789 p 3 0 ru
+616 788 p 3 0 ru
+617 788 p 3 0 ru
+618 787 p 3 0 ru
+609 794 p 1 2 ru
+619 786 p 1 2 ru
+620 785 p 3 0 ru
+621 784 p 3 0 ru
+622 784 p 3 0 ru
+622 783 p 3 0 ru
+623 783 p 3 0 ru
+624 782 p 3 0 ru
+625 782 p 3 0 ru
+625 782 p 3 0 ru
+626 781 p 3 0 ru
+627 781 p 3 0 ru
+627 780 p 3 0 ru
+628 780 p 3 0 ru
+629 779 p 3 0 ru
+620 786 p 1 2 ru
+630 778 p 1 2 ru
+631 777 p 3 0 ru
+632 776 p 3 0 ru
+633 776 p 3 0 ru
+633 775 p 3 0 ru
+634 775 p 3 0 ru
+635 774 p 3 0 ru
+636 774 p 3 0 ru
+636 774 p 3 0 ru
+637 773 p 3 0 ru
+638 773 p 3 0 ru
+638 772 p 3 0 ru
+639 772 p 3 0 ru
+640 771 p 3 0 ru
+631 778 p 1 2 ru
+641 770 p 1 2 ru
+642 769 p 3 0 ru
+643 768 p 3 0 ru
+644 768 p 3 0 ru
+644 767 p 3 0 ru
+645 767 p 3 0 ru
+646 766 p 3 0 ru
+647 766 p 3 0 ru
+647 766 p 3 0 ru
+648 765 p 3 0 ru
+649 765 p 3 0 ru
+649 764 p 3 0 ru
+650 764 p 3 0 ru
+651 763 p 3 0 ru
+642 770 p 1 2 ru
+652 762 p 1 2 ru
+653 761 p 3 0 ru
+654 760 p 3 0 ru
+655 760 p 3 0 ru
+656 759 p 3 0 ru
+657 759 p 3 0 ru
+657 758 p 3 0 ru
+658 758 p 3 0 ru
+659 758 p 3 0 ru
+660 757 p 3 0 ru
+661 757 p 3 0 ru
+661 756 p 3 0 ru
+653 762 p 2 2 ru
+663 755 p 2 2 ru
+664 754 p 3 0 ru
+665 753 p 3 0 ru
+666 753 p 3 0 ru
+666 752 p 3 0 ru
+667 752 p 3 0 ru
+668 751 p 3 0 ru
+669 751 p 3 0 ru
+669 751 p 3 0 ru
+670 750 p 3 0 ru
+671 750 p 3 0 ru
+671 749 p 3 0 ru
+672 749 p 3 0 ru
+673 748 p 3 0 ru
+664 755 p 1 2 ru
+674 747 p 1 2 ru
+675 746 p 3 0 ru
+676 745 p 3 0 ru
+677 745 p 3 0 ru
+677 744 p 3 0 ru
+678 744 p 3 0 ru
+679 743 p 3 0 ru
+680 743 p 3 0 ru
+680 743 p 3 0 ru
+681 742 p 3 0 ru
+682 742 p 3 0 ru
+682 741 p 3 0 ru
+683 741 p 3 0 ru
+684 740 p 3 0 ru
+675 747 p 1 2 ru
+685 739 p 1 2 ru
+686 738 p 3 0 ru
+687 737 p 3 0 ru
+688 737 p 3 0 ru
+688 736 p 3 0 ru
+689 736 p 3 0 ru
+690 735 p 3 0 ru
+691 735 p 3 0 ru
+691 735 p 3 0 ru
+692 734 p 3 0 ru
+693 734 p 3 0 ru
+693 733 p 3 0 ru
+694 733 p 3 0 ru
+695 732 p 3 0 ru
+686 739 p 1 2 ru
+696 731 p 1 2 ru
+697 730 p 3 0 ru
+698 729 p 3 0 ru
+699 729 p 3 0 ru
+699 728 p 3 0 ru
+700 728 p 3 0 ru
+701 727 p 3 0 ru
+702 727 p 3 0 ru
+702 727 p 3 0 ru
+703 726 p 3 0 ru
+704 726 p 3 0 ru
+704 725 p 3 0 ru
+705 725 p 3 0 ru
+706 724 p 3 0 ru
+697 731 p 1 2 ru
+707 723 p 1 2 ru
+708 722 p 3 0 ru
+709 721 p 3 0 ru
+710 721 p 3 0 ru
+710 720 p 3 0 ru
+711 720 p 3 0 ru
+712 719 p 3 0 ru
+713 719 p 3 0 ru
+713 719 p 3 0 ru
+714 718 p 3 0 ru
+715 718 p 3 0 ru
+715 717 p 3 0 ru
+716 717 p 3 0 ru
+717 716 p 3 0 ru
+708 723 p 1 2 ru
+718 715 p 1 2 ru
+719 714 p 2 0 ru
+720 713 p 2 0 ru
+721 713 p 2 0 ru
+721 712 p 2 0 ru
+722 712 p 2 0 ru
+723 711 p 2 0 ru
+723 711 p 2 0 ru
+724 711 p 2 0 ru
+724 710 p 2 0 ru
+725 710 p 2 0 ru
+726 709 p 2 0 ru
+726 709 p 2 0 ru
+727 708 p 2 0 ru
+719 715 p 1 2 ru
+728 707 p 1 2 ru
+729 706 p 3 0 ru
+730 705 p 3 0 ru
+731 705 p 3 0 ru
+732 704 p 3 0 ru
+733 704 p 3 0 ru
+733 703 p 3 0 ru
+734 703 p 3 0 ru
+735 703 p 3 0 ru
+736 702 p 3 0 ru
+737 702 p 3 0 ru
+737 701 p 3 0 ru
+729 707 p 2 2 ru
+739 700 p 2 2 ru
+740 699 p 3 0 ru
+741 698 p 3 0 ru
+742 698 p 3 0 ru
+742 697 p 3 0 ru
+743 697 p 3 0 ru
+744 696 p 3 0 ru
+745 696 p 3 0 ru
+745 696 p 3 0 ru
+746 695 p 3 0 ru
+747 695 p 3 0 ru
+747 694 p 3 0 ru
+748 694 p 3 0 ru
+749 693 p 3 0 ru
+740 700 p 1 2 ru
+750 692 p 1 2 ru
+751 691 p 3 0 ru
+752 690 p 3 0 ru
+753 690 p 3 0 ru
+753 689 p 3 0 ru
+754 689 p 3 0 ru
+755 688 p 3 0 ru
+756 688 p 3 0 ru
+756 688 p 3 0 ru
+757 687 p 3 0 ru
+758 687 p 3 0 ru
+758 686 p 3 0 ru
+759 686 p 3 0 ru
+760 685 p 3 0 ru
+751 692 p 1 2 ru
+761 684 p 1 2 ru
+762 683 p 3 0 ru
+763 682 p 3 0 ru
+764 682 p 3 0 ru
+764 681 p 3 0 ru
+765 681 p 3 0 ru
+766 680 p 3 0 ru
+767 680 p 3 0 ru
+767 680 p 3 0 ru
+768 679 p 3 0 ru
+769 679 p 3 0 ru
+769 678 p 3 0 ru
+770 678 p 3 0 ru
+771 677 p 3 0 ru
+762 684 p 1 2 ru
+772 676 p 1 2 ru
+773 675 p 3 0 ru
+774 674 p 3 0 ru
+775 674 p 3 0 ru
+775 673 p 3 0 ru
+776 673 p 3 0 ru
+777 672 p 3 0 ru
+778 672 p 3 0 ru
+778 672 p 3 0 ru
+779 671 p 3 0 ru
+780 671 p 3 0 ru
+780 670 p 3 0 ru
+781 670 p 3 0 ru
+782 669 p 3 0 ru
+773 676 p 1 2 ru
+783 668 p 1 2 ru
+784 667 p 3 0 ru
+785 666 p 3 0 ru
+786 666 p 3 0 ru
+786 665 p 3 0 ru
+787 665 p 3 0 ru
+788 664 p 3 0 ru
+789 664 p 3 0 ru
+789 664 p 3 0 ru
+790 663 p 3 0 ru
+791 663 p 3 0 ru
+791 662 p 3 0 ru
+792 662 p 3 0 ru
+793 661 p 3 0 ru
+784 668 p 1 2 ru
+794 660 p 1 2 ru
+795 659 p 3 0 ru
+796 658 p 3 0 ru
+797 658 p 3 0 ru
+797 657 p 3 0 ru
+798 657 p 3 0 ru
+799 656 p 3 0 ru
+800 656 p 3 0 ru
+800 656 p 3 0 ru
+801 655 p 3 0 ru
+802 655 p 3 0 ru
+802 654 p 3 0 ru
+803 654 p 3 0 ru
+804 653 p 3 0 ru
+795 660 p 1 2 ru
+805 652 p 1 2 ru
+806 651 p 3 0 ru
+807 650 p 3 0 ru
+808 650 p 3 0 ru
+809 649 p 3 0 ru
+810 649 p 3 0 ru
+810 648 p 3 0 ru
+811 648 p 3 0 ru
+812 648 p 3 0 ru
+813 647 p 3 0 ru
+814 647 p 3 0 ru
+814 646 p 3 0 ru
+806 652 p 2 2 ru
+816 645 p 2 2 ru
+817 644 p 3 0 ru
+818 643 p 3 0 ru
+819 643 p 3 0 ru
+819 642 p 3 0 ru
+820 642 p 3 0 ru
+821 641 p 3 0 ru
+822 641 p 3 0 ru
+822 641 p 3 0 ru
+823 640 p 3 0 ru
+824 640 p 3 0 ru
+824 639 p 3 0 ru
+825 639 p 3 0 ru
+826 638 p 3 0 ru
+817 645 p 1 2 ru
+827 637 p 1 2 ru
+828 636 p 3 0 ru
+829 635 p 3 0 ru
+830 635 p 3 0 ru
+830 634 p 3 0 ru
+831 634 p 3 0 ru
+832 633 p 3 0 ru
+833 633 p 3 0 ru
+833 633 p 3 0 ru
+834 632 p 3 0 ru
+835 632 p 3 0 ru
+835 631 p 3 0 ru
+836 631 p 3 0 ru
+837 630 p 3 0 ru
+828 637 p 1 2 ru
+838 629 p 1 2 ru
+839 628 p 2 0 ru
+840 627 p 2 0 ru
+841 627 p 2 0 ru
+841 626 p 2 0 ru
+842 626 p 2 0 ru
+843 625 p 2 0 ru
+843 625 p 2 0 ru
+844 625 p 2 0 ru
+844 624 p 2 0 ru
+845 624 p 2 0 ru
+846 623 p 2 0 ru
+846 623 p 2 0 ru
+847 622 p 2 0 ru
+839 629 p 1 2 ru
+848 621 p 1 2 ru
+849 620 p 3 0 ru
+850 619 p 3 0 ru
+851 619 p 3 0 ru
+851 618 p 3 0 ru
+852 618 p 3 0 ru
+853 617 p 3 0 ru
+854 617 p 3 0 ru
+854 617 p 3 0 ru
+855 616 p 3 0 ru
+856 616 p 3 0 ru
+856 615 p 3 0 ru
+857 615 p 3 0 ru
+858 614 p 3 0 ru
+849 621 p 1 2 ru
+859 613 p 1 2 ru
+860 612 p 3 0 ru
+861 611 p 3 0 ru
+862 611 p 3 0 ru
+862 610 p 3 0 ru
+863 610 p 3 0 ru
+864 609 p 3 0 ru
+865 609 p 3 0 ru
+865 609 p 3 0 ru
+866 608 p 3 0 ru
+867 608 p 3 0 ru
+867 607 p 3 0 ru
+868 607 p 3 0 ru
+869 606 p 3 0 ru
+860 613 p 1 2 ru
+870 605 p 1 2 ru
+871 604 p 3 0 ru
+872 603 p 3 0 ru
+873 603 p 3 0 ru
+873 602 p 3 0 ru
+874 602 p 3 0 ru
+875 601 p 3 0 ru
+876 601 p 3 0 ru
+876 601 p 3 0 ru
+877 600 p 3 0 ru
+878 600 p 3 0 ru
+878 599 p 3 0 ru
+879 599 p 3 0 ru
+880 598 p 3 0 ru
+871 605 p 1 2 ru
+881 597 p 1 2 ru
+882 596 p 3 0 ru
+883 595 p 3 0 ru
+884 595 p 3 0 ru
+885 594 p 3 0 ru
+886 594 p 3 0 ru
+886 593 p 3 0 ru
+887 593 p 3 0 ru
+888 593 p 3 0 ru
+889 592 p 3 0 ru
+890 592 p 3 0 ru
+890 591 p 3 0 ru
+882 597 p 2 2 ru
+892 590 p 2 2 ru
+893 589 p 3 0 ru
+894 588 p 3 0 ru
+895 588 p 3 0 ru
+895 587 p 3 0 ru
+896 587 p 3 0 ru
+897 586 p 3 0 ru
+898 586 p 3 0 ru
+898 586 p 3 0 ru
+899 585 p 3 0 ru
+900 585 p 3 0 ru
+900 584 p 3 0 ru
+901 584 p 3 0 ru
+902 583 p 3 0 ru
+893 590 p 1 2 ru
+903 582 p 1 2 ru
+904 581 p 3 0 ru
+905 580 p 3 0 ru
+906 580 p 3 0 ru
+906 579 p 3 0 ru
+907 579 p 3 0 ru
+908 578 p 3 0 ru
+909 578 p 3 0 ru
+909 578 p 3 0 ru
+910 577 p 3 0 ru
+911 577 p 3 0 ru
+911 576 p 3 0 ru
+912 576 p 3 0 ru
+913 575 p 3 0 ru
+904 582 p 1 2 ru
+914 574 p 1 2 ru
+915 573 p 3 0 ru
+916 572 p 3 0 ru
+917 572 p 3 0 ru
+917 571 p 3 0 ru
+918 571 p 3 0 ru
+919 570 p 3 0 ru
+920 570 p 3 0 ru
+920 570 p 3 0 ru
+921 569 p 3 0 ru
+922 569 p 3 0 ru
+922 568 p 3 0 ru
+923 568 p 3 0 ru
+924 567 p 3 0 ru
+915 574 p 1 2 ru
+925 566 p 1 2 ru
+926 565 p 3 0 ru
+927 564 p 3 0 ru
+928 564 p 3 0 ru
+928 563 p 3 0 ru
+929 563 p 3 0 ru
+930 562 p 3 0 ru
+931 562 p 3 0 ru
+931 562 p 3 0 ru
+932 561 p 3 0 ru
+933 561 p 3 0 ru
+933 560 p 3 0 ru
+934 560 p 3 0 ru
+935 559 p 3 0 ru
+926 566 p 1 2 ru
+936 558 p 1 2 ru
+937 557 p 3 0 ru
+938 556 p 3 0 ru
+939 556 p 3 0 ru
+939 555 p 3 0 ru
+940 555 p 3 0 ru
+941 554 p 3 0 ru
+942 554 p 3 0 ru
+942 554 p 3 0 ru
+943 553 p 3 0 ru
+944 553 p 3 0 ru
+944 552 p 3 0 ru
+945 552 p 3 0 ru
+946 551 p 3 0 ru
+937 558 p 1 2 ru
+947 550 p 1 2 ru
+948 549 p 3 0 ru
+949 548 p 3 0 ru
+950 548 p 3 0 ru
+950 547 p 3 0 ru
+951 547 p 3 0 ru
+952 546 p 3 0 ru
+953 546 p 3 0 ru
+953 546 p 3 0 ru
+954 545 p 3 0 ru
+955 545 p 3 0 ru
+955 544 p 3 0 ru
+956 544 p 3 0 ru
+957 543 p 3 0 ru
+948 550 p 1 2 ru
+958 542 p 1 2 ru
+959 541 p 3 0 ru
+960 540 p 3 0 ru
+961 540 p 3 0 ru
+962 539 p 3 0 ru
+962 539 p 3 0 ru
+963 538 p 3 0 ru
+964 538 p 3 0 ru
+964 538 p 3 0 ru
+965 537 p 3 0 ru
+966 537 p 3 0 ru
+967 536 p 3 0 ru
+959 542 p 1 2 ru
+968 535 p 1 2 ru
+969 534 p 3 0 ru
+970 533 p 3 0 ru
+971 533 p 3 0 ru
+971 532 p 3 0 ru
+972 532 p 3 0 ru
+973 531 p 3 0 ru
+974 531 p 3 0 ru
+974 531 p 3 0 ru
+975 530 p 3 0 ru
+976 530 p 3 0 ru
+976 529 p 3 0 ru
+977 529 p 3 0 ru
+978 528 p 3 0 ru
+969 535 p 1 2 ru
+979 527 p 1 2 ru
+980 526 p 3 0 ru
+981 525 p 3 0 ru
+982 525 p 3 0 ru
+982 524 p 3 0 ru
+983 524 p 3 0 ru
+984 523 p 3 0 ru
+985 523 p 3 0 ru
+985 523 p 3 0 ru
+986 522 p 3 0 ru
+987 522 p 3 0 ru
+987 521 p 3 0 ru
+988 521 p 3 0 ru
+989 520 p 3 0 ru
+980 527 p 1 2 ru
+990 519 p 1 2 ru
+991 518 p 3 0 ru
+992 517 p 3 0 ru
+993 517 p 3 0 ru
+993 516 p 3 0 ru
+994 516 p 3 0 ru
+995 515 p 3 0 ru
+996 515 p 3 0 ru
+996 515 p 3 0 ru
+997 514 p 3 0 ru
+998 514 p 3 0 ru
+998 513 p 3 0 ru
+999 513 p 3 0 ru
+1000 512 p 3 0 ru
+991 519 p 1 2 ru
+1001 511 p 1 2 ru
+1002 510 p 3 0 ru
+1003 509 p 3 0 ru
+1004 509 p 3 0 ru
+1004 508 p 3 0 ru
+1005 508 p 3 0 ru
+1006 507 p 3 0 ru
+1007 507 p 3 0 ru
+1007 507 p 3 0 ru
+1008 506 p 3 0 ru
+1009 506 p 3 0 ru
+1009 505 p 3 0 ru
+1010 505 p 3 0 ru
+1011 504 p 3 0 ru
+1002 511 p 1 2 ru
+1012 503 p 1 2 ru
+1013 502 p 3 0 ru
+1014 501 p 3 0 ru
+1015 501 p 3 0 ru
+1015 500 p 3 0 ru
+1016 500 p 3 0 ru
+1017 499 p 3 0 ru
+1018 499 p 3 0 ru
+1018 499 p 3 0 ru
+1019 498 p 3 0 ru
+1020 498 p 3 0 ru
+1020 497 p 3 0 ru
+1021 497 p 3 0 ru
+1022 496 p 3 0 ru
+1013 503 p 1 2 ru
+1023 495 p 1 2 ru
+1024 494 p 3 0 ru
+1025 493 p 3 0 ru
+1026 493 p 3 0 ru
+1026 492 p 3 0 ru
+1027 492 p 3 0 ru
+1028 491 p 3 0 ru
+1029 491 p 3 0 ru
+1029 491 p 3 0 ru
+1030 490 p 3 0 ru
+1031 490 p 3 0 ru
+1031 489 p 3 0 ru
+1032 489 p 3 0 ru
+1033 488 p 3 0 ru
+1024 495 p 1 2 ru
+1034 487 p 1 2 ru
+1035 486 p 3 0 ru
+1036 485 p 3 0 ru
+1037 485 p 3 0 ru
+1038 484 p 3 0 ru
+1039 484 p 3 0 ru
+1039 483 p 3 0 ru
+1040 483 p 3 0 ru
+1041 483 p 3 0 ru
+1042 482 p 3 0 ru
+1043 482 p 3 0 ru
+1043 481 p 3 0 ru
+1035 487 p 2 2 ru
+1045 480 p 2 2 ru
+1046 479 p 3 0 ru
+1047 478 p 3 0 ru
+1048 478 p 3 0 ru
+1048 477 p 3 0 ru
+1049 477 p 3 0 ru
+1050 476 p 3 0 ru
+1051 476 p 3 0 ru
+1051 476 p 3 0 ru
+1052 475 p 3 0 ru
+1053 475 p 3 0 ru
+1053 474 p 3 0 ru
+1054 474 p 3 0 ru
+1055 473 p 3 0 ru
+1046 480 p 1 2 ru
+1056 472 p 1 2 ru
+1057 471 p 3 0 ru
+1058 470 p 3 0 ru
+1059 470 p 3 0 ru
+1059 469 p 3 0 ru
+1060 469 p 3 0 ru
+1061 468 p 3 0 ru
+1062 468 p 3 0 ru
+1062 468 p 3 0 ru
+1063 467 p 3 0 ru
+1064 467 p 3 0 ru
+1064 466 p 3 0 ru
+1065 466 p 3 0 ru
+1066 465 p 3 0 ru
+1057 472 p 1 2 ru
+1067 464 p 1 2 ru
+1068 463 p 3 0 ru
+1069 462 p 3 0 ru
+1070 462 p 3 0 ru
+1070 461 p 3 0 ru
+1071 461 p 3 0 ru
+1072 460 p 3 0 ru
+1073 460 p 3 0 ru
+1073 460 p 3 0 ru
+1074 459 p 3 0 ru
+1075 459 p 3 0 ru
+1075 458 p 3 0 ru
+1076 458 p 3 0 ru
+1077 457 p 3 0 ru
+1068 464 p 1 2 ru
+1078 456 p 1 2 ru
+1079 455 p 2 0 ru
+1080 454 p 2 0 ru
+1081 454 p 2 0 ru
+1081 453 p 2 0 ru
+1082 453 p 2 0 ru
+1083 452 p 2 0 ru
+1083 452 p 2 0 ru
+1084 452 p 2 0 ru
+1084 451 p 2 0 ru
+1085 451 p 2 0 ru
+1086 450 p 2 0 ru
+1086 450 p 2 0 ru
+1087 449 p 2 0 ru
+1079 456 p 1 2 ru
+1088 448 p 1 2 ru
+1089 447 p 3 0 ru
+1090 446 p 3 0 ru
+1091 446 p 3 0 ru
+1091 445 p 3 0 ru
+1092 445 p 3 0 ru
+1093 444 p 3 0 ru
+1094 444 p 3 0 ru
+1094 444 p 3 0 ru
+1095 443 p 3 0 ru
+1096 443 p 3 0 ru
+1096 442 p 3 0 ru
+1097 442 p 3 0 ru
+1098 441 p 3 0 ru
+1089 448 p 1 2 ru
+1099 440 p 1 2 ru
+1100 439 p 3 0 ru
+1101 438 p 3 0 ru
+1102 438 p 3 0 ru
+1102 437 p 3 0 ru
+1103 437 p 3 0 ru
+1104 436 p 3 0 ru
+1105 436 p 3 0 ru
+1105 436 p 3 0 ru
+1106 435 p 3 0 ru
+1107 435 p 3 0 ru
+1107 434 p 3 0 ru
+1108 434 p 3 0 ru
+1109 433 p 3 0 ru
+1100 440 p 1 2 ru
+1110 432 p 1 2 ru
+1111 431 p 3 0 ru
+1112 430 p 3 0 ru
+1113 430 p 3 0 ru
+1113 429 p 3 0 ru
+1114 429 p 3 0 ru
+1115 428 p 3 0 ru
+1116 428 p 3 0 ru
+1116 428 p 3 0 ru
+1117 427 p 3 0 ru
+1118 427 p 3 0 ru
+1118 426 p 3 0 ru
+1119 426 p 3 0 ru
+1120 425 p 3 0 ru
+1111 432 p 1 2 ru
+1121 424 p 1 2 ru
+1122 423 p 3 0 ru
+1123 422 p 3 0 ru
+1124 422 p 3 0 ru
+1125 421 p 3 0 ru
+1126 421 p 3 0 ru
+1126 420 p 3 0 ru
+1127 420 p 3 0 ru
+1128 420 p 3 0 ru
+1129 419 p 3 0 ru
+1130 419 p 3 0 ru
+1130 418 p 3 0 ru
+1122 424 p 2 2 ru
+1132 417 p 2 2 ru
+1133 416 p 3 0 ru
+1134 415 p 3 0 ru
+1135 415 p 3 0 ru
+1135 414 p 3 0 ru
+1136 414 p 3 0 ru
+1137 413 p 3 0 ru
+1138 413 p 3 0 ru
+1138 413 p 3 0 ru
+1139 412 p 3 0 ru
+1140 412 p 3 0 ru
+1140 411 p 3 0 ru
+1141 411 p 3 0 ru
+1142 410 p 3 0 ru
+1133 417 p 1 2 ru
+1143 409 p 1 2 ru
+1144 408 p 3 0 ru
+1145 407 p 3 0 ru
+1146 407 p 3 0 ru
+1146 406 p 3 0 ru
+1147 406 p 3 0 ru
+1148 405 p 3 0 ru
+1149 405 p 3 0 ru
+1149 405 p 3 0 ru
+1150 404 p 3 0 ru
+1151 404 p 3 0 ru
+1151 403 p 3 0 ru
+1152 403 p 3 0 ru
+1153 402 p 3 0 ru
+1144 409 p 1 2 ru
+1154 401 p 1 2 ru
+1155 400 p 3 0 ru
+1156 399 p 3 0 ru
+1157 399 p 3 0 ru
+1157 398 p 3 0 ru
+1158 398 p 3 0 ru
+1159 397 p 3 0 ru
+1160 397 p 3 0 ru
+1160 397 p 3 0 ru
+1161 396 p 3 0 ru
+1162 396 p 3 0 ru
+1162 395 p 3 0 ru
+1163 395 p 3 0 ru
+1164 394 p 3 0 ru
+1155 401 p 1 2 ru
+1165 393 p 1 2 ru
+1166 392 p 3 0 ru
+1167 391 p 3 0 ru
+1168 391 p 3 0 ru
+1168 390 p 3 0 ru
+1169 390 p 3 0 ru
+1170 389 p 3 0 ru
+1171 389 p 3 0 ru
+1171 389 p 3 0 ru
+1172 388 p 3 0 ru
+1173 388 p 3 0 ru
+1173 387 p 3 0 ru
+1174 387 p 3 0 ru
+1175 386 p 3 0 ru
+1166 393 p 1 2 ru
+1176 385 p 1 2 ru
+1177 384 p 3 0 ru
+1178 383 p 3 0 ru
+1179 383 p 3 0 ru
+1179 382 p 3 0 ru
+1180 382 p 3 0 ru
+1181 381 p 3 0 ru
+1182 381 p 3 0 ru
+1182 381 p 3 0 ru
+1183 380 p 3 0 ru
+1184 380 p 3 0 ru
+1184 379 p 3 0 ru
+1185 379 p 3 0 ru
+1186 378 p 3 0 ru
+1177 385 p 1 2 ru
+1187 377 p 1 2 ru
+1188 376 p 3 0 ru
+1189 375 p 3 0 ru
+1190 375 p 3 0 ru
+1190 374 p 3 0 ru
+1191 374 p 3 0 ru
+1192 373 p 3 0 ru
+1193 373 p 3 0 ru
+1193 373 p 3 0 ru
+1194 372 p 3 0 ru
+1195 372 p 3 0 ru
+1195 371 p 3 0 ru
+1196 371 p 3 0 ru
+1197 370 p 3 0 ru
+1188 377 p 1 2 ru
+1198 369 p 1 2 ru
+1199 368 p 3 0 ru
+1200 367 p 3 0 ru
+1201 367 p 3 0 ru
+1202 366 p 3 0 ru
+1202 366 p 3 0 ru
+1203 365 p 3 0 ru
+1204 365 p 3 0 ru
+1204 365 p 3 0 ru
+1205 364 p 3 0 ru
+1206 364 p 3 0 ru
+1207 363 p 3 0 ru
+1199 369 p 1 2 ru
+1208 362 p 1 2 ru
+1209 361 p 3 0 ru
+1210 360 p 3 0 ru
+1211 360 p 3 0 ru
+1211 359 p 3 0 ru
+1212 359 p 3 0 ru
+1213 358 p 3 0 ru
+1214 358 p 3 0 ru
+1214 358 p 3 0 ru
+1215 357 p 3 0 ru
+1216 357 p 3 0 ru
+1216 356 p 3 0 ru
+1217 356 p 3 0 ru
+1218 355 p 3 0 ru
+1209 362 p 1 2 ru
+1219 354 p 1 2 ru
+1220 353 p 3 0 ru
+1221 352 p 3 0 ru
+1222 352 p 3 0 ru
+1222 351 p 3 0 ru
+1223 351 p 3 0 ru
+1224 350 p 3 0 ru
+1225 350 p 3 0 ru
+1225 350 p 3 0 ru
+1226 349 p 3 0 ru
+1227 349 p 3 0 ru
+1227 348 p 3 0 ru
+1228 348 p 3 0 ru
+1229 347 p 3 0 ru
+1220 354 p 1 2 ru
+1230 346 p 1 2 ru
+1231 345 p 3 0 ru
+1232 344 p 3 0 ru
+1233 344 p 3 0 ru
+1233 343 p 3 0 ru
+1234 343 p 3 0 ru
+1235 342 p 3 0 ru
+1236 342 p 3 0 ru
+1236 342 p 3 0 ru
+1237 341 p 3 0 ru
+1238 341 p 3 0 ru
+1238 340 p 3 0 ru
+1239 340 p 3 0 ru
+1240 339 p 3 0 ru
+1231 346 p 1 2 ru
+1241 338 p 1 2 ru
+1242 337 p 3 0 ru
+1243 336 p 3 0 ru
+1244 336 p 3 0 ru
+1244 335 p 3 0 ru
+1245 335 p 3 0 ru
+1246 334 p 3 0 ru
+1247 334 p 3 0 ru
+1247 334 p 3 0 ru
+1248 333 p 3 0 ru
+1249 333 p 3 0 ru
+1249 332 p 3 0 ru
+1250 332 p 3 0 ru
+1251 331 p 3 0 ru
+1242 338 p 1 2 ru
+1252 330 p 1 2 ru
+1253 329 p 3 0 ru
+1254 328 p 3 0 ru
+1255 328 p 3 0 ru
+1255 327 p 3 0 ru
+1256 327 p 3 0 ru
+1257 326 p 3 0 ru
+1258 326 p 3 0 ru
+1258 326 p 3 0 ru
+1259 325 p 3 0 ru
+1260 325 p 3 0 ru
+1260 324 p 3 0 ru
+1261 324 p 3 0 ru
+1262 323 p 3 0 ru
+1253 330 p 1 2 ru
+1263 322 p 1 2 ru
+1264 321 p 3 0 ru
+1265 320 p 3 0 ru
+1266 320 p 3 0 ru
+1266 319 p 3 0 ru
+1267 319 p 3 0 ru
+1268 318 p 3 0 ru
+1269 318 p 3 0 ru
+1269 318 p 3 0 ru
+1270 317 p 3 0 ru
+1271 317 p 3 0 ru
+1271 316 p 3 0 ru
+1272 316 p 3 0 ru
+1273 315 p 3 0 ru
+1264 322 p 1 2 ru
+1274 314 p 1 2 ru
+1275 313 p 3 0 ru
+1276 312 p 3 0 ru
+1277 312 p 3 0 ru
+1278 311 p 3 0 ru
+1279 311 p 3 0 ru
+1279 310 p 3 0 ru
+1280 310 p 3 0 ru
+1281 310 p 3 0 ru
+1282 309 p 3 0 ru
+1283 309 p 3 0 ru
+1283 308 p 3 0 ru
+1275 314 p 2 2 ru
+1285 307 p 2 2 ru
+1286 306 p 3 0 ru
+1287 305 p 3 0 ru
+1288 305 p 3 0 ru
+1288 304 p 3 0 ru
+1289 304 p 3 0 ru
+1290 303 p 3 0 ru
+1291 303 p 3 0 ru
+1291 303 p 3 0 ru
+1292 302 p 3 0 ru
+1293 302 p 3 0 ru
+1293 301 p 3 0 ru
+1294 301 p 3 0 ru
+1295 300 p 3 0 ru
+1286 307 p 1 2 ru
+1296 299 p 1 2 ru
+1297 298 p 3 0 ru
+1298 297 p 3 0 ru
+1299 297 p 3 0 ru
+1299 296 p 3 0 ru
+1300 296 p 3 0 ru
+1301 295 p 3 0 ru
+1302 295 p 3 0 ru
+1302 295 p 3 0 ru
+1303 294 p 3 0 ru
+1304 294 p 3 0 ru
+1304 293 p 3 0 ru
+1305 293 p 3 0 ru
+1306 292 p 3 0 ru
+1297 299 p 1 2 ru
+1307 291 p 1 2 ru
+1308 290 p 3 0 ru
+1309 289 p 3 0 ru
+1310 289 p 3 0 ru
+1310 288 p 3 0 ru
+1311 288 p 3 0 ru
+1312 287 p 3 0 ru
+1313 287 p 3 0 ru
+1313 287 p 3 0 ru
+1314 286 p 3 0 ru
+1315 286 p 3 0 ru
+1315 285 p 3 0 ru
+1316 285 p 3 0 ru
+1317 284 p 3 0 ru
+1308 291 p 1 2 ru
+1318 283 p 1 2 ru
+1319 282 p 2 0 ru
+1320 281 p 2 0 ru
+1321 281 p 2 0 ru
+1321 280 p 2 0 ru
+1322 280 p 2 0 ru
+1323 279 p 2 0 ru
+1323 279 p 2 0 ru
+1324 279 p 2 0 ru
+1324 278 p 2 0 ru
+1325 278 p 2 0 ru
+1326 277 p 2 0 ru
+1326 277 p 2 0 ru
+1327 276 p 2 0 ru
+1319 283 p 1 2 ru
+1328 275 p 1 2 ru
+1329 274 p 3 0 ru
+1330 273 p 3 0 ru
+1331 273 p 3 0 ru
+1331 272 p 3 0 ru
+1332 272 p 3 0 ru
+1333 271 p 3 0 ru
+1334 271 p 3 0 ru
+1334 271 p 3 0 ru
+1335 270 p 3 0 ru
+1336 270 p 3 0 ru
+1336 269 p 3 0 ru
+1337 269 p 3 0 ru
+1338 268 p 3 0 ru
+1329 275 p 1 2 ru
+1339 267 p 1 2 ru
+1340 266 p 3 0 ru
+1341 265 p 3 0 ru
+1342 265 p 3 0 ru
+1342 264 p 3 0 ru
+1343 264 p 3 0 ru
+1344 263 p 3 0 ru
+1345 263 p 3 0 ru
+1345 263 p 3 0 ru
+1346 262 p 3 0 ru
+1347 262 p 3 0 ru
+1347 261 p 3 0 ru
+1348 261 p 3 0 ru
+1349 260 p 3 0 ru
+1340 267 p 1 2 ru
+1350 259 p 1 2 ru
+1351 258 p 3 0 ru
+1352 257 p 3 0 ru
+1353 257 p 3 0 ru
+1354 256 p 3 0 ru
+1355 256 p 3 0 ru
+1355 255 p 3 0 ru
+1356 255 p 3 0 ru
+1357 255 p 3 0 ru
+1358 254 p 3 0 ru
+1359 254 p 3 0 ru
+1359 253 p 3 0 ru
+1351 259 p 2 2 ru
+1361 252 p 2 2 ru
+1362 251 p 3 0 ru
+1363 250 p 3 0 ru
+1364 250 p 3 0 ru
+1364 249 p 3 0 ru
+1365 249 p 3 0 ru
+1366 248 p 3 0 ru
+1367 248 p 3 0 ru
+1367 248 p 3 0 ru
+1368 247 p 3 0 ru
+1369 247 p 3 0 ru
+1369 246 p 3 0 ru
+1370 246 p 3 0 ru
+1371 245 p 3 0 ru
+1362 252 p 1 2 ru
+1372 244 p 1 2 ru
+1373 243 p 3 0 ru
+1374 242 p 3 0 ru
+1375 242 p 3 0 ru
+1375 241 p 3 0 ru
+1376 241 p 3 0 ru
+1377 240 p 3 0 ru
+1378 240 p 3 0 ru
+1378 240 p 3 0 ru
+1379 239 p 3 0 ru
+1380 239 p 3 0 ru
+1380 238 p 3 0 ru
+1381 238 p 3 0 ru
+1382 237 p 3 0 ru
+1373 244 p 1 2 ru
+1383 236 p 1 2 ru
+1384 235 p 3 0 ru
+1385 234 p 3 0 ru
+1386 234 p 3 0 ru
+1386 233 p 3 0 ru
+1387 233 p 3 0 ru
+1388 232 p 3 0 ru
+1389 232 p 3 0 ru
+1389 232 p 3 0 ru
+1390 231 p 3 0 ru
+1391 231 p 3 0 ru
+1391 230 p 3 0 ru
+1392 230 p 3 0 ru
+1393 229 p 3 0 ru
+1384 236 p 1 2 ru
+1394 228 p 1 2 ru
+1395 227 p 3 0 ru
+1396 226 p 3 0 ru
+1397 226 p 3 0 ru
+1397 225 p 3 0 ru
+1398 225 p 3 0 ru
+1399 224 p 3 0 ru
+1400 224 p 3 0 ru
+1400 224 p 3 0 ru
+1401 223 p 3 0 ru
+1402 223 p 3 0 ru
+1402 222 p 3 0 ru
+1403 222 p 3 0 ru
+1404 221 p 3 0 ru
+1395 228 p 1 2 ru
+1405 220 p 1 2 ru
+1406 219 p 3 0 ru
+1407 218 p 3 0 ru
+1408 218 p 3 0 ru
+1408 217 p 3 0 ru
+1409 217 p 3 0 ru
+1410 216 p 3 0 ru
+1411 216 p 3 0 ru
+1411 216 p 3 0 ru
+1412 215 p 3 0 ru
+1413 215 p 3 0 ru
+1413 214 p 3 0 ru
+1414 214 p 3 0 ru
+1415 213 p 3 0 ru
+1406 220 p 1 2 ru
+1416 212 p 1 2 ru
+1417 211 p 3 0 ru
+1418 210 p 3 0 ru
+1419 210 p 3 0 ru
+1419 209 p 3 0 ru
+1420 209 p 3 0 ru
+1421 208 p 3 0 ru
+1422 208 p 3 0 ru
+1422 208 p 3 0 ru
+1423 207 p 3 0 ru
+1424 207 p 3 0 ru
+1424 206 p 3 0 ru
+1425 206 p 3 0 ru
+1426 205 p 3 0 ru
+1417 212 p 1 2 ru
+1427 204 p 1 2 ru
+1428 203 p 3 0 ru
+1429 202 p 3 0 ru
+1430 202 p 3 0 ru
+1431 201 p 3 0 ru
+1432 201 p 3 0 ru
+1432 200 p 3 0 ru
+1433 200 p 3 0 ru
+1434 200 p 3 0 ru
+1435 199 p 3 0 ru
+1436 199 p 3 0 ru
+1436 198 p 3 0 ru
+1428 204 p 2 2 ru
+1438 197 p 2 2 ru
+1439 196 p 2 0 ru
+1440 195 p 2 0 ru
+1441 195 p 2 0 ru
+1441 194 p 2 0 ru
+1442 194 p 2 0 ru
+1443 193 p 2 0 ru
+1443 193 p 2 0 ru
+1444 193 p 2 0 ru
+1444 192 p 2 0 ru
+1445 192 p 2 0 ru
+1446 191 p 2 0 ru
+1446 191 p 2 0 ru
+1447 190 p 2 0 ru
+1439 197 p 1 2 ru
+1448 189 p 1 2 ru
+1449 188 p 3 0 ru
+1450 187 p 3 0 ru
+1451 187 p 3 0 ru
+1451 186 p 3 0 ru
+1452 186 p 3 0 ru
+1453 185 p 3 0 ru
+1454 185 p 3 0 ru
+1454 185 p 3 0 ru
+1455 184 p 3 0 ru
+1456 184 p 3 0 ru
+1456 183 p 3 0 ru
+1457 183 p 3 0 ru
+1458 182 p 3 0 ru
+1449 189 p 1 2 ru
+1459 181 p 1 2 ru
+1460 180 p 3 0 ru
+1461 179 p 3 0 ru
+1462 179 p 3 0 ru
+1462 178 p 3 0 ru
+1463 178 p 3 0 ru
+1464 177 p 3 0 ru
+1465 177 p 3 0 ru
+1465 177 p 3 0 ru
+1466 176 p 3 0 ru
+1467 176 p 3 0 ru
+1467 175 p 3 0 ru
+1468 175 p 3 0 ru
+1469 174 p 3 0 ru
+1460 181 p 1 2 ru
+1470 173 p 1 2 ru
+1471 172 p 3 0 ru
+1472 171 p 3 0 ru
+1473 171 p 3 0 ru
+1473 170 p 3 0 ru
+1474 170 p 3 0 ru
+1475 169 p 3 0 ru
+1476 169 p 3 0 ru
+1476 169 p 3 0 ru
+1477 168 p 3 0 ru
+1478 168 p 3 0 ru
+1478 167 p 3 0 ru
+1479 167 p 3 0 ru
+1480 166 p 3 0 ru
+1471 173 p 1 2 ru
+1481 165 p 1 2 ru
+1482 164 p 3 0 ru
+1483 163 p 3 0 ru
+1484 163 p 3 0 ru
+1484 162 p 3 0 ru
+1485 162 p 3 0 ru
+1486 161 p 3 0 ru
+1487 161 p 3 0 ru
+1487 161 p 3 0 ru
+1488 160 p 3 0 ru
+1489 160 p 3 0 ru
+1489 159 p 3 0 ru
+1490 159 p 3 0 ru
+1491 158 p 3 0 ru
+1482 165 p 1 2 ru
+1492 157 p 1 2 ru
+1493 156 p 3 0 ru
+1494 155 p 3 0 ru
+1495 155 p 3 0 ru
+1495 154 p 3 0 ru
+1496 154 p 3 0 ru
+1497 153 p 3 0 ru
+1498 153 p 3 0 ru
+1498 153 p 3 0 ru
+1499 152 p 3 0 ru
+1500 152 p 3 0 ru
+1500 151 p 3 0 ru
+1501 151 p 3 0 ru
+1502 150 p 3 0 ru
+1493 157 p 1 2 ru
+1503 149 p 1 2 ru
+1504 148 p 3 0 ru
+1505 147 p 3 0 ru
+1506 147 p 3 0 ru
+1507 146 p 3 0 ru
+1508 146 p 3 0 ru
+1508 145 p 3 0 ru
+1509 145 p 3 0 ru
+1510 145 p 3 0 ru
+1511 144 p 3 0 ru
+1512 144 p 3 0 ru
+1512 143 p 3 0 ru
+1504 149 p 2 2 ru
+1514 142 p 2 2 ru
+1515 141 p 3 0 ru
+1516 140 p 3 0 ru
+1517 140 p 3 0 ru
+1517 139 p 3 0 ru
+1518 139 p 3 0 ru
+1519 138 p 3 0 ru
+1520 138 p 3 0 ru
+1520 138 p 3 0 ru
+1521 137 p 3 0 ru
+1522 137 p 3 0 ru
+1522 136 p 3 0 ru
+1523 136 p 3 0 ru
+1524 135 p 3 0 ru
+1515 142 p 1 2 ru
+1525 134 p 1 2 ru
+1526 133 p 3 0 ru
+1527 132 p 3 0 ru
+1528 132 p 3 0 ru
+1528 131 p 3 0 ru
+1529 131 p 3 0 ru
+1530 130 p 3 0 ru
+1531 130 p 3 0 ru
+1531 130 p 3 0 ru
+1532 129 p 3 0 ru
+1533 129 p 3 0 ru
+1533 128 p 3 0 ru
+1534 128 p 3 0 ru
+1535 127 p 3 0 ru
+1526 134 p 1 2 ru
+1536 126 p 1 2 ru
+1537 125 p 3 0 ru
+1538 124 p 3 0 ru
+1539 124 p 3 0 ru
+1539 123 p 3 0 ru
+1540 123 p 3 0 ru
+1541 122 p 3 0 ru
+1542 122 p 3 0 ru
+1542 122 p 3 0 ru
+1543 121 p 3 0 ru
+1544 121 p 3 0 ru
+1544 120 p 3 0 ru
+1545 120 p 3 0 ru
+1546 119 p 3 0 ru
+1537 126 p 1 2 ru
+1547 118 p 1 2 ru
+1548 117 p 3 0 ru
+1549 116 p 3 0 ru
+1550 116 p 3 0 ru
+1550 115 p 3 0 ru
+1551 115 p 3 0 ru
+1552 114 p 3 0 ru
+1553 114 p 3 0 ru
+1553 114 p 3 0 ru
+1554 113 p 3 0 ru
+1555 113 p 3 0 ru
+1555 112 p 3 0 ru
+1556 112 p 3 0 ru
+1557 111 p 3 0 ru
+1548 118 p 1 2 ru
+1558 110 p 1 2 ru
+1559 109 p 2 0 ru
+1560 108 p 2 0 ru
+1561 108 p 2 0 ru
+1561 107 p 2 0 ru
+1562 107 p 2 0 ru
+1563 106 p 2 0 ru
+1563 106 p 2 0 ru
+1564 106 p 2 0 ru
+1564 105 p 2 0 ru
+1565 105 p 2 0 ru
+1566 104 p 2 0 ru
+1566 104 p 2 0 ru
+1567 103 p 2 0 ru
+1559 110 p 1 2 ru
+1568 102 p 1 2 ru
+1569 101 p 3 0 ru
+1570 100 p 3 0 ru
+1571 100 p 3 0 ru
+1571 99 p 3 0 ru
+1572 99 p 3 0 ru
+1573 98 p 3 0 ru
+1574 98 p 3 0 ru
+1574 98 p 3 0 ru
+1575 97 p 3 0 ru
+1576 97 p 3 0 ru
+1576 96 p 3 0 ru
+1577 96 p 3 0 ru
+1578 95 p 3 0 ru
+1569 102 p 1 2 ru
+1579 94 p 1 2 ru
+1580 93 p 3 0 ru
+1581 92 p 3 0 ru
+1582 92 p 3 0 ru
+1583 91 p 3 0 ru
+1584 91 p 3 0 ru
+1584 90 p 3 0 ru
+1585 90 p 3 0 ru
+1586 90 p 3 0 ru
+1587 89 p 3 0 ru
+1588 89 p 3 0 ru
+1588 88 p 3 0 ru
+1580 94 p 2 2 ru
+1590 87 p 2 2 ru
+1591 86 p 3 0 ru
+1592 85 p 3 0 ru
+1593 85 p 3 0 ru
+1593 84 p 3 0 ru
+1594 84 p 3 0 ru
+1595 83 p 3 0 ru
+1596 83 p 3 0 ru
+1596 83 p 3 0 ru
+1597 82 p 3 0 ru
+1598 82 p 3 0 ru
+1598 81 p 3 0 ru
+1599 81 p 3 0 ru
+1600 80 p 3 0 ru
+1591 87 p 1 2 ru
+1601 79 p 1 2 ru
+1602 78 p 3 0 ru
+1603 77 p 3 0 ru
+1604 77 p 3 0 ru
+1604 76 p 3 0 ru
+1605 76 p 3 0 ru
+1606 75 p 3 0 ru
+1607 75 p 3 0 ru
+1607 75 p 3 0 ru
+1608 74 p 3 0 ru
+1609 74 p 3 0 ru
+1609 73 p 3 0 ru
+1610 73 p 3 0 ru
+1611 72 p 3 0 ru
+1602 79 p 1 2 ru
+1612 71 p 1 2 ru
+1613 70 p 3 0 ru
+1614 69 p 3 0 ru
+1615 69 p 3 0 ru
+1615 68 p 3 0 ru
+1616 68 p 3 0 ru
+1617 67 p 3 0 ru
+1618 67 p 3 0 ru
+1618 67 p 3 0 ru
+1619 66 p 3 0 ru
+1620 66 p 3 0 ru
+1620 65 p 3 0 ru
+1621 65 p 3 0 ru
+1622 64 p 3 0 ru
+1613 71 p 1 2 ru
+1623 63 p 1 2 ru
+f25 SF
+1175 735 p (\(1)s
+f27 SF
+9 r (\000)s
+f25 SF
+9 r (cos)s
+f26 SF
+7 r (\022)s
+f25 SF
+1 r (\))s
+f26 SF
+(=)s
+f25 SF
+(2)s
+1443 725 p 2 2 ru
+21 r 2 2 ru
+21 r 2 2 ru
+21 r 2 2 ru
+20 r 2 2 ru
+21 r 2 2 ru
+16 r 2 2 ru
+544 841 p 2 2 ru
+2 2 ru
+565 840 p 2 2 ru
+586 839 p 2 2 ru
+606 835 p 2 2 ru
+626 830 p 2 2 ru
+646 824 p 2 2 ru
+666 818 p 2 2 ru
+685 809 p 2 2 ru
+704 800 p 2 2 ru
+722 791 p 2 2 ru
+740 780 p 2 2 ru
+757 769 p 2 2 ru
+775 757 p 2 2 ru
+791 745 p 2 2 ru
+808 733 p 2 2 ru
+824 720 p 2 2 ru
+840 707 p 2 2 ru
+855 692 p 2 2 ru
+871 679 p 2 2 ru
+886 664 p 2 2 ru
+901 650 p 2 2 ru
+916 636 p 2 2 ru
+931 621 p 2 2 ru
+945 606 p 2 2 ru
+959 591 p 2 2 ru
+973 576 p 2 2 ru
+987 561 p 2 2 ru
+1001 545 p 2 2 ru
+1015 530 p 2 2 ru
+1029 515 p 2 2 ru
+1043 499 p 2 2 ru
+1057 484 p 2 2 ru
+1071 468 p 2 2 ru
+1084 452 p 2 2 ru
+1098 437 p 2 2 ru
+1112 421 p 2 2 ru
+1126 406 p 2 2 ru
+1139 390 p 2 2 ru
+1153 375 p 2 2 ru
+1167 359 p 2 2 ru
+1181 344 p 2 2 ru
+1196 329 p 2 2 ru
+1209 314 p 2 2 ru
+1224 299 p 2 2 ru
+1238 284 p 2 2 ru
+1253 269 p 2 2 ru
+1268 255 p 2 2 ru
+1283 241 p 2 2 ru
+1298 226 p 2 2 ru
+1313 212 p 2 2 ru
+1328 198 p 2 2 ru
+1344 185 p 2 2 ru
+1361 172 p 2 2 ru
+1377 160 p 2 2 ru
+1394 147 p 2 2 ru
+1411 136 p 2 2 ru
+1429 125 p 2 2 ru
+1447 114 p 2 2 ru
+1465 104 p 2 2 ru
+1484 96 p 2 2 ru
+1503 87 p 2 2 ru
+1522 80 p 2 2 ru
+1542 74 p 2 2 ru
+1562 70 p 2 2 ru
+1583 66 p 2 2 ru
+1603 64 p 2 2 ru
+1624 63 p 2 2 ru
+2 2 ru
+1041 775 p (0)s
+f26 SF
+(:)s
+f25 SF
+(878)s
+f27 SF
+9 r (\003)s
+f25 SF
+10 r (\(1)s
+f27 SF
+9 r (\000)s
+f25 SF
+9 r (cos)s
+f26 SF
+7 r (\022)s
+f25 SF
+1 r (\))s
+f26 SF
+(=)s
+f25 SF
+(2)s
+1443 766 p 120 3 ru
+544 842 p 3 3 ru
+555 842 p 11 3 ru
+555 842 p 6 3 ru
+561 841 p 6 3 ru
+566 841 p 11 3 ru
+566 841 p 6 3 ru
+572 840 p 6 3 ru
+577 840 p 11 3 ru
+577 840 p 6 3 ru
+583 839 p 6 3 ru
+588 839 p 11 3 ru
+588 839 p 6 3 ru
+594 838 p 6 3 ru
+599 837 p 10 3 ru
+599 838 p 5 3 ru
+604 836 p 5 3 ru
+609 835 p 11 3 ru
+609 836 p 6 3 ru
+615 834 p 6 3 ru
+620 833 p 11 3 ru
+620 834 p 6 3 ru
+626 831 p 6 3 ru
+631 830 p 11 3 ru
+631 831 p 6 3 ru
+637 828 p 6 3 ru
+642 827 p 11 3 ru
+642 828 p 6 3 ru
+648 825 p 6 3 ru
+653 823 p 10 3 ru
+653 825 p 5 3 ru
+659 821 p 5 3 ru
+664 820 p 11 3 ru
+664 821 p 6 3 ru
+670 818 p 6 3 ru
+675 815 p 8 1 ru
+677 815 p 8 1 ru
+678 814 p 8 1 ru
+675 818 p 4 3 ru
+682 813 p 4 3 ru
+686 811 p 10 3 ru
+686 813 p 5 3 ru
+692 809 p 5 3 ru
+697 806 p 8 1 ru
+699 806 p 8 1 ru
+700 805 p 8 1 ru
+697 809 p 4 3 ru
+704 804 p 4 3 ru
+708 801 p 8 1 ru
+710 801 p 8 1 ru
+711 800 p 8 1 ru
+708 804 p 4 3 ru
+715 799 p 4 3 ru
+719 796 p 7 1 ru
+721 796 p 7 1 ru
+722 795 p 7 1 ru
+719 799 p 4 3 ru
+726 794 p 4 3 ru
+729 791 p 7 1 ru
+730 791 p 7 1 ru
+731 790 p 7 1 ru
+732 790 p 7 1 ru
+733 789 p 7 1 ru
+729 794 p 3 3 ru
+737 788 p 3 3 ru
+740 785 p 7 1 ru
+741 785 p 7 1 ru
+742 784 p 7 1 ru
+743 784 p 7 1 ru
+744 783 p 7 1 ru
+740 788 p 3 3 ru
+748 782 p 3 3 ru
+751 779 p 7 1 ru
+752 779 p 7 1 ru
+753 778 p 7 1 ru
+754 778 p 7 1 ru
+755 777 p 7 1 ru
+751 782 p 3 3 ru
+759 776 p 3 3 ru
+762 773 p 6 1 ru
+763 773 p 6 1 ru
+764 772 p 6 1 ru
+765 772 p 6 1 ru
+766 771 p 6 1 ru
+767 770 p 6 1 ru
+767 770 p 6 1 ru
+762 776 p 3 3 ru
+770 769 p 3 3 ru
+773 766 p 6 1 ru
+774 766 p 6 1 ru
+775 765 p 6 1 ru
+776 765 p 6 1 ru
+777 764 p 6 1 ru
+778 763 p 6 1 ru
+778 763 p 6 1 ru
+773 769 p 3 3 ru
+781 762 p 3 3 ru
+784 759 p 6 1 ru
+785 759 p 6 1 ru
+786 758 p 6 1 ru
+787 758 p 6 1 ru
+788 757 p 6 1 ru
+789 756 p 6 1 ru
+789 756 p 6 1 ru
+784 762 p 3 3 ru
+792 755 p 3 3 ru
+795 752 p 6 1 ru
+796 752 p 6 1 ru
+797 751 p 6 1 ru
+798 751 p 6 1 ru
+799 750 p 6 1 ru
+800 749 p 6 1 ru
+800 749 p 6 1 ru
+795 755 p 3 3 ru
+803 748 p 3 3 ru
+806 745 p 5 1 ru
+807 745 p 5 1 ru
+808 744 p 5 1 ru
+808 744 p 5 1 ru
+809 743 p 5 1 ru
+810 743 p 5 1 ru
+811 742 p 5 1 ru
+811 741 p 5 1 ru
+812 741 p 5 1 ru
+806 748 p 3 3 ru
+815 740 p 3 3 ru
+817 737 p 5 1 ru
+818 737 p 5 1 ru
+819 736 p 5 1 ru
+819 736 p 5 1 ru
+820 735 p 5 1 ru
+821 735 p 5 1 ru
+822 734 p 5 1 ru
+822 733 p 5 1 ru
+823 733 p 5 1 ru
+817 740 p 3 3 ru
+826 732 p 3 3 ru
+828 729 p 5 1 ru
+829 729 p 5 1 ru
+830 728 p 5 1 ru
+830 728 p 5 1 ru
+831 727 p 5 1 ru
+832 727 p 5 1 ru
+833 726 p 5 1 ru
+833 725 p 5 1 ru
+834 725 p 5 1 ru
+828 732 p 3 3 ru
+837 724 p 3 3 ru
+839 721 p 5 1 ru
+840 721 p 5 1 ru
+841 720 p 5 1 ru
+841 720 p 5 1 ru
+842 719 p 5 1 ru
+843 719 p 5 1 ru
+843 718 p 5 1 ru
+844 717 p 5 1 ru
+844 717 p 5 1 ru
+839 724 p 2 3 ru
+847 716 p 2 3 ru
+849 713 p 5 1 ru
+850 713 p 5 1 ru
+851 712 p 5 1 ru
+851 712 p 5 1 ru
+852 711 p 5 1 ru
+852 711 p 5 1 ru
+853 710 p 5 1 ru
+854 709 p 5 1 ru
+854 709 p 5 1 ru
+855 708 p 5 1 ru
+855 708 p 5 1 ru
+849 716 p 2 3 ru
+858 707 p 2 3 ru
+860 704 p 5 1 ru
+861 704 p 5 1 ru
+862 703 p 5 1 ru
+862 703 p 5 1 ru
+863 702 p 5 1 ru
+864 702 p 5 1 ru
+865 701 p 5 1 ru
+865 700 p 5 1 ru
+866 700 p 5 1 ru
+860 707 p 3 3 ru
+869 699 p 3 3 ru
+871 696 p 5 1 ru
+872 696 p 5 1 ru
+873 695 p 5 1 ru
+873 695 p 5 1 ru
+874 694 p 5 1 ru
+874 694 p 5 1 ru
+875 693 p 5 1 ru
+876 692 p 5 1 ru
+876 692 p 5 1 ru
+877 691 p 5 1 ru
+877 691 p 5 1 ru
+871 699 p 2 3 ru
+880 690 p 2 3 ru
+882 687 p 5 1 ru
+883 687 p 5 1 ru
+884 686 p 5 1 ru
+884 686 p 5 1 ru
+885 685 p 5 1 ru
+885 685 p 5 1 ru
+886 684 p 5 1 ru
+887 683 p 5 1 ru
+887 683 p 5 1 ru
+888 682 p 5 1 ru
+888 682 p 5 1 ru
+882 690 p 2 3 ru
+891 681 p 2 3 ru
+893 678 p 4 1 ru
+894 678 p 4 1 ru
+894 677 p 4 1 ru
+895 677 p 4 1 ru
+896 676 p 4 1 ru
+896 676 p 4 1 ru
+897 675 p 4 1 ru
+897 675 p 4 1 ru
+898 674 p 4 1 ru
+898 673 p 4 1 ru
+899 673 p 4 1 ru
+899 672 p 4 1 ru
+900 672 p 4 1 ru
+893 681 p 2 3 ru
+902 671 p 2 3 ru
+904 668 p 5 1 ru
+905 668 p 5 1 ru
+906 667 p 5 1 ru
+906 667 p 5 1 ru
+907 666 p 5 1 ru
+907 666 p 5 1 ru
+908 665 p 5 1 ru
+909 664 p 5 1 ru
+909 664 p 5 1 ru
+910 663 p 5 1 ru
+910 663 p 5 1 ru
+904 671 p 2 3 ru
+913 662 p 2 3 ru
+915 659 p 4 1 ru
+916 659 p 4 1 ru
+916 658 p 4 1 ru
+917 658 p 4 1 ru
+918 657 p 4 1 ru
+918 657 p 4 1 ru
+919 656 p 4 1 ru
+919 656 p 4 1 ru
+920 655 p 4 1 ru
+920 654 p 4 1 ru
+921 654 p 4 1 ru
+921 653 p 4 1 ru
+922 653 p 4 1 ru
+915 662 p 2 3 ru
+924 652 p 2 3 ru
+926 649 p 5 1 ru
+927 649 p 5 1 ru
+928 648 p 5 1 ru
+928 648 p 5 1 ru
+929 647 p 5 1 ru
+929 647 p 5 1 ru
+930 646 p 5 1 ru
+931 645 p 5 1 ru
+931 645 p 5 1 ru
+932 644 p 5 1 ru
+932 644 p 5 1 ru
+926 652 p 2 3 ru
+935 643 p 2 3 ru
+937 640 p 4 1 ru
+938 640 p 4 1 ru
+938 639 p 4 1 ru
+939 639 p 4 1 ru
+940 638 p 4 1 ru
+940 638 p 4 1 ru
+941 637 p 4 1 ru
+941 637 p 4 1 ru
+942 636 p 4 1 ru
+942 635 p 4 1 ru
+943 635 p 4 1 ru
+943 634 p 4 1 ru
+944 634 p 4 1 ru
+937 643 p 2 3 ru
+946 633 p 2 3 ru
+948 630 p 4 1 ru
+949 630 p 4 1 ru
+949 629 p 4 1 ru
+950 629 p 4 1 ru
+951 628 p 4 1 ru
+951 628 p 4 1 ru
+952 627 p 4 1 ru
+952 627 p 4 1 ru
+953 626 p 4 1 ru
+953 625 p 4 1 ru
+954 625 p 4 1 ru
+954 624 p 4 1 ru
+955 624 p 4 1 ru
+948 633 p 2 3 ru
+957 623 p 2 3 ru
+961 622 p 1 4 ru
+961 621 p 1 4 ru
+962 620 p 1 4 ru
+962 620 p 1 4 ru
+963 619 p 1 4 ru
+963 619 p 1 4 ru
+964 618 p 1 4 ru
+964 618 p 1 4 ru
+965 617 p 1 4 ru
+965 617 p 1 4 ru
+966 616 p 1 4 ru
+966 616 p 1 4 ru
+967 615 p 1 4 ru
+958 622 p 3 2 ru
+968 613 p 3 2 ru
+969 609 p 4 1 ru
+970 609 p 4 1 ru
+970 608 p 4 1 ru
+971 608 p 4 1 ru
+972 607 p 4 1 ru
+972 607 p 4 1 ru
+973 606 p 4 1 ru
+973 606 p 4 1 ru
+974 605 p 4 1 ru
+974 604 p 4 1 ru
+975 604 p 4 1 ru
+975 603 p 4 1 ru
+976 603 p 4 1 ru
+969 612 p 2 3 ru
+978 602 p 2 3 ru
+980 599 p 4 1 ru
+981 599 p 4 1 ru
+981 598 p 4 1 ru
+982 598 p 4 1 ru
+983 597 p 4 1 ru
+983 597 p 4 1 ru
+984 596 p 4 1 ru
+984 596 p 4 1 ru
+985 595 p 4 1 ru
+985 594 p 4 1 ru
+986 594 p 4 1 ru
+986 593 p 4 1 ru
+987 593 p 4 1 ru
+980 602 p 2 3 ru
+989 592 p 2 3 ru
+991 589 p 4 1 ru
+992 589 p 4 1 ru
+992 588 p 4 1 ru
+993 588 p 4 1 ru
+993 587 p 4 1 ru
+994 587 p 4 1 ru
+994 586 p 4 1 ru
+995 586 p 4 1 ru
+995 585 p 4 1 ru
+996 585 p 4 1 ru
+996 584 p 4 1 ru
+997 583 p 4 1 ru
+997 583 p 4 1 ru
+998 582 p 4 1 ru
+998 582 p 4 1 ru
+991 592 p 2 3 ru
+1000 581 p 2 3 ru
+1002 578 p 4 1 ru
+1003 578 p 4 1 ru
+1003 577 p 4 1 ru
+1004 577 p 4 1 ru
+1005 576 p 4 1 ru
+1005 576 p 4 1 ru
+1006 575 p 4 1 ru
+1006 575 p 4 1 ru
+1007 574 p 4 1 ru
+1007 573 p 4 1 ru
+1008 573 p 4 1 ru
+1008 572 p 4 1 ru
+1009 572 p 4 1 ru
+1002 581 p 2 3 ru
+1011 571 p 2 3 ru
+1013 568 p 4 1 ru
+1014 568 p 4 1 ru
+1014 567 p 4 1 ru
+1015 567 p 4 1 ru
+1015 566 p 4 1 ru
+1016 566 p 4 1 ru
+1016 565 p 4 1 ru
+1017 565 p 4 1 ru
+1017 564 p 4 1 ru
+1018 564 p 4 1 ru
+1018 563 p 4 1 ru
+1019 562 p 4 1 ru
+1019 562 p 4 1 ru
+1020 561 p 4 1 ru
+1020 561 p 4 1 ru
+1013 571 p 2 3 ru
+1022 560 p 2 3 ru
+1024 557 p 4 1 ru
+1025 557 p 4 1 ru
+1025 556 p 4 1 ru
+1026 556 p 4 1 ru
+1026 555 p 4 1 ru
+1027 555 p 4 1 ru
+1027 554 p 4 1 ru
+1028 554 p 4 1 ru
+1028 553 p 4 1 ru
+1029 553 p 4 1 ru
+1029 552 p 4 1 ru
+1030 551 p 4 1 ru
+1030 551 p 4 1 ru
+1031 550 p 4 1 ru
+1031 550 p 4 1 ru
+1024 560 p 2 3 ru
+1033 549 p 2 3 ru
+1035 546 p 4 1 ru
+1036 546 p 4 1 ru
+1036 545 p 4 1 ru
+1037 545 p 4 1 ru
+1038 544 p 4 1 ru
+1038 544 p 4 1 ru
+1039 543 p 4 1 ru
+1039 543 p 4 1 ru
+1040 542 p 4 1 ru
+1040 541 p 4 1 ru
+1041 541 p 4 1 ru
+1041 540 p 4 1 ru
+1042 540 p 4 1 ru
+1035 549 p 2 3 ru
+1044 539 p 2 3 ru
+1046 536 p 4 1 ru
+1047 536 p 4 1 ru
+1047 535 p 4 1 ru
+1048 535 p 4 1 ru
+1048 534 p 4 1 ru
+1049 534 p 4 1 ru
+1049 533 p 4 1 ru
+1050 533 p 4 1 ru
+1050 532 p 4 1 ru
+1051 532 p 4 1 ru
+1051 531 p 4 1 ru
+1052 530 p 4 1 ru
+1052 530 p 4 1 ru
+1053 529 p 4 1 ru
+1053 529 p 4 1 ru
+1046 539 p 2 3 ru
+1055 528 p 2 3 ru
+1057 525 p 4 1 ru
+1058 525 p 4 1 ru
+1058 524 p 4 1 ru
+1059 524 p 4 1 ru
+1059 523 p 4 1 ru
+1060 523 p 4 1 ru
+1060 522 p 4 1 ru
+1061 522 p 4 1 ru
+1061 521 p 4 1 ru
+1062 521 p 4 1 ru
+1062 520 p 4 1 ru
+1063 519 p 4 1 ru
+1063 519 p 4 1 ru
+1064 518 p 4 1 ru
+1064 518 p 4 1 ru
+1057 528 p 2 3 ru
+1066 517 p 2 3 ru
+1068 514 p 4 1 ru
+1069 514 p 4 1 ru
+1069 513 p 4 1 ru
+1070 513 p 4 1 ru
+1070 512 p 4 1 ru
+1071 512 p 4 1 ru
+1071 511 p 4 1 ru
+1072 511 p 4 1 ru
+1072 510 p 4 1 ru
+1073 510 p 4 1 ru
+1073 509 p 4 1 ru
+1074 508 p 4 1 ru
+1074 508 p 4 1 ru
+1075 507 p 4 1 ru
+1075 507 p 4 1 ru
+1068 517 p 2 3 ru
+1077 506 p 2 3 ru
+1081 505 p 1 4 ru
+1081 504 p 1 4 ru
+1082 503 p 1 4 ru
+1082 503 p 1 4 ru
+1083 502 p 1 4 ru
+1083 502 p 1 4 ru
+1084 501 p 1 4 ru
+1084 501 p 1 4 ru
+1085 500 p 1 4 ru
+1085 500 p 1 4 ru
+1086 499 p 1 4 ru
+1086 499 p 1 4 ru
+1087 498 p 1 4 ru
+1078 505 p 3 2 ru
+1088 496 p 3 2 ru
+1089 492 p 4 1 ru
+1090 492 p 4 1 ru
+1090 491 p 4 1 ru
+1091 491 p 4 1 ru
+1092 490 p 4 1 ru
+1092 490 p 4 1 ru
+1093 489 p 4 1 ru
+1093 489 p 4 1 ru
+1094 488 p 4 1 ru
+1094 487 p 4 1 ru
+1095 487 p 4 1 ru
+1095 486 p 4 1 ru
+1096 486 p 4 1 ru
+1089 495 p 2 3 ru
+1098 485 p 2 3 ru
+1100 482 p 4 1 ru
+1101 482 p 4 1 ru
+1101 481 p 4 1 ru
+1102 481 p 4 1 ru
+1102 480 p 4 1 ru
+1103 480 p 4 1 ru
+1103 479 p 4 1 ru
+1104 479 p 4 1 ru
+1104 478 p 4 1 ru
+1105 478 p 4 1 ru
+1105 477 p 4 1 ru
+1106 476 p 4 1 ru
+1106 476 p 4 1 ru
+1107 475 p 4 1 ru
+1107 475 p 4 1 ru
+1100 485 p 2 3 ru
+1109 474 p 2 3 ru
+1111 471 p 4 1 ru
+1112 471 p 4 1 ru
+1112 470 p 4 1 ru
+1113 470 p 4 1 ru
+1113 469 p 4 1 ru
+1114 469 p 4 1 ru
+1114 468 p 4 1 ru
+1115 468 p 4 1 ru
+1115 467 p 4 1 ru
+1116 467 p 4 1 ru
+1116 466 p 4 1 ru
+1117 465 p 4 1 ru
+1117 465 p 4 1 ru
+1118 464 p 4 1 ru
+1118 464 p 4 1 ru
+1111 474 p 2 3 ru
+1120 463 p 2 3 ru
+1122 460 p 4 1 ru
+1123 460 p 4 1 ru
+1123 459 p 4 1 ru
+1124 459 p 4 1 ru
+1124 458 p 4 1 ru
+1125 458 p 4 1 ru
+1125 457 p 4 1 ru
+1126 457 p 4 1 ru
+1126 456 p 4 1 ru
+1127 456 p 4 1 ru
+1127 455 p 4 1 ru
+1128 454 p 4 1 ru
+1128 454 p 4 1 ru
+1129 453 p 4 1 ru
+1129 453 p 4 1 ru
+1122 463 p 2 3 ru
+1131 452 p 2 3 ru
+1133 449 p 4 1 ru
+1134 449 p 4 1 ru
+1134 448 p 4 1 ru
+1135 448 p 4 1 ru
+1136 447 p 4 1 ru
+1136 447 p 4 1 ru
+1137 446 p 4 1 ru
+1137 446 p 4 1 ru
+1138 445 p 4 1 ru
+1138 444 p 4 1 ru
+1139 444 p 4 1 ru
+1139 443 p 4 1 ru
+1140 443 p 4 1 ru
+1133 452 p 2 3 ru
+1142 442 p 2 3 ru
+1144 439 p 4 1 ru
+1145 439 p 4 1 ru
+1145 438 p 4 1 ru
+1146 438 p 4 1 ru
+1146 437 p 4 1 ru
+1147 437 p 4 1 ru
+1147 436 p 4 1 ru
+1148 436 p 4 1 ru
+1148 435 p 4 1 ru
+1149 435 p 4 1 ru
+1149 434 p 4 1 ru
+1150 433 p 4 1 ru
+1150 433 p 4 1 ru
+1151 432 p 4 1 ru
+1151 432 p 4 1 ru
+1144 442 p 2 3 ru
+1153 431 p 2 3 ru
+1155 428 p 4 1 ru
+1156 428 p 4 1 ru
+1156 427 p 4 1 ru
+1157 427 p 4 1 ru
+1157 426 p 4 1 ru
+1158 426 p 4 1 ru
+1158 425 p 4 1 ru
+1159 425 p 4 1 ru
+1159 424 p 4 1 ru
+1160 424 p 4 1 ru
+1160 423 p 4 1 ru
+1161 422 p 4 1 ru
+1161 422 p 4 1 ru
+1162 421 p 4 1 ru
+1162 421 p 4 1 ru
+1155 431 p 2 3 ru
+1164 420 p 2 3 ru
+1166 417 p 4 1 ru
+1167 417 p 4 1 ru
+1167 416 p 4 1 ru
+1168 416 p 4 1 ru
+1169 415 p 4 1 ru
+1169 415 p 4 1 ru
+1170 414 p 4 1 ru
+1170 414 p 4 1 ru
+1171 413 p 4 1 ru
+1171 412 p 4 1 ru
+1172 412 p 4 1 ru
+1172 411 p 4 1 ru
+1173 411 p 4 1 ru
+1166 420 p 2 3 ru
+1175 410 p 2 3 ru
+1177 407 p 4 1 ru
+1178 407 p 4 1 ru
+1178 406 p 4 1 ru
+1179 406 p 4 1 ru
+1180 405 p 4 1 ru
+1180 405 p 4 1 ru
+1181 404 p 4 1 ru
+1181 404 p 4 1 ru
+1182 403 p 4 1 ru
+1182 402 p 4 1 ru
+1183 402 p 4 1 ru
+1183 401 p 4 1 ru
+1184 401 p 4 1 ru
+1177 410 p 2 3 ru
+1186 400 p 2 3 ru
+1188 397 p 4 1 ru
+1189 397 p 4 1 ru
+1189 396 p 4 1 ru
+1190 396 p 4 1 ru
+1190 395 p 4 1 ru
+1191 395 p 4 1 ru
+1191 394 p 4 1 ru
+1192 394 p 4 1 ru
+1192 393 p 4 1 ru
+1193 393 p 4 1 ru
+1193 392 p 4 1 ru
+1194 391 p 4 1 ru
+1194 391 p 4 1 ru
+1195 390 p 4 1 ru
+1195 390 p 4 1 ru
+1188 400 p 2 3 ru
+1197 389 p 2 3 ru
+1199 386 p 4 1 ru
+1200 386 p 4 1 ru
+1200 385 p 4 1 ru
+1201 385 p 4 1 ru
+1201 384 p 4 1 ru
+1202 384 p 4 1 ru
+1202 383 p 4 1 ru
+1203 383 p 4 1 ru
+1203 382 p 4 1 ru
+1204 381 p 4 1 ru
+1204 381 p 4 1 ru
+1205 380 p 4 1 ru
+1205 380 p 4 1 ru
+1199 389 p 2 3 ru
+1207 379 p 2 3 ru
+1209 376 p 4 1 ru
+1210 376 p 4 1 ru
+1210 375 p 4 1 ru
+1211 375 p 4 1 ru
+1212 374 p 4 1 ru
+1212 374 p 4 1 ru
+1213 373 p 4 1 ru
+1213 373 p 4 1 ru
+1214 372 p 4 1 ru
+1214 371 p 4 1 ru
+1215 371 p 4 1 ru
+1215 370 p 4 1 ru
+1216 370 p 4 1 ru
+1209 379 p 2 3 ru
+1218 369 p 2 3 ru
+1220 366 p 4 1 ru
+1221 366 p 4 1 ru
+1221 365 p 4 1 ru
+1222 365 p 4 1 ru
+1223 364 p 4 1 ru
+1223 364 p 4 1 ru
+1224 363 p 4 1 ru
+1224 363 p 4 1 ru
+1225 362 p 4 1 ru
+1225 361 p 4 1 ru
+1226 361 p 4 1 ru
+1226 360 p 4 1 ru
+1227 360 p 4 1 ru
+1220 369 p 2 3 ru
+1229 359 p 2 3 ru
+1231 356 p 4 1 ru
+1232 356 p 4 1 ru
+1232 355 p 4 1 ru
+1233 355 p 4 1 ru
+1234 354 p 4 1 ru
+1234 354 p 4 1 ru
+1235 353 p 4 1 ru
+1235 353 p 4 1 ru
+1236 352 p 4 1 ru
+1236 351 p 4 1 ru
+1237 351 p 4 1 ru
+1237 350 p 4 1 ru
+1238 350 p 4 1 ru
+1231 359 p 2 3 ru
+1240 349 p 2 3 ru
+1242 346 p 5 1 ru
+1243 346 p 5 1 ru
+1244 345 p 5 1 ru
+1244 345 p 5 1 ru
+1245 344 p 5 1 ru
+1245 344 p 5 1 ru
+1246 343 p 5 1 ru
+1247 342 p 5 1 ru
+1247 342 p 5 1 ru
+1248 341 p 5 1 ru
+1248 341 p 5 1 ru
+1242 349 p 2 3 ru
+1251 340 p 2 3 ru
+1253 337 p 4 1 ru
+1254 337 p 4 1 ru
+1254 336 p 4 1 ru
+1255 336 p 4 1 ru
+1256 335 p 4 1 ru
+1256 335 p 4 1 ru
+1257 334 p 4 1 ru
+1257 334 p 4 1 ru
+1258 333 p 4 1 ru
+1258 332 p 4 1 ru
+1259 332 p 4 1 ru
+1259 331 p 4 1 ru
+1260 331 p 4 1 ru
+1253 340 p 2 3 ru
+1262 330 p 2 3 ru
+1264 327 p 5 1 ru
+1265 327 p 5 1 ru
+1266 326 p 5 1 ru
+1266 326 p 5 1 ru
+1267 325 p 5 1 ru
+1267 325 p 5 1 ru
+1268 324 p 5 1 ru
+1269 323 p 5 1 ru
+1269 323 p 5 1 ru
+1270 322 p 5 1 ru
+1270 322 p 5 1 ru
+1264 330 p 2 3 ru
+1273 321 p 2 3 ru
+1275 318 p 5 1 ru
+1276 318 p 5 1 ru
+1277 317 p 5 1 ru
+1277 317 p 5 1 ru
+1278 316 p 5 1 ru
+1278 316 p 5 1 ru
+1279 315 p 5 1 ru
+1280 314 p 5 1 ru
+1280 314 p 5 1 ru
+1281 313 p 5 1 ru
+1281 313 p 5 1 ru
+1275 321 p 2 3 ru
+1284 312 p 2 3 ru
+1286 309 p 5 1 ru
+1287 309 p 5 1 ru
+1288 308 p 5 1 ru
+1288 308 p 5 1 ru
+1289 307 p 5 1 ru
+1289 307 p 5 1 ru
+1290 306 p 5 1 ru
+1291 305 p 5 1 ru
+1291 305 p 5 1 ru
+1292 304 p 5 1 ru
+1292 304 p 5 1 ru
+1286 312 p 2 3 ru
+1295 303 p 2 3 ru
+1297 300 p 5 1 ru
+1298 300 p 5 1 ru
+1299 299 p 5 1 ru
+1299 299 p 5 1 ru
+1300 298 p 5 1 ru
+1300 298 p 5 1 ru
+1301 297 p 5 1 ru
+1302 296 p 5 1 ru
+1302 296 p 5 1 ru
+1303 295 p 5 1 ru
+1303 295 p 5 1 ru
+1297 303 p 2 3 ru
+1306 294 p 2 3 ru
+1308 291 p 5 1 ru
+1309 291 p 5 1 ru
+1310 290 p 5 1 ru
+1310 290 p 5 1 ru
+1311 289 p 5 1 ru
+1312 289 p 5 1 ru
+1313 288 p 5 1 ru
+1313 287 p 5 1 ru
+1314 287 p 5 1 ru
+1308 294 p 3 3 ru
+1317 286 p 3 3 ru
+1319 283 p 5 1 ru
+1320 283 p 5 1 ru
+1320 282 p 5 1 ru
+1321 282 p 5 1 ru
+1322 281 p 5 1 ru
+1322 281 p 5 1 ru
+1323 280 p 5 1 ru
+1323 279 p 5 1 ru
+1324 279 p 5 1 ru
+1324 278 p 5 1 ru
+1325 278 p 5 1 ru
+1319 286 p 2 3 ru
+1327 277 p 2 3 ru
+1329 274 p 5 1 ru
+1330 274 p 5 1 ru
+1331 273 p 5 1 ru
+1331 273 p 5 1 ru
+1332 272 p 5 1 ru
+1333 272 p 5 1 ru
+1334 271 p 5 1 ru
+1334 270 p 5 1 ru
+1335 270 p 5 1 ru
+1329 277 p 3 3 ru
+1338 269 p 3 3 ru
+1340 266 p 6 1 ru
+1341 266 p 6 1 ru
+1342 265 p 6 1 ru
+1343 265 p 6 1 ru
+1344 264 p 6 1 ru
+1345 263 p 6 1 ru
+1345 263 p 6 1 ru
+1340 269 p 3 3 ru
+1348 262 p 3 3 ru
+1351 259 p 5 1 ru
+1352 259 p 5 1 ru
+1353 258 p 5 1 ru
+1353 258 p 5 1 ru
+1354 257 p 5 1 ru
+1355 257 p 5 1 ru
+1356 256 p 5 1 ru
+1356 255 p 5 1 ru
+1357 255 p 5 1 ru
+1351 262 p 3 3 ru
+1360 254 p 3 3 ru
+1362 251 p 6 1 ru
+1363 251 p 6 1 ru
+1364 250 p 6 1 ru
+1365 250 p 6 1 ru
+1366 249 p 6 1 ru
+1367 248 p 6 1 ru
+1367 248 p 6 1 ru
+1362 254 p 3 3 ru
+1370 247 p 3 3 ru
+1373 244 p 6 1 ru
+1374 244 p 6 1 ru
+1375 243 p 6 1 ru
+1376 243 p 6 1 ru
+1377 242 p 6 1 ru
+1378 241 p 6 1 ru
+1378 241 p 6 1 ru
+1373 247 p 3 3 ru
+1381 240 p 3 3 ru
+1384 237 p 6 1 ru
+1385 237 p 6 1 ru
+1386 236 p 6 1 ru
+1387 236 p 6 1 ru
+1388 235 p 6 1 ru
+1389 234 p 6 1 ru
+1389 234 p 6 1 ru
+1384 240 p 3 3 ru
+1392 233 p 3 3 ru
+1395 230 p 6 1 ru
+1396 230 p 6 1 ru
+1397 229 p 6 1 ru
+1398 229 p 6 1 ru
+1399 228 p 6 1 ru
+1400 227 p 6 1 ru
+1400 227 p 6 1 ru
+1395 233 p 3 3 ru
+1403 226 p 3 3 ru
+1406 223 p 7 1 ru
+1407 223 p 7 1 ru
+1408 222 p 7 1 ru
+1409 222 p 7 1 ru
+1410 221 p 7 1 ru
+1406 226 p 3 3 ru
+1414 220 p 3 3 ru
+1417 217 p 7 1 ru
+1418 217 p 7 1 ru
+1419 216 p 7 1 ru
+1420 216 p 7 1 ru
+1421 215 p 7 1 ru
+1417 220 p 3 3 ru
+1425 214 p 3 3 ru
+1428 211 p 7 1 ru
+1429 211 p 7 1 ru
+1430 210 p 7 1 ru
+1431 210 p 7 1 ru
+1432 209 p 7 1 ru
+1428 214 p 3 3 ru
+1436 208 p 3 3 ru
+1439 205 p 7 1 ru
+1441 205 p 7 1 ru
+1442 204 p 7 1 ru
+1439 208 p 4 3 ru
+1446 203 p 4 3 ru
+1449 200 p 8 1 ru
+1451 200 p 8 1 ru
+1452 199 p 8 1 ru
+1449 203 p 4 3 ru
+1456 198 p 4 3 ru
+1460 195 p 8 1 ru
+1462 195 p 8 1 ru
+1463 194 p 8 1 ru
+1460 198 p 4 3 ru
+1467 193 p 4 3 ru
+1471 190 p 8 1 ru
+1473 190 p 8 1 ru
+1474 189 p 8 1 ru
+1471 193 p 4 3 ru
+1478 188 p 4 3 ru
+1482 186 p 10 3 ru
+1482 188 p 5 3 ru
+1488 184 p 5 3 ru
+1493 182 p 10 3 ru
+1493 184 p 5 3 ru
+1499 180 p 5 3 ru
+1504 179 p 11 3 ru
+1504 180 p 6 3 ru
+1510 177 p 6 3 ru
+1515 176 p 11 3 ru
+1515 177 p 6 3 ru
+1521 174 p 6 3 ru
+1526 173 p 11 3 ru
+1526 174 p 6 3 ru
+1532 171 p 6 3 ru
+1537 170 p 11 3 ru
+1537 171 p 6 3 ru
+1543 168 p 6 3 ru
+1548 167 p 11 3 ru
+1548 168 p 6 3 ru
+1554 166 p 6 3 ru
+1559 165 p 10 3 ru
+1559 166 p 5 3 ru
+1564 164 p 5 3 ru
+1569 163 p 11 3 ru
+1569 164 p 6 3 ru
+1575 162 p 6 3 ru
+1580 162 p 11 3 ru
+1580 162 p 6 3 ru
+1586 161 p 6 3 ru
+1591 161 p 11 3 ru
+1591 161 p 6 3 ru
+1597 160 p 6 3 ru
+544 842 p 11 3 ru
+1602 160 p 22 3 ru
+964 2934 p (1)s
+EP
+%%Trailer
+%%Pages: 1
+END
+%%EOF

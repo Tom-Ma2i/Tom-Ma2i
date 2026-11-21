@@ -1,0 +1,1856 @@
+%!PS-Adobe-2.0
+%%Creator: dvi2ps
+%%Title: class1.dvi
+%%Pages: (atend)
+%%BoundingBox: 0 0 595 842
+%%DocumentPaperSizes: A4
+%%Orientation: Portrait
+%%EndComments
+%%BeginFile: /usr/local/lib/dvi2ps/tex.ps
+%
+systemdict /setpacking known {
+/savepacking currentpacking def
+true setpacking
+} if
+/TeXDict 200 dict def
+TeXDict begin
+/inch {
+72 mul
+} bind def
+/largepaperarray [
+/letter /legal /11x17
+/b4 /b5 /a5 /a4 /a3
+] def
+/smallpaperarray [
+/note dup where {
+pop
+}{
+pop /lettersmall dup where {
+pop
+}{
+pop /letter
+} ifelse
+} ifelse
+/legal /11x17
+/b4 /b5 /a5
+/a4small dup where {
+pop
+}{
+pop /note dup where {
+pop
+}{
+pop /a4
+} ifelse
+} ifelse
+/a3
+] def
+/setpaper {
+dup where papertray and {
+exch get exec
+} if
+} bind def
+/trayarray [
+/lettertray /legaltray /11x17tray
+/b4tray /b5tray /a5tray /a4tray /a3tray
+] def
+/settray {
+dup statusdict exch known {
+{
+statusdict begin load exec end
+} stopped {
+$error /newerror get {
+$error /errorname get /rangecheck eq {
+(Tray not found, using default tray.) print flush
+/papertray false def
+}{
+handleerror
+} ifelse
+$error /newerror false put
+} if
+} if
+}{
+pop
+} ifelse
+} bind def
+/papertray true def
+/widtharray  [
+8.5 inch 8.5 inch 11 inch
+9.84 inch 6.93 inch
+5.83 inch 8.27 inch 11.69 inch
+] def
+/heightarray [
+11 inch 14 inch 17 inch
+13.9 inch 9.84 inch
+8.27 inch 11.69 inch 16.54 inch
+] def
+/xoffset 0 def
+/yoffset 0 def
+/landscape false def
+/pagesetup {
+dup widtharray exch get /paperwidth exch def
+dup heightarray exch get /paperheight exch def
+dup trayarray exch get settray
+large {largepaperarray}{smallpaperarray} ifelse
+exch get setpaper
+} bind def
+/@letter {0 pagesetup} def
+/@legal {1 pagesetup} def
+/@tabloid {2 pagesetup} def
+/@b4 {3 pagesetup} def
+/@b5 {4 pagesetup} def
+/@a5 {5 pagesetup} def
+/@a4 {6 pagesetup} def
+/@a3 {7 pagesetup} def
+/@landscape {/landscape true def} bind def
+/@manualfeed {
+statusdict /manualfeed known {
+statusdict /manualfeed true put
+statusdict /manualfeedtimeout 120 put
+} if
+} bind def
+/@large {
+/large true def
+} bind def
+/@small {
+/large false def
+} bind def
+/@envelope {
+/xoffset 4.28 inch def
+/yoffset 1.5 inch def
+@letter
+} bind def
+/COPIES	{
+/#copies exch def
+} bind def
+/NF {
+/newname exch def
+/fsize exch def
+/corr exch def
+newname 7 dict def
+newname load begin
+/FontType 3 def
+/FontMatrix [corr 0 0 corr neg 0 0] def
+/FontBBox [0 0 1 1] def
+/BitMaps fsize array def
+/BuildChar /CharBuilder load def
+/Encoding 256 array def
+0 1 255 {Encoding exch /.notdef put} for
+end
+newname newname load definefont pop
+} bind def
+/ch-image {ch-data 0 get} bind def
+/ch-width {ch-data 1 get} bind def
+/ch-height {ch-data 2 get} bind def
+/ch-xoff {ch-data 3 get} bind def
+/ch-yoff {ch-data 4 get} bind def
+/ch-tfmw {ch-data 5 get} bind def
+/CharBuilder {
+/ch-code exch def
+/font-dict exch def
+/ch-data font-dict /BitMaps get ch-code get def
+ch-data null eq not {
+ch-tfmw 0
+ch-xoff neg  ch-yoff neg ch-width ch-xoff sub ch-height ch-yoff sub
+setcachedevice
+ch-width ch-height true [1 0  0 1  ch-xoff ch-yoff]
+{ch-image} imagemask
+} if
+} bind def
+/LWF {
+/lw-v exch def
+/lw-h exch def
+findfont [lw-h 0 0 lw-v 0 0] makefont def
+} bind def
+/LWFX {
+/lw-v exch def
+/lw-h exch def
+/savecurfont currentfont def
+findfont dup setfont
+[
+( ) stringwidth pop dup lw-h exch div
+exch lw-v exch div 0 0 3 -1 roll
+0 0
+] makefont def
+savecurfont setfont
+} bind def
+/LWJF /LWF load def
+/SF /setfont load def
+/s3 3 string def
+/D {
+/ch-code exch def
+dup 0 get
+length 2 lt {
+pop [ <00> 1 1 0 0 8.00 ]
+} if
+/ch-data exch def
+currentfont /BitMaps get ch-code ch-data put
+currentfont /Encoding get ch-code
+dup s3 cvs cvn
+put
+} bind def
+/BP {
+/SaveImage save def
+xoffset yoffset translate
+72 72
+landscape {
+exch translate
+90 rotate
+}{
+paperheight exch sub translate
+} ifelse
+72 Resolution div dup neg scale
+0 0 moveto
+} bind def
+/EP {
+showpage 
+SaveImage restore
+} bind def
+/START {
+/Resolution exch def
+} bind def
+/END /end load def
+/l /lineto load def
+/p /moveto load def
+/r {
+0 rmoveto
+} def
+/s /show load def
+/ru {
+/dy exch neg def
+/dx exch def
+/x currentpoint /y exch def def
+newpath x y moveto
+dx 0 rlineto
+0 dy rlineto
+dx neg 0 rlineto
+closepath fill
+x y moveto
+} bind def
+/@SpecialDefaults {
+/hsi paperwidth inch def
+/vsi paperheight inch def
+/hof 0 def
+/vof 0 def
+/hsc 1 def
+/vsc 1 def
+/rotat 0 def
+/CLIP false def
+/BBOX false def
+/EPSF false def
+} bind def
+/@hsize {/hsi exch def /CLIP true def} bind def
+/@vsize {/vsi exch def /CLIP true def} bind def
+/@hoffset {/hof exch def} bind def
+/@voffset {/vof exch def} bind def
+/@hscale {/hsc exch def} bind def
+/@vscale {/vsc exch def} bind def
+/@rotation {/rotat exch def} bind def
+/@bbox {
+/ury exch def
+/urx exch def
+/lly exch def
+/llx exch def
+/BBOX true def
+} bind def
+/@epsf {
+/hsi 0 def
+/vsi 0 def
+/EPSF true def
+} bind def
+/@setclipper {
+CLIP {
+newpath 0 0 moveto hsi 0 rlineto 0 vsi rlineto hsi neg 0 rlineto
+closepath clip
+} if
+} bind def
+/@beginspecial {
+/SpecialSave save def
+currentpoint transform initgraphics itransform translate
+@SpecialDefaults
+@MacSetUp
+} bind def
+/@setspecial {
+hof vof translate
+EPSF BBOX and {
+hsi 0 eq {
+vsi 0 eq {
+hsc vsc
+}{
+vsi ury lly sub div dup
+}ifelse
+}{
+vsi 0 eq {
+hsi urx llx sub div dup
+}{
+hsi urx llx sub div vsi ury lly sub div
+} ifelse
+} ifelse
+scale
+llx neg ury neg translate
+newpath
+llx lly moveto
+urx llx sub 0 rlineto
+0 ury lly sub rlineto
+llx urx sub 0 rlineto
+closepath clip
+newpath
+}{
+@setclipper hsc vsc scale rotat rotate
+} ifelse
+end
+/letter {} def /note {} def /legal {} def /11x17
+/b4 {} def /b5 {} def /a5 {} def /a4 {} def /a3 {} def
+/showpage {} def /copypage {} def /erasepage {} def
+} bind def
+/@MacSetUp {
+userdict /md known {
+userdict /md get type /dicttype eq {
+/MacDrwgs true def
+md begin
+/txpose{
+1 -1 scale
+} def
+/cp {pop pop pm restore} def
+end
+} if
+} if
+} bind def
+/@push {
+/SpecialSave save def
+currentpoint translate
+dup scale
+newpath
+} bind def
+/@pop {
+SpecialSave restore
+} bind def
+/@pn
+/setlinewidth load
+def
+/@pt {
+moveto currentpoint currentlinewidth 2 div 0 360 arc fill
+} bind def
+/@ln {
+moveto lineto stroke
+} bind def
+/@ar {
+matrix currentmatrix
+7 -2 roll moveto
+currentpoint translate
+newpath
+5 -2 roll scale
+0 0 1 6 -2 roll arc
+setmatrix
+} bind def
+/@wh {1 setgray} bind def
+/@sh {0.75 setgray} bind def
+/@bk {0 setgray} bind def
+/@RGB {setrgbcolor} bind def
+/@HSB {sethsbcolor} bind def
+/@CMYK {setcmykcolor} bind def
+end
+/@endspecial {
+clear
+TeXDict begin
+SpecialSave restore
+} bind def
+systemdict /setpacking known {
+savepacking setpacking
+} if
+%%EndFile
+%%EndProlog
+%%BeginSetup
+%%PaperSize: A4
+%%Feature: *ManualFeed False
+%%Feature: *Resolution 300
+TeXDict begin
+@large
+@a4
+%%BeginFile: /usr/local/lib/dvi2ps/ASCII-LW-fix.ps
+% This file is included in this dvi2ps (j-version) kit by the courtesy of
+% Matsushita Electric Industrial Co., Ltd. You are free to distribute this
+% file as a part of this dvi2ps kit, but if you use this file as a part of
+% your own program and want to re-distribute the program, you should contact
+%	miyabe@sy6.isl.mei.co.jp, kakiuchi@sy6.isl.mei.co.jp
+%	
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Following procedures are used to define new japanese font which has 
+%%% correct metrics.
+%%%		Added by T.Kakiuchi (kakiuchi@sy6.isl.mei.co.JP) 89/5/19
+%%%		Copyright (c) Matsushita Electric Industrial Co.,Ltd. 1990
+%%%
+% If the packed-array facility is available, this program sets the
+% array-packing mode.
+systemdict /setpacking known {
+    /savepacking currentpacking def
+    true setpacking
+} if
+% Procedure to make a new font which has new metrics.
+
+/Set-New-Metrics 		% [New-FNam][FNam][Metrics-array]
+{/Set-Metrics exch def		% [New-FNam][FNam]  Set-Metrix=[Metrix-Array]
+ findfont 			% [New-FNam][FDic]
+ /OrigCompFont exch def		% [New-FNam]  OrigCompFont=[FDic]
+ /NewCompFontName exch def	% NewCompFontName=[New-FNam]
+
+ % Create new composite font.
+ OrigCompFont dup		% [FDic][FDic]
+ length dict			% [FDic][dict]
+ /NewCompFont exch def		% [FDic]   NewCompFont=[dict]
+ {1 index			% [FDic][key][value][key]
+   /FID ne			% [FDic][key][value][T/F]
+   2 index /UniqueID ne and     % [FDic][key][value][T/F]
+  {NewCompFont 3 1 roll put}	% if TRUE   NewCompFont <- {key,value}
+  {pop pop}
+  ifelse
+ } forall			% 
+
+ OrigCompFont /FDepVector get	% [FDepVector]
+ dup length array 		% [FDepVector][array]
+ copy				% [array] (=[FDepVector])
+ /NewFDepVector exch def	% NewFDepVector=[arrray]
+ NewCompFont /FDepVector 
+ NewFDepVector put		% [NewCompFont] <- {/FDepVector, NewFDepVector}
+ NewCompFontName NewCompFont 
+ definefont pop			% Define [NewCompFont] as [NewCompFontName]
+
+ Set-Metrics	% [code,NewBaseFontName,Metrics-Array]
+ {dup 0 get /Code exch def	% set Code
+  dup 1 get 
+  /NewBaseFontName exch def     % set NewBaseFontName
+  2 get /Metric-Array exch def	% set Metrics-Array
+
+  % Extract base font and its index to FDepVector.
+  /Index
+     OrigCompFont 
+     /Encoding get 
+     Code get def
+
+  /OrigBaseFont NewFDepVector Index get def
+
+  % Set Metric-Dictionary
+  Metric-Array length dict
+  /Metric-Dict exch def
+  Metric-Dict begin Metric-Array {exec def} forall end
+
+  % Create new base font.
+  OrigBaseFont dup			% [OrgFont][OrgFont] 
+  length 2 add	 			% [OrgFont][1+current size]
+  dict					% [OrgFont][dict]
+  /NewBaseFont exch def			% [OrgFont]    /NewBaseFont=[dict]
+  {1 index                       	% [OrgFont][key][value][key]
+     /FID ne				% [OrgFont][key][value][T/F]
+     2 index /UniqueID ne and           % [OrgFont][key][value][T/F]
+     {NewBaseFont			% [OrgFont][key][value][NewBaseFont]
+      3 1 roll				% [OrgFont][NewBaseFont][key][value]
+      put}					% [OrgFont]
+     {pop pop}
+     ifelse
+  } forall
+  
+  NewBaseFont /Kusumi-Metrics Metric-Dict put
+
+  NewBaseFont				% [OrgFont][NewBaseFont]
+  /CDevProc
+  {currentfont /Kusumi-Metrics get
+   exch 2 copy known
+    {get	% w0x w0y llx lly urx ury w1x w1y vx vy new-llx
+     dup	% w0x w0y llx lly urx ury w1x w1y vx vy new-llx new-llx
+     8 -1 roll	% w0x w0y llx lly ury w1x w1y vx vy new-llx new-llx urx
+     10 -1 roll	% w0x w0y lly ury w1x w1y vx vy new-llx new-llx urx llx
+     sub add	% w0x w0y lly ury w1x w1y vx vy new-llx new-urx
+     7 1 roll	% w0x w0y lly new-urx ury w1x w1y vx vy new-llx
+     8 1 roll	% w0x w0y new-llx lly new-urx ury w1x w1y vx vy
+    }
+    {pop pop}
+   ifelse
+  } put
+
+  %  Regist to FDepVector
+  NewFDepVector Index NewBaseFontName NewBaseFont definefont put
+
+ } forall
+}
+bind def
+
+
+% Definition of new metrics for /Ryumin-Light-H 
+/Ryumin-Metrics
+[
+[33/Ryumin-Light-H-33[
+{/c2B 56.3327 }
+{/c78 36.5515 }
+{/c22 127.507 }
+{/c54 52.5065 }
+{/c4B 137.007 }
+{/c39 35.7169 }
+{/c27 105.323 }
+{/c42 79.8026 }
+{/c30 106.905 }
+{/c6B 129.961 }
+{/c50 192.016 }
+{/c47 101.333 }
+{/c59 104.456 }
+{/c35 124.507 }
+{/c3E 51.8327 }
+{/c2C 81.7527 }
+{/c23 102.007 }
+{/c4E 132.007 }
+{/c2A 111.833 }
+{/c43 153.333 }
+{/c55 52.5065 }
+{/c4A 137.007 }
+{/c26 106.333 }
+{/c51 192.017 }
+{/c2D 73.195 }
+{/c46 101.833 }
+{/c58 104.457 }
+{/c6A 53.6868 }
+{/c71 162.717 }
+{/c68 12.747 }
+{/c56 87.0065 }
+{/c4D 120.007 }
+{/c29 50.4616 }
+{/c52 99.5065 }
+{/c5B 122.007 }
+{/c37 145.717 }
+{/c6D 73.5612 }
+{/c49 95.824 }
+{/c2E 73.1949 }
+{/c72 45.6719 }
+{/c25 106.833 }
+{/c69 33.1968 }
+{/c70 147.722 }
+{/c57 87.0065 }
+{/c33 123.507 }
+{/c53 99.5065 }
+{/c28 101.333 }
+{/c4C 120.007 }
+{/c2F 86.4865 }
+{/c48 95.6039 }
+{/c5A 122.007 }
+{/c6C 154.132 }
+{/c36 154.717 }
+{/c24 103.833 }
+{/c4F 131.507 }
+]]
+[36/Ryumin-Light-H-36[
+{/c30 154.133 }
+{/c27 97.2168 }
+{/c39 76.6303 }
+{/c23 76.1769 }
+{/c67 149.762 }
+{/c43 67.7751 }
+{/c6E 77.4092 }
+{/c31 105.385 }
+{/c63 75.9087 }
+{/c26 241.525 }
+{/c6A 273.126 }
+{/c29 82.2642 }
+{/c32 65.1122 }
+{/c25 184.155 }
+{/c21 83.9483 }
+{/c65 90.2671 }
+{/c3A 51.3751 }
+{/c2F 295.128 }
+]]
+[37/Ryumin-Light-H-37[
+{/c22 140.608 }
+{/c6F 163.078 }
+{/c30 99.7332 }
+{/c27 57.7171 }
+{/c42 59.748 }
+{/c47 67.1082 }
+{/c35 83.0882 }
+{/c3E 72.1387 }
+{/c23 138.672 }
+{/c67 152.293 }
+{/c4E 197.608 }
+{/c2A 134.608 }
+{/c43 117.717 }
+{/c6E 126.697 }
+{/c31 115.108 }
+{/c55 168.068 }
+{/c63 80.217 }
+{/c4A 116.233 }
+{/c26 162.618 }
+{/c75 124.712 }
+{/c3F 192.108 }
+{/c46 123.608 }
+{/c6A 239.098 }
+{/c5F 258.608 }
+{/c44 162.608 }
+{/c56 84.1834 }
+{/c29 108.717 }
+{/c76 83.6869 }
+{/c32 61.9606 }
+{/c64 109.108 }
+{/c49 202.688 }
+{/c25 122.757 }
+{/c72 193.323 }
+{/c40 110.209 }
+{/c69 178.108 }
+{/c45 91.8148 }
+{/c57 89.1683 }
+{/c21 107.237 }
+{/c65 49.507 }
+{/c2F 187.108 }
+{/c41 97.8211 }
+{/c48 277.108 }
+{/c36 51.291 }
+{/c61 191.608 }
+{/c24 186.108 }
+{/c3D 164.236 }
+]]
+] def
+
+% Definition of new metrics for /GothicBBB-Medium-H 
+/Gothic-Metrics
+[
+[33/GothicBBB-Medium-H-33[
+{/c2B 62.8327 }
+{/c78 11.5265 }
+{/c22 129.507 }
+{/c54 58.5065 }
+{/c4B 136.007 }
+{/c39 14.7171 }
+{/c27 104.333 }
+{/c42 76.8826 }
+{/c30 110.507 }
+{/c6B 138.987 }
+{/c50 178.072 }
+{/c47 104.833 }
+{/c59 107.036 }
+{/c35 67.0065 }
+{/c3E -13.1673 }
+{/c2C 78.8429 }
+{/c23 98.9866 }
+{/c4E 132.507 }
+{/c2A 132.288 }
+{/c43 149.333 }
+{/c55 58.5065 }
+{/c4A 136.007 }
+{/c26 102.833 }
+{/c51 177.982 }
+{/c2D 55.8326 }
+{/c46 104.333 }
+{/c58 107.037 }
+{/c6A 43.6568 }
+{/c71 130.717 }
+{/c68 5.70184 }
+{/c56 93.5065 }
+{/c4D 120.007 }
+{/c29 81.9568 }
+{/c52 97.5065 }
+{/c5B 121.007 }
+{/c37 148.717 }
+{/c6D 75.5065 }
+{/c49 56.9765 }
+{/c2E 55.8327 }
+{/c72 101.717 }
+{/c25 102.833 }
+{/c69 20.1768 }
+{/c70 109.182 }
+{/c57 94.0065 }
+{/c33 76.5065 }
+{/c53 97.5065 }
+{/c28 104.333 }
+{/c4C 120.007 }
+{/c2F 102.506 }
+{/c48 56.0265 }
+{/c5A 121.007 }
+{/c6C 157.007 }
+{/c36 133.717 }
+{/c24 105.833 }
+{/c4F 132.507 }
+]]
+[36/GothicBBB-Medium-H-36[
+{/c30 154.608 }
+{/c27 97.2418 }
+{/c39 93.5732 }
+{/c23 58.2168 }
+{/c67 106.287 }
+{/c43 51.2172 }
+{/c6E 71.752 }
+{/c31 128.098 }
+{/c63 52.2169 }
+{/c26 207.583 }
+{/c6A 211.098 }
+{/c29 51.7468 }
+{/c32 69.0981 }
+{/c25 155.272 }
+{/c21 86.707 }
+{/c65 84.167 }
+{/c3A 70.6131 }
+{/c2F 256.108 }
+]]
+[37/GothicBBB-Medium-H-37[
+{/c22 82.6082 }
+{/c6F 135.608 }
+{/c30 91.1081 }
+{/c27 74.2168 }
+{/c42 55.1081 }
+{/c47 49.6081 }
+{/c35 87.1181 }
+{/c3E 83.6081 }
+{/c23 102.766 }
+{/c67 113.717 }
+{/c4E 163.334 }
+{/c2A 111.608 }
+{/c43 84.5454 }
+{/c6E 96.2168 }
+{/c31 77.6081 }
+{/c55 140.608 }
+{/c63 67.7169 }
+{/c4A 75.6082 }
+{/c26 149.118 }
+{/c75 110.257 }
+{/c3F 144.608 }
+{/c46 96.6082 }
+{/c6A 225.578 }
+{/c5F 215.108 }
+{/c44 117.481 }
+{/c56 91.1081 }
+{/c29 72.2168 }
+{/c76 63.2168 }
+{/c32 48.6081 }
+{/c64 96.6081 }
+{/c49 209.108 }
+{/c25 104.207 }
+{/c72 165.608 }
+{/c40 76.6081 }
+{/c69 129.108 }
+{/c45 72.1081 }
+{/c57 64.6481 }
+{/c21 47.2171 }
+{/c65 41.7168 }
+{/c2F 135.608 }
+{/c41 97.6082 }
+{/c48 262.608 }
+{/c36 52.1181 }
+{/c61 188.976 }
+{/c24 148.446 }
+{/c3D 123.059 }
+]]
+] def
+systemdict /setpacking known {
+    savepacking setpacking
+} if
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%EndFile
+300 START
+1.000 52 /f13 NF
+f13 SF
+[<7FF007000700070007000700070007000700070007000700070007000700070007000700FF0007000300> 16 21 -2 0 17.642] 49 D
+[<FFF07FF03FF0101808080C0806000300018000C000600070007000384038E038C0388030407030E00F80> 16 21 -2 0 17.642] 50 D
+[<0FE030304018C00CE00EE00E000E000E000C0018003007E0006000380018001C701C701C601830300FE0> 16 21 -1 0 17.642] 51 D
+1.000 111 /f14 NF
+f14 SF
+[<1C0032003200310031001800180018000C008C004600460024001C00000000000000000000000000030003800300> 16 23 -1 0 12.013] 105 D
+[<7800C600E3006300018001800180018000C000C000C000C0006000600060086004300430022001C000000000000000000000
+  0000001000380018> 16 29 0 6 14.269] 106 D
+[<3018078030180440180C0C40180C0C20180C0620180C06000C0606000C0603000C0603008E070300460301004702810044C6
+  6300383C1E00> 32 14 -1 0 31.210] 109 D
+[<300F00300880181880181840180C40180C000C0C000C06000C06008E060046020047020044C600383C00> 24 14 -1 0 21.409] 110 D
+1.000 49 /f15 NF
+f15 SF
+[<40C0E06070703038383C1C1E1E0E0F0F06> 8 17 -1 -1 9.570] 48 D
+1.000 62 /f43 NF
+f43 SF
+[<001000200040008001000300060004000C001800180018003000300030007000600060006000E000E000E000E000E000E000
+  E000E000E000E000E000E00060006000600070003000300030001800180018000C0004000600030001000080004000200010> 16 50 -3 13 19.371] 40 D
+[<800040002000100008000C0006000200030001800180018000C000C000C000E0006000600060007000700070007000700070
+  00700070007000700070007000600060006000E000C000C000C00180018001800300020006000C0008001000200040008000> 16 50 -3 13 19.371] 41 D
+[<0001800000018000000180000001800000018000000180000001800000018000000180000001800000018000000180000001
+  8000000180000001800000018000FFFFFFFFFFFFFFFF00018000000180000001800000018000000180000001800000018000
+  000180000001800000018000000180000001800000018000000180000001800000018000> 32 34 -3 5 38.743] 43 D
+[<70F8F8F870> 8 5 -4 0 13.837] 46 D
+[<01F800070E000C03001C03803801C03801C07801E07000E07000E0F000F0F000F0F000F0F000F0F000F0F000F0F000F0F000
+  F0F000F0F000F0F000F0F000F0F000F0F000F07000E07000E07000E03801C03801C01C03800C0300070E0001F800> 24 32 -2 0 24.906] 48 D
+[<7FFF7FFF01C001C001C001C001C001C001C001C001C001C001C001C001C001C001C001C001C001C001C001C001C001C001C0
+  01C001C0F9C0FFC007C001C00040> 16 32 -4 0 24.906] 49 D
+[<FFFFE0FFFFE07FFFE020002010003008001004001002001001000000800000E000007000003800001C00000E000007000007
+  800003C00003E00001E00001E03001F07800F0FC00F0FC00F0FC01F0F801E04003E02007C0181F800FFF0003F800> 24 32 -2 0 24.906] 50 D
+[<FFFFFFFFFFFFFFFF0000000000000000000000000000000000000000000000000000000000000000FFFFFFFFFFFFFFFF> 32 12 -3 -6 38.743] 61 D
+1.000 118 /f44 NF
+f44 SF
+[<4020101008080404040474FCFCF870> 8 15 -4 10 13.837] 59 D
+[<FFC01FFF80FFC00FFF800E0000F000060000F000020000F000010000F000010000F000008000F000004000F000004001F000
+  002001E000003FFFE000001FFFE000000801E000000801E000000401E000000401E000000201E000000101E000000103E000
+  000083C000000083C000000043C000000023C000000023C000000013C00000001BC00000000BC000000007C0000000078000
+  0000038000000003800000000180000000008000> 40 34 -2 0 37.359] 65 D
+[<007F80000001FFE0000007E03800000F000C00001E000200003C000100007C000080007800004000F800002000F800002000
+  F800001000F000001000F800000000F800000000F800000000F800000000F800000000F8000000007C000000007C00000000
+  7C000000003E000004001E000006001F000002000F00000600078000060003C000070001E000070000F0000F000078000F00
+  003E001780000FC063800003FFC18000007F0080> 40 34 -3 0 35.602] 67 D
+[<80FE0000C7FF80006F01E00078007000700038006000180020001C0020000E0020000E0020000E0000000F0000000F000000
+  0F0000001F0000003E000003FE00001FFC00007FF80000FFF00001FF800003F8000003E0000003C0000003C0000003800040
+  0380004001C0006001C0006000E00060006000E0003801F0001E0770000FFE300003F810> 32 34 -3 0 30.544] 83 D
+[<07E0001C1C00380200300180700040700040F00000F00000F00000F000007800007800007800003C00003C00001C03C00E03
+  C00701C00380C000E080003F00> 24 21 -2 0 21.556] 99 D
+[<600700E00C80701840703820703820703820381C10381C003838003838001C70001FC0001E00001D80000E40000E20300E10
+  780E08780704380702080701F007000003800003800003800003800001C00001C00001C00001C00000E00000E0000FE0000F
+  E00000F000> 24 35 -3 0 25.932] 107 D
+[<300078007000C4003800C2003801C1003801C1003800E1001C00E0801C00E0001C0070001C0070000E0038000E0038000E00
+  38000E00380087001C0087801C0087801C0087401C0047201800461830003C07E000> 32 21 -2 0 29.899] 110 D
+[<0FE000301800400400E00200F00300F00300700380000380000780003F0001FF0003FE0007F8000700000600000603000603
+  80020180010080008100007E00> 24 21 -2 0 23.349] 115 D
+[<03E0700E11880C09841C07841C03841C03841C01C21C01C01C01C01C01C00E00E00E00E00E00E00700E08700708380708380
+  704380704380382300381E0018> 24 21 -2 0 28.515] 117 D
+1.000 104 /f45 NF
+f45 SF
+[<FFFFFFFCFFFFFFFC> 32 2 -4 -11 38.743] 0 D
+[<70F8F8F870> 8 5 -4 -10 13.837] 1 D
+[<FFFFFFFCFFFFFFFC0000000000000000000000000000000000000000000000000000000000000000C0000000F00000003C00
+  00000F00000003C0000000F00000003C0000000F80000003E0000000780000001E0000000780000001E0000000780000001C
+  00000078000001E00000078000001E00000078000003E000000F8000003C000000F0000003C000000F0000003C000000F000
+  0000C0000000> 32 39 -4 7 38.743] 21 D
+[<000F0038007000E001C001C001C001C001C001C001C001C001C001C001C001C001C001C001C001C001C0038007001E00F000
+  1E000700038001C001C001C001C001C001C001C001C001C001C001C001C001C001C001C001C001C000E000700038000F> 16 49 -4 12 24.906] 102 D
+[<F0001E000700038001C001C001C001C001C001C001C001C001C001C001C001C001C001C001C001C001C000E000700038000F
+  0038007000E001C001C001C001C001C001C001C001C001C001C001C001C001C001C001C001C001C0038007001E00F000> 16 49 -4 12 24.906] 103 D
+/F0 /Ryumin-Light-H 45.999 -45.999 LWJF
+/F1 /Ryumin-Light-H 65.662 -65.662 LWJF
+%%EndSetup
+
+%%Page: 1 1
+BP
+F1 SF
+745 55 p (%/%i%9JT@.LdBj)s
+F0 SF
+1732 186 p (>>0f)s
+16 r (CN8J)s
+75 317 p ($")s
+1 r ($J)s
+1 r ($?)s
+1 r ($N)s
+1 r (3X)s
+1 r (9;)s
+1 r ($G)s
+1 r ($O!")s
+1 r (%/)s
+1 r (%i)s
+1 r (%9)s
+1 r (!J$")s
+1 r ($k)s
+1 r ($$)s
+1 r ($O)s
+1 r (3X)s
+1 r (2J)s
+1 r ($d)s
+1 r (8&)s
+1 r (5f)s
+1 r (<<!K)s
+1 r ($r)s
+1 r ($I)s
+1 r ($&)s
+2 r ($d$C)s
+1 r ($F)s
+1 r (7h)s
+1 r ($a)s
+1 r ($F)s
+1 r ($$)s
+1 r ($k)s
+1 r ($G)s
+1 r ($7$g)s
+1 r ($&!\))s
+0 398 p (%/%i)s
+1 r (%9JT)s
+1 r (@.$N)s
+1 r (LdBj)s
+1 r ($O!"3X@8)s
+1 r ($+$i)s
+1 r ($O$")s
+1 r ($^$j)s
+1 r (8+$\($^)s
+1 r ($;$s)s
+1 r ($,!"3X)s
+1 r (9;@8)s
+1 r (3h$G$O)s
+1 r (=EMW)s
+1 r ($JLd)s
+1 r (Bj$G$9!#)s
+1 r ($3$3)s
+1 r ($G)s
+0 479 p ($O<!$N$h$&$J>u67$G!"%/%i%9JT@.$r9T$J$&$H$7$^$7$g$&!#3X@8$N=89g$r)s
+f44 SF
+12 r (S)s
+f43 SF
+16 r (=)s
+f45 SF
+14 r (f)s
+f44 SF
+(s)s
+f13 SF
+1632 487 p (1)s
+f44 SF
+1651 479 p (;)s
+9 r (s)s
+f13 SF
+1697 487 p (2)s
+f44 SF
+1716 479 p (;)s
+9 r (s)s
+f13 SF
+1762 487 p (3)s
+f44 SF
+1782 479 p (;)s
+f43 SF
+8 r (.)s
+8 r (.)s
+9 r (.)s
+f44 SF
+8 r (;)s
+8 r (s)s
+f14 SF
+1916 487 p (n)s
+f45 SF
+1939 479 p (g)s
+F0 SF
+0 560 p ($H)s
+1 r ($7!"%/)s
+1 r (%i%9)s
+1 r ($N=8)s
+1 r (9g)s
+1 r ($r)s
+f44 SF
+11 r (C)s
+f43 SF
+24 r (=)s
+f45 SF
+20 r (f)s
+f44 SF
+(c)s
+f13 SF
+641 568 p (1)s
+f44 SF
+661 560 p (;)s
+8 r (c)s
+f13 SF
+704 568 p (2)s
+f44 SF
+724 560 p (;)s
+f43 SF
+8 r (.)s
+9 r (.)s
+8 r (.)s
+f44 SF
+8 r (;)s
+8 r (c)s
+f14 SF
+856 568 p (m)s
+f45 SF
+890 560 p (g)s
+F0 SF
+11 r ($H)s
+1 r ($9$k!#)s
+1 r (3F3X)s
+1 r (@8Kh)s
+1 r ($K!")s
+1 r (A4%/)s
+1 r (%i%9)s
+1 r ($r;V)s
+1 r (K>)s
+1 r (=g$K)s
+1 r (JB$Y)s
+1 r ($?)s
+0 641 p (;VK>)s
+1 r (=g0L)s
+1 r (I=$,)s
+1 r (B8:_)s
+1 r ($9$k!#)s
+1 r (3X@8$N)s
+1 r (HV9f)s
+1 r ($O!")s
+f44 SF
+11 r (s)s
+f13 SF
+870 649 p (1)s
+F0 SF
+901 641 p ($,:G)s
+1 r ($b@.)s
+1 r (@S$,)s
+1 r (NI$/!")s
+1 r (#2HVL\\)s
+1 r ($,)s
+f44 SF
+11 r (s)s
+f13 SF
+1539 649 p (2)s
+F0 SF
+1558 641 p (!")s
+20 r (0J)s
+1 r (2<@.@S)s
+1 r ($NNI)s
+1 r ($$)s
+0 722 p (=g$KJB$s$G)s
+1 r ($$$k$b$N$H$9$k!#3F%/%i)s
+1 r (%9$K$ODj0w$,Dj$^$C$F)s
+1 r ($*$j!")s
+17 r (%/%i%9)s
+f44 SF
+12 r (c)s
+f14 SF
+1525 729 p (j)s
+F0 SF
+1555 722 p ($NDj0w$O)s
+f44 SF
+12 r (u)s
+f14 SF
+1779 729 p (j)s
+f45 SF
+1813 722 p (\025)s
+f43 SF
+15 r (0)s
+F0 SF
+11 r ($H)s
+0 803 p ($9$k!#$?$@$7!"%/%i%9Dj0w$NAmOB$O3X@8?t$KEy$7$$$H$9$k!")s
+14 r ($9$J$o$A)s
+f44 SF
+28 r (u)s
+f13 SF
+1497 810 p (1)s
+f43 SF
+1523 803 p (+)s
+f44 SF
+6 r (u)s
+f13 SF
+1596 810 p (2)s
+f43 SF
+1622 803 p (+)s
+f45 SF
+7 r (\001)s
+8 r (\001)s
+8 r (\001)s
+f43 SF
+7 r (+)s
+f44 SF
+6 r (u)s
+f14 SF
+1805 810 p (m)s
+f43 SF
+1852 803 p (=)s
+f44 SF
+14 r (n)s
+F0 SF
+0 884 p ($,@.$jN\)$D!#)s
+75 965 p ($5)s
+1 r ($F!")s
+1 r (>e)s
+1 r (5-)s
+1 r ($N@.)s
+1 r (@S)s
+1 r ($H)s
+1 r (;V)s
+1 r (K>)s
+1 r ($H)s
+1 r (Dj)s
+1 r (0w)s
+1 r ($N)s
+1 r (%G!<)s
+1 r (%?)s
+1 r ($r)s
+1 r (MQ)s
+1 r ($$)s
+1 r ($F!")s
+1 r (3X)s
+1 r (@8)s
+1 r ($r)s
+1 r (%/%i)s
+1 r (%9)s
+1 r ($K)s
+1 r (G[)s
+1 r (B0)s
+1 r ($5)s
+1 r ($;)s
+1 r ($k)s
+1 r ($H)s
+1 r ($$)s
+1 r ($&)s
+1 r ($N)s
+1 r ($,)s
+0 1046 p (%/%i)s
+1 r (%9JT)s
+1 r (@.Ld)s
+1 r (Bj$G)s
+1 r ($"$k!#0J)s
+1 r (2<$G)s
+1 r ($O!"3F)s
+1 r (%/%i)s
+1 r (%9$KG[)s
+1 r (B0$9)s
+1 r ($k3X)s
+1 r (@8?t)s
+1 r ($O!"CzEY)s
+1 r ($=$N)s
+1 r (Dj0w)s
+1 r (?t$G$")s
+1 r ($kLd)s
+1 r (Bj)s
+0 1127 p ($K$D)s
+1 r ($$$F)s
+1 r (9M$\()s
+1 r ($k!#!J8=)s
+1 r (<B$G)s
+1 r ($O!"Dj)s
+1 r (0w$h)s
+1 r ($jB?$a)s
+1 r ($K<h$C)s
+1 r ($?$j)s
+1 r (>/$J)s
+1 r ($a$K)s
+1 r (<h$C$?)s
+1 r ($j$9)s
+1 r ($k$3$H)s
+1 r ($,NI)s
+1 r ($/$")s
+1 r ($k)s
+0 1208 p ($N$O!")s
+17 r (3'$5$s$b$4B8CN$G$7$g$&!*!\)!K)s
+75 1289 p ($5)s
+1 r ($F)s
+1 r ($I)s
+1 r ($s)s
+1 r ($J)s
+1 r (G[)s
+1 r (B0)s
+1 r ($r)s
+1 r ($9)s
+1 r ($l)s
+1 r ($P)s
+1 r (NI)s
+1 r ($$)s
+1 r ($N)s
+1 r ($G)s
+1 r ($7$g)s
+1 r ($&!\))s
+1 r ($3)s
+1 r ($3)s
+1 r ($G)s
+1 r (=E)s
+1 r (MW)s
+1 r ($J)s
+1 r ($N)s
+1 r ($O)s
+1 r (!VNI)s
+1 r ($$!W)s
+1 r ($H)s
+1 r ($$)s
+1 r ($&)s
+1 r (8@)s
+1 r (MU)s
+1 r ($G)s
+1 r ($9!#)s
+1 r ($G)s
+0 1370 p ($O!"$I$s$JG[B0$,!VNI$$!WG[B0$J$N$G$7$g$&!\)$3$l$+$i9M$\($kI,MW$,$"$j$=$&$G$9$M!#)s
+75 1451 p ($R)s
+1 r ($H)s
+1 r ($D)s
+2 r (Dj)s
+1 r (5A)s
+1 r ($r)s
+2 r ($7)s
+1 r ($^)s
+1 r ($7$g)s
+2 r ($&!#)s
+1 r (Aj)s
+1 r (0[)s
+2 r ($J)s
+1 r ($k)s
+1 r (#2)s
+2 r ($D)s
+1 r ($N)s
+1 r (G[)s
+2 r (B0)s
+f44 SF
+11 r (A)s
+F0 SF
+12 r ($H)s
+f44 SF
+11 r (A)s
+f15 SF
+1220 1432 p (0)s
+F0 SF
+1243 1451 p ($K)s
+1 r ($*)s
+2 r ($$)s
+1 r ($F!")s
+1 r (G$)s
+2 r (0U)s
+1 r ($N)s
+1 r (3X)s
+1 r (@8)s
+2 r ($K)s
+1 r ($D)s
+1 r ($$)s
+2 r ($F!")s
+f44 SF
+0 1531 p (A)s
+F0 SF
+12 r ($GG[B0$5$l$?%/)s
+1 r (%i%9$h$j$b)s
+f44 SF
+12 r (A)s
+f15 SF
+651 1513 p (0)s
+F0 SF
+675 1531 p ($GG[B0$5$l$?%/)s
+1 r (%i%9$NJ}$,F1)s
+1 r ($8$+$h$j9%$^$7)s
+1 r ($$$H$-!")s
+f44 SF
+11 r (A)s
+f15 SF
+1831 1513 p (0)s
+F0 SF
+1854 1531 p ($O)s
+f44 SF
+11 r (A)s
+F0 SF
+0 1612 p ($r;Y)s
+1 r (G[$9)s
+1 r ($k$H)s
+1 r (8@$&!#)s
+1 r ($9$k)s
+1 r ($H;YG[)s
+1 r ($5$l)s
+1 r ($F$$)s
+1 r ($kG[)s
+1 r (B0$h)s
+1 r ($j!";YG[)s
+1 r ($7$F)s
+1 r ($$$k)s
+1 r (G[B0)s
+1 r ($NJ})s
+1 r ($,!VNI$5)s
+1 r ($=$&!W)s
+1 r ($G)s
+0 1693 p ($9$M!#$9$J$o$A!"!V$I$s$JG[B0$K$b;YG[$5$l$J$$!"G[B0!W$H$$$&$N$,NI$5$=$&$G$9!#)s
+75 1774 p ($"$kG[B0)s
+f44 SF
+12 r (A)s
+F0 SF
+11 r ($K$*)s
+1 r ($$$F!"3X@8)s
+f44 SF
+12 r (s)s
+f14 SF
+677 1782 p (i)s
+F0 SF
+703 1774 p ($,Bh#3;VK>)s
+1 r ($N%/%i%9$KG[)s
+1 r (B0$5$l$?$H$7)s
+1 r ($^$7$g$&!#$=$N3X)s
+1 r (@8$,)s
+0 1855 p (!V;d$O)s
+1 r (2?8N)s
+1 r (Bh#2)s
+1 r (;VK>)s
+1 r ($N%/)s
+1 r (%i%9$K)s
+1 r (F~$l)s
+1 r ($J$$)s
+1 r ($N$@)s
+1 r ($m$&!\)!W)s
+1 r ($H9M$\()s
+1 r ($?$H)s
+1 r ($-!"$J)s
+1 r ($s$i)s
+1 r ($+$N)s
+1 r (M}M3$,)s
+1 r ($J$1)s
+1 r ($l)s
+0 1936 p ($P!"$=$N3X@8$OG<F@)s
+1 r ($7$J$$$G$7$g$&!#Nc$\($P!"!V3X@8)s
+f44 SF
+12 r (s)s
+f14 SF
+1140 1944 p (i)s
+F0 SF
+1166 1936 p ($NBh#2;VK>$N%/%i%9$KG[B0)s
+1 r ($5$l$?3F3X)s
+0 2017 p (@8$O!")s
+1 r (@.@S)s
+1 r ($,$=)s
+1 r ($N3X)s
+1 r (@8$h)s
+1 r ($jNI)s
+1 r ($+$C$?!W)s
+1 r ($H$$)s
+1 r ($&M})s
+1 r (M3$b)s
+1 r ($"$k)s
+1 r ($G$7$g)s
+1 r ($&!J$=$l)s
+1 r ($G!"$=)s
+1 r ($N3X)s
+1 r (@8$,)s
+1 r (G<F@)s
+1 r ($9)s
+0 2098 p ($k$+$I$&$+$O!"J,$+$j$^$;$s$,!K!#)s
+75 2179 p ($G$O>e5-$N;v$r$^$H$a$F$_$^$7$g$&!#$"$kG[B0J}K!)s
+f44 SF
+17 r (A)s
+F0 SF
+11 r ($,!VNI$$!W$H$O!")s
+f44 SF
+12 r (A)s
+F0 SF
+11 r ($,0J2<$N@-<A$r)s
+0 2260 p (K~$?$9$3$H$H$7$^$7$g$&!#)s
+f43 SF
+75 2341 p (\(1\))s
+F0 SF
+16 r (G[B0)s
+f44 SF
+12 r (A)s
+F0 SF
+11 r ($O!"B>$N$I$s$JG[B0$K$b;YG[$5$l$J$$!#)s
+f43 SF
+75 2422 p (\(2\))s
+F0 SF
+23 r (G[)s
+1 r (B0)s
+f44 SF
+11 r (A)s
+F0 SF
+12 r ($K)s
+1 r ($*)s
+1 r ($$)s
+1 r ($F!")s
+1 r ($")s
+1 r ($k)s
+1 r (3X)s
+1 r (@8)s
+f44 SF
+11 r (s)s
+f14 SF
+771 2429 p (i)s
+F0 SF
+796 2422 p ($,)s
+1 r (Bh)s
+f44 SF
+12 r (k)s
+F0 SF
+13 r (;V)s
+1 r (K>)s
+1 r ($N)s
+1 r (%/)s
+1 r (%i)s
+1 r (%9)s
+1 r ($K)s
+1 r (G[)s
+1 r (B0)s
+1 r ($5)s
+1 r ($l)s
+1 r ($F)s
+1 r ($$)s
+1 r ($?)s
+1 r ($J)s
+1 r ($i)s
+1 r ($P!")s
+23 r (3X)s
+1 r (@8)s
+f44 SF
+11 r (s)s
+f14 SF
+1935 2429 p (i)s
+F0 SF
+0 2503 p ($NBh#1;VK>$+$iBh)s
+f44 SF
+12 r (k)s
+f45 SF
+7 r (\000)s
+f43 SF
+6 r (1)s
+F0 SF
+12 r (;VK>$N%/%i%9$KG[B0$5$l$F$$$k3X@8$O!")s
+14 r (3'!"3X@8)s
+f44 SF
+11 r (s)s
+f14 SF
+1555 2510 p (i)s
+F0 SF
+1581 2503 p ($h$j@.@S$,NI$$!#)s
+75 2584 p ($5)s
+1 r ($F!")s
+1 r (>e)s
+1 r (5-)s
+1 r ($N)s
+1 r (#2)s
+1 r ($D)s
+1 r ($N)s
+1 r (>r7o)s
+1 r ($r)s
+1 r (K~)s
+1 r ($?)s
+1 r ($9)s
+1 r ($h)s
+1 r ($&)s
+1 r ($J)s
+1 r (G[)s
+1 r (B0)s
+1 r ($O)s
+1 r ($")s
+1 r ($k)s
+1 r ($N)s
+1 r ($G)s
+1 r ($7$g)s
+1 r ($&)s
+1 r ($+!\))s
+1 r (<B)s
+1 r ($O!")s
+1 r (>e)s
+1 r (5-)s
+1 r ($N)s
+1 r ($N)s
+1 r (#2)s
+1 r (>r)s
+1 r (7o)s
+0 2665 p ($rK~$?$9G[B0$O>o$KB8:_$7!"$^$?M#0l$D$7$+B8:_$7$^$;$s!#$G$O!"$3$NB8:_@-$HM#0l@-$r!")s
+17 r (>e)s
+0 2746 p (5-$N)s
+1 r (#2>r)s
+1 r (7o$r)s
+1 r (K~$?$9)s
+1 r (G[B0)s
+1 r ($r5a)s
+1 r ($a$kJ})s
+1 r (K!$r)s
+1 r (:n$k)s
+1 r ($3$H$G)s
+1 r (<\($7)s
+1 r ($^$7$g)s
+1 r ($&!#$=)s
+1 r ($s$J$K)s
+1 r (Fq$7)s
+1 r ($/$O)s
+1 r ($"$j$^)s
+1 r ($;)s
+0 2827 p ($s!#)s
+f43 SF
+962 2959 p (1)s
+EP
+
+%%Page: 2 2
+BP
+F0 SF
+75 42 p ($^)s
+1 r ($:)s
+1 r (@.@S)s
+1 r ($,)s
+1 r (#1)s
+1 r (HV)s
+1 r ($N)s
+1 r (3X)s
+1 r (@8)s
+f44 SF
+22 r (s)s
+f13 SF
+589 49 p (1)s
+F0 SF
+620 42 p ($O!")s
+1 r ($=)s
+1 r ($N)s
+1 r (;V)s
+1 r (K>)s
+1 r ($r$@)s
+1 r ($l)s
+1 r ($K)s
+1 r ($b)s
+1 r (<Y)s
+1 r (Kb)s
+1 r ($5)s
+1 r ($l)s
+1 r ($^)s
+1 r ($;$s!#)s
+1 r ($f)s
+1 r ($\()s
+1 r ($K)s
+1 r (3X)s
+1 r (@8)s
+f44 SF
+11 r (s)s
+f13 SF
+1778 49 p (1)s
+F0 SF
+1809 42 p ($O)s
+1 r (9T)s
+1 r ($-)s
+0 122 p ($?)s
+1 r ($$%/)s
+1 r (%i)s
+1 r (%9$J)s
+1 r ($i)s
+1 r (!JDj0w)s
+1 r ($,#0)s
+1 r (?M)s
+1 r ($G$J)s
+1 r ($$)s
+1 r (8B$j!K)s
+21 r (2?)s
+1 r (=h$G)s
+1 r ($b)s
+1 r (F~$k)s
+1 r ($3)s
+1 r ($H$,)s
+1 r ($G)s
+1 r ($-$^)s
+1 r ($9!#)s
+1 r ($9$J)s
+1 r ($o$A)s
+1 r (3X)s
+1 r (@8)s
+f44 SF
+11 r (s)s
+f13 SF
+1872 130 p (1)s
+F0 SF
+1903 122 p ($O)s
+0 203 p (Bh#1)s
+1 r (;VK>)s
+1 r ($N%/)s
+1 r (%i%9)s
+1 r ($KG[B0)s
+1 r ($7$F)s
+1 r ($$$J)s
+1 r ($1$l)s
+1 r ($P$J$j)s
+1 r ($^$;)s
+1 r ($s!#!J$?)s
+1 r ($@$7!")s
+1 r (Bh#1;V)s
+1 r (K>$N)s
+1 r (%/%i)s
+1 r (%9$NDj)s
+1 r (0w$,)s
+1 r (#0)s
+0 284 p (?M$@$C$?$H$-$O!")s
+14 r (Bh#2;VK>$N%/%i%9$H$J$j$^$9!#)s
+15 r (@53N$K$O!"3X@8)s
+f44 SF
+11 r (s)s
+f13 SF
+1397 292 p (1)s
+F0 SF
+1429 284 p ($O!")s
+14 r (Dj0w$,#1L>0J>e$N%/)s
+0 365 p (%i)s
+1 r (%9$G)s
+1 r (:G)s
+1 r ($b;V)s
+1 r (K>=g)s
+1 r (0L)s
+1 r ($,9b)s
+1 r ($$)s
+1 r (%/%i)s
+1 r (%9$K)s
+21 r (=j)s
+1 r (B0$9)s
+1 r ($k)s
+1 r ($3$H)s
+1 r ($,)s
+1 r ($G$-)s
+1 r ($^$9!#!K)s
+1 r (3X)s
+1 r (@8)s
+f44 SF
+11 r (s)s
+f13 SF
+1499 373 p (1)s
+F0 SF
+1530 365 p ($N=j)s
+1 r (B0)s
+1 r ($,M#)s
+1 r (0l)s
+1 r ($D$7)s
+1 r ($+)s
+0 446 p (B8:_$7$J)s
+1 r ($$$N$G$9$+$i!")s
+18 r (LdBj%5)s
+1 r (%$%:$r0l$D>.)s
+1 r ($5$/$G$-$^$9!#)s
+1 r ($9$J$o$A!"3X@8)s
+f44 SF
+12 r (s)s
+f13 SF
+1621 454 p (1)s
+F0 SF
+1652 446 p ($r)s
+1 r (=|$-!")s
+f44 SF
+11 r (s)s
+f13 SF
+1872 454 p (1)s
+F0 SF
+1903 446 p ($N)s
+0 527 p (=jB0)s
+1 r ($7$?)s
+1 r (%/%i)s
+1 r (%9$NDj)s
+1 r (0w$r)s
+1 r (#1L>8:)s
+1 r ($i$7)s
+1 r ($?Ld)s
+1 r (Bj$r2r)s
+1 r ($1$P)s
+1 r (NI$$)s
+1 r ($H$$$&)s
+1 r ($3$H)s
+1 r ($G$9!#$=)s
+1 r ($7$F)s
+1 r (@.@S)s
+1 r (#2HVL\\)s
+1 r ($N)s
+0 608 p (3X@8)s
+1 r (!J%5%$)s
+1 r (%:$N)s
+1 r (>.$5)s
+1 r ($JLd)s
+1 r (Bj$G)s
+1 r ($O!"@.)s
+1 r (@S#1HV)s
+1 r (L\\$N)s
+1 r (3X@8)s
+1 r ($H$J$C)s
+1 r ($F$$)s
+1 r ($k!K$K)s
+1 r ($D$$)s
+1 r ($F!"@h$H)s
+1 r (F1$8)s
+1 r ($h$&)s
+1 r ($K)s
+0 689 p (Dj0w)s
+1 r ($,#1)s
+1 r (L>0J)s
+1 r (>e$N%/)s
+1 r (%i%9)s
+1 r ($G:G$b)s
+1 r (;VK>)s
+1 r (=g0L)s
+1 r ($,9b$$)s
+1 r (%/%i)s
+1 r (%9$K)s
+1 r (=jB0$5)s
+1 r ($;$^)s
+1 r ($9!#0J2<)s
+1 r ($3$N)s
+1 r (<jB3)s
+1 r ($-$r7+)s
+1 r ($j)s
+0 770 p (JV$;$P=*$j$G$9!#)s
+75 851 p (>e5-$N<jB3$-$+$iL@$i$+$K!">r7o)s
+f43 SF
+11 r (\(1\)\(2\))s
+F0 SF
+12 r ($rK~$?$9G[B0$O!">o$KM#0l$DB8:_$7$^$9!#)s
+75 982 p ($5)s
+1 r ($F)s
+1 r (>e)s
+1 r (5-)s
+1 r ($N)s
+1 r ($h)s
+1 r ($&)s
+1 r ($J)s
+1 r (G[)s
+1 r (B0)s
+1 r (7h)s
+1 r (Dj)s
+1 r (J})s
+1 r (K!)s
+1 r ($O)s
+1 r (K\\)s
+1 r (Ev)s
+1 r ($K)s
+1 r (!VNI)s
+1 r ($$!W)s
+1 r (J})s
+1 r (K!)s
+1 r ($G)s
+1 r ($7$g)s
+1 r ($&)s
+1 r ($+!\))s
+1 r ($3)s
+1 r ($l)s
+1 r ($K)s
+1 r ($O!")s
+1 r ($$)s
+1 r ($m)s
+1 r ($$)s
+1 r ($m)s
+1 r ($J)s
+0 1063 p (0U)s
+1 r (8+)s
+1 r ($,)s
+1 r ($")s
+2 r ($k)s
+1 r ($H)s
+1 r (;W)s
+1 r ($$)s
+1 r ($^)s
+1 r ($9!#)s
+1 r (!J!V$")s
+2 r ($k)s
+1 r ($Y)s
+1 r ($-!W)s
+1 r ($@)s
+1 r ($H)s
+1 r (;d)s
+1 r ($O)s
+1 r (;W)s
+2 r ($$)s
+1 r ($^)s
+1 r ($9!#)s
+24 r (>e)s
+1 r (5-)s
+1 r ($N)s
+1 r (J})s
+2 r (K!)s
+1 r ($,)s
+1 r (NI)s
+1 r ($/)s
+1 r ($J)s
+1 r ($$)s
+1 r ($H)s
+2 r ($$)s
+1 r ($&)s
+1 r (M})s
+0 1144 p (M3)s
+1 r ($r)s
+1 r (9M)s
+1 r ($\()s
+1 r (IU)s
+2 r ($-)s
+1 r ($^)s
+1 r ($9)s
+1 r ($+!\))s
+24 r (0l)s
+1 r ($D)s
+1 r ($b)s
+1 r (9M)s
+1 r ($\()s
+1 r ($D)s
+2 r ($+)s
+1 r ($J)s
+1 r ($$)s
+1 r (J})s
+1 r ($O!")s
+1 r ($b$C)s
+1 r ($H)s
+1 r (=@)s
+1 r (Fp)s
+2 r ($J)s
+1 r (;W)s
+1 r (9M)s
+1 r ($,)s
+1 r (I,)s
+1 r (MW)s
+1 r ($@)s
+1 r ($H!")s
+1 r (;d)s
+1 r ($O)s
+2 r (;W)s
+1 r ($$)s
+1 r ($^)s
+0 1225 p ($9!K>e)s
+1 r (5-$N)s
+1 r (G[B0)s
+1 r (7hDj)s
+1 r (J}K!)s
+1 r ($O!"!V@.)s
+1 r (@S$5)s
+1 r ($\($h$1)s
+1 r ($l$P)s
+1 r ($I$s)s
+1 r ($J;V)s
+1 r (K>$G)s
+1 r ($bBg)s
+1 r (>fIW!W)s
+1 r ($H$$$&)s
+1 r (!VEXNO)s
+1 r ($,Js)s
+1 r ($o)s
+0 1305 p ($l$k!W)s
+1 r (J}K!)s
+1 r ($H8+)s
+1 r ($k$3)s
+1 r ($H$,)s
+1 r ($G$-$^)s
+1 r ($9!#$=)s
+1 r ($N0l)s
+1 r (J}!"@.)s
+1 r (@S:G)s
+1 r (2<0L$N)s
+1 r (3X@8)s
+1 r ($N;V)s
+1 r (K>$O)s
+1 r ($^$C$?)s
+1 r ($/0UL#)s
+1 r ($r;})s
+1 r ($A)s
+0 1386 p ($^$;)s
+1 r ($s!#@.)s
+1 r (@S$,)s
+1 r (0-$$)s
+1 r (;~$OB>)s
+1 r ($N?M)s
+1 r ($N$*)s
+1 r ($3$\\)s
+1 r ($l$rLc)s
+1 r ($&$7)s
+1 r ($+$J)s
+1 r ($$$N)s
+1 r ($G$9!#A4)s
+1 r (0w$,)s
+1 r ($I$s)s
+1 r ($JEXNO)s
+1 r ($7$F)s
+1 r ($b!")s
+0 1467 p (I,$:)s
+1 r (@.@S)s
+1 r (:G2<)s
+1 r (0L$N)s
+1 r (?M$OB8)s
+1 r (:_$9)s
+1 r ($k$H)s
+1 r ($$$&)s
+1 r (0UL#$G)s
+1 r ($O!VEX)s
+1 r (NO$,)s
+1 r (Js$o)s
+1 r ($l$J$$!W)s
+1 r ($H$$)s
+1 r ($&8+)s
+1 r (J}$b$")s
+1 r ($j$^)s
+1 r ($9!#)s
+0 1548 p ($5$i$K!"@.@S$,NI$/$J$k$?$a$K$O!VB>?M$r=3$jMn$9!W$N$,NI$$$H$$$&E@$+$i8+$?$i!"$3$l$O!VNI)s
+0 1629 p ($$!WJ}K!$G$7$g$&$+!\))s
+75 1710 p ($3$NG[B07hDjJ}K!$K$D$$$F5DO@$9$k$H$-!"K\\Ev$K5DO@$9$Y$-$J$N$O!">r7o)s
+f43 SF
+11 r (\(1\)\(2\))s
+F0 SF
+12 r ($J$N$G$9!#)s
+0 1791 p ($@$C$F>r7o)s
+f43 SF
+12 r (\(1\)\(2\))s
+F0 SF
+11 r ($r)s
+1 r (G'$a$k$J$i$P!">e5-)s
+1 r ($NG[B0J}K!$7$+)s
+1 r ($J$$$N$G$9$+$i!#$b)s
+1 r ($75.J}$,$3$NG[)s
+1 r (B0)s
+0 1872 p (J}K!$KITK~$r8+$$=P$9$J$i$P!"$=$l$O>r7o)s
+f43 SF
+17 r (\(1\)\(2\))s
+F0 SF
+16 r ($N$I$3$+$,ITK~$J$N$G$9!#)s
+75 1953 p ($5$F!"$I$3$,ITK~$G$9$+!\))s
+f43 SF
+962 2959 p (2)s
+EP
+%%Trailer
+%%Pages: 2
+END
+%%EOF
